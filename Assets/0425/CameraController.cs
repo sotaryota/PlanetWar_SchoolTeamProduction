@@ -14,16 +14,17 @@ public class CameraController : MonoBehaviour
     public GameObject player;
     public GameObject cameraController; 
 
-    private float horizontal;
-    private float vertical;
+    float horizontal;
+    float vertical;
 
-    public float rotateSpeed = 1.0f;  //カメラの回転速度
-    private const float angleLimitUp = 60f;     //カメラの角度の上側の上限
-    private const float angleLimitDown = -60f;  //カメラの角度の下側の上限
+    [SerializeField] float rotateSpeed = 1.0f;  //カメラの回転速度
 
     public GameObject target;  //ロックオン対象
-    public bool lockOn1P = false;  //ロックオン中か否か（1P）
-    public bool lockOn2P = false;  //ロックオン中か否か（2P）
+    bool lockOn1P = false;  //ロックオン中か否か（1P）
+    bool lockOn2P = false;  //ロックオン中か否か（2P）
+
+    //ズーム処理用(仮)
+    bool gekihaSceneFlag = false;
    
     void Start()
     {
@@ -33,8 +34,6 @@ public class CameraController : MonoBehaviour
        transform.position = player.transform.position;
 
         playerID = playerStatus.GetID();  //プレイヤーIDを取得
-
-
     }
 
     void Update()
@@ -44,25 +43,20 @@ public class CameraController : MonoBehaviour
             gamepad = Gamepad.all[playerID];
         }
 
+
         StickValue();
-
-       //カメラの角度制限
-        float angle_x = 180f <= transform.eulerAngles.x ? transform.eulerAngles.x - 360 : transform.eulerAngles.x;
-        transform.eulerAngles = new Vector3(Mathf.Clamp(angle_x, angleLimitDown, angleLimitUp), transform.eulerAngles.y,transform.eulerAngles.z);
-
         rotateCmaeraAngle();
-
 
         //ロックオン-------------------------------------------------------------------------------
    
         //R1ボタンでロックオンする
-        ButtonControl control = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder];
+        ButtonControl lockOnButton = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder];
 
         //1P
         if (playerID == 0) 
         {  
             //R1ボタンが押されたら
-            if (control.wasPressedThisFrame)
+            if (lockOnButton.wasPressedThisFrame)
             {
                 //ロックオン状態を切り替える
                 LockOn(); 
@@ -76,9 +70,9 @@ public class CameraController : MonoBehaviour
         else if (playerID == 1) 
         {
             //R1ボタンが押されたら
-            if (control.wasPressedThisFrame) 
+            if (lockOnButton.wasPressedThisFrame) 
             {
-                print($"[{UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder}] 2PisPressed = {control.isPressed}");
+                print($"[{UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder}] 2PisPressed = {lockOnButton.isPressed}");
                 //ロックオン状態を切り替える
                 LockOn(); 
             }
@@ -89,7 +83,25 @@ public class CameraController : MonoBehaviour
         }
 
         //カメラの追従
-        transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * 5.0f);
+        //transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * 5.0f);
+
+
+        //ズーム処理お試し-----------------------------------------------------------------------------------------
+        ButtonControl gekihaScene = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.LeftShoulder]; //L1ボタン
+
+        //Flagを切り替え
+        if (gekihaScene.wasPressedThisFrame)
+        {
+            if (gekihaSceneFlag)
+                gekihaSceneFlag = false;
+            else
+                gekihaSceneFlag = true;
+        }
+        if (gekihaSceneFlag == false)
+        transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * 5.0f); //自分に追従
+        else
+        transform.position = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime * 5.0f); //相手にズーム
+        //-----------------------------------------------------------------------------------------------------------
     }
 
     void LockOn()
