@@ -12,6 +12,7 @@ public class Fade : MonoBehaviour
     void Start()
     {
         image.color = Color.black;
+        //false‚¾‚Æa‚ª“§–¾‚É‚È‚é true‚¾‚Æ•‚É‚È‚é
         fademode = false;
     }
 
