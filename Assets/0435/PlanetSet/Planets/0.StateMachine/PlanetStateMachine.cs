@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using System;
 
 public class PlanetStateMachine : MonoBehaviour
 {
@@ -34,12 +36,8 @@ public class PlanetStateMachine : MonoBehaviour
     private class ScriptData
     {
         [SerializeField]
-        State thisClassUseState;
-        [SerializeField]
         PlanetStateFanction[] scripts = new PlanetStateFanction[1];
-
-        public State GetState() { return thisClassUseState; }
-        public PlanetStateFanction GetScript(int num) { return scripts[num]; }
+        public ref PlanetStateFanction GetScript(int num) { return ref scripts[num]; }
         public int GetScriptLength() { return scripts.Length; }
     }
 
@@ -66,7 +64,8 @@ public class PlanetStateMachine : MonoBehaviour
         //距離で削除
         PlantDestroyByPos();
 
-        if(nowState == State.Destroy)
+        //破壊状態なら破壊
+        if (nowState == State.Destroy)
         {
             Destroy(gameObject);
         }
@@ -74,16 +73,13 @@ public class PlanetStateMachine : MonoBehaviour
 
     private State UpdateStateFanction(float tdt)
     {
+        //状態を現在に変更する
         State Next = State.Now;
-        for (int i = 0; i < data.Length; ++i)
+        
+        //スクリプトを実行する
+        for (int i = 0; i < data[(int)nowState].GetScriptLength(); ++i)
         {
-            if (data[i].GetState() == nowState)
-            {
-                for (int sn = 0; sn < data[i].GetScriptLength(); ++sn)
-                {
-                    Next = data[i].GetScript(sn).Fanction(tdt);
-                }
-            }
+            Next = data[(int)nowState].GetScript(i).Fanction(tdt);
         }
         return Next;
     }
@@ -123,18 +119,53 @@ public class PlanetStateMachine : MonoBehaviour
     public PlanetStateMachine.State GetState()
     {
         return nowState;
-    } 
+    }
 
     private void PlantDestroyByPos()
     {
         Vector3 pos = this.transform.position;
-        
-        if(pos.x >= deleteDistance ||
+
+        if (pos.x >= deleteDistance ||
             pos.x <= -deleteDistance ||
             pos.z >= deleteDistance ||
             pos.z <= -deleteDistance)
         {
             SetState(State.Destroy);
+        }
+    }
+
+    [CustomEditor(typeof(PlanetStateMachine))]
+    public class PlanetStateMachine_Editor : Editor
+    {
+        private bool isOpen = false;
+        private bool[] isOpenScript = new bool[(int)PlanetStateMachine.State.GETNUM_NOT_USE]; 
+
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();//最新状態に上書き
+
+            PlanetStateMachine psm = target as PlanetStateMachine;
+
+            //最初の状態を設定
+            psm.firstState = (State)EditorGUILayout.EnumPopup("初期の状態", psm.firstState);
+            psm.nowState = (State)EditorGUILayout.EnumPopup("現在の状態", psm.nowState);
+            
+            isOpen = EditorGUILayout.Foldout(isOpen, "スクリプト");
+            if (isOpen)
+            {
+                for(int i = 0; i < psm.data.Length; ++i)
+                {
+                    EditorGUILayout.LabelField(((State)i).ToString());
+                    for(int sc = 0; sc < psm.data[i].GetScriptLength(); ++sc)
+                    {
+                    }
+                    EditorGUILayout.Space();
+                    EditorGUILayout.Space();
+                }
+
+            }
+
+            serializedObject.ApplyModifiedProperties(); //現在の情報を保存
         }
     }
 }
