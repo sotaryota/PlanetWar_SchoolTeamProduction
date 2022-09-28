@@ -17,11 +17,6 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField]
     private float speed_;      //移動スピード
 
-    [SerializeField]
-    private Param_UI param_UI;
-    [SerializeField]
-    private HP_UI hp_UI;
-
     //--------------------------------------
     //プレイヤの状態の変更と取得
     //--------------------------------------
