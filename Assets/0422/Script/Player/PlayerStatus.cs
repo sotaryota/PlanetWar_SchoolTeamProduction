@@ -83,21 +83,17 @@ public class PlayerStatus : MonoBehaviour
     public void PowerUp(float powerUpPoint)
     {
         this.power_ += powerUpPoint;
-        param_UI.PowerTextUpdate(this.power_);
     }
     public void DefenseUp(float defenseUpPoint)
     {
         this.defense_ += defenseUpPoint;
-        param_UI.defenceTextUpdate(this.defense_);
     }
     public void SpeedUp(float speedUpPoint)
     {
         this.speed_ += speedUpPoint;
-        param_UI.speedTextUpdate(this.speed_);
     }
     public void Damage(float damage)
     {
         this.hp_ -= damage;
-        hp_UI.GaugeUpdate(this.hp_);
     }
 }

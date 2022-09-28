@@ -13,19 +13,24 @@ public class Param_UI : MonoBehaviour
     void Start()
     {
         //‰Šú’l‚ğİ’è
-        PowerTextUpdate(playerstatus.GetPower());
+        powerTextUpdate(playerstatus.GetPower());
         defenceTextUpdate(playerstatus.GetDefense());
         speedTextUpdate(playerstatus.GetSpeed());
     }
 
-    public void PowerTextUpdate(float power)
+    private void Update()
+    {
+        powerTextUpdate(playerstatus.GetPower());
+        defenceTextUpdate(playerstatus.GetDefense());
+        speedTextUpdate(playerstatus.GetSpeed());
+    }
+    public void powerTextUpdate(float power)
     {
         powerText.text = power.ToString();
     }
     public void defenceTextUpdate(float defence)
     {
         defenceText.text = defence.ToString();
-
     }
     public void speedTextUpdate(float speed)
     {
