@@ -17,6 +17,12 @@ public class PlanetCatchRelease : MonoBehaviour
     public PlayerStatus playerStatus;
     private Animator animator;
 
+    [Header("惑星を投げた時のウェイト")]
+    [SerializeField]
+    private float waitTime;
+    public bool throwFlag = true;
+
+
     private void Start()
     {
         animator = this.GetComponent<Animator>();
@@ -69,7 +75,17 @@ public class PlanetCatchRelease : MonoBehaviour
             animator.SetTrigger("throw");
             //プレイヤをStay状態にする
             playerStatus.SetState(PlayerStatus.State.Stay);
+
+            StartCoroutine("ThrowWait");
         }
+    }
+    IEnumerator ThrowWait()
+    {
+        throwFlag = false;
+
+        yield return new WaitForSeconds(waitTime);
+
+        throwFlag = true;
     }
 
     //--------------------------------------
@@ -95,6 +111,9 @@ public class PlanetCatchRelease : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //硬直時間中は処理をしない
+        if (!throwFlag) return;
+
         //惑星を所持している場合は処理をしない
         if (planet) { return; }
         //惑星である場合
