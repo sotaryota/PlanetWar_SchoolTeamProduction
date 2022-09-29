@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class HP_UI : MonoBehaviour
 {
     [SerializeField]
+    private PlayerStatus playerstatus;
+
+    [SerializeField]
     private Slider HPgauge;
 
     //"Fill"を入れる
@@ -17,7 +20,7 @@ public class HP_UI : MonoBehaviour
 
     void Start()
     {
-        //最大値(maxValue)はSliderにある。下記は補遺
+        //最大値(maxValue)はSliderにある
         //float maxHP = 100f;
         //HPgauge.maxValue = maxHP;
 
@@ -29,6 +32,7 @@ public class HP_UI : MonoBehaviour
         //テスト用
         //nowHP -= 0.1f;
         //GaugeUpdate(nowHP);
+        GaugeUpdate(playerstatus.GetHp());
     }
 
     public void GaugeUpdate(float nowHP)
