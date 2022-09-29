@@ -10,7 +10,8 @@ public class PlayerMove : MonoBehaviour
     Camera myCamera;
     [Header("スクリプト")]
     public PlayerStatus playerStatus;
-    [SerializeField] PlanetCatchRelease planetCatchRelease;
+    [SerializeField]
+    PlanetCatchRelease planetCatchRelease;
     Rigidbody rb;
     Gamepad gamepad;
     private Animator animator;
@@ -39,8 +40,11 @@ public class PlayerMove : MonoBehaviour
             gamepad = Gamepad.all[playerStatus.GetID()];
         }
 
-        if (!planetCatchRelease.throwFlag) return;
-
+        if (!planetCatchRelease.throwFlag)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
         StickValue();
         PlayerLook();
         MoveOrStop();
@@ -81,7 +85,6 @@ public class PlayerMove : MonoBehaviour
     //--------------------------------------
     //動きの処理
     //--------------------------------------
-
     private void MoveOrStop()
     {
         //スティック入力が小さい時
@@ -118,7 +121,7 @@ public class PlayerMove : MonoBehaviour
                 playerStatus.SetState(PlayerStatus.State.Move);
             }
             //移動処理
-            rb.AddForce(moveDirection - rb.velocity * Time.deltaTime);
+            rb.AddForce(moveDirection * Time.deltaTime - rb.velocity * Time.deltaTime);
 
             //移動した分スピードを上げる
             playerStatus.SpeedUp(moveDirection.magnitude * Time.deltaTime / 100);
@@ -126,6 +129,7 @@ public class PlayerMove : MonoBehaviour
             waitcnt = 0.0f;
             //アニメーション
             animator.SetBool("run",true);
+
         }
     }
 }
