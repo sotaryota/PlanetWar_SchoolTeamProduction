@@ -75,10 +75,15 @@ public class PlanetCatchRelease : MonoBehaviour
             animator.SetTrigger("throw");
             //ƒvƒŒƒCƒ„‚ğStayó‘Ô‚É‚·‚é
             playerStatus.SetState(PlayerStatus.State.Stay);
-
+            //d’¼ŠÔ
             StartCoroutine("ThrowWait");
         }
     }
+
+    //--------------------------------------
+    //“Š‚°“®ìŒã‚Ìd’¼ŠÔ
+    //--------------------------------------
+
     IEnumerator ThrowWait()
     {
         throwFlag = false;
