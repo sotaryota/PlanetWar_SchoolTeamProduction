@@ -38,6 +38,7 @@ public class PlanetStateMachine : MonoBehaviour
         [SerializeField]
         PlanetStateFanction[] scripts = new PlanetStateFanction[1];
         public ref PlanetStateFanction GetScript(int num) { return ref scripts[num]; }
+        public ref PlanetStateFanction[] GetScripts() { return ref scripts; }
         public int GetScriptLength() { return scripts.Length; }
     }
 
@@ -75,7 +76,7 @@ public class PlanetStateMachine : MonoBehaviour
     {
         //状態を現在に変更する
         State Next = State.Now;
-        
+
         //スクリプトを実行する
         for (int i = 0; i < data[(int)nowState].GetScriptLength(); ++i)
         {
@@ -138,7 +139,7 @@ public class PlanetStateMachine : MonoBehaviour
     public class PlanetStateMachine_Editor : Editor
     {
         private bool isOpen = false;
-        private bool[] isOpenScript = new bool[(int)PlanetStateMachine.State.GETNUM_NOT_USE]; 
+        private bool[] isOpenScript = new bool[(int)PlanetStateMachine.State.GETNUM_NOT_USE];
 
         public override void OnInspectorGUI()
         {
@@ -149,22 +150,42 @@ public class PlanetStateMachine : MonoBehaviour
             //最初の状態を設定
             psm.firstState = (State)EditorGUILayout.EnumPopup("初期の状態", psm.firstState);
             psm.nowState = (State)EditorGUILayout.EnumPopup("現在の状態", psm.nowState);
-            
+
             isOpen = EditorGUILayout.Foldout(isOpen, "スクリプト");
             if (isOpen)
             {
-                for(int i = 0; i < psm.data.Length; ++i)
+                for (int i = 0; i < psm.data.Length; ++i)
                 {
                     EditorGUILayout.LabelField(((State)i).ToString());
-                    for(int sc = 0; sc < psm.data[i].GetScriptLength(); ++sc)
+                    for (int sc = 0; sc < psm.data[i].GetScriptLength(); ++sc)
                     {
+                        psm.data[i].GetScript(sc) =
+                            (PlanetStateFanction)EditorGUILayout.ObjectField(
+                                "script" + sc,
+                                psm.data[i].GetScript(sc),
+                                typeof(PlanetStateFanction),
+                                true
+                                );
                     }
-                    EditorGUILayout.Space();
+                    if (GUILayout.Button("追加"))
+                    {
+                        Array.Resize(ref psm.data[i].GetScripts(), psm.data[i].GetScriptLength() + 1);
+
+                    }
+                    else if (GUILayout.Button("削除"))
+                    {
+                        Array.Resize(ref psm.data[i].GetScripts(), psm.data[i].GetScriptLength() - 1);
+                    }
+
                     EditorGUILayout.Space();
                 }
-
             }
 
+            if (psm.data.Length != (int)State.GETNUM_NOT_USE)
+            {
+                EditorGUILayout.HelpBox("スクリプトをアタッチし直してください！", MessageType.Error);
+                Debug.LogError("PlanetStateMachine:" + this.name + "このままだと危険です！インスペクターを確認してください！");
+            }
             serializedObject.ApplyModifiedProperties(); //現在の情報を保存
         }
     }
