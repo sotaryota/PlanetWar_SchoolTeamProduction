@@ -6,13 +6,14 @@ using UnityEngine.EventSystems;//
 
 public class Select_menu : MonoBehaviour
 {
-    Button start;
-    Button end;
+    public Button start;
+    public Button end;
 
     AudioSource audioSource;
     public AudioClip selectSound;
 
-    GameObject selectedButton;//選択中のボタンを格納
+    public GameObject selectedButton;//選択中のボタンを格納
+    GameObject prevButton;
 
     void Start()
     {
@@ -26,11 +27,14 @@ public class Select_menu : MonoBehaviour
     }
 
     void Update()
-    {
+    {       
         if (selectedButton != EventSystem.current.currentSelectedGameObject)
         {
             //選択中のものが変わったら音を鳴らす
             selectedButton = EventSystem.current.currentSelectedGameObject;
+            //直前の選択先を保存
+            prevButton = selectedButton;
+            //効果音再生
             audioSource.PlayOneShot(selectSound);
         }
     }

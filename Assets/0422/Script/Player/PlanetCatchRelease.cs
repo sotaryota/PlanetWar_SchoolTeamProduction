@@ -17,6 +17,12 @@ public class PlanetCatchRelease : MonoBehaviour
     public PlayerStatus playerStatus;
     private Animator animator;
 
+    [Header("˜f¯‚ğ“Š‚°‚½‚ÌƒEƒFƒCƒg")]
+    [SerializeField]
+    private float waitTime;
+    public bool throwFlag = true;
+
+
     private void Start()
     {
         animator = this.GetComponent<Animator>();
@@ -69,7 +75,22 @@ public class PlanetCatchRelease : MonoBehaviour
             animator.SetTrigger("throw");
             //ƒvƒŒƒCƒ„‚ğStayó‘Ô‚É‚·‚é
             playerStatus.SetState(PlayerStatus.State.Stay);
+            //d’¼ŠÔ
+            StartCoroutine("ThrowWait");
         }
+    }
+
+    //--------------------------------------
+    //“Š‚°“®ìŒã‚Ìd’¼ŠÔ
+    //--------------------------------------
+
+    IEnumerator ThrowWait()
+    {
+        throwFlag = false;
+
+        yield return new WaitForSeconds(waitTime);
+
+        throwFlag = true;
     }
 
     //--------------------------------------
@@ -95,6 +116,9 @@ public class PlanetCatchRelease : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        //d’¼ŠÔ’†‚Íˆ—‚ğ‚µ‚È‚¢
+        if (!throwFlag) return;
+
         //˜f¯‚ğŠ‚µ‚Ä‚¢‚éê‡‚Íˆ—‚ğ‚µ‚È‚¢
         if (planet) { return; }
         //˜f¯‚Å‚ ‚éê‡
