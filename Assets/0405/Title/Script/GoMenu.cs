@@ -14,7 +14,7 @@ public class GoMenu : MonoBehaviour
         //フェード終わったら遷移
         if (fadeScript.FadeOut())
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("Main");
         }
 
         for (int i = 0; i < Gamepad.all.Count; ++i)
