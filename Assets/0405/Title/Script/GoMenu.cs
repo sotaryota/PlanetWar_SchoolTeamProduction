@@ -9,6 +9,11 @@ public class GoMenu : MonoBehaviour
     [SerializeField]
     private Fade fadeScript;
     Gamepad gamepad;
+
+    [SerializeField]
+    AudioSource audioSource;
+    public AudioClip se;
+    public AudioClip voice;
     void Update()
     {
         //フェード終わったら遷移
@@ -24,7 +29,7 @@ public class GoMenu : MonoBehaviour
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
                 fadeScript.fademode = true;
-                //audioSource.PlayOneShot(se);
+                audioSource.PlayOneShot(se);
                 //audioSource.PlayOneShot(voice);
             }
         }

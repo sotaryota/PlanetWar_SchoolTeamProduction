@@ -1137,6 +1137,50 @@ MonoBehaviour:
   rightTime: 0.5
   deleteTime: 0.14
   pleaseStartlogo: {fileID: 995946651}
+--- !u!1 &1010158773
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1010158775}
+  - component: {fileID: 1010158774}
+  m_Layer: 0
+  m_Name: CoursorVisible
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1010158774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010158773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a13e69d6f30e9f4d9f822b9a769a80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1010158775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010158773}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.097473, y: 49.381596, z: 56.92047}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1026928318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1201,9 +1245,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 786390928}
     - target: {fileID: 2250854499484961524, guid: 74a6c4e570206f04bbb15540217e3a47, type: 3}
+      propertyPath: se
+      value: 
+      objectReference: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
+    - target: {fileID: 2250854499484961524, guid: 74a6c4e570206f04bbb15540217e3a47, type: 3}
       propertyPath: fadeScript
       value: 
       objectReference: {fileID: 744099752}
+    - target: {fileID: 2250854499484961524, guid: 74a6c4e570206f04bbb15540217e3a47, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1152613415}
     - target: {fileID: 8570216741749423024, guid: 74a6c4e570206f04bbb15540217e3a47, type: 3}
       propertyPath: m_Name
       value: GameManager

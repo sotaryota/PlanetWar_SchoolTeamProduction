@@ -9,10 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8570216741749423026}
-  - component: {fileID: 1432380500834745864}
-  - component: {fileID: 3154461729963787379}
-  - component: {fileID: 8570216741749423030}
   - component: {fileID: 2250854499484961524}
+  - component: {fileID: 8570216741749423030}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -35,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1432380500834745864
+--- !u!114 &2250854499484961524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,35 +42,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8570216741749423024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d46b5ed6151f9b64fb2d9433d5086a9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 362741830f752f5489509714749176e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName:
-  - 
-  - 
-  - 
-  selectButtonScripts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  button_Images:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  audioSource: {fileID: 0}
-  selectSound: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
---- !u!114 &3154461729963787379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8570216741749423024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a13e69d6f30e9f4d9f822b9a769a80d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  fadeScript: {fileID: 0}
 --- !u!82 &8570216741749423030
 AudioSource:
   m_ObjectHideFlags: 0
@@ -169,16 +142,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2250854499484961524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8570216741749423024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 362741830f752f5489509714749176e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeScript: {fileID: 0}
