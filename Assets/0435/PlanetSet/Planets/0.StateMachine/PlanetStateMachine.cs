@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
-using System;
 
 public class PlanetStateMachine : MonoBehaviour
 {
-
     private float deleteDistance = 40;
 
     //ステートマシンの実装
@@ -16,24 +13,23 @@ public class PlanetStateMachine : MonoBehaviour
         Catch,         //キャッチ状態
         Throw,         //投てき状態
         Hit,           //ヒット時
-        Non,           //無効状態
-
-        Destroy,       //破壊モード
 
         GETNUM_NOT_USE,//状態の数を取得する。この状態を使用するのは禁止
+
+        Non,           //無効状態
+        Destroy,       //破壊モード
+
         Now,           //関数の戻り値として使用。現在の状態を維持させる
         Error,         //エラーを吐き出す状態。この値に変更するとエラーを吐く
     }
     [Header("初期化に設定する状態")]
-    [SerializeField]
-    private State firstState;
+    public State firstState;
 
     [Header("現在の状態（直接変更はデバッグ時のみにする。変更時はChangeState関数で）")]
-    [SerializeField]
-    private State nowState;
+    public State nowState;
 
     [System.Serializable]
-    private class ScriptData
+    public class ScriptData
     {
         [SerializeField]
         PlanetStateFanction[] scripts = new PlanetStateFanction[1];
@@ -44,7 +40,7 @@ public class PlanetStateMachine : MonoBehaviour
 
     [Header("状態ごとに使用するスクリプト。状態変更は下のほうが優先度が高い")]
     [SerializeField]
-    private ScriptData[] data = new ScriptData[(int)State.GETNUM_NOT_USE];
+    public ScriptData[] data = new ScriptData[(int)State.GETNUM_NOT_USE];
 
     // Start is called before the first frame update
     void Start()
@@ -132,61 +128,6 @@ public class PlanetStateMachine : MonoBehaviour
             pos.z <= -deleteDistance)
         {
             SetState(State.Destroy);
-        }
-    }
-
-    [CustomEditor(typeof(PlanetStateMachine))]
-    public class PlanetStateMachine_Editor : Editor
-    {
-        private bool isOpen = false;
-        private bool[] isOpenScript = new bool[(int)PlanetStateMachine.State.GETNUM_NOT_USE];
-
-        public override void OnInspectorGUI()
-        {
-            serializedObject.Update();//最新状態に上書き
-
-            PlanetStateMachine psm = target as PlanetStateMachine;
-
-            //最初の状態を設定
-            psm.firstState = (State)EditorGUILayout.EnumPopup("初期の状態", psm.firstState);
-            psm.nowState = (State)EditorGUILayout.EnumPopup("現在の状態", psm.nowState);
-
-            isOpen = EditorGUILayout.Foldout(isOpen, "スクリプト");
-            if (isOpen)
-            {
-                for (int i = 0; i < psm.data.Length; ++i)
-                {
-                    EditorGUILayout.LabelField(((State)i).ToString());
-                    for (int sc = 0; sc < psm.data[i].GetScriptLength(); ++sc)
-                    {
-                        psm.data[i].GetScript(sc) =
-                            (PlanetStateFanction)EditorGUILayout.ObjectField(
-                                "script" + sc,
-                                psm.data[i].GetScript(sc),
-                                typeof(PlanetStateFanction),
-                                true
-                                );
-                    }
-                    if (GUILayout.Button("追加"))
-                    {
-                        Array.Resize(ref psm.data[i].GetScripts(), psm.data[i].GetScriptLength() + 1);
-
-                    }
-                    else if (GUILayout.Button("削除"))
-                    {
-                        Array.Resize(ref psm.data[i].GetScripts(), psm.data[i].GetScriptLength() - 1);
-                    }
-
-                    EditorGUILayout.Space();
-                }
-            }
-
-            if (psm.data.Length != (int)State.GETNUM_NOT_USE)
-            {
-                EditorGUILayout.HelpBox("スクリプトをアタッチし直してください！", MessageType.Error);
-                Debug.LogError("PlanetStateMachine:" + this.name + "このままだと危険です！インスペクターを確認してください！");
-            }
-            serializedObject.ApplyModifiedProperties(); //現在の情報を保存
         }
     }
 }
