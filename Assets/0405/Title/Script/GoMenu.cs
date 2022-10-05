@@ -19,6 +19,7 @@ public class GoMenu : MonoBehaviour
         //フェード終わったら遷移
         if (fadeScript.FadeOut())
         {
+            //Menuに変えといてください
             SceneManager.LoadScene("Main");
         }
 
