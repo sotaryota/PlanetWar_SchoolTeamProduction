@@ -9,9 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8570216741749423026}
-  - component: {fileID: 8570216741749423027}
-  - component: {fileID: 8570216741749423029}
-  - component: {fileID: 8570216741749423031}
+  - component: {fileID: 2250854499484961524}
   - component: {fileID: 8570216741749423030}
   m_Layer: 0
   m_Name: GameManager
@@ -35,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8570216741749423027
+--- !u!114 &2250854499484961524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,40 +42,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8570216741749423024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e375fc561d4c7a3418c7e7d9ef4972e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 362741830f752f5489509714749176e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScript: {fileID: 0}
-  se: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
-  voice: {fileID: 8300000, guid: 1360ea449350d294e9633797c7a74a0a, type: 3}
---- !u!114 &8570216741749423029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8570216741749423024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e680e1b961690b46bcf200df7c250c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeScript: {fileID: 0}
-  se: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
-  voice: {fileID: 8300000, guid: d64e07ffee4f890408ba4462bd360c03, type: 3}
---- !u!114 &8570216741749423031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8570216741749423024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a00002b741657849bd5caee7f61a5b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
 --- !u!82 &8570216741749423030
 AudioSource:
   m_ObjectHideFlags: 0

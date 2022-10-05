@@ -3,38 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Start_Button : MonoBehaviour
+public class Start_Button : OnClickBase
 {
     [SerializeField]
     private Fade fadeScript;
-    private bool clickflag;
-
+    [SerializeField]
     AudioSource audioSource;
     public AudioClip se;
     public AudioClip voice;
 
-    void Start()
-    {
-        clickflag = false;
-        audioSource = GetComponent<AudioSource>();
-    }
     void Update()
     {
-        if (clickflag && fadeScript.FadeOut())
+        if (fadeScript.FadeOut())
         {
             SceneManager.LoadScene("Main");
         }
     }
 
-    public void OnClick()
+    public override void OnClick()
     {
-        //Unityè„Ç≈é¿çsÇµÇƒÇ¢ÇÈÇ©
-        if (!clickflag)
-        {
-            clickflag = true;
-            fadeScript.fademode = true;
-            audioSource.PlayOneShot(se);
-            audioSource.PlayOneShot(voice);
-        }
+        fadeScript.fademode = true;
+        audioSource.PlayOneShot(se);
+        audioSource.PlayOneShot(voice);
     }
 }
