@@ -12,47 +12,17 @@ public class Button_Manager : MonoBehaviour
     bool selectLock;
 
     [SerializeField]
-    Start_Button start_Button;
-    Tutorial_Button tutorial_Button;
-    End_Button end_Button;
+    private string[] nextSceneName = new string[3];
 
-    interface ButtonPressed
-    {
-        public abstract void Pressed();
-    }
-    class Gamestart : ButtonPressed
-    {
-        public Start_Button start_Button { get; private set; }
-
-        public void Pressed()
-        {
-            start_Button.OnClick();
-        }
-    }
-    class Tutorial : ButtonPressed
-    {
-        public Tutorial_Button tutorial_Button { get; private set; }
-        public void Pressed()
-        {
-            tutorial_Button.OnClick();
-        }
-    }
-    class End : ButtonPressed
-    {
-        public End_Button end_Button { get; private set; }
-        public void Pressed()
-        {
-            end_Button.OnClick();
-        }
-    }
-
-    ButtonPressed[] selectClass = new ButtonPressed[] { new Gamestart(), new Tutorial() };
+    [SerializeField]
+    OnClickBase[] selectButtonScripts = new OnClickBase[3];
 
 
     //ボタン画像の読み込み
     [SerializeField]
     GameObject[] button_Images = new GameObject[1];
     //オーディオ
+    [SerializeField]
     AudioSource audioSource;
     public AudioClip selectSound;
 
@@ -116,12 +86,12 @@ public class Button_Manager : MonoBehaviour
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
                 //ステージ選択
-                selectClass[nowSelecting].Pressed();
+                selectButtonScripts[nowSelecting].OnClick();
                 //完全ロック
                 selectLock = true;
             }
             //上入力
-            else if (gamepad.leftStick.ReadValue().y > 0.1f)
+            else if (gamepad.leftStick.ReadValue().y < -0.1f)
             {
                 //上を選択
                 nowSelecting++;
@@ -133,7 +103,7 @@ public class Button_Manager : MonoBehaviour
                 gamepadInputed = gamepad;
             }
             //下入力
-            else if (gamepad.leftStick.ReadValue().y < -0.1f)
+            else if (gamepad.leftStick.ReadValue().y > 0.1f)
             {
                 //下を選択
                 nowSelecting--;

@@ -2,44 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class End_Button : MonoBehaviour
+public class End_Button : OnClickBase
 {
     [SerializeField]
     private Fade fadeScript;
-    private bool clickflag;
-
+    [SerializeField]
     AudioSource audioSource;
     public AudioClip se;
     public AudioClip voice;
 
-    void Start()
-    {
-        clickflag = false;
-        audioSource = GetComponent<AudioSource>();
-    }
     void Update()
     {
         //フェード終わって
-        if (clickflag && fadeScript.FadeOut())
+        if (fadeScript.FadeOut())
         {
             //デバッグモードでなければ
             //if (UnityEditor.EditorApplication.isPlaying) { UnityEditor.EditorApplication.isPlaying = false; }
             //ゲーム終了
             //else { 
-                Application.Quit(); 
+            Application.Quit();
             //}
         }
     }
 
-    public void OnClick()
+    public override void OnClick()
     {
-        //Unity上で実行しているか
-        if (!clickflag)
-        {
-            clickflag = true;
-            fadeScript.fademode = true;
-            audioSource.PlayOneShot(se);
-            audioSource.PlayOneShot(voice);
-        }
+        fadeScript.fademode = true;
+        audioSource.PlayOneShot(se);
+        audioSource.PlayOneShot(voice);
     }
 }
