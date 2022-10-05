@@ -4834,9 +4834,9 @@ GameObject:
   m_Component:
   - component: {fileID: 528640702652183441}
   - component: {fileID: 528640702652183442}
-  - component: {fileID: 528640702652183533}
-  - component: {fileID: 528640702652183532}
   - component: {fileID: 528640702652183535}
+  - component: {fileID: 327721955778760721}
+  - component: {fileID: 528640702652183532}
   - component: {fileID: 528640702652183534}
   - component: {fileID: 346440252529221635}
   - component: {fileID: 136718746404950664}
@@ -4857,7 +4857,7 @@ Transform:
   m_GameObject: {fileID: 528640702652183529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 528640702949267544}
@@ -4878,47 +4878,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.55
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &528640702652183533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528640702652183529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2a2f26f3b72ef0499e1fa664516ff60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deleteDistance: 100
-  firstState: 0
-  nowState: 0
-  data:
-  - thisClassUseState: 0
-    scripts:
-    - {fileID: 528640702652183534}
-  - thisClassUseState: 2
-    scripts:
-    - {fileID: 528640702652183532}
-    - {fileID: 136718746404950664}
-  - thisClassUseState: 3
-    scripts:
-    - {fileID: 346440252529221635}
---- !u!114 &528640702652183532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528640702652183529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fcc07cf56d9063468fb73ae8852b92c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beThrowSpeed: {x: 5, y: 0, z: 0}
-  beThrowAngleValue: {x: 0, y: 0, z: 0}
-  effectObject: {fileID: 4597729725154748299}
 --- !u!114 &528640702652183535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4936,8 +4895,46 @@ MonoBehaviour:
   autoDataSettingMode: 0
   settingRate_Damage: 1
   settingRate_Weight: 1
-  damage: 0
-  weight: 0
+  damage: 200
+  weight: 500
+--- !u!114 &327721955778760721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528640702652183529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a2f26f3b72ef0499e1fa664516ff60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstState: 0
+  nowState: 0
+  data:
+  - scripts:
+    - {fileID: 528640702652183534}
+  - scripts: []
+  - scripts:
+    - {fileID: 136718746404950664}
+    - {fileID: 528640702652183532}
+  - scripts:
+    - {fileID: 346440252529221635}
+--- !u!114 &528640702652183532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528640702652183529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fcc07cf56d9063468fb73ae8852b92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beThrowSpeed: {x: 5, y: 0, z: 0}
+  beThrowAngleValue: {x: 0, y: 0, z: 0}
+  effectObject: {fileID: 4597729725154748299}
 --- !u!114 &528640702652183534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4977,7 +4974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bc445b05db27041b50fb97a793b3f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  catchPlayerID: 0
+  catchPlayerID: 1
 --- !u!54 &-1505072990642195113
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5021,7 +5018,7 @@ Transform:
   m_GameObject: {fileID: 528640702875267212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 528640702949267544}
@@ -14788,7 +14785,7 @@ Transform:
   m_GameObject: {fileID: 528640704538107751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 528640702949267544}

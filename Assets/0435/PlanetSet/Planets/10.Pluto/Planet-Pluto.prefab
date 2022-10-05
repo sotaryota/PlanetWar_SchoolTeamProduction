@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5799356023332496891}
   - component: {fileID: 5799356023332496890}
-  - component: {fileID: 5799356023332496869}
   - component: {fileID: 5799356023332496868}
   - component: {fileID: 5799356023332496871}
   - component: {fileID: 5799356023332496870}
@@ -18,6 +17,7 @@ GameObject:
   - component: {fileID: 5799356023332496888}
   - component: {fileID: -5378656212206485483}
   - component: {fileID: -8742495411463378308}
+  - component: {fileID: 5443437879697192121}
   m_Layer: 0
   m_Name: Planet-Pluto
   m_TagString: Planet
@@ -55,33 +55,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.55
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5799356023332496869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5799356023332496864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2a2f26f3b72ef0499e1fa664516ff60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deleteDistance: 100
-  firstState: 0
-  nowState: 0
-  data:
-  - thisClassUseState: 0
-    scripts:
-    - {fileID: 5799356023332496868}
-    - {fileID: 5799356023332496865}
-  - thisClassUseState: 2
-    scripts:
-    - {fileID: 5799356023332496871}
-    - {fileID: -5378656212206485483}
-  - thisClassUseState: 3
-    scripts:
-    - {fileID: 5799356023332496888}
 --- !u!114 &5799356023332496868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerPos: {x: 0, y: 0, z: 0}
-  moveSpeed: 15
+  moveSpeed: 30
   moveX: 0
   moveY: 1
   moveZ: 0
@@ -131,8 +104,8 @@ MonoBehaviour:
   autoDataSettingMode: 0
   settingRate_Damage: 1
   settingRate_Weight: 1
-  damage: 0
-  weight: 0
+  damage: 15
+  weight: 100
 --- !u!114 &5799356023332496865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +162,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5443437879697192121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799356023332496864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a2f26f3b72ef0499e1fa664516ff60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstState: 0
+  nowState: 0
+  data:
+  - scripts:
+    - {fileID: 5799356023332496868}
+    - {fileID: 5799356023332496865}
+  - scripts: []
+  - scripts:
+    - {fileID: 5799356023332496871}
+    - {fileID: -5378656212206485483}
+  - scripts:
+    - {fileID: 5799356023332496888}
 --- !u!1 &5799356023687621377
 GameObject:
   m_ObjectHideFlags: 0

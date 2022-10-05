@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 3498317006835762561}
   - component: {fileID: 3498317006835762560}
   - component: {fileID: 3498317006835762565}
-  - component: {fileID: 3498317006835762564}
   - component: {fileID: 3498317006835762680}
   - component: {fileID: 3498317006835762566}
   - component: {fileID: 3498317006835762681}
   - component: {fileID: 5328493320736405861}
   - component: {fileID: 5152285647177855561}
+  - component: {fileID: 478355760559013569}
+  - component: {fileID: 155124776894995403}
   m_Layer: 0
   m_Name: Planet-Meteor02
   m_TagString: Planet
@@ -125,32 +126,6 @@ MonoBehaviour:
   settingRate_Weight: 1
   damage: 0
   weight: 0
---- !u!114 &3498317006835762564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3498317006835762575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2a2f26f3b72ef0499e1fa664516ff60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstState: 0
-  nowState: 0
-  data:
-  - thisClassUseState: 0
-    scripts:
-    - {fileID: 3498317007157544220}
-    - {fileID: 3498317006835762681}
-  - thisClassUseState: 2
-    scripts:
-    - {fileID: 3498317006835762566}
-    - {fileID: 5328493320736405861}
-  - thisClassUseState: 3
-    scripts:
-    - {fileID: 3498317006835762680}
 --- !u!114 &3498317006835762680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +197,43 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &478355760559013569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498317006835762575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a2f26f3b72ef0499e1fa664516ff60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstState: 0
+  nowState: 0
+  data:
+  - scripts:
+    - {fileID: 3498317006835762681}
+    - {fileID: 155124776894995403}
+  - scripts: []
+  - scripts:
+    - {fileID: 3498317006835762566}
+    - {fileID: 5328493320736405861}
+  - scripts:
+    - {fileID: 3498317006835762680}
+--- !u!114 &155124776894995403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498317006835762575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d5da0c76eee034d9416136ca92a5f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: {x: 0, y: 0, z: 15}
 --- !u!1001 &3498317006370975428
 PrefabInstance:
   m_ObjectHideFlags: 0
