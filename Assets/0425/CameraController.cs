@@ -43,7 +43,6 @@ public class CameraController : MonoBehaviour
             gamepad = Gamepad.all[playerID];
         }
 
-
         StickValue();
         rotateCmaeraAngle();
 
