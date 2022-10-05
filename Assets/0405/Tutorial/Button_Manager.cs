@@ -11,13 +11,15 @@ public class Button_Manager : MonoBehaviour
     Gamepad gamepadInputed;
     bool selectLock;
 
+    //フェード
     [SerializeField]
-    private string[] nextSceneName = new string[3];
-
+    Fade fadeScript;
+    //説明画像の位置
     [SerializeField]
-    OnClickBase[] selectButtonScripts = new OnClickBase[3];
-
-
+    Image TutorialImage;
+    //表示する画像の読み込み
+    [SerializeField]
+    Sprite[] selectSprites = new Sprite[5];
     //ボタン画像の読み込み
     [SerializeField]
     GameObject[] button_Images = new GameObject[1];
@@ -36,6 +38,8 @@ public class Button_Manager : MonoBehaviour
         nowSelecting = 0;
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
+        button_Images[0].GetComponent<Animator>().SetBool("selected", true);
+        TutorialImage.sprite = selectSprites[0];
     }
 
     // Update is called once per frame
@@ -45,6 +49,7 @@ public class Button_Manager : MonoBehaviour
         {
             gamepad = Gamepad.all[i];
             StageSelectSystem();
+            BackMenu();
         }
 
         //ロック解除の判定
@@ -62,7 +67,6 @@ public class Button_Manager : MonoBehaviour
             }
         }
 
-
         //選択中のボタンが切り替わったら
         if (nowSelecting != prevSelecting)
         {
@@ -74,6 +78,15 @@ public class Button_Manager : MonoBehaviour
             audioSource.PlayOneShot(selectSound);
             //直前の選択を更新
             prevSelecting = nowSelecting;
+            //イメージ変更
+            TutorialImage.sprite = selectSprites[nowSelecting];
+        }
+
+        //フェードが終わったらメニューに戻す
+        if (fadeScript.FadeOut())
+        {
+            //Menuに変えといてください
+            SceneManager.LoadScene("Title");
         }
     }
 
@@ -82,16 +95,7 @@ public class Button_Manager : MonoBehaviour
         //ロックがかかっていない場合
         if (selectLock == false)
         {
-            //決定ボタン
-            if (gamepad.buttonSouth.wasPressedThisFrame)
-            {
-                //ステージ選択
-                selectButtonScripts[nowSelecting].OnClick();
-                //完全ロック
-                selectLock = true;
-            }
-            //上入力
-            else if (gamepad.leftStick.ReadValue().y < -0.1f)
+            if (gamepad.leftStick.ReadValue().y < -0.1f)
             {
                 //上を選択
                 nowSelecting++;
@@ -112,6 +116,18 @@ public class Button_Manager : MonoBehaviour
                 //ロックをかける
                 selectLock = true;
                 gamepadInputed = gamepad;
+            }
+        }
+    }
+
+    void BackMenu()
+    {
+        if (nowSelecting == button_Images.Length - 1)
+        {
+            if (gamepad.buttonSouth.wasPressedThisFrame)
+            {
+                selectLock = true;
+                fadeScript.fademode = true;
             }
         }
     }
