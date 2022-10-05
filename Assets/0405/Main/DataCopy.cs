@@ -25,9 +25,9 @@ public class DataCopy : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-
         ps1 = player1Object.GetComponent<PlayerStatus>();
         ps2 = player2Object.GetComponent<PlayerStatus>();
+
     }
 
     void Update()
