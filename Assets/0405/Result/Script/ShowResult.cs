@@ -14,37 +14,57 @@ public class ShowResult : MonoBehaviour
     private GameObject param_UI;
     [SerializeField]
     private Text powerText, defenceText, speedText, winnerText;
+    [SerializeField]
+    private GameObject pleaseStart;
 
     [SerializeField]
     private BackTitle backTitle;
     public AudioSource audioSource;
     public AudioClip[] audioClip;
 
+    //0->Player1 1->Player2 2->Draw
+    int winPlayerNum = 2;
+
     [Header("ステータスデータが保存されているオブジェクト名")]
     [SerializeField]
     private string objectName;
     
-    [SerializeField] 
-    TimelineAsset[] timelines;
-    PlayableDirector director;
-
     [SerializeField]
     GameObject maincamera;
     [SerializeField]
     GameObject player1, player2;
 
+    //プレイヤーアニメーション
     Animator[] animator = new Animator[2];
+
+    //カメラアニメーション
+    [SerializeField]
+    TimelineAsset[] timelines;
+    PlayableDirector director;
+
+    //勝者を表示する用のImage
+    [SerializeField]
+    GameObject[] winnerTextImage = new GameObject[3];
+
+    float TimeCnt;
     void Start()
     {
         copydata = GameObject.Find(objectName).GetComponent<DataCopy>();
+
+        TimeCnt = 0f;
 
         director = maincamera.GetComponent<PlayableDirector>();
         animator[0] = player1.GetComponent<Animator>();
         animator[1] = player2.GetComponent<Animator>();
 
-        //0->Player1 1->Player2 2->Draw
-        int winPlayerNum = 2;
+        pleaseStart.SetActive(false);
 
+        for(int i = 0; i < winnerTextImage.Length; ++i)
+        {
+            winnerTextImage[i].SetActive(false);
+        }
+
+        //判定
         if (copydata.playerData[0].HP > copydata.playerData[1].HP)
         {
             winPlayerNum = 0;
@@ -55,6 +75,8 @@ public class ShowResult : MonoBehaviour
         }
         else { winPlayerNum = 2; }
 
+
+        //処理
         if (winPlayerNum == 0 || winPlayerNum == 1)
         {
             //勝利プレイヤーのみを表示・位置指定 
@@ -80,7 +102,7 @@ public class ShowResult : MonoBehaviour
             PowerTextUpdate(copydata.playerData[winPlayerNum].atk);
             defenceTextUpdate(copydata.playerData[winPlayerNum].def);
             speedTextUpdate(copydata.playerData[winPlayerNum].spd);
-            WinPlayerTextUpdate(winPlayerNum); 
+            WinPlayerTextUpdate(winPlayerNum);
         }
         //引き分けの時の表示
         else
@@ -114,6 +136,23 @@ public class ShowResult : MonoBehaviour
         {
             backTitle.enabled = true;
         }
+
+        //勝者表示
+        TimeCnt += Time.deltaTime;
+        if (winPlayerNum == 0 || winPlayerNum == 1)
+        {
+            if (TimeCnt > 6)
+            {
+                pleaseStart.SetActive(true);
+            }
+        }
+        else
+        {
+            if (TimeCnt > 2)
+            {
+                pleaseStart.SetActive(true);
+            }
+        }
     }
 
     private void PowerTextUpdate(float power)
@@ -130,10 +169,10 @@ public class ShowResult : MonoBehaviour
     }
     private void WinPlayerTextUpdate(int winplayernum)
     {
-        winnerText.text = (winplayernum + 1).ToString() + "P WIN";
+        winnerTextImage[winplayernum].SetActive(true);
     }
     private void WinPlayerTextUpdate()
     {
-        winnerText.text = "DRAW";
+        winnerTextImage[2].SetActive(true);
     }
 }

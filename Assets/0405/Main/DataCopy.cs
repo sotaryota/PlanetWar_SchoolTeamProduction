@@ -28,6 +28,7 @@ public class DataCopy : MonoBehaviour
         ps1 = player1Object.GetComponent<PlayerStatus>();
         ps2 = player2Object.GetComponent<PlayerStatus>();
 
+       
     }
 
     void Update()
