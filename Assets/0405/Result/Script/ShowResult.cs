@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
-using UnityEngine.UI;
 
 public class ShowResult : MonoBehaviour
 {
@@ -30,17 +29,20 @@ public class ShowResult : MonoBehaviour
     [SerializeField]
     private string objectName;
     
-    [SerializeField] 
-    TimelineAsset[] timelines;
-    PlayableDirector director;
-
     [SerializeField]
     GameObject maincamera;
     [SerializeField]
     GameObject player1, player2;
 
+    //プレイヤーアニメーション
     Animator[] animator = new Animator[2];
 
+    //カメラアニメーション
+    [SerializeField]
+    TimelineAsset[] timelines;
+    PlayableDirector director;
+
+    //勝者を表示する用のImage
     [SerializeField]
     GameObject[] winnerTextImage = new GameObject[3];
 
@@ -63,10 +65,9 @@ public class ShowResult : MonoBehaviour
         }
 
         //判定
-        if (true)
-            //if (copydata.playerData[0].HP > copydata.playerData[1].HP)
+        if (copydata.playerData[0].HP > copydata.playerData[1].HP)
         {
-            winPlayerNum = 2;
+            winPlayerNum = 0;
         }
         else if (copydata.playerData[0].HP < copydata.playerData[1].HP)
         {
@@ -136,6 +137,7 @@ public class ShowResult : MonoBehaviour
             backTitle.enabled = true;
         }
 
+        //勝者表示
         TimeCnt += Time.deltaTime;
         if (winPlayerNum == 0 || winPlayerNum == 1)
         {
