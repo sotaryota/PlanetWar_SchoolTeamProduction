@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6191628309851457382}
-  - component: {fileID: 6191628309851457383}
   - component: {fileID: 6191628309851457377}
+  - component: {fileID: 6510760193211335699}
   m_Layer: 0
   m_Name: Player1_UI_Manager
   m_TagString: Untagged
@@ -33,20 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6191628309851457383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6191628309851457380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef54cd0677545a4bb73a0c392cf4ae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HPgauge: {fileID: 0}
-  HPgauge_Color: {fileID: 0}
 --- !u!114 &6191628309851457377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,3 +49,17 @@ MonoBehaviour:
   powerText: {fileID: 0}
   defenceText: {fileID: 0}
   speedText: {fileID: 0}
+--- !u!114 &6510760193211335699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6191628309851457380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a592c7df353f8d84d978387662c65294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerstatus: {fileID: 0}
+  HPBlackGauge: {fileID: 0}
