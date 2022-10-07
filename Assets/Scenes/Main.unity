@@ -189,11 +189,11 @@ PrefabInstance:
     - target: {fileID: 1625353948694401759, guid: 3a848eb1931c3f04da18ba7154443e36, type: 3}
       propertyPath: player1Object
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2131034312}
     - target: {fileID: 1625353948694401759, guid: 3a848eb1931c3f04da18ba7154443e36, type: 3}
       propertyPath: player2Object
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 176521497}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a848eb1931c3f04da18ba7154443e36, type: 3}
 --- !u!4 &100845433 stripped
@@ -208,6 +208,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1306171407775937160, guid: a99c0b680d7088f4aa2abb45de7a151d, type: 3}
+      propertyPath: HPBlackGauge
+      value: 
+      objectReference: {fileID: 1036296712781277107}
+    - target: {fileID: 1306171407775937160, guid: a99c0b680d7088f4aa2abb45de7a151d, type: 3}
+      propertyPath: playerstatus
+      value: 
+      objectReference: {fileID: 176521504}
     - target: {fileID: 7427756316700552872, guid: a99c0b680d7088f4aa2abb45de7a151d, type: 3}
       propertyPath: m_Name
       value: Player2_UI_Manager
@@ -2081,6 +2089,14 @@ PrefabInstance:
       propertyPath: HPgauge_Color
       value: 
       objectReference: {fileID: 1036296712368043700}
+    - target: {fileID: 6510760193211335699, guid: b2c6b36bd49925740b9d08d7289ca9cc, type: 3}
+      propertyPath: HPBlackGauge
+      value: 
+      objectReference: {fileID: 1036296713721159035}
+    - target: {fileID: 6510760193211335699, guid: b2c6b36bd49925740b9d08d7289ca9cc, type: 3}
+      propertyPath: playerstatus
+      value: 
+      objectReference: {fileID: 2131034315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2c6b36bd49925740b9d08d7289ca9cc, type: 3}
 --- !u!1 &718128311
@@ -5564,14 +5580,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1db5b566040d49b449c26431f77daec3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0dc3d220faad2d546b54defb4a8947d8, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6321,14 +6337,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1db5b566040d49b449c26431f77daec3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0dc3d220faad2d546b54defb4a8947d8, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1

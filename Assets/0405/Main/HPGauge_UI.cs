@@ -10,8 +10,8 @@ public class HPGauge_UI : MonoBehaviour
     [SerializeField]
     private Image HPBlackGauge;
     //"Fill"を入れる
-    [SerializeField]
-    private GameObject HPgauge_Color;
+    //[SerializeField]
+    //private GameObject HPgauge_Color;
 
     float maxHP = 100f;
     void Start()
@@ -27,10 +27,7 @@ public class HPGauge_UI : MonoBehaviour
     }
     public void GaugeUpdate(float nowHP)
     {
-        //テスト用
-        nowHP -= 50f;
-
-        HPBlackGauge.fillAmount = nowHP / maxHP;
+        HPBlackGauge.fillAmount = 1f - (nowHP / maxHP);
 
         //Sliderの場合
         //drawGauge();
