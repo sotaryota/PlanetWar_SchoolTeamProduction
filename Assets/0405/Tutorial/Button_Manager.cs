@@ -85,8 +85,7 @@ public class Button_Manager : MonoBehaviour
         //フェードが終わったらメニューに戻す
         if (fadeScript.FadeOut())
         {
-            //Menuに変えといてください
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene("Menu");
         }
     }
 
