@@ -9,7 +9,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField]
     private MenuManager menuManager;
     [SerializeField]
-    private GameObject mainCamera;
+    private GameObject PlanetGameObject;
     [SerializeField]
     private Quaternion cameraRotate;
     public bool buttonLock;
@@ -59,8 +59,8 @@ public class CameraManager : MonoBehaviour
         menuManager.menuDatas[(int)menuManager.beforeSelect].menuImage.SetActive(false);
         for (int i = 0; i < 90; ++i)
         {
-            mainCamera.transform.Rotate(0,1,0);
-            yield return new WaitForSeconds((rotateTime / 90) * Time.deltaTime);
+            PlanetGameObject.transform.Rotate(0,-1,0);
+            yield return new WaitForSeconds(rotateTime / 90);
         }
         menuManager.menuDatas[(int)menuManager.nowSelect].menuImage.SetActive(true);
         menuManager.beforeSelect = menuManager.nowSelect;
@@ -80,8 +80,8 @@ public class CameraManager : MonoBehaviour
         menuManager.menuDatas[(int)menuManager.beforeSelect].menuImage.SetActive(false);
         for (int i = 0; i < 90; ++i)
         {
-            mainCamera.transform.Rotate(0, -1, 0);
-            yield return new WaitForSeconds((rotateTime / 90) *Time.deltaTime);
+            PlanetGameObject.transform.Rotate(0, 1, 0);
+            yield return new WaitForSeconds(rotateTime / 90);
         }
         menuManager.menuDatas[(int)menuManager.nowSelect].menuImage.SetActive(true);
         menuManager.beforeSelect = menuManager.nowSelect;
