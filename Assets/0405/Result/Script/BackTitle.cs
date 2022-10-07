@@ -17,11 +17,11 @@ public class BackTitle : MonoBehaviour
         if (gamepad.buttonSouth.isPressed)
         {
             fadeScript.fademode = true;
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene("Menu");
         }
         else if (fadeScript.FadeOut())
         {
-            SceneManager.LoadScene("Title");
+            SceneManager.LoadScene("Menu");
         }
     }
 }
