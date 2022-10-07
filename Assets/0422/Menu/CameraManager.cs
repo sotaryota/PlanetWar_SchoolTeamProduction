@@ -60,7 +60,7 @@ public class CameraManager : MonoBehaviour
         for (int i = 0; i < 90; ++i)
         {
             mainCamera.transform.Rotate(0,1,0);
-            yield return new WaitForSeconds(rotateTime / 90);
+            yield return new WaitForSeconds((rotateTime / 90) * Time.deltaTime);
         }
         menuManager.menuDatas[(int)menuManager.nowSelect].menuImage.SetActive(true);
         menuManager.beforeSelect = menuManager.nowSelect;
@@ -81,7 +81,7 @@ public class CameraManager : MonoBehaviour
         for (int i = 0; i < 90; ++i)
         {
             mainCamera.transform.Rotate(0, -1, 0);
-            yield return new WaitForSeconds(rotateTime / 90);
+            yield return new WaitForSeconds((rotateTime / 90) *Time.deltaTime);
         }
         menuManager.menuDatas[(int)menuManager.nowSelect].menuImage.SetActive(true);
         menuManager.beforeSelect = menuManager.nowSelect;
