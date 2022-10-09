@@ -26,8 +26,10 @@ public class PlayerMoveLimit : MonoBehaviour
         {
             //中心オブジェクトからのベクトルを取得
             Vector3 limitPos = transform.position - centerObj.transform.position;
+
             //ベクトルの正規化
             limitPos.Normalize();
+
             //ベクトルをもとにプレイヤの位置を移動制限位置に
             transform.position = limitPos * moveLimitRadius;
         }

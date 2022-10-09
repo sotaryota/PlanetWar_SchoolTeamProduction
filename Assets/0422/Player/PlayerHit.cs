@@ -18,6 +18,7 @@ public class PlayerHit : MonoBehaviour
     {
         //ヒットしたのがプレイヤーの場合は無効
         if(other.transform.tag == "Player") { return; }
+
         //ヒットしたのがヒットエリアの場合は無効
         if (other.transform.tag == "CatchArea") { return; }
 
@@ -32,6 +33,7 @@ public class PlayerHit : MonoBehaviour
             {
                 //ダメージ状態に変更
                 status.SetState(PlayerStatus.State.Damage);
+
                 //Catch状態に戻す
                 status.SetState(PlayerStatus.State.Catch);
             }
@@ -43,8 +45,10 @@ public class PlayerHit : MonoBehaviour
 
             //ダメージ処理
             status.Damage(other.GetComponent<PlanetData>().GetDamage());
+
             //ディフェンスを上昇
             status.DefenseUp(25 + (other.GetComponent<PlanetData>().GetDamage() / 5));
+
             //アニメーション
             animator.SetTrigger("damage");
 
@@ -53,6 +57,7 @@ public class PlayerHit : MonoBehaviour
             {
                 //プレイヤを死亡状態に変更
                 status.SetState(PlayerStatus.State.Dead);
+
                 //死亡ボイス再生
                 this.GetComponent<PlayerSEManager>().DeathVoice();
             }

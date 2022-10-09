@@ -58,23 +58,31 @@ public class PlanetCatchRelease : MonoBehaviour
         {
             PlanetStateMachine stateMachine = planet.GetComponent<PlanetStateMachine>();
             PlanetThrowMove throwMove = planet.GetComponent<PlanetThrowMove>();
+
             //惑星の状態をThrowにする
             stateMachine.SetState(PlanetStateMachine.State.Throw);
+
             //惑星のスピードと飛ぶ方向を決める
             Vector3 throwSpeed = new Vector3(0, 0, 10);
             Vector3 playerAngle = this.transform.rotation.eulerAngles;
             Vector3 throwAngle = new Vector3(0, playerAngle.y, 0);
             throwMove.ThrowMoveSetting(throwSpeed, throwAngle);
+
             //投げるボイス再生
             this.GetComponent<PlayerSEManager>().ThrowVoice();
+
             //変数を空にして飛ばす
             planet = null;
+
             //力上昇
             playerStatus.PowerUp(30);
+
             //アニメーション
             animator.SetTrigger("throw");
+
             //プレイヤをStay状態にする
             playerStatus.SetState(PlayerStatus.State.Stay);
+
             //硬直時間
             StartCoroutine("ThrowWait");
         }
@@ -105,6 +113,7 @@ public class PlanetCatchRelease : MonoBehaviour
             //惑星の状態をIdle状態に戻す
             PlanetStateMachine stateMachine = planet.GetComponent<PlanetStateMachine>();
             stateMachine.SetState(PlanetStateMachine.State.Idle);
+
             //変数を空にする
             planet = null;
         }
@@ -135,10 +144,13 @@ public class PlanetCatchRelease : MonoBehaviour
                     {
                         //プレイヤをCatch状態に
                         playerStatus.SetState(PlayerStatus.State.Catch);
+
                         //惑星のIDを自身のIDと同じにする
                         other.GetComponent<PlanetThrowHit>().catchPlayerID = playerStatus.GetID();
+
                         //惑星を所持
                         planet = other.gameObject;
+
                         //プラネットの状態をCatch状態にする
                         planet.GetComponent<PlanetStateMachine>().SetState(PlanetStateMachine.State.Catch);
                     }

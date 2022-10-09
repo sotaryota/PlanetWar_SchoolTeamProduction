@@ -102,10 +102,12 @@ public class PlayerMove : MonoBehaviour
 
             //待機時間のカウント
             waitcnt += Time.deltaTime;
+
             //15秒に1回処理ボイスを鳴らす
             if (waitcnt > 15.0f)
             {
                 this.GetComponent<PlayerSEManager>().WaitVoice();
+
                 //待機ボイスのカウントを0に
                 waitcnt = 0.0f;
             }
@@ -125,8 +127,10 @@ public class PlayerMove : MonoBehaviour
 
             //移動した分スピードを上げる
             playerStatus.SpeedUp(moveDirection.magnitude * Time.deltaTime / 100);
+
             //待機ボイスのカウントを0に
             waitcnt = 0.0f;
+
             //アニメーション
             animator.SetBool("run",true);
 
