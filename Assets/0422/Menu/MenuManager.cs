@@ -24,12 +24,12 @@ public class MenuManager : MonoBehaviour
 
     private Gamepad gamepad;
     [SerializeField] 
-    private CameraManager cameraManager;
+    private PlanetRotate planetRotate;
     [SerializeField]
     private float lockValue;
     public MenuData[] menuDatas;
-    public SelectMenu nowSelect;
-    public SelectMenu beforeSelect;
+    public SelectMenu nowSelect;    //現在選択されているメニュー
+    public SelectMenu beforeSelect; //
 
     private void Start()
     {
@@ -46,6 +46,7 @@ public class MenuManager : MonoBehaviour
 
         SceneChange(menuDatas[(int)nowSelect].sceneName);
     }
+
     /// <summary>
     /// メニューの切り替えをしていない時
     /// ボタンを押すと引数の名前のシーンに移行
@@ -54,7 +55,7 @@ public class MenuManager : MonoBehaviour
     /// <param name="sceneName">シーン名</param>
     public void SceneChange(string sceneName)
     {
-        if(cameraManager.buttonLock)
+        if(planetRotate.buttonLock)
         {
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {

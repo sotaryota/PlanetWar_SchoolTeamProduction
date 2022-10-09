@@ -1372,7 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56b0a141fe64f943ab761606b42342b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraManager: {fileID: 1836263061}
+  planetRotate: {fileID: 1836263061}
   lockValue: 0.2
   menuDatas:
   - menuImage: {fileID: 1138626449}
@@ -1399,7 +1399,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuManager: {fileID: 1836263060}
   PlanetGameObject: {fileID: 1449134477}
-  cameraRotate: {x: 0, y: 0, z: 0, w: 1}
   buttonLock: 0
   rotateTime: 0.5
 --- !u!1 &1876590518
