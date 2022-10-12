@@ -29,7 +29,7 @@ public class GameEnd : MonoBehaviour
         {
             if (ps1.GetHp() <= 0)
             {
-                //Fade();
+                Fade();
             }
         }
         if (player2Object)
