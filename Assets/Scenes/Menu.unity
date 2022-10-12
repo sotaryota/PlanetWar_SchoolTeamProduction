@@ -1519,11 +1519,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7701b31b48ae56943b1a71bddb28c035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitch: 0.5
+  pitch: 1
   volume: 0.5
   audioSource: {fileID: 1836263062}
   selectSE: {fileID: 8300000, guid: 819d229affe1aa34682ba4d829a732bc, type: 3}
-  decisionSE: {fileID: 8300000, guid: 819d229affe1aa34682ba4d829a732bc, type: 3}
+  decisionSE: {fileID: 8300000, guid: 3585f39e50fce2b46b3d3003147b8e4b, type: 3}
 --- !u!1 &1876590518
 GameObject:
   m_ObjectHideFlags: 0

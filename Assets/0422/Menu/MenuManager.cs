@@ -67,6 +67,7 @@ public class MenuManager : MonoBehaviour
                 menuDatas[(int)nowSelect].selectPlanet.SetActive(false);
                 GameObject effect = Instantiate(effectPrefab);
                 effect.transform.position = menuDatas[(int)nowSelect].selectPlanet.transform.position;
+                menuSE.DecisionSE();
                 StartCoroutine("SceneChange", menuDatas[(int)nowSelect].sceneName);
             }
         }
@@ -78,16 +79,16 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator SceneChange(string sceneName)
     {
+        planetRotate.buttonLock = false;
+
         yield return new WaitForSeconds(decisionWait);
 
         if (sceneName != "End")
         {
-            menuSE.DecisionSE();
             SceneManager.LoadScene(sceneName);
         }
         else
         {
-            menuSE.DecisionSE();
             Application.Quit();
         }
     }
