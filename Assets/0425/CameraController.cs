@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -12,7 +10,7 @@ public class CameraController : MonoBehaviour
     int playerID;
 
     public GameObject player;
-    public GameObject cameraController; 
+    public GameObject cameraController;
 
     float horizontal;
     float vertical;
@@ -24,14 +22,14 @@ public class CameraController : MonoBehaviour
     bool lockOn2P = false;  //ロックオン中か否か（2P）
 
     //ズーム処理用(仮)
-    bool gekihaSceneFlag = false;
-   
+    bool SettlementSceneFlag = false;
+
     void Start()
     {
         testInputActions = new TestInputActions();
         testInputActions.Enable();
 
-       transform.position = player.transform.position;
+        transform.position = player.transform.position;
 
         playerID = playerStatus.GetID();  //プレイヤーIDを取得
     }
@@ -47,18 +45,18 @@ public class CameraController : MonoBehaviour
         rotateCmaeraAngle();
 
         //ロックオン-------------------------------------------------------------------------------
-   
+
         //R1ボタンでロックオンする
         ButtonControl lockOnButton = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder];
 
         //1P
-        if (playerID == 0) 
-        {  
+        if (playerID == 0)
+        {
             //R1ボタンが押されたら
             if (lockOnButton.wasPressedThisFrame)
             {
                 //ロックオン状態を切り替える
-                LockOn(); 
+                LockOn();
             }
             if (lockOn1P)
             {
@@ -66,14 +64,14 @@ public class CameraController : MonoBehaviour
             }
         }
         //2P
-        else if (playerID == 1) 
+        else if (playerID == 1)
         {
             //R1ボタンが押されたら
-            if (lockOnButton.wasPressedThisFrame) 
+            if (lockOnButton.wasPressedThisFrame)
             {
                 print($"[{UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder}] 2PisPressed = {lockOnButton.isPressed}");
                 //ロックオン状態を切り替える
-                LockOn(); 
+                LockOn();
             }
             if (lockOn2P)
             {
@@ -86,21 +84,26 @@ public class CameraController : MonoBehaviour
 
 
         //ズーム処理お試し-----------------------------------------------------------------------------------------
-        ButtonControl gekihaScene = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.LeftShoulder]; //L1ボタン
+        ButtonControl SettlementScene = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.LeftShoulder]; //L1ボタン
 
         //Flagを切り替え
-        if (gekihaScene.wasPressedThisFrame)
+        if (SettlementScene.wasPressedThisFrame)
         {
-            if (gekihaSceneFlag)
-                gekihaSceneFlag = false;
+            if (SettlementSceneFlag)
+                SettlementSceneFlag = false;
             else
-                gekihaSceneFlag = true;
+                SettlementSceneFlag = true;
         }
-        if (gekihaSceneFlag == false)
-        transform.position = Vector3.Lerp(transform.position, player.transform.position, 0.1f); //自分に追従
-        else
-        transform.position = Vector3.Lerp(transform.position, target.transform.position, 0.1f); //相手にズーム
+
         //-----------------------------------------------------------------------------------------------------------
+    }
+
+    private void FixedUpdate()
+    {
+        if (SettlementSceneFlag == false)
+            transform.position = Vector3.Lerp(transform.position, player.transform.position, 0.1f); //自分に追従
+        else
+            transform.position = Vector3.Lerp(transform.position, target.transform.position, 0.1f); //相手にズーム
     }
 
     void LockOn()
@@ -120,7 +123,7 @@ public class CameraController : MonoBehaviour
             else
                 lockOn2P = false;
         }
-    } 
+    }
 
 
     private void StickValue()
@@ -133,5 +136,5 @@ public class CameraController : MonoBehaviour
     private void rotateCmaeraAngle()
     {
         transform.eulerAngles += new Vector3(0, horizontal * rotateSpeed * Time.deltaTime);
-    }   
+    }
 }
