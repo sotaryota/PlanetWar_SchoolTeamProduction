@@ -10,6 +10,8 @@ public class PlanetRotate : MonoBehaviour
     private MenuManager menuManager;
     [SerializeField]
     private GameObject PlanetGameObject;
+    [SerializeField]
+    private MenuSEManager menuSE;
     public bool buttonLock;  //選択中にカーソルを動かせないように
 
     private void Awake()
@@ -61,6 +63,9 @@ public class PlanetRotate : MonoBehaviour
         //回転をロック
         buttonLock = false;
         
+        //効果音
+        menuSE.SelectSE();
+        
         //回転をループさせるif
         if (menuManager.nowSelect >= MenuManager.SelectMenu.End)
         {
@@ -96,6 +101,9 @@ public class PlanetRotate : MonoBehaviour
     {
         //回転をロック
         buttonLock = false;
+
+        //効果音
+        menuSE.SelectSE();
 
         //回転をループさせるif
         if (menuManager.nowSelect <= MenuManager.SelectMenu.Start)
