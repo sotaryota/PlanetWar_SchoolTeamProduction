@@ -24,16 +24,13 @@ public class MenuManager : MonoBehaviour
         public float effectSize;        //エフェクトの大きさ 
     };
 
-    [SerializeField] 
-    private PlanetRotate planetRotate;
-    [SerializeField]
-    private float lockValue;
-    [SerializeField]
-    private MenuSEManager menuSE;
-    [SerializeField]
-    private GameObject effectPrefab;
-    [SerializeField]
-    private FadeManager fade;
+    [SerializeField] private PlanetRotate planetRotate;
+    [SerializeField] private MenuSEManager menuSE;
+    [SerializeField] private GameObject effectPrefab;
+    [SerializeField] private FadeManager fade;
+    [SerializeField] private float lockValue;
+    [SerializeField] private AudioSource bgm;
+ 
     private Gamepad gamepad;
     public MenuData[] menuDatas;
     public SelectMenu nowSelect;    //現在選択されているメニュー
@@ -67,6 +64,9 @@ public class MenuManager : MonoBehaviour
             {
                 menuDatas[(int)nowSelect].selectPlanet.SetActive(false);
 
+                bgm.Stop();
+                menuSE.DecisionSE();
+
                 GameObject effect = Instantiate(effectPrefab);
 
                 //エフェクトのサイズとポジションを指定
@@ -74,7 +74,6 @@ public class MenuManager : MonoBehaviour
                     menuDatas[(int)nowSelect].effectSize, menuDatas[(int)nowSelect].effectSize);
                 effect.transform.position = menuDatas[(int)nowSelect].selectPlanet.transform.position;
 
-                menuSE.DecisionSE();
 
                 //シーン切り替え
                 StartCoroutine("SceneChange", menuDatas[(int)nowSelect].sceneName);
