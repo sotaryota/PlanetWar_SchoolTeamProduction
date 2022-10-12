@@ -697,6 +697,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274771530}
   m_CullTransparentMesh: 1
+--- !u!82 &574365537 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7439314732507782263, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
+  m_PrefabInstance: {fileID: 1045185361}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &704145406
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,6 +992,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameMgr
       objectReference: {fileID: 0}
+    - target: {fileID: 7439314732507782260, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
+      propertyPath: data.Array.data[0].BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 4135081275e5e3f4d9c84e90077aeaef, type: 3}
+    - target: {fileID: 7439314732507782260, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
+      propertyPath: data.Array.data[1].BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 4135081275e5e3f4d9c84e90077aeaef, type: 3}
+    - target: {fileID: 7439314732507782260, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
+      propertyPath: data.Array.data[2].BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 4135081275e5e3f4d9c84e90077aeaef, type: 3}
     - target: {fileID: 7439314732507782262, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1030,6 +1047,10 @@ PrefabInstance:
     - target: {fileID: 7439314732507782262, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7439314732507782263, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7439314732507782257, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
@@ -1338,6 +1359,7 @@ GameObject:
   - component: {fileID: 1836263059}
   - component: {fileID: 1836263060}
   - component: {fileID: 1836263061}
+  - component: {fileID: 1836263064}
   - component: {fileID: 1836263063}
   - component: {fileID: 1836263062}
   m_Layer: 0
@@ -1375,25 +1397,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetRotate: {fileID: 1836263061}
-  lockValue: 0.2
   menuSE: {fileID: 1836263063}
   effectPrefab: {fileID: 1121192042590650, guid: a9d226a2599f43b4d9b52e96dc6dae9b, type: 3}
+  fade: {fileID: 1836263064}
+  lockValue: 0.2
+  bgm: {fileID: 574365537}
   menuDatas:
   - menuImage: {fileID: 1138626449}
     selectPlanet: {fileID: 160191066}
     sceneName: Main
+    effectSize: 0.8
   - menuImage: {fileID: 274771530}
     selectPlanet: {fileID: 85994389}
     sceneName: Tutorial
+    effectSize: 1.5
   - menuImage: {fileID: 746275772}
     selectPlanet: {fileID: 704145406}
     sceneName: Title
+    effectSize: 1
   - menuImage: {fileID: 267038543}
     selectPlanet: {fileID: 1207074739}
     sceneName: End
+    effectSize: 0.5
   nowSelect: 0
   beforeSelect: 0
-  decisionWait: 3
+  fadeInterval: 0.8
+  fadeSpeed: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1836263061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,11 +1549,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7701b31b48ae56943b1a71bddb28c035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitch: 0.5
+  pitch: 1
   volume: 0.5
   audioSource: {fileID: 1836263062}
   selectSE: {fileID: 8300000, guid: 819d229affe1aa34682ba4d829a732bc, type: 3}
-  decisionSE: {fileID: 8300000, guid: 819d229affe1aa34682ba4d829a732bc, type: 3}
+  decisionSE: {fileID: 8300000, guid: 3585f39e50fce2b46b3d3003147b8e4b, type: 3}
+--- !u!114 &1836263064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836263057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb62d7b12caa3814b8089f70d32ad2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1876590518
 GameObject:
   m_ObjectHideFlags: 0
