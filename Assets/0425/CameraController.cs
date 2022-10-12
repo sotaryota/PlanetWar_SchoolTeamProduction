@@ -8,8 +8,7 @@ public class CameraController : MonoBehaviour
 {
     Gamepad gamepad;
     TestInputActions testInputActions;
-    [SerializeField] PlayerStatus playerStatus;
-    [SerializeField] PlayerMove playerMove;
+    public PlayerStatus playerStatus;
     int playerID;
 
     public GameObject player;
@@ -25,7 +24,7 @@ public class CameraController : MonoBehaviour
     bool lockOn2P = false;  //ロックオン中か否か（2P）
 
     //ズーム処理用(仮)
-    bool SettlementSceneFlag = false;
+    bool gekihaSceneFlag = false;
    
     void Start()
     {
@@ -48,18 +47,18 @@ public class CameraController : MonoBehaviour
         rotateCmaeraAngle();
 
         //ロックオン-------------------------------------------------------------------------------
-
+   
         //R1ボタンでロックオンする
         ButtonControl lockOnButton = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder];
 
         //1P
-        if (playerID == 0)
-        {
+        if (playerID == 0) 
+        {  
             //R1ボタンが押されたら
             if (lockOnButton.wasPressedThisFrame)
             {
                 //ロックオン状態を切り替える
-                LockOn();
+                LockOn(); 
             }
             if (lockOn1P)
             {
@@ -67,14 +66,14 @@ public class CameraController : MonoBehaviour
             }
         }
         //2P
-        else if (playerID == 1)
+        else if (playerID == 1) 
         {
             //R1ボタンが押されたら
-            if (lockOnButton.wasPressedThisFrame)
+            if (lockOnButton.wasPressedThisFrame) 
             {
                 print($"[{UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder}] 2PisPressed = {lockOnButton.isPressed}");
                 //ロックオン状態を切り替える
-                LockOn();
+                LockOn(); 
             }
             if (lockOn2P)
             {
@@ -83,28 +82,25 @@ public class CameraController : MonoBehaviour
         }
 
         //カメラの追従
+        //transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * 5.0f);
 
-        ////ズーム処理お試し-----------------------------------------------------------------------------------------
-        //ButtonControl SettlementScene = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.LeftShoulder]; //L1ボタン
 
-        ////Flagを切り替え
-        //if (SettlementScene.wasPressedThisFrame)
-        //{
-        //    if (SettlementSceneFlag)
-        //        SettlementSceneFlag = false;
-        //    else
-        //        SettlementSceneFlag = true;
-        //}
-        //if (SettlementSceneFlag == false)
-        //transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * 5.0f); //自分に追従
-        //else
-        //    transform.position = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime * 5.0f); //相手にズーム
-        ////-----------------------------------------------------------------------------------------------------------
-    }
+        //ズーム処理お試し-----------------------------------------------------------------------------------------
+        ButtonControl gekihaScene = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.LeftShoulder]; //L1ボタン
 
-    void FixedUpdate()
-    {
+        //Flagを切り替え
+        if (gekihaScene.wasPressedThisFrame)
+        {
+            if (gekihaSceneFlag)
+                gekihaSceneFlag = false;
+            else
+                gekihaSceneFlag = true;
+        }
+        if (gekihaSceneFlag == false)
         transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * 5.0f); //自分に追従
+        else
+        transform.position = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime * 5.0f); //相手にズーム
+        //-----------------------------------------------------------------------------------------------------------
     }
 
     void LockOn()
