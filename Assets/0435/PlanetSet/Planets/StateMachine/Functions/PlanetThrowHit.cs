@@ -32,7 +32,9 @@ public class PlanetThrowHit : PlanetStateFanction
             PlanetData pd;
             if(pd = other.GetComponent<PlanetData>())
             {
-                if(this.GetComponent<PlanetData>().GetWeight() >= pd.GetWeight()) {Å@return; }
+                if(this.GetComponent<PlanetData>().GetWeight() >= pd.GetWeight()) {
+                        return;
+                }
             }
 
             if (ps = other.GetComponent<PlayerStatus>())

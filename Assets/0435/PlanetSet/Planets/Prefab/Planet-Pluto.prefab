@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -5378656212206485483}
   - component: {fileID: -8742495411463378308}
   - component: {fileID: 5443437879697192121}
+  - component: {fileID: 8301565545605819931}
   m_Layer: 0
   m_Name: Planet-Pluto
   m_TagString: Planet
@@ -182,12 +183,25 @@ MonoBehaviour:
   - scripts:
     - {fileID: 5799356023332496868}
     - {fileID: 5799356023332496865}
+    - {fileID: 8301565545605819931}
   - scripts: []
   - scripts:
     - {fileID: 5799356023332496871}
     - {fileID: -5378656212206485483}
   - scripts:
     - {fileID: 5799356023332496888}
+--- !u!114 &8301565545605819931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5799356023332496864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4708661422026b647866a75dca79edc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5799356023687621377
 GameObject:
   m_ObjectHideFlags: 0

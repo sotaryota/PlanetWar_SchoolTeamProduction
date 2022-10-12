@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2278066975646053856}
   - component: {fileID: 2278066975646053857}
   - component: {fileID: 2278066975646053790}
+  - component: {fileID: -5903292533110844087}
   m_Layer: 0
   m_Name: Planet-Jupiter
   m_TagString: Planet
@@ -32,7 +33,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2278066974873004242}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 18, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
@@ -92,6 +93,7 @@ MonoBehaviour:
   - scripts:
     - {fileID: 2278066975646053860}
     - {fileID: 2278066975646053859}
+    - {fileID: -5903292533110844087}
   - scripts: []
   - scripts:
     - {fileID: 2278066975646053861}
@@ -188,6 +190,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5903292533110844087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2278066974873004242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4708661422026b647866a75dca79edc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2278066975018971051
 GameObject:
   m_ObjectHideFlags: 0
