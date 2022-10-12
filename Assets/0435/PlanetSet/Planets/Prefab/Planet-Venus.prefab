@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: -8271778783283227681}
   - component: {fileID: -1733015196677779875}
   - component: {fileID: -8167202679352994472}
-  - component: {fileID: 8677938999418811889}
   m_Layer: 0
   m_Name: Planet-Venus
   m_TagString: Planet
@@ -93,7 +92,6 @@ MonoBehaviour:
   - scripts:
     - {fileID: 1973204962623511206}
     - {fileID: 919591700278139933}
-    - {fileID: 8677938999418811889}
   - scripts: []
   - scripts:
     - {fileID: 1973204962623511212}
@@ -190,18 +188,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8677938999418811889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973204962623511207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4708661422026b647866a75dca79edc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2436111915683661469
 GameObject:
   m_ObjectHideFlags: 0

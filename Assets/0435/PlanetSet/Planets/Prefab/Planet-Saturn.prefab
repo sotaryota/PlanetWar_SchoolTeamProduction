@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 2657342283033430501}
   - component: {fileID: 2657342283033430500}
   - component: {fileID: 4434433825040716178}
-  - component: {fileID: -3806518150873684149}
   m_Layer: 0
   m_Name: Planet-Saturn
   m_TagString: Planet
@@ -116,7 +115,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2657342283026763228}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -18, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -266,25 +265,12 @@ MonoBehaviour:
   - scripts:
     - {fileID: 2657342283033430497}
     - {fileID: 2657342283033430502}
-    - {fileID: -3806518150873684149}
   - scripts: []
   - scripts:
     - {fileID: 2657342283033430496}
     - {fileID: 2657342283033430500}
   - scripts:
     - {fileID: 2657342283033430501}
---- !u!114 &-3806518150873684149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2657342283026763228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4708661422026b647866a75dca79edc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2657342283124118892
 GameObject:
   m_ObjectHideFlags: 0

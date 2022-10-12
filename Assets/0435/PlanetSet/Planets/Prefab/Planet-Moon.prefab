@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 4946642019139822042}
   - component: {fileID: 1606993309035211790}
   - component: {fileID: -1627023939663971678}
-  - component: {fileID: -6907941307725281156}
   m_Layer: 0
   m_Name: Planet-Moon
   m_TagString: Planet
@@ -188,18 +187,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-6907941307725281156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4946642019139822018}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4708661422026b647866a75dca79edc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4946642019326160675
 GameObject:
   m_ObjectHideFlags: 0

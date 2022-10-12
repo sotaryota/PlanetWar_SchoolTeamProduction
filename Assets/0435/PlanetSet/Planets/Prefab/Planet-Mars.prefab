@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 8616554570721289302}
   - component: {fileID: 5656692543085730874}
   - component: {fileID: 2664428925950667741}
-  - component: {fileID: 4045097894345845293}
   m_Layer: 0
   m_Name: Planet-Mars
   m_TagString: Planet
@@ -176,7 +175,6 @@ MonoBehaviour:
   - scripts:
     - {fileID: 3467297164571331923}
     - {fileID: 2864114353487072232}
-    - {fileID: 4045097894345845293}
   - scripts: []
   - scripts:
     - {fileID: 3467297164571331929}
@@ -273,18 +271,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4045097894345845293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3467297164571331922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4708661422026b647866a75dca79edc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4389595377707579458
 PrefabInstance:
   m_ObjectHideFlags: 0

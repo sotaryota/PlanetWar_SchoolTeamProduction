@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: -9052732593369219772}
   - component: {fileID: -7342962723059612799}
   - component: {fileID: 1592345599342171240}
-  - component: {fileID: -3837065984296357993}
   m_Layer: 0
   m_Name: Planet-Little
   m_TagString: Planet
@@ -266,25 +265,12 @@ MonoBehaviour:
   - scripts:
     - {fileID: 3231756939396751187}
     - {fileID: 4285370082834127336}
-    - {fileID: -3837065984296357993}
   - scripts: []
   - scripts:
     - {fileID: 3231756939396751193}
     - {fileID: -9052732593369219772}
   - scripts:
     - {fileID: 1538134687424275507}
---- !u!114 &-3837065984296357993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3231756939396751186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4708661422026b647866a75dca79edc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6832875902834404388
 PrefabInstance:
   m_ObjectHideFlags: 0

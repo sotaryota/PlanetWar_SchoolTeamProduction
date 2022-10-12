@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: -3066964392817151820}
   - component: {fileID: 6693889314654921300}
   - component: {fileID: 653945008214558954}
-  - component: {fileID: -3092459801329943054}
   m_Layer: 0
   m_Name: Planet-Meteor01
   m_TagString: Planet
@@ -237,18 +236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: {x: 0, y: 0, z: 15}
---- !u!114 &-3092459801329943054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2230570635318014774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4708661422026b647866a75dca79edc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2230570634325555475
 PrefabInstance:
   m_ObjectHideFlags: 0
