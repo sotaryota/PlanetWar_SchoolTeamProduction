@@ -23,6 +23,8 @@ public class PlayerMove : MonoBehaviour
 
     Vector3 moveForward;
 
+    public Vector3 playerSpeed;
+
     private void Start()
     {
         rb       = GetComponent<Rigidbody>();
@@ -124,6 +126,7 @@ public class PlayerMove : MonoBehaviour
             }
             //移動処理
             rb.AddForce(moveDirection * Time.deltaTime - rb.velocity * Time.deltaTime);
+            playerSpeed = moveDirection * Time.deltaTime - rb.velocity * Time.deltaTime;
 
             //移動した分スピードを上げる
             playerStatus.SpeedUp(moveDirection.magnitude * Time.deltaTime / 100);
