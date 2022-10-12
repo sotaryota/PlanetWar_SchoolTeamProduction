@@ -668,6 +668,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 89f520625376d4e408b3c3d9b4b463f9, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1529260974980247438, guid: 89f520625376d4e408b3c3d9b4b463f9, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
@@ -1519,6 +1523,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6956014967457525506, guid: 3cbd46b0e9b483841a82c8cec88f8e35, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     - target: {fileID: 6956014967457525530, guid: 3cbd46b0e9b483841a82c8cec88f8e35, type: 3}
       propertyPath: m_Name
       value: Planet-Mercury
@@ -1564,6 +1572,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981010519}
     m_Modifications:
+    - target: {fileID: 1538134687424275507, guid: 78be02cb2983f7c48890ed22a8dba977, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     - target: {fileID: 3231756939396751186, guid: 78be02cb2983f7c48890ed22a8dba977, type: 3}
       propertyPath: m_Name
       value: Planet-Little
@@ -2179,6 +2191,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981010519}
     m_Modifications:
+    - target: {fileID: 346440252529221635, guid: 4996c40d069904f40a316faea8491fed, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     - target: {fileID: 528640702652183441, guid: 4996c40d069904f40a316faea8491fed, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2361,6 +2377,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981010519}
     m_Modifications:
+    - target: {fileID: -8271778783283227681, guid: 855ee2f224efc0242bb2d1e00d0460a2, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     - target: {fileID: 1973204962623511207, guid: 855ee2f224efc0242bb2d1e00d0460a2, type: 3}
       propertyPath: m_Name
       value: Planet-Venus
@@ -2913,6 +2933,11 @@ MeshFilter:
 --- !u!1 &1219660312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7439314732507782256, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
+  m_PrefabInstance: {fileID: 2137602111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1219660313 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7439314732507782263, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
   m_PrefabInstance: {fileID: 2137602111}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1235221988
@@ -3564,6 +3589,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8616554570721289302, guid: 5791674b8ce54d54fa766e897ad5bb6b, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5791674b8ce54d54fa766e897ad5bb6b, type: 3}
 --- !u!1001 &1572899282
@@ -3621,6 +3650,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8757424669564107942, guid: da7fe4c06c7fbb74a9cdb5edc1ef441b, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da7fe4c06c7fbb74a9cdb5edc1ef441b, type: 3}
 --- !u!4 &1594586600 stripped
@@ -3635,6 +3668,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981010519}
     m_Modifications:
+    - target: {fileID: -2897970267820441221, guid: 315a29c0caa191c43b11ed1ce118863b, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     - target: {fileID: 8015572719216635430, guid: 315a29c0caa191c43b11ed1ce118863b, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -3784,6 +3821,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet-Neptune
       objectReference: {fileID: 0}
+    - target: {fileID: 1511330316493176536, guid: ab72f8bfae8e7b048a74e9874f20bcb6, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     - target: {fileID: 1511330316493176539, guid: ab72f8bfae8e7b048a74e9874f20bcb6, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -3841,6 +3882,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet-Pluto
       objectReference: {fileID: 0}
+    - target: {fileID: 5799356023332496888, guid: bd88279ebae8eda46b94230a740f0a58, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     - target: {fileID: 5799356023332496891, guid: bd88279ebae8eda46b94230a740f0a58, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -4375,6 +4420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 89f520625376d4e408b3c3d9b4b463f9, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1529260974980247438, guid: 89f520625376d4e408b3c3d9b4b463f9, type: 3}
       propertyPath: m_Materials.Array.data[2]
       value: 
@@ -4745,6 +4794,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameMgr
       objectReference: {fileID: 0}
+    - target: {fileID: 7439314732507782257, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     - target: {fileID: 7439314732507782257, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
       propertyPath: firstCreatePos.x
       value: 35
@@ -6777,6 +6830,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2278066975646053856, guid: 5765ff807abf8e2449911f0a0aed77cc, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5765ff807abf8e2449911f0a0aed77cc, type: 3}
 --- !u!1001 &2657342283357574380
@@ -6790,6 +6847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Planet-Saturn
       objectReference: {fileID: 0}
+    - target: {fileID: 2657342283033430501, guid: e25c7defabb48e842a424c2cc61a10d5, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1219660313}
     - target: {fileID: 2657342283033430506, guid: e25c7defabb48e842a424c2cc61a10d5, type: 3}
       propertyPath: m_RootOrder
       value: 6

@@ -98,7 +98,7 @@ public class PlayerMove : MonoBehaviour
             }
 
             //減速処理
-            rb.AddForce(moveDirection - rb.velocity);
+            rb.AddForce(-rb.velocity * (Time.deltaTime * 20));
 
             //待機時間のカウント
             waitcnt += Time.deltaTime;
@@ -123,7 +123,7 @@ public class PlayerMove : MonoBehaviour
                 playerStatus.SetState(PlayerStatus.State.Move);
             }
             //移動処理
-            rb.AddForce(moveDirection * Time.deltaTime - rb.velocity * Time.deltaTime);
+            rb.AddForce(moveDirection * Time.deltaTime - rb.velocity * (Time.deltaTime * 20));
 
             //移動した分スピードを上げる
             playerStatus.SpeedUp(moveDirection.magnitude * Time.deltaTime / 100);
