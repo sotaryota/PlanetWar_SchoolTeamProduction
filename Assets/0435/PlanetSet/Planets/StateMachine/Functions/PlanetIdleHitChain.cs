@@ -19,6 +19,7 @@ public class PlanetIdleHitChain : PlanetStateFanction
 
             Vector3 throwSpeed = new Vector3(0, 0, 10);
             Vector3 throwAngle = this.transform.position - hitPlanetPos;
+            throwAngle.y = this.transform.position.y;
 
             GetComponent<PlanetThrowMove>().ThrowMoveSetting(throwSpeed, Quaternion.LookRotation(throwAngle).eulerAngles);
 

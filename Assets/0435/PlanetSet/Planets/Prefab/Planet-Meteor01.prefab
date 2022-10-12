@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: -3066964392817151820}
   - component: {fileID: 6693889314654921300}
   - component: {fileID: 653945008214558954}
-  - component: {fileID: -3092459801329943054}
+  - component: {fileID: 4332405071676959860}
   m_Layer: 0
   m_Name: Planet-Meteor01
   m_TagString: Planet
@@ -218,6 +218,7 @@ MonoBehaviour:
   - scripts:
     - {fileID: 2230570635318014752}
     - {fileID: 653945008214558954}
+    - {fileID: 4332405071676959860}
   - scripts: []
   - scripts:
     - {fileID: 2230570635318014783}
@@ -237,7 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: {x: 0, y: 0, z: 15}
---- !u!114 &-3092459801329943054
+--- !u!114 &4332405071676959860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
