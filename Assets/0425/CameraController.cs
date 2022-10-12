@@ -97,9 +97,9 @@ public class CameraController : MonoBehaviour
                 gekihaSceneFlag = true;
         }
         if (gekihaSceneFlag == false)
-        transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * 5.0f); //自分に追従
+        transform.position = Vector3.Lerp(transform.position, player.transform.position, 0.1f); //自分に追従
         else
-        transform.position = Vector3.Lerp(transform.position, target.transform.position, Time.deltaTime * 5.0f); //相手にズーム
+        transform.position = Vector3.Lerp(transform.position, target.transform.position, 0.1f); //相手にズーム
         //-----------------------------------------------------------------------------------------------------------
     }
 
