@@ -18,18 +18,23 @@ public class MenuManager : MonoBehaviour
     [System.Serializable]
     public class MenuData
     {
-        public GameObject menuImage;  //表示する画像
-        public string sceneName; //移行したいシーンの名前
+        public GameObject menuImage;    //表示する画像
+        public GameObject selectPlanet; //選択中のメニューに対応した惑星
+        public string sceneName;        //移行したいシーンの名前
     };
 
-    private Gamepad gamepad;
     [SerializeField] 
     private PlanetRotate planetRotate;
     [SerializeField]
     private float lockValue;
+    [SerializeField]
+    private MenuSEManager menuSE;
+    [SerializeField]
+    private GameObject effectPrefab;
+    private Gamepad gamepad;
     public MenuData[] menuDatas;
     public SelectMenu nowSelect;    //現在選択されているメニュー
-    public SelectMenu beforeSelect; //
+    public SelectMenu beforeSelect; //選択中のメニューを一時保存
 
     private void Start()
     {
@@ -44,7 +49,7 @@ public class MenuManager : MonoBehaviour
             gamepad = Gamepad.current;
         }
 
-        SceneChange(menuDatas[(int)nowSelect].sceneName);
+        DecisionScene();
     }
 
     /// <summary>
@@ -53,21 +58,37 @@ public class MenuManager : MonoBehaviour
     /// Endの場合はゲーム終了
     /// </summary>
     /// <param name="sceneName">シーン名</param>
-    public void SceneChange(string sceneName)
+    public void DecisionScene()
     {
         if(planetRotate.buttonLock)
         {
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
-                if (sceneName != "End")
-                {
-                    SceneManager.LoadScene(sceneName);
-                }
-                else
-                {
-                    Application.Quit();
-                }
+                menuDatas[(int)nowSelect].selectPlanet.SetActive(false);
+                GameObject effect = Instantiate(effectPrefab);
+                effect.transform.position = menuDatas[(int)nowSelect].selectPlanet.transform.position;
+                StartCoroutine("SceneChange", menuDatas[(int)nowSelect].sceneName);
             }
+        }
+    }
+
+
+    [SerializeField]
+    private float decisionWait;
+
+    IEnumerator SceneChange(string sceneName)
+    {
+        yield return new WaitForSeconds(decisionWait);
+
+        if (sceneName != "End")
+        {
+            menuSE.DecisionSE();
+            SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            menuSE.DecisionSE();
+            Application.Quit();
         }
     }
 }

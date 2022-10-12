@@ -58,6 +58,9 @@ public class PlayerHit : MonoBehaviour
                 //プレイヤを死亡状態に変更
                 status.SetState(PlayerStatus.State.Dead);
 
+                //アニメーション
+                animator.SetTrigger("die");
+
                 //死亡ボイス再生
                 this.GetComponent<PlayerSEManager>().DeathVoice();
             }

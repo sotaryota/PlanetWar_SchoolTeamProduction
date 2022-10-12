@@ -20,14 +20,18 @@ public class MeteorCreater : MonoBehaviour
 
     [Header("ì¬‚µ‚½˜f¯i—v‘f”‚ªÅ‘å¶¬”j")]
     [SerializeField]
-    private GameObject[] meteors = new GameObject[10]; 
+    private GameObject[] meteors = new GameObject[10];
+
+    [Header("˜f¯¶¬‚É—^‚¦‚éî•ñ")]
+    [SerializeField]
+    private AudioSource source;
 
     // Update is called once per frame
     void Update()
     {
         for(int i = 0; i < meteors.Length; ++i)
         {
-            //è¦Î‚ªŠi”[‚³‚ê‚Ä‚¢‚½‚ç–³Œø‰»
+            //è¦Î‚ªŠi”[‚³‚ê‚Ä‚¢‚È‚©‚Á‚½ê‡A˜f¯‚ğ¶¬
             if (!meteors[i])
             {
                 //ˆÊ’u‚ğŒˆ’è
@@ -36,6 +40,12 @@ public class MeteorCreater : MonoBehaviour
                     Random.Range(firstCreatePos.x, firstCreatePos.y),
                     0,
                     Random.Range(firstCreatePos.x, firstCreatePos.y));
+
+                PlanetAttackHit pah;
+                if(pah = go.GetComponent<PlanetAttackHit>())
+                {
+                    pah.source = this.source;
+                }
 
                 //X²ƒ}ƒCƒiƒX”»’è
                 if (Random.Range(0, 2) == 1)
