@@ -91,4 +91,8 @@ public class PlayerStatus : MonoBehaviour
     {
         this.hp_ -= damage;
     }
+    public void Escape(float escapeCost)
+    {
+        this.defense_ -= escapeCost;
+    }
 }
