@@ -36,11 +36,25 @@ public class MeteorCreater : MonoBehaviour
             {
                 //位置を決定
                 GameObject go = Instantiate(createPlanets[Random.Range(0, createPlanets.Length)]);
-                Vector3 createPos = new Vector3(
-                    Random.Range(firstCreatePos.x, firstCreatePos.y),
-                    0,
-                    Random.Range(firstCreatePos.x, firstCreatePos.y));
 
+                //座標はランダム
+                float cPosX = 0;
+                float cPosZ = 0;
+                if(Random.Range(0,2) == 0)
+                {
+                    //X軸が自由
+                    cPosX = Random.Range(-firstCreatePos.y, firstCreatePos.y);
+                    cPosZ = Random.Range(firstCreatePos.x, firstCreatePos.y);
+                }
+                else
+                {
+                    //Z軸が自由
+                    cPosX = Random.Range(firstCreatePos.x, firstCreatePos.y);
+                    cPosZ = Random.Range(-firstCreatePos.y, firstCreatePos.y);
+                }
+                
+                Vector3 createPos = new Vector3(cPosX,0,cPosZ);
+                //オーディオソースを割り当てる
                 PlanetAttackHit pah;
                 if(pah = go.GetComponent<PlanetAttackHit>())
                 {
