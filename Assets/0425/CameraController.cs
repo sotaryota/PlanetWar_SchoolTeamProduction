@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
@@ -9,8 +10,15 @@ public class CameraController : MonoBehaviour
     public PlayerStatus playerStatus;
     int playerID;
 
+    public Camera playerCamera;
+
     public GameObject player;
     public GameObject cameraController;
+
+    [SerializeField]
+    GameObject rockOnImage;
+    [SerializeField]
+    GameObject rockOnPos;
 
     float horizontal;
     float vertical;
@@ -32,6 +40,8 @@ public class CameraController : MonoBehaviour
         transform.position = player.transform.position;
 
         playerID = playerStatus.GetID();  //プレイヤーIDを取得
+
+        rockOnImage.SetActive(false);
     }
 
     void Update()
@@ -45,6 +55,13 @@ public class CameraController : MonoBehaviour
         rotateCmaeraAngle();
 
         //ロックオン-------------------------------------------------------------------------------
+        Vector3 targetViewportPoint = playerCamera.WorldToViewportPoint(rockOnPos.transform.position);
+
+        targetViewportPoint.z = 0;
+
+        Vector3 screen = RectTransformUtility.WorldToScreenPoint(playerCamera, rockOnPos.transform.position);
+
+        rockOnImage.transform.position =screen;
 
         //R1ボタンでロックオンする
         ButtonControl lockOnButton = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder];
@@ -90,9 +107,14 @@ public class CameraController : MonoBehaviour
         if (SettlementScene.wasPressedThisFrame)
         {
             if (SettlementSceneFlag)
+            {
                 SettlementSceneFlag = false;
+
+            }
             else
+            {
                 SettlementSceneFlag = true;
+            }
         }
 
         //-----------------------------------------------------------------------------------------------------------
@@ -101,27 +123,42 @@ public class CameraController : MonoBehaviour
     private void FixedUpdate()
     {
         if (SettlementSceneFlag == false)
+        {
             transform.position = Vector3.Lerp(transform.position, player.transform.position, 0.1f); //自分に追従
+        }
         else
+        {
             transform.position = Vector3.Lerp(transform.position, target.transform.position, 0.1f); //相手にズーム
+        }
     }
-
     void LockOn()
     {
         if (playerID == 0) //1P
         {
             if (lockOn1P == false)
+            {
+                rockOnImage.SetActive(true);
                 lockOn1P = true;
+            }
             else
+            {
+                rockOnImage.SetActive(false);
                 lockOn1P = false;
+            }
         }
         else
         if (playerID == 1) //2P
         {
             if (lockOn2P == false)
+            {
+                rockOnImage.SetActive(true);
                 lockOn2P = true;
+            }
             else
+            {
+                rockOnImage.SetActive(false);
                 lockOn2P = false;
+            }
         }
     }
 
