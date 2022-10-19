@@ -24,6 +24,9 @@ public class GameEnd : MonoBehaviour
     float stopTime;
 
     [SerializeField]
+    GameObject[] finishCameraPos;
+
+    [SerializeField]
     Camera[] camera;
 
     void Start()
@@ -37,14 +40,31 @@ public class GameEnd : MonoBehaviour
         {
             if (ps1.GetHp() <= 0)
             {
-                stopTime += Time.unscaledDeltaTime;
+                camera[1].rect = new Rect(0, 0, 0, 0);
+                camera[0].rect = new Rect(0, 0, 1, 1);
 
-                if (stopTime > 1.5 && stopTime <= 0.2f)
+                //カメラを演出用の位置に
+                camera[0].transform.position = finishCameraPos[0].transform.position;
+                //カメラを180度回転させる
+                Vector3 pRotate = player1Object.transform.rotation.eulerAngles;
+                camera[0].gameObject.transform.rotation = Quaternion.Euler(28, pRotate.y, 0);
+                camera[0].gameObject.transform.rotation = Quaternion.Euler(28, pRotate.y + 180, 0);
+
+                finishText.SetActive(true);
+
+                stopTime += Time.unscaledDeltaTime;
+                Time.timeScale = 0;
+
+                if (stopTime < 0.2)
+                {
+                    Time.timeScale = 0;
+                }
+                else if (stopTime > 1.5 && stopTime < 4)
                 {
                     Time.timeScale = 0.2f;
-                    finishText.SetActive(true);
+
                 }
-                else if (stopTime > 3.5)
+                else if (stopTime >= 4)
                 {
                     Time.timeScale = 1;
                 }
@@ -59,18 +79,15 @@ public class GameEnd : MonoBehaviour
                 camera[0].rect = new Rect(0, 0, 0, 0);
                 camera[1].rect = new Rect(0, 0, 1, 1);
 
-                camera[1].transform.position = new Vector3(player2Object.transform.position.x, player2Object.transform.position.y + 3, player2Object.transform.forward.z +3);
-
-                //カメラをプレイヤーの位置に移動
-                //camera[1].transform.position = new Vector3(player2Object.transform.position.x, player2Object.transform.position.y, player2Object.transform.position.z);
-                //カメラの角度をプレイヤーと同じに
-                camera[1].transform.rotation = Quaternion.Euler(player2Object.transform.rotation.x, player2Object.transform.rotation.y, player2Object.transform.rotation.z);
-                //カメラのY・Zを変えて斜め上に
-                //camera[1].transform.position = new Vector3(player2Object.transform.position.x, player2Object.transform.position.y + 4, player2Object.transform.position.z);
-                //Yを180度、Xを30度回転させる
-                //camera[1].transform.rotation= Quaternion.Euler(28,player2Object.transform.localRotation.y,0);
-
+                //カメラを演出用の位置に
+                camera[1].transform.position = finishCameraPos[1].transform.position;
+                //カメラを180度回転させる
+                Vector3 pRotate = player2Object.transform.rotation.eulerAngles;
+                camera[1].gameObject.transform.rotation = Quaternion.Euler(28, pRotate.y, 0);
+                camera[1].gameObject.transform.rotation = Quaternion.Euler(28, pRotate.y + 180, 0);
+              
                 finishText.SetActive(true);
+
                 stopTime += Time.unscaledDeltaTime;
                 Time.timeScale = 0;
 
@@ -78,8 +95,7 @@ public class GameEnd : MonoBehaviour
                 {
                     Time.timeScale = 0;
                 }
-
-                if (stopTime > 1.5 && stopTime < 4)
+                else if (stopTime > 1.5 && stopTime < 4)
                 {
                     Time.timeScale = 0.2f;
                    
@@ -88,7 +104,6 @@ public class GameEnd : MonoBehaviour
                 {
                     Time.timeScale = 1;
                 }
-
                Fade();
             }
         }
