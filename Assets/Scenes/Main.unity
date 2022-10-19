@@ -809,6 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951c2bd15e782214591fbf680d213f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dead: {fileID: 176521510}
 --- !u!114 &176521503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,6 +1012,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &176521509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176521497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbd54a2314fdf944b05a21fedd1ceb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStatus: {fileID: 176521504}
+  player: {fileID: 176521497}
+  escapeSpeed: 5
+  escapeCost: 30
+--- !u!114 &176521510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176521497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0a57b651367084eaa29e438c2b6047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: {fileID: 176521504}
+  animator: {fileID: 176521505}
+  deadState: 0
 --- !u!1 &188736672
 GameObject:
   m_ObjectHideFlags: 0
@@ -5052,6 +5084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951c2bd15e782214591fbf680d213f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dead: {fileID: 2131034325}
 --- !u!114 &2131034318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5224,6 +5257,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &2131034324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131034312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dbd54a2314fdf944b05a21fedd1ceb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStatus: {fileID: 2131034315}
+  player: {fileID: 2131034312}
+  escapeSpeed: 5
+  escapeCost: 30
+--- !u!114 &2131034325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131034312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0a57b651367084eaa29e438c2b6047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: {fileID: 2131034315}
+  animator: {fileID: 2131034314}
+  deadState: 0
 --- !u!1001 &2137602111
 PrefabInstance:
   m_ObjectHideFlags: 0
