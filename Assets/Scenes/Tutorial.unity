@@ -736,8 +736,8 @@ MonoBehaviour:
   fadeScript: {fileID: 1978388575}
   TutorialImage: {fileID: 2019958191}
   selectSprites:
-  - {fileID: 21300000, guid: beebebd3527bb1c4d87490cc9db98b5b, type: 3}
-  - {fileID: 21300000, guid: 99c82da2af9c7254aae2ec0ba3031e30, type: 3}
+  - {fileID: 21300000, guid: a311e6c6538ff884ca96b22d69efabef, type: 3}
+  - {fileID: 21300000, guid: a5e27bc008a59784aa49eab7c4075396, type: 3}
   - {fileID: 21300000, guid: aa8d3a6cd83b41a4fa09b2812a693ec7, type: 3}
   - {fileID: 21300000, guid: 2cb3b8246c079cd4199cd76749bc3f32, type: 3}
   - {fileID: 21300000, guid: 2cb3b8246c079cd4199cd76749bc3f32, type: 3}
