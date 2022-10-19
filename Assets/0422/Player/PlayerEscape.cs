@@ -34,10 +34,13 @@ public class PlayerEscape : MonoBehaviour
 
     private void EscapeMove()
     {
+        //Xボタンを押したとき
         if(gamepad.buttonWest.wasPressedThisFrame)
         {
+            //ディフェンスパラメーターが回避コストより多いか
             if(playerStatus.GetDefense() >= escapeCost)
             {
+                //向いている方向に加速しコスト分ディフェンスを消費
                 rb.AddForce(player.transform.forward * escapeSpeed, ForceMode.Impulse);
                 playerStatus.Escape(escapeCost);
             }

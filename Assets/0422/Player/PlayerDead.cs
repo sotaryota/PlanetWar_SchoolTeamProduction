@@ -9,10 +9,16 @@ public class PlayerDead : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+    //€–S‚Ì”»’è—p
+    private bool firstInFlag;
+
+    /// <summary>
+    /// €–Sƒpƒ^[ƒ“
+    /// ’Ç‰Á‚·‚éê‡‚ÍDeadŠÖ”“à‚Ìswitch•¶‚Éˆ—‚ğ’Ç‰Á
+    /// </summary>
     public enum DeadState
     {
-        Hit,      //˜f¯ƒqƒbƒg
-        die,      //˜f¯ƒqƒbƒg‚Å€–S
+        die,       //˜f¯ƒqƒbƒg‚Å€–S
         exhausted, //‘¾—z‚ÌƒXƒŠƒbƒvƒ_ƒ[ƒW‚Å€–S
         non
     };
@@ -20,40 +26,35 @@ public class PlayerDead : MonoBehaviour
     [SerializeField]
     DeadState deadState;
 
-    //’Ç‰Á
-    private bool firstInFlag;
-
+    //€–Só‘Ô‚Ìæ“¾‚Æ‘‚«Š·‚¦
+    //-----------------------------------------
     public void SetDeadState(DeadState state)
     {
         deadState = state;
     }
-
     public DeadState GetDead()
     {
         return deadState;
     }
+    //-----------------------------------------
 
     private void Start()
     {
         deadState = DeadState.non;
         firstInFlag = true;
     }
-
     private void Update()
     {
         Dead();
     }
 
-    bool DeadCheck()
-    {
-        return status.GetState() == PlayerStatus.State.Dead;
-    }
-
     void Dead()
     {
-        if (!DeadCheck()) { return; }
+        if (status.GetState() != PlayerStatus.State.Dead) { return; }
         if (!firstInFlag) { return; }
         firstInFlag = false;
+
+        #region €–S‚Ìˆ—‚Í‚±‚±‚Ås‚Á‚Ä‚­‚¾‚³‚¢
 
         switch (deadState)
         {
@@ -83,6 +84,7 @@ public class PlayerDead : MonoBehaviour
                 firstInFlag = true;
                 break;
         }
+        #endregion
 
         print("PlayerDead:’Ç‰Á•”•ª");
         
