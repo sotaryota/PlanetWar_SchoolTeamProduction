@@ -70,5 +70,21 @@ public class PlayerHit : MonoBehaviour
                 this.GetComponent<PlayerSEManager>().DamageVoice();
             }
         }
+        else
+        {
+            //HPが0以下の時
+            if (status.GetHp() <= 0)
+            {
+                //プレイヤを死亡状態に変更
+                status.SetState(PlayerStatus.State.Dead);
+
+                //アニメーション
+                animator.SetTrigger("exhausted");
+                Debug.Log("死");
+
+                //死亡ボイス再生
+                this.GetComponent<PlayerSEManager>().DeathVoice();
+            }
+        }
     }
 }
