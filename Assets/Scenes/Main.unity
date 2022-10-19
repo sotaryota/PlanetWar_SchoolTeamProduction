@@ -2557,6 +2557,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981010519}
     m_Modifications:
+    - target: {fileID: 1594586610, guid: 4996c40d069904f40a316faea8491fed, type: 3}
+      propertyPath: damage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594586610, guid: 4996c40d069904f40a316faea8491fed, type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 2131034312}
+    - target: {fileID: 1594586610, guid: 4996c40d069904f40a316faea8491fed, type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 176521497}
     - target: {fileID: 346440252529221635, guid: 4996c40d069904f40a316faea8491fed, type: 3}
       propertyPath: source
       value: 

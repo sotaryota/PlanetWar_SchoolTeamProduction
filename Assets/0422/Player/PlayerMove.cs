@@ -110,6 +110,8 @@ public class PlayerMove : MonoBehaviour
 
                 //待機ボイスのカウントを0に
                 waitcnt = 0.0f;
+
+                animator.SetTrigger("appeal");
             }
             //アニメーション
             animator.SetBool("run", false);

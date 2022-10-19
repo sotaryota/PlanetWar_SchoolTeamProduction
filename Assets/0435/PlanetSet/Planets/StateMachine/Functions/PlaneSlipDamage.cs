@@ -25,7 +25,7 @@ public class PlaneSlipDamage : PlanetStateFanction
     private void Damage(GameObject pl_, float tdt)
     {
         //‹——£‚ª‰“‚©‚Á‚½ê‡‚Íˆ—‚È‚µ
-        Vector3 nowDistance = player1.transform.position - this.transform.position;
+        Vector3 nowDistance = pl_.transform.position - this.transform.position;
         if (nowDistance.magnitude > distance) return;
 
         PlayerStatus ps = pl_.GetComponent<PlayerStatus>();
