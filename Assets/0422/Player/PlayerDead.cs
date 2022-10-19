@@ -28,6 +28,11 @@ public class PlayerDead : MonoBehaviour
         deadState = state;
     }
 
+    public DeadState GetDead()
+    {
+        return deadState;
+    }
+
     private void Start()
     {
         deadState = DeadState.non;
@@ -52,17 +57,6 @@ public class PlayerDead : MonoBehaviour
 
         switch (deadState)
         {
-            //惑星ヒット時-----------------------------------------------
-            case DeadState.Hit:
-                Debug.Log("惑星ヒット");
-
-                //ダメージボイス再生
-                this.GetComponent<PlayerSEManager>().DamageVoice();
-
-                //アニメーション
-                animator.SetTrigger("damage");
-                break;
-
             //惑星ヒットでの死亡時-----------------------------------------
             case DeadState.die:
                 Debug.Log("惑星ヒットにより死亡");

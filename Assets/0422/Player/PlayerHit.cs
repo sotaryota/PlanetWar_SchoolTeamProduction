@@ -61,23 +61,32 @@ public class PlayerHit : MonoBehaviour
             }
             else
             {
-                //プレイヤを死亡状態に変更
+                //プレイヤをヒット状態に変更
                 status.SetState(PlayerStatus.State.Damage);
 
-                dead.SetDeadState(PlayerDead.DeadState.Hit);
+                Debug.Log("惑星ヒット");
+
+                //ダメージボイス再生
+                this.GetComponent<PlayerSEManager>().DamageVoice();
+
+                //アニメーション
+                animator.SetTrigger("damage");
             }
         }
     }
 
     private void Update()
     {
-        //HPが0以下の時
-        if (status.GetHp() <= 0)
+        if (dead.GetDead() == PlayerDead.DeadState.non)
         {
-            //プレイヤを死亡状態に変更
-            status.SetState(PlayerStatus.State.Dead);
+            //HPが0以下の時
+            if (status.GetHp() <= 0)
+            {
+                //プレイヤを死亡状態に変更
+                status.SetState(PlayerStatus.State.Dead);
 
-            dead.SetDeadState(PlayerDead.DeadState.exhausted);
+                dead.SetDeadState(PlayerDead.DeadState.exhausted);
+            }
         }
     }
 }
