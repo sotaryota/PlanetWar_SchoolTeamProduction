@@ -6,6 +6,8 @@ public class PlayerHit : MonoBehaviour
 {
     private Animator animator;
     PlayerStatus status;
+    [SerializeField]
+    PlayerDead dead;
 
     private void Start()
     {
@@ -29,7 +31,7 @@ public class PlayerHit : MonoBehaviour
             if (other.GetComponent<PlanetThrowHit>().catchPlayerID == status.GetID()) { return; }
 
             //プレイヤがCatch状態の時
-            if(status.GetState() == PlayerStatus.State.Catch)
+            if (status.GetState() == PlayerStatus.State.Catch)
             {
                 //ダメージ状態に変更
                 status.SetState(PlayerStatus.State.Damage);
@@ -49,42 +51,33 @@ public class PlayerHit : MonoBehaviour
             //ディフェンスを上昇
             status.DefenseUp(25 + (other.GetComponent<PlanetData>().GetDamage() / 5));
 
-            //アニメーション
-            animator.SetTrigger("damage");
-
             //HPが0以下の時
             if (status.GetHp() <= 0)
             {
                 //プレイヤを死亡状態に変更
                 status.SetState(PlayerStatus.State.Dead);
 
-                //アニメーション
-                animator.SetTrigger("die");
-
-                //死亡ボイス再生
-                this.GetComponent<PlayerSEManager>().DeathVoice();
+                dead.SetDeadState(PlayerDead.DeadState.die);
             }
             else
             {
-                //ダメージボイス再生
-                this.GetComponent<PlayerSEManager>().DamageVoice();
+                //プレイヤを死亡状態に変更
+                status.SetState(PlayerStatus.State.Damage);
+
+                dead.SetDeadState(PlayerDead.DeadState.Hit);
             }
         }
-        else
+    }
+
+    private void Update()
+    {
+        //HPが0以下の時
+        if (status.GetHp() <= 0)
         {
-            //HPが0以下の時
-            if (status.GetHp() <= 0)
-            {
-                //プレイヤを死亡状態に変更
-                status.SetState(PlayerStatus.State.Dead);
+            //プレイヤを死亡状態に変更
+            status.SetState(PlayerStatus.State.Dead);
 
-                //アニメーション
-                animator.SetTrigger("exhausted");
-                Debug.Log("死");
-
-                //死亡ボイス再生
-                this.GetComponent<PlayerSEManager>().DeathVoice();
-            }
+            dead.SetDeadState(PlayerDead.DeadState.exhausted);
         }
     }
 }

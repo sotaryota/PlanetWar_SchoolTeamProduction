@@ -6,21 +6,33 @@ public class PlayerDead : MonoBehaviour
 {
     [SerializeField]
     PlayerStatus status;
+    [SerializeField]
+    Animator animator;
 
     public enum DeadState
     {
-        Collide,
-        Fire,
+        Hit,      //惑星ヒット
+        die,      //惑星ヒットで死亡
+        exhausted, //太陽のスリップダメージで死亡
+        non
     };
 
     [SerializeField]
     DeadState deadState;
+
+    //追加
+    private bool firstInFlag;
 
     public void SetDeadState(DeadState state)
     {
         deadState = state;
     }
 
+    private void Start()
+    {
+        deadState = DeadState.non;
+        firstInFlag = true;
+    }
 
     private void Update()
     {
@@ -35,14 +47,51 @@ public class PlayerDead : MonoBehaviour
     void Dead()
     {
         if (!DeadCheck()) { return; }
+        if (!firstInFlag) { return; }
+        firstInFlag = false;
 
         switch (deadState)
         {
-            case DeadState.Collide:
+            //惑星ヒット時-----------------------------------------------
+            case DeadState.Hit:
+                Debug.Log("惑星ヒット");
+
+                //ダメージボイス再生
+                this.GetComponent<PlayerSEManager>().DamageVoice();
+
+                //アニメーション
+                animator.SetTrigger("damage");
                 break;
-            case DeadState.Fire:
+
+            //惑星ヒットでの死亡時-----------------------------------------
+            case DeadState.die:
+                Debug.Log("惑星ヒットにより死亡");
+
+                //アニメーション
+                animator.SetTrigger("die");
+
+                //死亡ボイス再生
+                this.GetComponent<PlayerSEManager>().DeathVoice();
+                break;
+
+            //太陽のスリップダメージでの死亡時-----------------------------
+            case DeadState.exhausted:
+                Debug.Log("スリップダメージにより死亡");
+
+                //アニメーション
+                animator.SetTrigger("exhausted");
+
+                //死亡ボイス再生
+                this.GetComponent<PlayerSEManager>().DeathVoice();
+                break;
+
+            default:
+                firstInFlag = true;
                 break;
         }
+
+        print("PlayerDead:追加部分");
+        
     }
 }
 
