@@ -18,6 +18,7 @@ public class PlanetRotateAround : PlanetStateFanction
     [Header("‰ñ“]‘¬“x")]
     [SerializeField]
     private float moveSpeed;
+    public void SetMoveSpeed(float value) { moveSpeed = value; }
 
     [Header("‰ñ“]Ž²")]
     [SerializeField]
