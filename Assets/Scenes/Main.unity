@@ -797,7 +797,7 @@ MonoBehaviour:
   planet: {fileID: 0}
   planetPos: {fileID: 136330727}
   playerStatus: {fileID: 176521504}
-  waitTime: 3
+  waitTime: 2
   throwFlag: 1
 --- !u!114 &176521500
 MonoBehaviour:
@@ -896,7 +896,7 @@ MonoBehaviour:
   power_: 100
   defense_: 0
   speed_: 100
-  nowState: 0
+  nowState: 5
 --- !u!95 &176521505
 Animator:
   serializedVersion: 4
@@ -1715,6 +1715,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03827b41e5af9e24fb41bfc035184e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStatus:
+  - {fileID: 2131034315}
+  - {fileID: 176521504}
   startText: {fileID: 2126606213}
   playerMove:
   - {fileID: 2131034320}
@@ -1962,7 +1965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3231756939396751192, guid: 78be02cb2983f7c48890ed22a8dba977, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3231756939396751192, guid: 78be02cb2983f7c48890ed22a8dba977, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4856,7 +4859,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 100
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -4894,9 +4897,9 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
+  m_AreaSize: {x: 100, y: 100}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
@@ -4913,7 +4916,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848489403}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 8.44, z: 0}
+  m_LocalPosition: {x: 0, y: -13.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5513,9 +5516,9 @@ MonoBehaviour:
   playerID_: 0
   hp_: 100
   power_: 100
-  defense_: 0
+  defense_: 500
   speed_: 100
-  nowState: 0
+  nowState: 5
 --- !u!114 &2131034316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5707,7 +5710,7 @@ MonoBehaviour:
   planet: {fileID: 0}
   planetPos: {fileID: 1931134583}
   playerStatus: {fileID: 2131034315}
-  waitTime: 3
+  waitTime: 2
   throwFlag: 1
 --- !u!136 &2131034322
 CapsuleCollider:
@@ -6497,7 +6500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 1036296713050448093}
-  gametime: 100
+  gametime: 180
 --- !u!1 &1036296713267022984
 GameObject:
   m_ObjectHideFlags: 0

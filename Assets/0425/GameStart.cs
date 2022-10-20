@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameStart : MonoBehaviour
 {
     [SerializeField]
+    PlayerStatus[] playerStatus;
+
+    [SerializeField]
     GameObject startText;
 
     [SerializeField]
@@ -43,6 +46,7 @@ public class GameStart : MonoBehaviour
         for (int i = 0; i < playerMove.Length; ++i)
         {
             playerMove[i].enabled = true;
+            playerStatus[i].SetState(PlayerStatus.State.Stay);
         }
         startText.SetActive(false);
     }

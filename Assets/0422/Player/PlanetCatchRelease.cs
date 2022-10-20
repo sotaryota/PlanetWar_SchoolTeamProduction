@@ -80,9 +80,6 @@ public class PlanetCatchRelease : MonoBehaviour
             //アニメーション
             animator.SetTrigger("throw");
 
-            //プレイヤをStay状態にする
-            playerStatus.SetState(PlayerStatus.State.Stay);
-
             //硬直時間
             StartCoroutine("ThrowWait");
         }
@@ -97,6 +94,9 @@ public class PlanetCatchRelease : MonoBehaviour
         throwFlag = false;
 
         yield return new WaitForSeconds(waitTime);
+
+        //プレイヤをStay状態にする
+        playerStatus.SetState(PlayerStatus.State.Stay);
 
         throwFlag = true;
     }
