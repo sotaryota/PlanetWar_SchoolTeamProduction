@@ -43,11 +43,15 @@ public class PlanetConfluence : PlanetStateFanction
                 cPosX = Random.Range(minMax.x, minMax.y);
                 cPosZ = Random.Range(-minMax.y, minMax.y);
             }
-            targetPos = new Vector3(cPosX, 0, cPosZ);
-            moveFlag = true;
-            startPos = transform.position;
 
+            targetPos = new Vector3(cPosX, 0, cPosZ);
         }
+
+        //移動開始
+        moveFlag = true;
+
+        //初期位置保存
+        startPos = transform.position;
 
         //開始時間を得る
         startTime = Time.time;

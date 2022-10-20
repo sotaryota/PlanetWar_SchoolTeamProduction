@@ -8,10 +8,12 @@ public class TimeToCreate : MonoBehaviour
     [SerializeField]
     private GameObject[] objects = new GameObject[1];
 
-    [Header("生成する時間")]
+    [Header("タイマースクリプトと生成する時間")]
+    [SerializeField]
+    private Timer timerScript;
     [SerializeField]
     private float createTime;
-    private float nowTime;
+    //private float nowTime;
 
     [Header("惑星生成時に与える情報")]
     [SerializeField]
@@ -20,14 +22,15 @@ public class TimeToCreate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nowTime = 0;
+        //nowTime = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        nowTime += Time.deltaTime;
-        if(nowTime >= createTime)
+        //nowTime += Time.deltaTime;
+        //if(nowTime >= createTime)
+        if (timerScript.GetNowTime() <= createTime)
         {
             for(int i = 0; i < objects.Length; ++i)
             {

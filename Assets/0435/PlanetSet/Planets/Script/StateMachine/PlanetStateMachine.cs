@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlanetStateMachine : MonoBehaviour
 {
-    private float deleteDistance = 75;
+    private float deleteDistance = 50.5f;
 
     //ステートマシンの実装
     public enum State
