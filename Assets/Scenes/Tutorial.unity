@@ -531,6 +531,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7439314732507782263, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c1a23da2d0be6a46b4656a9dcf59313, type: 3}
 --- !u!1 &663138061
@@ -741,9 +745,9 @@ MonoBehaviour:
   TutorialImage: {fileID: 2019958191}
   selectSprites:
   - {fileID: 21300000, guid: a311e6c6538ff884ca96b22d69efabef, type: 3}
-  - {fileID: 21300000, guid: a5e27bc008a59784aa49eab7c4075396, type: 3}
+  - {fileID: 21300000, guid: 3d792b0887ac5dc498edf11a7681f771, type: 3}
   - {fileID: 21300000, guid: 30f6f7aaa1bbc2b45ab0e4988cb2b6b9, type: 3}
-  - {fileID: 21300000, guid: 2cb3b8246c079cd4199cd76749bc3f32, type: 3}
+  - {fileID: 21300000, guid: 45e30e73bb9387c4ab648de15de77413, type: 3}
   - {fileID: 21300000, guid: 3d0937eb8e733984ba644376c032e096, type: 3}
   - {fileID: 0}
   button_Images:
@@ -784,11 +788,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d59b9a828fd2b334ea3429903d066ca3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
