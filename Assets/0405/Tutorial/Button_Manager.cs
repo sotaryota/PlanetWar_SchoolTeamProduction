@@ -28,6 +28,12 @@ public class Button_Manager : MonoBehaviour
     AudioSource audioSource;
     public AudioClip selectSound;
 
+    [Header("月と爆発")]
+    [SerializeField] private GameObject moon;
+    [SerializeField] private GameObject bombEffect;
+    [SerializeField] private AudioClip bombSound;
+    [SerializeField] private Vector3 effectSize;
+
     //選択中のボタン
     int nowSelecting;
     //直前に選択したボタン
@@ -121,13 +127,31 @@ public class Button_Manager : MonoBehaviour
 
     void BackMenu()
     {
+        //一番下を選択中
         if (nowSelecting == button_Images.Length - 1)
         {
+            //画像を非表示
+            TutorialImage.color = new Color(1, 1, 1, 0);
+
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
                 selectLock = true;
+
+                moon.SetActive(false);
+
+                GameObject effect = Instantiate(bombEffect);
+
+                //エフェクトのサイズとポジションを指定
+                effect.transform.localScale = effectSize;
+                effect.transform.position = moon.transform.position;
+                audioSource.PlayOneShot(bombSound);
+
                 fadeScript.fademode = true;
             }
+        }
+        else
+        {
+            TutorialImage.color = new Color(1, 1, 1, 1);
         }
     }
 }

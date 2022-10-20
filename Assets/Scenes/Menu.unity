@@ -1550,7 +1550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pitch: 1
-  volume: 0.5
+  volume: 1
   audioSource: {fileID: 1836263062}
   selectSE: {fileID: 8300000, guid: 819d229affe1aa34682ba4d829a732bc, type: 3}
   decisionSE: {fileID: 8300000, guid: 3585f39e50fce2b46b3d3003147b8e4b, type: 3}
