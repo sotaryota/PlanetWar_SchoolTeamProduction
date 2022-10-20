@@ -139,8 +139,8 @@ public class PlanetCatchRelease : MonoBehaviour
                 //ボタンが押された
                 if (gamepad.buttonSouth.isPressed)
                 {
-                    //プレイヤーのパワーよりも惑星の重さが小さい
-                    if (other.GetComponent<PlanetData>().GetWeight() <= playerStatus.GetPower() + (playerStatus.GetDefense() / 5))   
+                    //プレイヤーのパワー+ウェイトよりも惑星の重さが小さい
+                    if (other.GetComponent<PlanetData>().GetWeight() <= playerStatus.GetPower() + (playerStatus.GetDefense()))   
                     {
                         //プレイヤをCatch状態に
                         playerStatus.SetState(PlayerStatus.State.Catch);
