@@ -8,21 +8,30 @@ public class Timer : MonoBehaviour
     [SerializeField] private Text timer;
     [SerializeField]
     private float gametime = 1.0f;
+    private float nowTime;
+    public void SetMaxTime() { nowTime = gametime; }
+    public float GetNowTime() { return nowTime; }
+
+    private void Awake()
+    {
+        SetMaxTime();
+        timer.text = nowTime.ToString("F1");
+    }
 
     private void Update()
     {
-        if (gametime > 0)
+        if (nowTime > 0)
         {
-            gametime -= Time.deltaTime;
+            nowTime -= Time.deltaTime;
         }
-        else { gametime = 0; }
+        else { nowTime = 0; }
 
         // è¨êî1åÖÇ…ÇµÇƒï\é¶
-        timer.text = gametime.ToString("F1");
+        timer.text = nowTime.ToString("F1");
     }
 
     public float getTime()
     {
-        return gametime;
+        return nowTime;
     }
 }

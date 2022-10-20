@@ -93,7 +93,8 @@ MonoBehaviour:
   - scripts:
     - {fileID: 528640702652183534}
     - {fileID: 1594586610}
-  - scripts: []
+  - scripts:
+    - {fileID: 1594586610}
   - scripts:
     - {fileID: 136718746404950664}
     - {fileID: 528640702652183532}
@@ -199,7 +200,7 @@ MonoBehaviour:
   player1: {fileID: 0}
   player2: {fileID: 0}
   distance: 3.5
-  damage: 2
+  damage: 3
 --- !u!1001 &4054733537804370281
 PrefabInstance:
   m_ObjectHideFlags: 0

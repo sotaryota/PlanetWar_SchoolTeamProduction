@@ -23,6 +23,8 @@ public class PlanetIdleHitChain : PlanetStateFanction
 
             GetComponent<PlanetThrowMove>().ThrowMoveSetting(throwSpeed, Quaternion.LookRotation(throwAngle).eulerAngles);
 
+            GetComponent<PlanetThrowHit>().catchPlayerID = 2;
+
             //ìäÇ∞èÛë‘Ç÷
             return PlanetStateMachine.State.Throw;
         }

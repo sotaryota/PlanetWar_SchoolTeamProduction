@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameStart : MonoBehaviour
 {
     [SerializeField]
+    PlayerStatus[] playerStatus;
+
+    [SerializeField]
     GameObject startText;
 
     [SerializeField]
@@ -12,6 +15,12 @@ public class GameStart : MonoBehaviour
 
     [SerializeField]
     Animator[] animator = new Animator[2];
+
+    [SerializeField]
+    float startTime;
+
+    [SerializeField]
+    Timer timerScript;
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +37,16 @@ public class GameStart : MonoBehaviour
     IEnumerator StartGame()
     {
         startText.SetActive(true);
+        timerScript.enabled = false;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(startTime);
+
+        timerScript.enabled = true;
 
         for (int i = 0; i < playerMove.Length; ++i)
         {
             playerMove[i].enabled = true;
+            playerStatus[i].SetState(PlayerStatus.State.Stay);
         }
         startText.SetActive(false);
     }

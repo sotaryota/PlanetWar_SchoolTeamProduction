@@ -34,8 +34,9 @@ public class PlayerEscape : MonoBehaviour
 
     private void EscapeMove()
     {
+        if (playerStatus.GetState() != PlayerStatus.State.Move && playerStatus.GetState() != PlayerStatus.State.Stay) { return; }
         //Xボタンを押したとき
-        if(gamepad.buttonWest.wasPressedThisFrame)
+        if (gamepad.buttonWest.wasPressedThisFrame)
         {
             //ディフェンスパラメーターが回避コストより多いか
             if(playerStatus.GetDefense() >= escapeCost)
