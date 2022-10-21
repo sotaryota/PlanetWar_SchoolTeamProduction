@@ -26,14 +26,14 @@ public class Param_UI : MonoBehaviour
     }
     public void powerTextUpdate(float power)
     {
-        powerText.text = power.ToString();
+        powerText.text = power.ToString("F0");
     }
     public void defenceTextUpdate(float defence)
     {
-        defenceText.text = defence.ToString();
+        defenceText.text = defence.ToString("F0");
     }
     public void speedTextUpdate(float speed)
     {
-        speedText.text = speed.ToString();
+        speedText.text = speed.ToString("F0");
     }
 }
