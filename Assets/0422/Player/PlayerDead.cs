@@ -6,8 +6,8 @@ public class PlayerDead : MonoBehaviour
 {
     [SerializeField]
     PlayerStatus status;
-    [SerializeField]
-    Animator animator;
+    [SerializeField] 
+    PlayerAnimManeger playerAnimator;
 
     //死亡時の判定用
     private bool firstInFlag;
@@ -63,7 +63,7 @@ public class PlayerDead : MonoBehaviour
                 Debug.Log("惑星ヒットにより死亡");
 
                 //アニメーション
-                animator.SetTrigger("die");
+                playerAnimator.PlayAnimDie();
 
                 //死亡ボイス再生
                 this.GetComponent<PlayerSEManager>().DeathVoice();
@@ -74,7 +74,7 @@ public class PlayerDead : MonoBehaviour
                 Debug.Log("スリップダメージにより死亡");
 
                 //アニメーション
-                animator.SetTrigger("exhausted");
+                playerAnimator.PlayAnimExhausted();
 
                 //死亡ボイス再生
                 this.GetComponent<PlayerSEManager>().DeathVoice();

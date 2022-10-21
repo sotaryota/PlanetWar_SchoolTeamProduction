@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     PlanetCatchRelease planetCatchRelease;
     Rigidbody rb;
     Gamepad gamepad;
-    private Animator animator;
+    [SerializeField] PlayerAnimManeger playerAnimator;
 
     private Vector3 moveDirection;
     private float horizontal;
@@ -25,8 +25,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
-        rb       = GetComponent<Rigidbody>();
-        animator = this.GetComponent<Animator>();
+        rb  = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -111,10 +110,10 @@ public class PlayerMove : MonoBehaviour
                 //待機ボイスのカウントを0に
                 waitcnt = 0.0f;
 
-                animator.SetTrigger("appeal");
+                playerAnimator.PlayAnimAppeal();
             }
             //アニメーション
-            animator.SetBool("run", false);
+            playerAnimator.PlayAnimSetRun(false);
         }
         else 
         {
@@ -134,7 +133,7 @@ public class PlayerMove : MonoBehaviour
             waitcnt = 0.0f;
 
             //アニメーション
-            animator.SetBool("run",true);
+            playerAnimator.PlayAnimSetRun(true);
 
         }
     }

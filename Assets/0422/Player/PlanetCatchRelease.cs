@@ -15,18 +15,13 @@ public class PlanetCatchRelease : MonoBehaviour
 
     [Header("ステータス管理スクリプト")]
     public PlayerStatus playerStatus;
-    private Animator animator;
+    [SerializeField] PlayerAnimManeger playerAnimator;
 
     [Header("惑星を投げた時のウェイト")]
     [SerializeField]
     private float waitTime;
     public bool throwFlag = true;
 
-
-    private void Start()
-    {
-        animator = this.GetComponent<Animator>();
-    }
         // Update is called once per frame
     void Update()
     {
@@ -78,7 +73,7 @@ public class PlanetCatchRelease : MonoBehaviour
             playerStatus.PowerUp(30);
 
             //アニメーション
-            animator.SetTrigger("throw");
+            playerAnimator.PlayAnimThrow();
 
             //硬直時間
             StartCoroutine("ThrowWait");
