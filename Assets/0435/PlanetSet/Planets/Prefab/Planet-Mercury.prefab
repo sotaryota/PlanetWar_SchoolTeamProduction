@@ -73,7 +73,7 @@ MonoBehaviour:
   autoDataSettingMode: 0
   settingRate_Damage: 1
   settingRate_Weight: 1
-  damage: 25
+  damage: 15
   weight: 200
 --- !u!114 &8510207096650645470
 MonoBehaviour:

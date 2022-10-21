@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoScaleSettingMode: 1
-  scaleRange: {x: 0.5, y: 2}
+  scaleRange: {x: 0.5, y: 1.5}
   autoDataSettingMode: 1
   settingRate_Damage: 4
   settingRate_Weight: 1
