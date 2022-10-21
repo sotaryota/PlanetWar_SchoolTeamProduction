@@ -157,8 +157,8 @@ MonoBehaviour:
   autoDataSettingMode: 0
   settingRate_Damage: 0
   settingRate_Weight: 0
-  damage: 10
-  weight: 1
+  damage: 20
+  weight: 400
 --- !u!114 &2356254561142352614
 MonoBehaviour:
   m_ObjectHideFlags: 0
