@@ -12,6 +12,9 @@ public class CameraController : MonoBehaviour
 
     public Camera playerCamera;
 
+    [SerializeField] AudioSource audioSource;
+    //[SerializeField] AudioClip audioClip;
+
     public GameObject player;
     public GameObject cameraController;
 
@@ -41,6 +44,8 @@ public class CameraController : MonoBehaviour
 
         playerID = playerStatus.GetID();  //プレイヤーIDを取得
 
+        audioSource = GetComponent<AudioSource>();
+
         rockOnImage.SetActive(false);
     }
 
@@ -65,6 +70,8 @@ public class CameraController : MonoBehaviour
             //R1ボタンが押されたら
             if (lockOnButton.wasPressedThisFrame)
             {
+                print($"[{UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder}] 1PisPressed = {lockOnButton.isPressed}");
+                audioSource.Play();
                 //ロックオン状態を切り替える
                 LockOn();
             }
@@ -85,6 +92,7 @@ public class CameraController : MonoBehaviour
             if (lockOnButton.wasPressedThisFrame)
             {
                 print($"[{UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder}] 2PisPressed = {lockOnButton.isPressed}");
+                audioSource.Play();
                 //ロックオン状態を切り替える
                 LockOn();
             }
@@ -147,6 +155,7 @@ public class CameraController : MonoBehaviour
             else
             {
                 rockOnImage.SetActive(false);
+                rockOnImage.transform.position = new Vector3(-1000, -1000, -1000);
                 lockOn1P = false;
             }
         }
@@ -161,6 +170,7 @@ public class CameraController : MonoBehaviour
             else
             {
                 rockOnImage.SetActive(false);
+                rockOnImage.transform.position = new Vector3(-1000, -1000, -1000);
                 lockOn2P = false;
             }
         }
