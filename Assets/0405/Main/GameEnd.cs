@@ -24,6 +24,12 @@ public class GameEnd : MonoBehaviour
     [SerializeField]
     private GameObject player2Object;
 
+    [SerializeField]
+    Rigidbody[] rb = new Rigidbody[2];
+
+    [SerializeField]
+    PlayerMove[] playerMove = new PlayerMove[2];
+
     public PlayerStatus ps1;
     public PlayerStatus ps2;
     private float pLifeSave1 = 0, pLifeSave2 = 0;
@@ -51,6 +57,7 @@ public class GameEnd : MonoBehaviour
     {
         ps1 = player1Object.GetComponent<PlayerStatus>();
         ps2 = player2Object.GetComponent<PlayerStatus>();
+
 
         istimeup = true;
         mode = EndMode.Non;
@@ -99,6 +106,14 @@ public class GameEnd : MonoBehaviour
         {
             if (timer.getTime() <= 0 && (mode == EndMode.Non || mode == EndMode.timeUp))
             {              
+                //プレイヤーを操作不可にする
+                for(int i =0; i < playerMove.Length; ++i)
+                {
+                    playerMove[i].enabled = false;
+                    rb[i].velocity = Vector3.zero;
+                }
+                
+
                 stopTime += Time.unscaledDeltaTime;
                 //HPが多かった方は勝利アニメーションを、少なかったほうは敗北アニメーションを呼び出す
                 if (istimeup)
