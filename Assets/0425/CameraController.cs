@@ -51,18 +51,11 @@ public class CameraController : MonoBehaviour
             gamepad = Gamepad.all[playerID];
         }
 
-        StickValue();
-        rotateCmaeraAngle();
-
-        //ロックオン-------------------------------------------------------------------------------
+        //ロックオン画像の位置を変更
         Vector3 targetViewportPoint = playerCamera.WorldToViewportPoint(rockOnPos.transform.position);
-
         targetViewportPoint.z = 0;
-
         Vector3 screen = RectTransformUtility.WorldToScreenPoint(playerCamera, rockOnPos.transform.position);
-
         rockOnImage.transform.position =screen;
-
         //R1ボタンでロックオンする
         ButtonControl lockOnButton = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.RightShoulder];
 
@@ -79,6 +72,11 @@ public class CameraController : MonoBehaviour
             {
                 cameraController.transform.LookAt(target.transform.position); //ロックオン対象の方向に向き続ける
             }
+            else
+            {
+                StickValue();
+                rotateCameraAngle();
+            }
         }
         //2P
         else if (playerID == 1)
@@ -93,6 +91,11 @@ public class CameraController : MonoBehaviour
             if (lockOn2P)
             {
                 cameraController.transform.LookAt(target.transform.position); //ロックオン対象の方向に向き続ける
+            }
+            else
+            {
+                StickValue();
+                rotateCameraAngle();
             }
         }
 
@@ -170,7 +173,7 @@ public class CameraController : MonoBehaviour
     }
 
     //カメラの回転
-    private void rotateCmaeraAngle()
+    private void rotateCameraAngle()
     {
         transform.eulerAngles += new Vector3(0, horizontal * rotateSpeed * Time.deltaTime);
     }
