@@ -27,7 +27,7 @@ public class PlanetWeightCheck : MonoBehaviour
         text.SetActive(true);
 
         //‚Ä‚é‚ÌF‚Æ‚Ä‚È‚¢‚ÌF‚ğİ’è
-        if (this.GetComponent<PlayerStatus>().GetPower() >= other.GetComponent<PlanetData>().GetWeight())
+        if (GetComponent<PlayerStatus>().GetPower() + GetComponent<PlayerStatus>().GetDefense() >= other.GetComponent<PlanetData>().GetWeight())
         {
             weightText.color = isCatchColor;
         }

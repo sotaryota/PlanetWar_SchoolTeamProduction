@@ -1422,7 +1422,8 @@ MonoBehaviour:
   nowSelect: 0
   beforeSelect: 0
   fadeInterval: 0.8
-  fadeSpeed: 1
+  fadeInSpeed: 1.5
+  fadeOutSpeed: 1
   fadeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1836263061
 MonoBehaviour:

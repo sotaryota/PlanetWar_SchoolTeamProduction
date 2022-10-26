@@ -21,6 +21,10 @@ public class FadeManager : MonoBehaviour
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture2D.whiteTexture);
         }
     }
+    public void SceneFadeIn(float speed)
+    {
+        StartCoroutine(FadeIn(speed));
+    }
 
     /// <summary>
     /// シーンを切り替えたい時に呼び出す
@@ -31,17 +35,17 @@ public class FadeManager : MonoBehaviour
     /// <param name="g">緑</param>
     /// <param name="b">青</param>
     /// <param name="interval">フェードのスピード</param>
-    public void FadeOut(string scene, float r, float g, float b, float interval)
+    public void FadeSceneChange(string scene, float r, float g, float b, float interval)
     {
         color = new Color(r, g, b);
-        StartCoroutine(Fade(scene, interval));
+        StartCoroutine(FadeOut(scene, interval));
     }
 
     //-----------------------------------------------------
     //関数内で呼び出される処理
     //-----------------------------------------------------
 
-    private IEnumerator Fade(string scene, float speed)
+    private IEnumerator FadeOut(string scene, float speed)
     {
         isFade = true;
 
@@ -59,5 +63,21 @@ public class FadeManager : MonoBehaviour
 
         //フェードインが終了次第シーン切り替え
         SceneManager.LoadScene(scene);
+    }
+    private IEnumerator FadeIn(float speed)
+    {
+        isFade = true;
+
+        //フェードのカウント
+        float fadetime = 0;
+
+        //フェードアウト
+        while (fadetime <= speed)
+        {
+            //透明度を少しずつ上げる
+            alpha = Mathf.Lerp(1f, 0f, fadetime / speed);
+            fadetime += Time.deltaTime;
+            yield return 0;
+        }
     }
 }
