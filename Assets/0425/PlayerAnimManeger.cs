@@ -32,6 +32,17 @@ public class PlayerAnimManeger : MonoBehaviour
     {
         animator.SetTrigger("appeal");
     }
+    //タイムアップ時の勝利モーション
+    public void PlayAnimWin()
+    {
+        animator.SetTrigger("win");
+    }
+    //タイムアップ時の敗北モーション
+    public void PlayAnimLose()
+    {
+        animator.SetTrigger("lose");
+    }
+
     //走行モーション
     public void PlayAnimSetRun(bool AnimFlag)
     {
@@ -42,4 +53,6 @@ public class PlayerAnimManeger : MonoBehaviour
     {
         animator.SetBool("dodge", AnimFlag);
     }
+
+    
 }
