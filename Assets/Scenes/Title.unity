@@ -592,6 +592,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
     - target: {fileID: 2250854499484961524, guid: 74a6c4e570206f04bbb15540217e3a47, type: 3}
+      propertyPath: buttonFlag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250854499484961524, guid: 74a6c4e570206f04bbb15540217e3a47, type: 3}
       propertyPath: fadeScript
       value: 
       objectReference: {fileID: 744099752}

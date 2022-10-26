@@ -14,24 +14,29 @@ public class GoMenu : MonoBehaviour
     AudioSource audioSource;
     public AudioClip se;
     public AudioClip voice;
+    [SerializeField] private bool buttonFlag;
+
     void Update()
     {
+        if (buttonFlag)
+        {
+            for (int i = 0; i < Gamepad.all.Count; ++i)
+            {
+                gamepad = Gamepad.all[i];
+                //押したらフェード開始
+                if (gamepad.buttonSouth.wasPressedThisFrame)
+                {
+                    buttonFlag = false;
+                    fadeScript.fademode = true;
+                    audioSource.PlayOneShot(se);
+                    //audioSource.PlayOneShot(voice);
+                }
+            }
+        }
         //フェード終わったら遷移
         if (fadeScript.FadeOut())
         {
             SceneManager.LoadScene("Menu");
-        }
-
-        for (int i = 0; i < Gamepad.all.Count; ++i)
-        {
-            gamepad = Gamepad.all[i];
-            //押したらフェード開始
-            if (gamepad.buttonSouth.wasPressedThisFrame)
-            {
-                fadeScript.fademode = true;
-                audioSource.PlayOneShot(se);
-                //audioSource.PlayOneShot(voice);
-            }
         }
 
     }

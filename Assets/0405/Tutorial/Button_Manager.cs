@@ -124,7 +124,7 @@ public class Button_Manager : MonoBehaviour
             }
         }
     }
-
+    [SerializeField] private bool buttonFlag;
     void BackMenu()
     {
         //一番下を選択中
@@ -132,21 +132,23 @@ public class Button_Manager : MonoBehaviour
         {
             //画像を非表示
             TutorialImage.color = new Color(1, 1, 1, 0);
-
-            if (gamepad.buttonSouth.wasPressedThisFrame)
+            if (buttonFlag)
             {
-                selectLock = true;
+                if (gamepad.buttonSouth.wasPressedThisFrame)
+                {
+                    selectLock = true;
+                    buttonFlag = false;
+                    moon.SetActive(false);
 
-                moon.SetActive(false);
+                    GameObject effect = Instantiate(bombEffect);
 
-                GameObject effect = Instantiate(bombEffect);
+                    //エフェクトのサイズとポジションを指定
+                    effect.transform.localScale = effectSize;
+                    effect.transform.position = moon.transform.position;
+                    audioSource.PlayOneShot(bombSound);
 
-                //エフェクトのサイズとポジションを指定
-                effect.transform.localScale = effectSize;
-                effect.transform.position = moon.transform.position;
-                audioSource.PlayOneShot(bombSound);
-
-                fadeScript.fademode = true;
+                    fadeScript.fademode = true;
+                }
             }
         }
         else

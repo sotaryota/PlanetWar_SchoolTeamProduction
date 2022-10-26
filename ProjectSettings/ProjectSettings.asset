@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Planet War
+  companyName: Anonymous
+  productName: "2022\u5E74\u5EA6 \u5352\u696D\u5236\u4F5C PlanetWar \u300C\u3042\u3001\u5C0F\u67F3\u5148\u751F\u304A\u306F\u3088\u3046\u3054\u3056\u3044\u307E\u3059\u3002\u300D"
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.12156863, g: 0.12156863, b: 0.1254902, a: 1}

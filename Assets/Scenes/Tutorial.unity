@@ -763,6 +763,7 @@ MonoBehaviour:
   bombEffect: {fileID: 1121192042590650, guid: a9d226a2599f43b4d9b52e96dc6dae9b, type: 3}
   bombSound: {fileID: 8300000, guid: 1b8c34ba45d35dd41b0bdf3fc351ce21, type: 3}
   effectSize: {x: 0.5, y: 0.5, z: 0.5}
+  buttonFlag: 1
 --- !u!4 &750552952
 Transform:
   m_ObjectHideFlags: 0
