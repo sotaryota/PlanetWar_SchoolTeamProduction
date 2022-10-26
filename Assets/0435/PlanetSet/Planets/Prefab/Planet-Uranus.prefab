@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerPos: {x: 0, y: 0, z: 0}
-  moveSpeed: 30
+  moveSpeed: 12.5
   moveX: 0
   moveY: 1
   moveZ: 0

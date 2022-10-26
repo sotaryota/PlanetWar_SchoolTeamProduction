@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 3929594186853327716}
   - component: {fileID: 3950657384700566610}
   - component: {fileID: 3950657384700566611}
+  - component: {fileID: 5858280227349396256}
   m_Layer: 0
   m_Name: Planet-StoneWhite
   m_TagString: Planet
@@ -176,6 +177,7 @@ MonoBehaviour:
     - {fileID: 3929594186853327716}
     - {fileID: 3950657384700566610}
     - {fileID: 3950657384700566611}
+    - {fileID: 5858280227349396256}
   - scripts: []
   - scripts:
     - {fileID: 8501010191051081677}
@@ -272,6 +274,18 @@ MonoBehaviour:
   moveX: 0
   moveY: 1
   moveZ: 0
+--- !u!114 &5858280227349396256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2348929136717588641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4708661422026b647866a75dca79edc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2283694846897497169
 PrefabInstance:
   m_ObjectHideFlags: 0

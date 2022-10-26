@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 7171351054324023498}
   - component: {fileID: 7196458822672039932}
   - component: {fileID: 7196458822672039933}
+  - component: {fileID: 6466228792839810710}
   m_Layer: 0
   m_Name: Planet-StoneSand
   m_TagString: Planet
@@ -176,6 +177,7 @@ MonoBehaviour:
     - {fileID: 7171351054324023498}
     - {fileID: 7196458822672039932}
     - {fileID: 7196458822672039933}
+    - {fileID: 6466228792839810710}
   - scripts: []
   - scripts:
     - {fileID: 2374768526131799139}
@@ -272,6 +274,18 @@ MonoBehaviour:
   moveX: 0
   moveY: 1
   moveZ: 0
+--- !u!114 &6466228792839810710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8472513642616818447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4708661422026b647866a75dca79edc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5385223797919533055
 PrefabInstance:
   m_ObjectHideFlags: 0
