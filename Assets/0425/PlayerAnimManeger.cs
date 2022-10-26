@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerAnimManeger : MonoBehaviour
+{
+    [SerializeField]
+    Animator animator;
+
+    //投げモーション
+    public void PlayAnimThrow()
+    {
+        animator.SetTrigger("throw");
+    }
+    //ダメージモーション
+    public void PlayAnimDamage()
+    {
+        animator.SetTrigger("damage");
+    }
+    //惑星での死亡モーション
+    public void PlayAnimDie()
+    {
+        animator.SetTrigger("die");
+    }
+    //太陽での死亡モーション
+    public void PlayAnimExhausted()
+    {
+        animator.SetTrigger("exhausted");
+    }
+    //挑発モーション
+    public void PlayAnimAppeal()
+    {
+        animator.SetTrigger("appeal");
+    }
+    //走行モーション
+    public void PlayAnimSetRun(bool AnimFlag)
+    {
+        animator.SetBool("run", AnimFlag);
+    }
+    //回避モーション
+    public void PlayAnimSetDodge(bool AnimFlag)
+    {
+        animator.SetBool("dodge", AnimFlag);
+    }
+}

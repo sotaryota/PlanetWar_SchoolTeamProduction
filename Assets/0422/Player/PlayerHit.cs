@@ -6,9 +6,10 @@ public class PlayerHit : MonoBehaviour
 {
     private Animator animator;
     PlayerStatus status;
-    [SerializeField]
-    PlayerDead dead;
+    [SerializeField] PlayerDead dead;
+    [SerializeField] PlayerEscape escape;
 
+    [SerializeField] PlayerAnimManeger playerAnimator;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -49,7 +50,7 @@ public class PlayerHit : MonoBehaviour
             status.Damage(other.GetComponent<PlanetData>().GetDamage());
 
             //ディフェンスを上昇
-            status.DefenseUp(25 + (other.GetComponent<PlanetData>().GetDamage() / 5));
+            status.DefenseUp(other.GetComponent<PlanetData>().GetDamage() + escape.GetCost());
 
             //HPが0以下の時
             if (status.GetHp() <= 0)
@@ -70,7 +71,7 @@ public class PlayerHit : MonoBehaviour
                 this.GetComponent<PlayerSEManager>().DamageVoice();
 
                 //アニメーション
-                animator.SetTrigger("damage");
+                playerAnimator.PlayAnimDamage();
             }
         }
     }

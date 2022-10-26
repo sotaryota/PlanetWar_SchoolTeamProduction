@@ -797,6 +797,7 @@ MonoBehaviour:
   planet: {fileID: 0}
   planetPos: {fileID: 136330727}
   playerStatus: {fileID: 176521504}
+  playerAnimator: {fileID: 176521511}
   waitTime: 2
   throwFlag: 1
 --- !u!114 &176521500
@@ -814,6 +815,7 @@ MonoBehaviour:
   myCamera: {fileID: 357414224}
   playerStatus: {fileID: 176521504}
   planetCatchRelease: {fileID: 176521499}
+  playerAnimator: {fileID: 176521511}
 --- !u!114 &176521501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -841,6 +843,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dead: {fileID: 176521510}
+  escape: {fileID: 176521509}
+  playerAnimator: {fileID: 176521511}
 --- !u!114 &176521503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1056,9 +1060,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStatus: {fileID: 176521504}
+  playerAnimator: {fileID: 176521511}
   player: {fileID: 176521497}
-  escapeSpeed: 5
+  escapeSpeed: 6
   escapeCost: 30
+  escapeCoolTime: 1
+  isEscape: 1
 --- !u!114 &176521510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,8 +1079,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 176521504}
-  animator: {fileID: 176521505}
+  playerAnimator: {fileID: 176521511}
   deadState: 2
+--- !u!114 &176521511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176521497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5145715fbbbb90468c95195b36f3f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 176521505}
 --- !u!1 &188736672
 GameObject:
   m_ObjectHideFlags: 0
@@ -5668,6 +5688,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dead: {fileID: 2131034325}
+  escape: {fileID: 2131034324}
+  playerAnimator: {fileID: 2131034326}
 --- !u!114 &2131034318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5793,6 +5815,7 @@ MonoBehaviour:
   myCamera: {fileID: 1757743387}
   playerStatus: {fileID: 2131034315}
   planetCatchRelease: {fileID: 2131034321}
+  playerAnimator: {fileID: 2131034326}
 --- !u!114 &2131034321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5808,6 +5831,7 @@ MonoBehaviour:
   planet: {fileID: 0}
   planetPos: {fileID: 1931134583}
   playerStatus: {fileID: 2131034315}
+  playerAnimator: {fileID: 2131034326}
   waitTime: 2
   throwFlag: 1
 --- !u!136 &2131034322
@@ -5853,9 +5877,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStatus: {fileID: 2131034315}
+  playerAnimator: {fileID: 2131034326}
   player: {fileID: 2131034312}
-  escapeSpeed: 5
+  escapeSpeed: 6
   escapeCost: 30
+  escapeCoolTime: 1
+  isEscape: 1
 --- !u!114 &2131034325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5869,8 +5896,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   status: {fileID: 2131034315}
-  animator: {fileID: 2131034314}
+  playerAnimator: {fileID: 2131034326}
   deadState: 0
+--- !u!114 &2131034326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131034312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5145715fbbbb90468c95195b36f3f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2131034314}
 --- !u!1001 &2137602111
 PrefabInstance:
   m_ObjectHideFlags: 0
