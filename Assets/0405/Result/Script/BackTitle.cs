@@ -17,7 +17,6 @@ public class BackTitle : MonoBehaviour
         if (gamepad.buttonSouth.isPressed)
         {
             fadeScript.fademode = true;
-            SceneManager.LoadScene("Menu");
         }
         else if (fadeScript.FadeOut())
         {
