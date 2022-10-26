@@ -6,12 +6,9 @@ using UnityEngine.InputSystem;
 public class PlanetRotate : MonoBehaviour
 {
     Gamepad gamepad;
-    [SerializeField]
-    private MenuManager menuManager;
-    [SerializeField]
-    private GameObject PlanetGameObject;
-    [SerializeField]
-    private MenuSEManager menuSE;
+    [SerializeField] private MenuManager menuManager;
+    [SerializeField] private GameObject PlanetGameObject;
+    [SerializeField] private MenuSEManager menuSE;
     public bool buttonLock;  //選択中にカーソルを動かせないように
 
     private void Awake()
@@ -54,8 +51,8 @@ public class PlanetRotate : MonoBehaviour
     //回転処理
     //--------------------------------------
 
-    [SerializeField]
-    private float rotateTime; //回転時間
+    //回転時間
+    [SerializeField] private float rotateTime; 
 
     //右回転
     IEnumerator RightRotation()
@@ -80,10 +77,10 @@ public class PlanetRotate : MonoBehaviour
         menuManager.menuDatas[(int)menuManager.beforeSelect].menuImage.SetActive(false);
 
         //惑星の回転、rotateTimeの時間で回転速度を変更
-        for (int i = 0; i < 90; ++i)
+        for (int i = 0; i < 45; ++i)
         {
-            PlanetGameObject.transform.Rotate(0,-1,0);
-            yield return new WaitForSeconds(rotateTime / 90);
+            PlanetGameObject.transform.Rotate(0,-2,0);
+            yield return new WaitForSeconds(1 / (rotateTime * 60));
         }
 
         //選択したメニューに応じた画像を表示
@@ -119,10 +116,10 @@ public class PlanetRotate : MonoBehaviour
         menuManager.menuDatas[(int)menuManager.beforeSelect].menuImage.SetActive(false);
 
         //惑星の回転、rotateTimeの時間で回転速度を変更
-        for (int i = 0; i < 90; ++i)
+        for (int i = 0; i < 45; ++i)
         {
-            PlanetGameObject.transform.Rotate(0, 1, 0);
-            yield return new WaitForSeconds(rotateTime / 90);
+            PlanetGameObject.transform.Rotate(0, 2, 0);
+            yield return new WaitForSeconds(1 / (rotateTime * 60));
         }
 
         //選択したメニューに応じた画像を表示
