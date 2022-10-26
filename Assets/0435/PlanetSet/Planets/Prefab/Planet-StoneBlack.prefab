@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 7424188206012995851}
   - component: {fileID: 7445355309536667197}
   - component: {fileID: 7445355309536667196}
+  - component: {fileID: 2593181389381036158}
   m_Layer: 0
   m_Name: Planet-StoneBlack
   m_TagString: Planet
@@ -176,6 +177,7 @@ MonoBehaviour:
     - {fileID: 7424188206012995851}
     - {fileID: 7445355309536667197}
     - {fileID: 7445355309536667196}
+    - {fileID: 2593181389381036158}
   - scripts: []
   - scripts:
     - {fileID: 2628164272509353378}
@@ -272,6 +274,18 @@ MonoBehaviour:
   moveX: 0
   moveY: 1
   moveZ: 0
+--- !u!114 &2593181389381036158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8149730111701406414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4708661422026b647866a75dca79edc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5634542565952757310
 PrefabInstance:
   m_ObjectHideFlags: 0
