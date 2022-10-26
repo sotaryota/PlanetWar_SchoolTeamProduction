@@ -11,6 +11,8 @@ public class MenuManager : MonoBehaviour
         Tutorial,   //チュートリアル
         Title,      //タイトル
         End,        //ゲーム終了
+
+        enumEnd
     };
 
     [System.Serializable]

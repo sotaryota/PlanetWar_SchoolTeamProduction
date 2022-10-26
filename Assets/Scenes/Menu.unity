@@ -1441,7 +1441,7 @@ MonoBehaviour:
   PlanetGameObject: {fileID: 1449134477}
   menuSE: {fileID: 1836263063}
   buttonLock: 0
-  rotateTime: 0.5
+  rotateTime: 2
 --- !u!82 &1836263062
 AudioSource:
   m_ObjectHideFlags: 0
