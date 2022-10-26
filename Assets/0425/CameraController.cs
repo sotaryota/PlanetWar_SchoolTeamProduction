@@ -103,7 +103,7 @@ public class CameraController : MonoBehaviour
         //transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * 5.0f);
 
 
-        //ズーム処理お試し-----------------------------------------------------------------------------------------
+        /*ズーム処理お試し-----------------------------------------------------------------------------------------
         ButtonControl SettlementScene = gamepad[UnityEngine.InputSystem.LowLevel.GamepadButton.LeftShoulder]; //L1ボタン
 
         //Flagを切り替え
@@ -120,6 +120,7 @@ public class CameraController : MonoBehaviour
             }
         }
 
+        */
         //-----------------------------------------------------------------------------------------------------------
     }
 
@@ -131,7 +132,7 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, target.transform.position, 0.1f); //相手にズーム
+            //transform.position = Vector3.Lerp(transform.position, target.transform.position, 0.1f); //相手にズーム
         }
     }
     void LockOn()
