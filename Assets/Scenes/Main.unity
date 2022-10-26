@@ -238,6 +238,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 176521497}
     - target: {fileID: 1625353948694401759, guid: 3a848eb1931c3f04da18ba7154443e36, type: 3}
+      propertyPath: rb.Array.data[0]
+      value: 
+      objectReference: {fileID: 2131034323}
+    - target: {fileID: 1625353948694401759, guid: 3a848eb1931c3f04da18ba7154443e36, type: 3}
+      propertyPath: rb.Array.data[1]
+      value: 
+      objectReference: {fileID: 176521508}
+    - target: {fileID: 1625353948694401759, guid: 3a848eb1931c3f04da18ba7154443e36, type: 3}
       propertyPath: camera.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -249,6 +257,14 @@ PrefabInstance:
       propertyPath: camera.Array.data[1]
       value: 
       objectReference: {fileID: 357414224}
+    - target: {fileID: 1625353948694401759, guid: 3a848eb1931c3f04da18ba7154443e36, type: 3}
+      propertyPath: playerMove.Array.data[0]
+      value: 
+      objectReference: {fileID: 2131034320}
+    - target: {fileID: 1625353948694401759, guid: 3a848eb1931c3f04da18ba7154443e36, type: 3}
+      propertyPath: playerMove.Array.data[1]
+      value: 
+      objectReference: {fileID: 176521500}
     - target: {fileID: 1625353948694401759, guid: 3a848eb1931c3f04da18ba7154443e36, type: 3}
       propertyPath: finishCameraPos.Array.size
       value: 2
@@ -5850,7 +5866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 89f520625376d4e408b3c3d9b4b463f9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 89f520625376d4e408b3c3d9b4b463f9, type: 3}
       propertyPath: m_LocalRotation.y
@@ -5858,7 +5874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 89f520625376d4e408b3c3d9b4b463f9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 89f520625376d4e408b3c3d9b4b463f9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7188,7 +7204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 1036296713050448093}
-  gametime: 180
+  gametime: 3
 --- !u!1 &1036296713267022984
 GameObject:
   m_ObjectHideFlags: 0
