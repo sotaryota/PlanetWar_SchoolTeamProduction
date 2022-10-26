@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -36,6 +34,17 @@ public class MenuManager : MonoBehaviour
     public SelectMenu nowSelect;    //現在選択されているメニュー
     public SelectMenu beforeSelect; //選択中のメニューを一時保存
 
+    [Header("フェード")]
+    [SerializeField] private float fadeInterval; // フェードまでの間隔
+    [SerializeField] private float fadeInSpeed; // フェードのスピード
+    [SerializeField] private float fadeOutSpeed; // フェードのスピード
+    [SerializeField] private Color fadeColor;    // フェードのカラー
+
+
+    private void Awake()
+    {
+        fade.SceneFadeIn(fadeInSpeed);
+    }
     private void Start()
     {
         nowSelect = SelectMenu.Start;
@@ -81,11 +90,6 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-
-    [SerializeField] private float fadeInterval; // フェードまでの間隔
-    [SerializeField] private float fadeSpeed;    // フェードのスピード
-    [SerializeField] private Color fadeColor;    // フェードのカラー
-
     IEnumerator SceneChange(string sceneName)
     {
         planetRotate.buttonLock = false;
@@ -94,7 +98,7 @@ public class MenuManager : MonoBehaviour
 
         if (sceneName != "End")
         {
-            fade.FadeOut(sceneName, fadeColor.r, fadeColor.g, fadeColor.b, fadeSpeed);
+            fade.FadeSceneChange(sceneName, fadeColor.r, fadeColor.g, fadeColor.b, fadeOutSpeed);
         }
         else
         {
