@@ -13,7 +13,7 @@ public class ShowResult : MonoBehaviour
     [SerializeField]
     private GameObject param_UI;
     [SerializeField]
-    private Text powerText, defenceText, speedText, winnerText;
+    private Text powerText, defenceText, speedText;
     [SerializeField]
     private GameObject pleaseStart;
 
@@ -157,15 +157,15 @@ public class ShowResult : MonoBehaviour
 
     private void PowerTextUpdate(float power)
     {
-        powerText.text = power.ToString();
+        powerText.text = power.ToString("F0");
     }
     private void defenceTextUpdate(float defence)
     {
-        defenceText.text = defence.ToString();
+        defenceText.text = defence.ToString("F0");
     }
     private void speedTextUpdate(float speed)
     {
-        speedText.text = speed.ToString();
+        speedText.text = speed.ToString("F0");
     }
     private void WinPlayerTextUpdate(int winplayernum)
     {
