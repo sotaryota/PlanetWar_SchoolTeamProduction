@@ -7,7 +7,9 @@ public class GameSettings : MonoBehaviour
     [System.Serializable]
     public struct Data
     {
+        [Header("スカイボックス（必須）")]
         public Material skybox;
+        [Header("BGM（なくても可）")]
         public AudioClip BGM;
     }
 
@@ -15,7 +17,7 @@ public class GameSettings : MonoBehaviour
     [SerializeField]
     private Data[] data = new Data[1];
 
-    [Header("AudioSource")]
+    [Header("AudioSource（なくても可）")]
     [SerializeField]
     private AudioSource audioSource; 
 
@@ -26,8 +28,13 @@ public class GameSettings : MonoBehaviour
         //スカイボックス変更
         RenderSettings.skybox = data[num].skybox;
         //BGMを鳴らす
-        audioSource.clip = data[num].BGM;
-        audioSource.Play();
+        if (audioSource)
+        {
+            if (data[num].BGM)
+            {
+                audioSource.clip = data[num].BGM;
+            }
+            audioSource.Play();
+        }
     }
-
 }

@@ -6,17 +6,18 @@ using UnityEngine.UI;
 public class Fade : MonoBehaviour
 {
     public Image image;
+
+    //falseで透明 trueで黒くなる
     public bool fademode;
 
-    // Start is called before the first frame update
     void Start()
     {
         image.color = Color.black;
-        //falseだとaが透明になる trueだと黒になる
+
+        //falseで透明 trueで黒くなる
         fademode = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         float alpha = image.color.a;
@@ -30,13 +31,17 @@ public class Fade : MonoBehaviour
         }
         image.color = new Color(0, 0, 0, alpha);
     }
-
+    
+    //フェードアウトが終わったらTrueを返す
+    //シーンの終わりに使う
     public bool FadeOut()
     {
         float alpha = image.color.a;
         return fademode && alpha >= 0.95f;
     }
 
+    //フェードインが終わったらTrueを返す
+    //シーンの初めに使う
     public bool FadeIn()
     {
         float alpha = image.color.a;
