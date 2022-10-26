@@ -189,7 +189,7 @@ MonoBehaviour:
   settingRate_Damage: 1
   settingRate_Weight: 1
   damage: 10
-  weight: 100
+  weight: 120
 --- !u!114 &4285370082834127336
 MonoBehaviour:
   m_ObjectHideFlags: 0
