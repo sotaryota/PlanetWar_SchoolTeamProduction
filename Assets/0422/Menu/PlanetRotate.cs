@@ -47,20 +47,19 @@ public class PlanetRotate : MonoBehaviour
         }
     }
 
-    //--------------------------------------
+    //--------------------------------------------------------------
     //回転処理
-    //--------------------------------------
+    //for文だと回転スピードがスペック依存になるので回転方法を模索中
+    //--------------------------------------------------------------
 
-    //回転時間
-    [SerializeField] private float rotateTime; 
+    [Header("惑星の回転")]
+    [SerializeField] private float rotateTime;  //回転時間
+    [SerializeField] private float rotateAngle; //回転量
 
     //右回転
     IEnumerator RightRotation()
     {
-        //回転をロック
         buttonLock = false;
-        
-        //効果音
         menuSE.SelectSE();
         
         //回転をループさせるif
@@ -76,10 +75,12 @@ public class PlanetRotate : MonoBehaviour
         //表示されていた画像を消す
         menuManager.menuDatas[(int)menuManager.beforeSelect].menuImage.SetActive(false);
 
-        //惑星の回転、rotateTimeの時間で回転速度を変更
-        for (int i = 0; i < 45; ++i)
+        //惑星の回転
+        for (int i = 0; i < (90 / rotateAngle); ++i)
         {
-            PlanetGameObject.transform.Rotate(0,-2,0);
+            PlanetGameObject.transform.Rotate(0,-rotateAngle, 0);
+
+            //rotateTimeの値が1なら等速、大きくなる程速く回転する
             yield return new WaitForSeconds(1 / (rotateTime * 60));
         }
 
@@ -89,17 +90,13 @@ public class PlanetRotate : MonoBehaviour
         //現在選択中のメニューを保存
         menuManager.beforeSelect = menuManager.nowSelect;
 
-        //ロック解除
         buttonLock = true;
     }
 
     //左回転
     IEnumerator LeftRotation()
     {
-        //回転をロック
         buttonLock = false;
-
-        //効果音
         menuSE.SelectSE();
 
         //回転をループさせるif
@@ -115,10 +112,13 @@ public class PlanetRotate : MonoBehaviour
         //表示されていた画像を消す
         menuManager.menuDatas[(int)menuManager.beforeSelect].menuImage.SetActive(false);
 
-        //惑星の回転、rotateTimeの時間で回転速度を変更
-        for (int i = 0; i < 45; ++i)
+        //惑星の回転
+        for (int i = 0; i < (90 / rotateAngle); ++i)
         {
-            PlanetGameObject.transform.Rotate(0, 2, 0);
+            //1フレーム毎の回転
+            PlanetGameObject.transform.Rotate(0, rotateAngle, 0);
+
+            //rotateTimeの値が1なら等速、大きくなる程速く回転する
             yield return new WaitForSeconds(1 / (rotateTime * 60));
         }
 
@@ -128,7 +128,6 @@ public class PlanetRotate : MonoBehaviour
         //現在選択中のメニューを保存
         menuManager.beforeSelect = menuManager.nowSelect;
 
-        //ロック解除
         buttonLock = true;
     }
 }
