@@ -40,10 +40,41 @@ public class FadeManager : MonoBehaviour
         color = new Color(r, g, b);
         StartCoroutine(FadeOut(scene, interval));
     }
+    /// <summary>
+    /// ゲーム終了時に呼び出す
+    /// RGBでカラー指定し移行したいシーン名を引数にしてフェードアウト
+    /// </summary>
+    /// <param name="scene">シーン名</param>
+    /// <param name="r">赤</param>
+    /// <param name="g">緑</param>
+    /// <param name="b">青</param>
+    /// <param name="interval">フェードのスピード</param>
+    public void GameEndFadeOut(string scene, float r, float g, float b, float interval)
+    {
+        color = new Color(r, g, b);
+        StartCoroutine(GameEndFade(scene, interval));
+    }
 
     //-----------------------------------------------------
     //関数内で呼び出される処理
     //-----------------------------------------------------
+
+    private IEnumerator FadeIn(float speed)
+    {
+        isFade = true;
+
+        //フェードのカウント
+        float fadetime = 0;
+
+        //フェードアウト
+        while (fadetime <= speed)
+        {
+            //透明度を少しずつ上げる
+            alpha = Mathf.Lerp(1f, 0f, fadetime / speed);
+            fadetime += Time.deltaTime;
+            yield return 0;
+        }
+    }
 
     private IEnumerator FadeOut(string scene, float speed)
     {
@@ -64,7 +95,7 @@ public class FadeManager : MonoBehaviour
         //フェードインが終了次第シーン切り替え
         SceneManager.LoadScene(scene);
     }
-    private IEnumerator FadeIn(float speed)
+    private IEnumerator GameEndFade(string scene, float speed)
     {
         isFade = true;
 
@@ -75,9 +106,12 @@ public class FadeManager : MonoBehaviour
         while (fadetime <= speed)
         {
             //透明度を少しずつ上げる
-            alpha = Mathf.Lerp(1f, 0f, fadetime / speed);
+            alpha = Mathf.Lerp(0f, 1f, fadetime / speed);
             fadetime += Time.deltaTime;
             yield return 0;
         }
+
+        //フェードインが終了したらゲーム終了
+        Application.Quit();
     }
 }

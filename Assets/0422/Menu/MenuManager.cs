@@ -104,7 +104,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            Application.Quit();
+            fade.GameEndFadeOut(sceneName, fadeColor.r, fadeColor.g, fadeColor.b, fadeOutSpeed);
         }
     }
 }
