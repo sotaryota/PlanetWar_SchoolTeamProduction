@@ -22,10 +22,17 @@ public class GameStart : MonoBehaviour
     [SerializeField]
     Timer timerScript;
 
+    [SerializeField] PlayerAnimManeger[] playerAnimator = new PlayerAnimManeger[2];
+
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < playerMove.Length; ++i)
+        for (int i = 0; i < 2; ++i)
+        {
+            playerAnimator[i].PlayAnimSetReady(Random.Range(0, 2));
+        }
+
+        for (int i = 0; i < playerMove.Length; ++i)
         {
             //animator[i].SetTrigger("start");
             playerMove[i].enabled = false;
@@ -38,6 +45,8 @@ public class GameStart : MonoBehaviour
     {
         startText.SetActive(true);
         timerScript.enabled = false;
+
+
 
         yield return new WaitForSeconds(startTime);
 
