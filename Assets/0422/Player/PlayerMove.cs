@@ -47,6 +47,7 @@ public class PlayerMove : MonoBehaviour
         StickValue();
         PlayerLook();
         MoveOrStop();
+
     }
 
     //--------------------------------------

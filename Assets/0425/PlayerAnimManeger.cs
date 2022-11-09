@@ -57,5 +57,10 @@ public class PlayerAnimManeger : MonoBehaviour
     public void PlayAnimSetTrain(bool AnimFlag)
     {
         animator.SetBool("train", AnimFlag);
-    }  
+    }
+    //開始時の準備モーション
+    public void PlayAnimSetReady(int Anim)
+    {
+        animator.SetInteger("ready",Anim);
+    }
 }

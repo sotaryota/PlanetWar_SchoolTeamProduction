@@ -2070,6 +2070,9 @@ MonoBehaviour:
   - {fileID: 176521505}
   startTime: 2.5
   timerScript: {fileID: 1036296713050448095}
+  playerAnimator:
+  - {fileID: 2131034326}
+  - {fileID: 176521511}
 --- !u!4 &530451192
 Transform:
   m_ObjectHideFlags: 0
