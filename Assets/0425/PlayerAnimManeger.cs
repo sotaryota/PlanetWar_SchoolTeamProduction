@@ -53,6 +53,9 @@ public class PlayerAnimManeger : MonoBehaviour
     {
         animator.SetBool("dodge", AnimFlag);
     }
-
-    
+    //‹ØƒgƒŒƒ‚[ƒVƒ‡ƒ“
+    public void PlayAnimSetTrain(bool AnimFlag)
+    {
+        animator.SetBool("train", AnimFlag);
+    }  
 }
