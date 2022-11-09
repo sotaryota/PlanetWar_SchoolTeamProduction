@@ -11,9 +11,14 @@ public class PlanetRotate : MonoBehaviour
     [SerializeField] private MenuSEManager menuSE;
     public bool buttonLock;  //‘I‘ğ’†‚ÉƒJ[ƒ\ƒ‹‚ğ“®‚©‚¹‚È‚¢‚æ‚¤‚É
 
+    [Header("˜f¯‚Ì‰ñ“]")]
+    [SerializeField] private float rotateSpeed;    //‰ñ“]ŠÔ
+    [SerializeField] private float planetDistance; //˜f¯‚ÌŠÔŠu
+
     private void Awake()
     {
         buttonLock = true;
+        planetDistance = 360 / (int)MenuManager.SelectMenu.enumEnd;
     }
     // Update is called once per frame
     void Update()
@@ -52,9 +57,6 @@ public class PlanetRotate : MonoBehaviour
     //for•¶‚¾‚Æ‰ñ“]ƒXƒs[ƒh‚ªƒXƒyƒbƒNˆË‘¶‚É‚È‚é‚Ì‚Å‰ñ“]•û–@‚ğ–Íõ’†
     //--------------------------------------------------------------
 
-    [Header("˜f¯‚Ì‰ñ“]")]
-    [SerializeField] private float rotateTime;  //‰ñ“]ŠÔ
-    [SerializeField] private float rotateAngle; //‰ñ“]—Ê
 
     //‰E‰ñ“]
     IEnumerator RightRotation()
@@ -63,9 +65,9 @@ public class PlanetRotate : MonoBehaviour
         menuSE.SelectSE();
         
         //‰ñ“]‚ğƒ‹[ƒv‚³‚¹‚éif
-        if (menuManager.nowSelect >= MenuManager.SelectMenu.End)
+        if (menuManager.nowSelect >= MenuManager.SelectMenu.enumEnd - 1)
         {
-            menuManager.nowSelect = MenuManager.SelectMenu.Start;
+            menuManager.nowSelect = MenuManager.SelectMenu.Story;
         }
         else
         {
@@ -76,12 +78,12 @@ public class PlanetRotate : MonoBehaviour
         menuManager.menuDatas[(int)menuManager.beforeSelect].menuImage.SetActive(false);
 
         //˜f¯‚Ì‰ñ“]
-        for (int i = 0; i < (90 / rotateAngle); ++i)
+        for (int i = 0; i < planetDistance; ++i)
         {
-            PlanetGameObject.transform.Rotate(0,-rotateAngle, 0);
+            PlanetGameObject.transform.Rotate(0,-1, 0);
 
             //rotateTime‚Ì’l‚ª1‚È‚ç“™‘¬A‘å‚«‚­‚È‚é’ö‘¬‚­‰ñ“]‚·‚é
-            yield return new WaitForSeconds(1 / (rotateTime * 60));
+            yield return new WaitForSeconds(1 / (rotateSpeed * 60));
         }
 
         //‘I‘ğ‚µ‚½ƒƒjƒ…[‚É‰‚¶‚½‰æ‘œ‚ğ•\¦
@@ -100,9 +102,9 @@ public class PlanetRotate : MonoBehaviour
         menuSE.SelectSE();
 
         //‰ñ“]‚ğƒ‹[ƒv‚³‚¹‚éif
-        if (menuManager.nowSelect <= MenuManager.SelectMenu.Start)
+        if (menuManager.nowSelect <= MenuManager.SelectMenu.Story)
         {
-            menuManager.nowSelect = MenuManager.SelectMenu.End;
+            menuManager.nowSelect = MenuManager.SelectMenu.enumEnd - 1;
         }
         else
         {
@@ -112,14 +114,15 @@ public class PlanetRotate : MonoBehaviour
         //•\¦‚³‚ê‚Ä‚¢‚½‰æ‘œ‚ğÁ‚·
         menuManager.menuDatas[(int)menuManager.beforeSelect].menuImage.SetActive(false);
 
+
         //˜f¯‚Ì‰ñ“]
-        for (int i = 0; i < (90 / rotateAngle); ++i)
+        for (int i = 0; i < planetDistance; ++i)
         {
             //1ƒtƒŒ[ƒ€–ˆ‚Ì‰ñ“]
-            PlanetGameObject.transform.Rotate(0, rotateAngle, 0);
+            PlanetGameObject.transform.Rotate(0, 1, 0);
 
             //rotateTime‚Ì’l‚ª1‚È‚ç“™‘¬A‘å‚«‚­‚È‚é’ö‘¬‚­‰ñ“]‚·‚é
-            yield return new WaitForSeconds(1 / (rotateTime * 60));
+            yield return new WaitForSeconds(1 / (rotateSpeed * 60));
         }
 
         //‘I‘ğ‚µ‚½ƒƒjƒ…[‚É‰‚¶‚½‰æ‘œ‚ğ•\¦
