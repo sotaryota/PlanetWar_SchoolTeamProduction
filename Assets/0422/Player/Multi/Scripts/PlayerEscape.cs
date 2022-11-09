@@ -46,7 +46,7 @@ public class PlayerEscape : MonoBehaviour
         if (!isEscape) { return; }
 
         //Xボタンを押したとき
-        if (gamepad.buttonWest.wasPressedThisFrame)
+        if (gamepad.leftShoulder.wasPressedThisFrame)
         {
             //ディフェンスパラメーターが回避コストより多いか
             if(playerStatus.GetDefense() >= escapeCost)
