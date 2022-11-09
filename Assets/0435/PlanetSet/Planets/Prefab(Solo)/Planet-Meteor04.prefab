@@ -220,9 +220,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df51465437254ee49ae75d83dec0ab3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 0
-  minMax: {x: 0, y: 0}
+  player: {fileID: 0}
+  crashEffect: {fileID: 4166501065544445604, guid: aa8bd5faa6a4c9b48a97dbc6a87740e6, type: 3}
+  moveTime: 20
   targetPos: {x: 0, y: 0, z: 0}
+  Range_X: {x: -10, y: 10}
+  posY: 0
+  Range_Z: {x: -10, y: 10}
 --- !u!1001 &4621524971631673523
 PrefabInstance:
   m_ObjectHideFlags: 0
