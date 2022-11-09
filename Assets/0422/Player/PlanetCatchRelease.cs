@@ -109,6 +109,9 @@ public class PlanetCatchRelease : MonoBehaviour
             PlanetStateMachine stateMachine = planet.GetComponent<PlanetStateMachine>();
             stateMachine.SetState(PlanetStateMachine.State.Idle);
 
+            //ƒvƒŒƒCƒ„‚ğStayó‘Ô‚É‚·‚é
+            playerStatus.SetState(PlayerStatus.State.Stay);
+
             //•Ï”‚ğ‹ó‚É‚·‚é
             planet = null;
         }
