@@ -93,7 +93,7 @@ public class PlayerMove_Solo : MonoBehaviour
             //15秒に1回処理ボイスを鳴らす
             if (waitcnt > 15.0f)
             {
-                this.GetComponent<PlayerSEManager>().WaitVoice();
+                //this.GetComponent<PlayerSEManager>().WaitVoice();
 
                 //待機ボイスのカウントを0に
                 waitcnt = 0.0f;
