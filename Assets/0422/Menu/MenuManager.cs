@@ -7,10 +7,11 @@ public class MenuManager : MonoBehaviour
 {
     public enum SelectMenu
     {
-        Start,      //スタート
+        Story,      //ソロモード
         Tutorial,   //チュートリアル
         Title,      //タイトル
         End,        //ゲーム終了
+        Versus,     //バーサス
 
         enumEnd
     };
@@ -49,7 +50,7 @@ public class MenuManager : MonoBehaviour
     }
     private void Start()
     {
-        nowSelect = SelectMenu.Start;
+        nowSelect = SelectMenu.Story;
         beforeSelect = nowSelect;
     }
 
