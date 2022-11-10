@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlanetStateMachine : MonoBehaviour
 {
-    private float deleteDistance = 50.5f;
+    public GameObject middleObject;//中心オブジェクト
+    public float deleteDistance = 50.5f;//射程距離
 
     //ステートマシンの実装
     public enum State
@@ -120,10 +121,18 @@ public class PlanetStateMachine : MonoBehaviour
 
     private void PlantDestroyByPos()
     {
+        //中心座標（中心オブジェクト座標）から指定距離離れたら削除
         Vector3 pos = this.transform.position;
+        if (middleObject)
+        {
+            //中心としたオブジェクトからの距離を求める
+            pos -= middleObject.transform.position;
+        }
 
         if (pos.x >= deleteDistance ||
             pos.x <= -deleteDistance ||
+            pos.y >= deleteDistance ||
+            pos.y <= -deleteDistance ||
             pos.z >= deleteDistance ||
             pos.z <= -deleteDistance)
         {
