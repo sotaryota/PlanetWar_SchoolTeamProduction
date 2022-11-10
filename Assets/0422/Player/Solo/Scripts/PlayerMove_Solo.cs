@@ -111,9 +111,12 @@ public class PlayerMove_Solo : MonoBehaviour
                 //プレイヤをMove状態に
                 playerStatus.SetState(PlayerStatus_Solo.State.Move);
             }
-            //移動処理
-            rb.AddForce(moveDirection * Time.deltaTime - rb.velocity * (Time.deltaTime * 20));
 
+            if(rb.velocity.magnitude <= 10.0f)
+            {
+                //移動処理
+                rb.AddForce(moveDirection * Time.deltaTime - rb.velocity * (Time.deltaTime * 20));
+            }
             //待機ボイスのカウントを0に
             waitcnt = 0.0f;
 
