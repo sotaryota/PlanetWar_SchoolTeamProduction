@@ -16,6 +16,10 @@ public class PlanetStateMachine_Editor : Editor
 
         PlanetStateMachine psm = target as PlanetStateMachine;
 
+        //射程距離の設定
+        psm.middleObject = (GameObject)EditorGUILayout.ObjectField("中心とするオブジェクト（null = Vector3.zero）", psm.middleObject, typeof(GameObject), true);
+        psm.deleteDistance = EditorGUILayout.FloatField("射程距離", psm.deleteDistance);
+
         //最初の状態を設定
         psm.firstState = (PlanetStateMachine.State)EditorGUILayout.EnumPopup("初期の状態", psm.firstState);
         psm.nowState = (PlanetStateMachine.State)EditorGUILayout.EnumPopup("現在の状態", psm.nowState);
@@ -36,14 +40,19 @@ public class PlanetStateMachine_Editor : Editor
                             true
                             );
                 }
+
+                Color saveColor = GUI.backgroundColor;
+                GUI.backgroundColor = Color.cyan;
                 if (GUILayout.Button("追加"))
                 {
                     Array.Resize(ref psm.data[i].GetScripts(), psm.data[i].GetScriptLength() + 1);
                 }
-                else if (GUILayout.Button("削除"))
+                GUI.backgroundColor = Color.magenta;
+                if (GUILayout.Button("削除"))
                 {
                     Array.Resize(ref psm.data[i].GetScripts(), psm.data[i].GetScriptLength() - 1);
                 }
+                GUI.backgroundColor = saveColor;
 
                 EditorGUILayout.Space();
             }

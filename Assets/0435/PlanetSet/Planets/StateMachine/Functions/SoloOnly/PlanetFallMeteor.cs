@@ -6,10 +6,6 @@ public class PlanetFallMeteor : PlanetStateFanction
 {
     private Vector3 startPos;//初期位置（Lerpで使用）
 
-    [Header("プレイヤー位置参照")]
-    [SerializeField]
-    private GameObject player;
-
     [Header("接地時エフェクト")]
     [SerializeField]
     private GameObject crashEffect;
@@ -21,7 +17,7 @@ public class PlanetFallMeteor : PlanetStateFanction
 
     [Header("目標座標（「0,0,0」の場合、座標を自動設定）")]
     [SerializeField]
-    private Vector3 targetPos;
+    public Vector3 targetPos;
     [Header("目標座標設定")]
     [SerializeField]
     private Vector2 Range_X;
@@ -40,10 +36,8 @@ public class PlanetFallMeteor : PlanetStateFanction
             TargetPosSetting();
         }
 
-        if (!player)
-        {
-            print("PlanetFallMeteor:プレイヤーを参照すると隕石がプレイヤー直近に落下しなくなります");
-        }
+        //初期位置保存
+        startPos = transform.position;
 
         //移動開始
         moveFlag = true;
@@ -75,14 +69,6 @@ public class PlanetFallMeteor : PlanetStateFanction
                 moveFlag = false;
             }
 
-            //ターゲット座標とプレイヤーが近かった場合に座標再設定
-            if (player)
-            {
-                if ((player.transform.position - targetPos).magnitude >= 3)
-                {
-                    TargetPosSetting();
-                }
-            }
         }
 
         return PlanetStateMachine.State.Now;
@@ -90,9 +76,6 @@ public class PlanetFallMeteor : PlanetStateFanction
 
     void TargetPosSetting()
     {
-        //初期位置保存
-        startPos = transform.position;
-
         //座標はランダム
         float cPosX = Random.Range(Range_X.x, Range_X.y);
         float cPosZ = Random.Range(Range_Z.x, Range_Z.y);
