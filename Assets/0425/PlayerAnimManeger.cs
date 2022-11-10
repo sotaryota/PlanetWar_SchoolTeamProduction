@@ -48,6 +48,11 @@ public class PlayerAnimManeger : MonoBehaviour
     {
         animator.SetBool("run", AnimFlag);
     }
+    //走行モーション
+    public void PlayAnimSetJump(bool AnimFlag)
+    {
+        animator.SetBool("jump", AnimFlag);
+    }
     //回避モーション
     public void PlayAnimSetDodge(bool AnimFlag)
     {
