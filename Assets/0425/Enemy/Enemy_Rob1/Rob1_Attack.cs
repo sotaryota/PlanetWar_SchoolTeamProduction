@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Rob1_Attack : MonoBehaviour
 {
-    [Header("キャッチする惑星と位置")]
+    [Header("生成する惑星のPrefabと位置")]
+    [SerializeField]
+    private GameObject planetPrefab;
     [SerializeField]
     private GameObject planet;
     [SerializeField]
-    private GameObject planetPos;
+    private GameObject handPos;
 
     [Header("ステータス管理スクリプト")]
     public Rob1_Status rob1Status;
@@ -23,6 +25,9 @@ public class Rob1_Attack : MonoBehaviour
     [SerializeField]
     int attackInterval;
 
+    float attackDelay;
+    bool attackGenerate = true;
+
     // Update is called once per frame
     void Update()
     {
@@ -31,14 +36,14 @@ public class Rob1_Attack : MonoBehaviour
             attackCount += Time.deltaTime;
 
             //所持している惑星の位置を腕の位置に
-            planet.transform.position = planetPos.transform.position;
+            planet.transform.position = handPos.transform.position;
 
-            if(attackCount > attackInterval)
+            if (attackCount > attackInterval)
             {
                 PlanetThrow();
             }
         }
-        else 
+        else
         {
             attackCount = 0;
         }
@@ -54,30 +59,30 @@ public class Rob1_Attack : MonoBehaviour
         if (!planet) return;
 
 
-            PlanetStateMachine stateMachine = planet.GetComponent<PlanetStateMachine>();
-            PlanetThrowMove throwMove = planet.GetComponent<PlanetThrowMove>();
+        PlanetStateMachine stateMachine = planet.GetComponent<PlanetStateMachine>();
+        PlanetThrowMove throwMove = planet.GetComponent<PlanetThrowMove>();
 
-            //惑星の状態をThrowにする
-            stateMachine.SetState(PlanetStateMachine.State.Throw);
+        //惑星の状態をThrowにする
+        stateMachine.SetState(PlanetStateMachine.State.Throw);
 
-            //惑星のスピードと飛ぶ方向を決める
-            Vector3 throwSpeed = new Vector3(0, 0, 10);
-            Vector3 playerAngle = this.transform.rotation.eulerAngles;
-            Vector3 throwAngle = new Vector3(0, playerAngle.y, 0);
-            throwMove.ThrowMoveSetting(throwSpeed, throwAngle);
+        //惑星のスピードと飛ぶ方向を決める
+        Vector3 throwSpeed = new Vector3(0, 0, 10);
+        Vector3 playerAngle = this.transform.rotation.eulerAngles;
+        Vector3 throwAngle = new Vector3(0, playerAngle.y, 0);
+        throwMove.ThrowMoveSetting(throwSpeed, throwAngle);
 
-            //投げるボイス再生
-            this.GetComponent<PlayerSEManager>().ThrowVoice();
+        //投げるボイス再生
+        //this.GetComponent<PlayerSEManager>().ThrowVoice();
 
-            //変数を空にして飛ばす
-            planet = null;
+        //変数を空にして飛ばす
+        planet = null;
 
-            //アニメーション
-            rob1Animator.PlayRob1AnimThrow();
+        //アニメーション
+        rob1Animator.PlayRob1AnimThrow();
 
-            //硬直時間
-            StartCoroutine("ThrowWait");
-  
+        //硬直時間
+        StartCoroutine("ThrowWait");
+
     }
 
     //--------------------------------------
@@ -100,7 +105,7 @@ public class Rob1_Attack : MonoBehaviour
     //攻撃用惑星の生成
     //--------------------------------------
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         //硬直時間中は処理をしない
         if (!throwFlag) return;
@@ -108,16 +113,32 @@ public class Rob1_Attack : MonoBehaviour
         //惑星を所持している場合は処理をしない
         if (planet) { return; }
 
+        attackDelay += Time.deltaTime;
+
         //プレイヤをCatch状態に
         rob1Status.SetState(Rob1_Status.State.Catch);
 
-        //惑星の生成
+        //アニメーション
+        if (attackGenerate)
+        {
+            rob1Animator.PlayRob1AnimGeneration();
+            attackGenerate = false;
+        }
+        
 
-        //惑星を所持
-        planet = other.gameObject;
- 
-        //プラネットの状態をCatch状態にする           
-        planet.GetComponent<PlanetStateMachine>().SetState(PlanetStateMachine.State.Catch);
+        if (attackDelay > 3)
+        {
+            //惑星の生成
+            GameObject go = Instantiate(planetPrefab);
+            //惑星を所持
+            go.transform.position = handPos.transform.position;
+            planet = go;
 
+            //プラネットの状態をCatch状態にする           
+            go.GetComponent<PlanetStateMachine>().SetState(PlanetStateMachine.State.Catch);
+
+            attackDelay = 0;
+            attackGenerate = true;
         }
     }
+}
