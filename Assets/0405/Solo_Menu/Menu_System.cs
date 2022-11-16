@@ -132,12 +132,15 @@ public class Menu_System : MonoBehaviour
                     case (int)menu.NewGame:
                         //fadeScript.fademode = true;
                         Time.timeScale = 1.0f;
+                        SceneManager.LoadScene("Title");
                         break;
                     case (int)menu.Continue:
                         //fadeScript.fademode = true;
+                        SceneManager.LoadScene("Main");
                         break;
                     case (int)menu.BackMenu:
                         //fadeScript.fademode = true;
+                        SceneManager.LoadScene("Menu");
                         break;
                     default:
                         break;
