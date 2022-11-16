@@ -15,27 +15,13 @@ public class PlanetFallMeteor : PlanetStateFanction
     private float moveTime;
     private float startTime;
 
-    [Header("目標座標（「0,0,0」の場合、座標を自動設定）")]
-    [SerializeField]
-    public Vector3 targetPos;
-    [Header("目標座標設定")]
-    [SerializeField]
-    private Vector2 Range_X;
-    [SerializeField]
-    private float posY;
-    [SerializeField]
-    private Vector2 Range_Z;
+    [Header("ターゲット座標")]
+    public Vector3 targetPos;//ターゲット座標
 
-    private bool moveFlag;//移動するかを判定（Y軸 ＝０で無効化）
+    private bool moveFlag;//移動するかを判定（「 Y軸 <= ターゲット座標Y 」で無効化）
 
     private void Start()
     {
-        //初期座標を設定(「0,0,0」の場合)
-        if (targetPos == Vector3.zero)
-        {
-            TargetPosSetting();
-        }
-
         //初期位置保存
         startPos = transform.position;
 
@@ -56,10 +42,10 @@ public class PlanetFallMeteor : PlanetStateFanction
             transform.position = Vector3.Lerp(startPos, targetPos, moveVal * moveTime);
 
             //座標が０付近になったら
-            if (transform.position.y <= 0)
+            if (transform.position.y <= targetPos.y)
             {
-                //Y座標を０にする
-                transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+                //Y座標を指定の座標へ上書き
+                transform.position = new Vector3(transform.position.x, targetPos.y, transform.position.z);
 
                 //エフェクト生成
                 GameObject effect = Instantiate(crashEffect);
@@ -72,13 +58,5 @@ public class PlanetFallMeteor : PlanetStateFanction
         }
 
         return PlanetStateMachine.State.Now;
-    }
-
-    void TargetPosSetting()
-    {
-        //座標はランダム
-        float cPosX = Random.Range(Range_X.x, Range_X.y);
-        float cPosZ = Random.Range(Range_Z.x, Range_Z.y);
-        targetPos = new Vector3(cPosX, posY, cPosZ);
     }
 }

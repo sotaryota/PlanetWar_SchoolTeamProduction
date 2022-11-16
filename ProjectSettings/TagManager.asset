@@ -8,6 +8,7 @@ TagManager:
   - CatchArea
   - Actors
   - Ground
+  - Slope
   layers:
   - Default
   - TransparentFX
