@@ -13,6 +13,8 @@ public class MeteorCreater_Solo : MonoBehaviour
     private Vector3 min_firstCreatePos;
     [SerializeField]
     private Vector3 max_firstCreatePos;
+    [SerializeField]
+    private bool gizumos_CreateArea = true;
 
     [Header("çÏê¨ÇµÇΩË¶êŒÇ™å¸Ç©Ç§ÉGÉäÉAÇóêêîÇ≈éwíË")]
     [SerializeField]
@@ -102,14 +104,17 @@ public class MeteorCreater_Solo : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
+        if (gizumos_CreateArea)
+        {
+            Gizmos.color = Color.blue;
 
-        Vector3 targetSize = new Vector3(
-            max_TargetPos.x - min_TargetPos.x,
-            max_TargetPos.y - min_TargetPos.y,
-            max_TargetPos.z - min_TargetPos.z
-        );
+            Vector3 targetSize = new Vector3(
+                max_TargetPos.x - min_TargetPos.x,
+                max_TargetPos.y - min_TargetPos.y,
+                max_TargetPos.z - min_TargetPos.z
+            );
 
-        Gizmos.DrawCube(min_TargetPos + targetSize / 2, targetSize);
+            Gizmos.DrawCube(min_TargetPos + targetSize / 2, targetSize);
+        }
     }
 }
