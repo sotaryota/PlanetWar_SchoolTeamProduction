@@ -9,6 +9,7 @@ public class PlayerGroundCheck : MonoBehaviour
     [SerializeField] float jumpFriction;
     [SerializeField] float slopeFriction;
     public bool isGroung;
+    [SerializeField] PlayerAnimManeger playerAnimation;
 
     //地面との接触判定
     private void OnTriggerStay(Collider other)
@@ -18,6 +19,8 @@ public class PlayerGroundCheck : MonoBehaviour
             isGroung = true;
             playerFriction.dynamicFriction = groundFriction;
             playerFriction.staticFriction  = groundFriction;
+            //ジャンプモーション
+            playerAnimation.PlayAnimSetJump(false);
         }
         if (other.gameObject.tag == "Slope")
         {
@@ -33,6 +36,8 @@ public class PlayerGroundCheck : MonoBehaviour
             isGroung = false;
             playerFriction.dynamicFriction = jumpFriction;
             playerFriction.staticFriction  = jumpFriction;
+            //ジャンプモーション
+            playerAnimation.PlayAnimSetJump(true);
         }
         if (other.gameObject.tag == "Slope")
         {
