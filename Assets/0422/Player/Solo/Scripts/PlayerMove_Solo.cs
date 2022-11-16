@@ -10,6 +10,7 @@ public class PlayerMove_Solo : MonoBehaviour
     Camera myCamera;
     [Header("スクリプト")]
     public PlayerStatus_Solo playerStatus;
+    [SerializeField] PlayerGroundCheck GroundCheck;
     [SerializeField] PlayerAnimManeger playerAnimator;
 
     private Vector3 moveDirection;
@@ -72,6 +73,8 @@ public class PlayerMove_Solo : MonoBehaviour
     //--------------------------------------
     //動きの処理
     //--------------------------------------
+    [SerializeField] float moveSpeed;
+
     private void MoveOrStop()
     {
         //スティック入力が小さい時
@@ -112,10 +115,21 @@ public class PlayerMove_Solo : MonoBehaviour
                 playerStatus.SetState(PlayerStatus_Solo.State.Move);
             }
 
-            if(rb.velocity.magnitude <= 10.0f)
+            if (GroundCheck.isGroung)
             {
-                //移動処理
-                rb.AddForce(moveDirection * Time.deltaTime - rb.velocity * (Time.deltaTime * 20));
+                if (rb.velocity.magnitude <= 10.0f)
+                {
+                    //移動処理
+                    rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Impulse);
+                }
+            }
+            else
+        {
+                if (rb.velocity.magnitude <= 10.0f)
+                {
+                    //移動処理
+                    rb.AddForce(moveDirection * Time.deltaTime - rb.velocity * (Time.deltaTime * 20));
+                }
             }
             //待機ボイスのカウントを0に
             waitcnt = 0.0f;
