@@ -13,6 +13,9 @@ public class MeteorCreater_Solo : MonoBehaviour
     private Vector3 min_firstCreatePos;
     [SerializeField]
     private Vector3 max_firstCreatePos;
+    [Header("アタッチされているオブジェクトの位置へ移動＆Gizumos表示切替")]
+    [SerializeField]
+    private bool addMyPos = false;
     [SerializeField]
     private bool gizumos_CreateArea = true;
 
@@ -43,12 +46,16 @@ public class MeteorCreater_Solo : MonoBehaviour
                 //位置を決定
                 GameObject go = Instantiate(createPlanets[Random.Range(0, createPlanets.Length)]);
 
-                //座標はランダム
+                //生成座標はランダム
                 Vector3 createPos = new Vector3(
                     Random.Range(min_firstCreatePos.x, max_firstCreatePos.x),
                     Random.Range(min_firstCreatePos.y, max_firstCreatePos.y),
                     Random.Range(min_firstCreatePos.z, max_firstCreatePos.z)
                     );
+                if (addMyPos)
+                {
+                    createPos += this.transform.position;
+                }
 
                 //オーディオソースを割り当てる
                 PlanetAttackHit pah;
@@ -90,6 +97,12 @@ public class MeteorCreater_Solo : MonoBehaviour
                     Random.Range(min_TargetPos.x, max_TargetPos.x),
                     Random.Range(min_TargetPos.y, max_TargetPos.y),
                     Random.Range(min_TargetPos.z, max_TargetPos.z));
+                if (addMyPos)
+                {
+                    targetPos += this.transform.position;
+                }
+
+                //適用
                 PlanetFallMeteor pfm;
                 if(pfm = go.GetComponent<PlanetFallMeteor>())
                 {
@@ -114,7 +127,14 @@ public class MeteorCreater_Solo : MonoBehaviour
                 max_TargetPos.z - min_TargetPos.z
             );
 
-            Gizmos.DrawCube(min_TargetPos + targetSize / 2, targetSize);
+            Vector3 targetPos = min_TargetPos + targetSize / 2;
+
+            if (addMyPos)
+            {
+                targetPos += this.transform.position;
+            }
+
+            Gizmos.DrawCube(targetPos, targetSize);
         }
     }
 }
