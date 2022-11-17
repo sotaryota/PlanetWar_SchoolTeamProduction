@@ -6,9 +6,11 @@ public class Rob1_Move : MonoBehaviour
 {
     [Header("カメラ")]
     [Header("スクリプト")]
-    public Rob1_Status rob1Status;
+    [SerializeField] Rob1_Status rob1Status;
+    [SerializeField] Rob1_Attack rob1_Attack;
 
     [SerializeField] Rob1_AnimManeger rob1Animator;
+    
 
     [SerializeField] GameObject player;
 
@@ -62,7 +64,7 @@ public class Rob1_Move : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && rob1_Attack.throwFlag)
             sensing = true;
     }
 
