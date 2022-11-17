@@ -819,7 +819,7 @@ GameObject:
   - component: {fileID: 3898982094128299782}
   m_Layer: 0
   m_Name: Enemy_Rob1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -903,7 +903,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e77185c82de0074da8fcdeba6b4b174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp_: 12.7
+  hp_: 3.2
+  die: 0
   power_: 10
   defense_: 10
   speed_: 1

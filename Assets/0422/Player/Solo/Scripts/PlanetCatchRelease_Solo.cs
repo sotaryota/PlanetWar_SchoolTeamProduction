@@ -25,10 +25,7 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gamepad == null)
-        {
-            gamepad = Gamepad.all[playerStatus.GetID()];
-        }
+        if (gamepad == null) { gamepad = Gamepad.current; }
 
         if (planet)
         {
@@ -140,9 +137,6 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
                     {
                         //ƒvƒŒƒCƒ„‚ğCatchó‘Ô‚É
                         playerStatus.SetState(PlayerStatus_Solo.State.Catch);
-
-                        //˜f¯‚ÌID‚ğ©g‚ÌID‚Æ“¯‚¶‚É‚·‚é
-                        other.GetComponent<PlanetThrowHit>().catchPlayerID = playerStatus.GetID();
 
                         //˜f¯‚ğŠ
                         planet = other.gameObject;

@@ -11,16 +11,23 @@ public class Rob1_Move : MonoBehaviour
 
     [SerializeField] Rob1_AnimManeger rob1Animator;
     
-
     [SerializeField] GameObject player;
 
     [SerializeField] bool sensing = false;
+
+    bool die = false;
 
     private void Update()
     {
         //エネミーが存在しないor死んでいるなら処理をしない
         if (rob1Status.GetState() == Rob1_Status.State.Non || rob1Status.GetState() == Rob1_Status.State.Dead)
-        { return; }
+        {
+            if (die == false)
+            {
+                rob1Animator.PlayRob1AnimDie();
+                die = true;
+            }
+            return; }
 
         PlayerLook();
 
@@ -35,7 +42,7 @@ public class Rob1_Move : MonoBehaviour
     }
 
     //--------------------------------------
-    //プレイヤーの向きを向く
+    //プレイヤーの方向に向く
     //--------------------------------------
 
     private void PlayerLook()

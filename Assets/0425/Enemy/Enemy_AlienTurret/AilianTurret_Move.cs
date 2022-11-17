@@ -16,7 +16,9 @@ public class AilianTurret_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (ailianTurret_Status.GetState() == AilianTurret_Status.State.Non || ailianTurret_Status.GetState() == AilianTurret_Status.State.Dead)
+        { return; }
+
         // ターゲット方向のベクトルを取得
         Vector3 relativePos = targetObject.transform.position - this.transform.position;
         // 方向を、回転情報に変換

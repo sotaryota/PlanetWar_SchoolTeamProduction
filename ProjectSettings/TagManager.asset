@@ -8,6 +8,7 @@ TagManager:
   - CatchArea
   - Actors
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX

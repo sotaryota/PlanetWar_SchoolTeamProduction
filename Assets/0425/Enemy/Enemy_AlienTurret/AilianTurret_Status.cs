@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AilianTurret_Status : MonoBehaviour
+public class AilianTurret_Status : Enemy_HpData
 {
     [Header("パラメータ")]
-    [SerializeField]
-    [Range(0, 100)]
-    private float hp_;         //HP
     [SerializeField]
     private float power_;      //攻撃力
     [SerializeField]
@@ -48,10 +45,6 @@ public class AilianTurret_Status : MonoBehaviour
     //ゲッター
     //--------------------------------------
 
-    public float GetHp()
-    {
-        return this.hp_;
-    }
     public float GetPower()
     {
         return this.power_;
@@ -69,8 +62,11 @@ public class AilianTurret_Status : MonoBehaviour
     //ステータスの変化
     //--------------------------------------
 
-    public void Damage(float damage)
+    public void Die()
     {
-        this.hp_ -= damage;
+        if (die)
+        {
+            nowState = State.Dead;
+        }
     }
 }

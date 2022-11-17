@@ -12,21 +12,15 @@ public class AilianTurret_Attack : MonoBehaviour
 
     [SerializeField] PlayerStatus_Solo playerStatus_Solo;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+       
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (ailianTurret_Status.GetState() == AilianTurret_Status.State.Non || ailianTurret_Status.GetState() == AilianTurret_Status.State.Dead)
+        { return; }
 
         attack_Beem.Play();
         
@@ -34,7 +28,7 @@ public class AilianTurret_Attack : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        
+        playerStatus_Solo.Damage(ailianTurret_Status.GetPower());
     } 
 
 }

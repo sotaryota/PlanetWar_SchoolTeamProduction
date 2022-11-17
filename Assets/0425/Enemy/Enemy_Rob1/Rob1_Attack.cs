@@ -31,7 +31,10 @@ public class Rob1_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (planet)
+        if (rob1Status.GetState() == Rob1_Status.State.Non || rob1Status.GetState() == Rob1_Status.State.Dead)
+        { return; }
+
+            if (planet)
         {
             attackCount += Time.deltaTime;
 
@@ -107,6 +110,9 @@ public class Rob1_Attack : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (rob1Status.GetState() == Rob1_Status.State.Non || rob1Status.GetState() == Rob1_Status.State.Dead)
+        { return; }
+
         //d’¼ŠÔ’†‚Íˆ—‚ğ‚µ‚È‚¢
         if (!throwFlag) return;
 
