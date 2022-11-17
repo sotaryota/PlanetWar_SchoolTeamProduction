@@ -14,6 +14,9 @@ public class Write_Effect : MonoBehaviour
     [Header("文字送り時間")]
     [SerializeField]
     float feedTime = 0.1f;
+    [Header("改行時間")]
+    [SerializeField]
+    float nTime = 0.5f;
     //表示する文字数
     int visibleLength;
     //会話中かのフラグ
@@ -69,7 +72,7 @@ public class Write_Effect : MonoBehaviour
             }
             else
             {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(nTime);
                 SetText(npc.talk[i]);
                 //Debug.Log(text);
             }
