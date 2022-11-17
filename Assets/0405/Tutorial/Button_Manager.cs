@@ -48,7 +48,6 @@ public class Button_Manager : MonoBehaviour
         TutorialImage.sprite = selectSprites[0];
     }
 
-    // Update is called once per frame
     void Update()
     {
         for (int i = 0; i < Gamepad.all.Count; ++i)
@@ -100,9 +99,9 @@ public class Button_Manager : MonoBehaviour
         //ロックがかかっていない場合
         if (selectLock == false)
         {
+            //下入力
             if (gamepad.leftStick.ReadValue().y < -0.1f)
             {
-                //上を選択
                 nowSelecting++;
                 //最大値を超えたら0にする
                 if (nowSelecting > button_Images.Length - 1)
@@ -111,10 +110,9 @@ public class Button_Manager : MonoBehaviour
                 selectLock = true;
                 gamepadInputed = gamepad;
             }
-            //下入力
+            //上入力
             else if (gamepad.leftStick.ReadValue().y > 0.1f)
             {
-                //下を選択
                 nowSelecting--;
                 if (nowSelecting < 0)
                     nowSelecting = button_Images.Length - 1;
