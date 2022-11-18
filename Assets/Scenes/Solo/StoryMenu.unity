@@ -457,6 +457,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1556670217}
     - target: {fileID: 7714243640519807612, guid: 83788bfaedde5ae4ca5b3eccb4aff9b7, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 2117080981}
+    - target: {fileID: 7714243640519807612, guid: 83788bfaedde5ae4ca5b3eccb4aff9b7, type: 3}
       propertyPath: textObject
       value: 
       objectReference: {fileID: 1343359093}
