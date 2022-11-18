@@ -23,7 +23,14 @@ public class PlanetAttackHit : PlanetStateFanction
         go.transform.localScale = effectSize;
 
         //効果音を鳴らす
-        source.PlayOneShot(clip);
+        if (source)
+        {
+            source.PlayOneShot(clip);
+        }
+        else
+        {
+            print("PlanetAttackHit：AudioSourceの参照がありません。");
+        }
 
         //自身を破壊
         Destroy(gameObject);
