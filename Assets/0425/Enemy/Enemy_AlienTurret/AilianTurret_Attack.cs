@@ -23,7 +23,6 @@ public class AilianTurret_Attack : MonoBehaviour
         { return; }
 
         attack_Beem.Play();
-        
     }
 
     private void OnParticleCollision(GameObject other)

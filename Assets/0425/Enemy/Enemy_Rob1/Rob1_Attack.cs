@@ -139,7 +139,8 @@ public class Rob1_Attack : MonoBehaviour
             //惑星を所持
             go.transform.position = handPos.transform.position;
             planet = go;
-
+            //有効化
+            go.SetActive(true);
             //プラネットの状態をCatch状態にする           
             go.GetComponent<PlanetStateMachine>().SetState(PlanetStateMachine.State.Catch);
 

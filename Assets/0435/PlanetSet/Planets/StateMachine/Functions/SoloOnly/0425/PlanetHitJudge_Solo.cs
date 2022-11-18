@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlanetHitJudge_Solo : PlanetStateFanction
 {
     [SerializeField] Enemy_HpData enemy_HpData;
+    [SerializeField] PlayerStatus_Solo playerStatus_Solo;
+    [SerializeField] PlanetData planetData;
 
     bool hit;
 
@@ -28,8 +30,8 @@ public class PlanetHitJudge_Solo : PlanetStateFanction
         if (psm.GetState() == PlanetStateMachine.State.Throw)
         {
             if (other.transform.tag == "Player") {
-              
 
+                playerStatus_Solo.Damage(planetData.GetDamage());
                 hit = true;
             }
             else if (other.transform.tag == "Enemy")
