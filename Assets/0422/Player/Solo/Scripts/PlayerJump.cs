@@ -9,11 +9,12 @@ public class PlayerJump : MonoBehaviour
     Rigidbody rb;
     [Header("スクリプト")]
     [SerializeField] PlayerStatus_Solo playerStatus;
-    [SerializeField] PlayerAnimManeger playerAnimation;
     [SerializeField] PlayerGroundCheck playerGround;
     [Header("ジャンプ")]
     [SerializeField] Vector3 jumpPow;
     [SerializeField] float jumpWait;
+
+    [SerializeField] Animator playerAnimator;
 
     private void Start()
     {
@@ -30,9 +31,12 @@ public class PlayerJump : MonoBehaviour
         //地面に着地中
         if(playerGround.isGroung)
         {
-            if (gamepad.buttonSouth.wasPressedThisFrame)
+            if (!playerAnimator.GetCurrentAnimatorStateInfo(0).IsTag("jumpEnd"))
             {
-                StartCoroutine("Jump");
+                if (gamepad.buttonSouth.wasPressedThisFrame)
+                {
+                    StartCoroutine("Jump");
+                }
             }
         }
     }
@@ -45,10 +49,7 @@ public class PlayerJump : MonoBehaviour
     {
         rb.AddForce(jumpPow, ForceMode.Impulse);
         
-        //ジャンプモーション
-        //playerAnimation.PlayAnimSetJump(true);
-
-        //プレイヤーをジャンプ状態に変更
+         //プレイヤーをジャンプ状態に変更
         playerStatus.SetState(PlayerStatus_Solo.State.Jump);
 
         //抵抗の値を変更
@@ -59,8 +60,7 @@ public class PlayerJump : MonoBehaviour
         //抵抗の値を変更
         rb.drag = moveDrag;
 
-        //ジャンプモーション
-        //playerAnimation.PlayAnimSetJump(false);
+        yield return new WaitForSeconds(1);
 
         //プレイヤーを待機状態に変更
         playerStatus.SetState(PlayerStatus_Solo.State.Stay);
