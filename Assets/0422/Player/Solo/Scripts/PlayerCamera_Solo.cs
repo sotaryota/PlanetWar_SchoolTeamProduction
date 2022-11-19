@@ -72,6 +72,6 @@ public class PlayerCamera_Solo : MonoBehaviour
         0
         );
 
-        transform.eulerAngles += new Vector3(angle.y, angle.x);
+        transform.eulerAngles += new Vector3(-angle.y, angle.x) * Time.deltaTime;
     }
 }
