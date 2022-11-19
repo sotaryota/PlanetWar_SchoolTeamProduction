@@ -6,7 +6,7 @@ public class PlayerGroundCheck : MonoBehaviour
 {
     [SerializeField] PlayerJump jump;
     [SerializeField] PlayerAnimManeger playerAnimation;
-    public bool isGround;
+    public bool isGround;  //Ú’n”»’è
 
     //’n–Ê‚Æ‚ÌÚG”»’è
     private void OnTriggerEnter(Collider other)

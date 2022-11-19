@@ -11,12 +11,10 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerMove_Solo playerMove;
     [SerializeField] Animator playerAnimator;
-    [Header("ジャンプ")]
-    public Vector3 jumping;
-    [SerializeField] float jumpPow;
     [Header("重力")]
-    [SerializeField] float gravity;
-    [SerializeField] GameObject playerFoot;
+    public Vector3 jumping;                 //ジャンプ用
+    [SerializeField] float gravity;         //重力
+    [SerializeField] GameObject playerFoot; //足元の判定
 
 
     private void Start()
@@ -29,6 +27,8 @@ public class PlayerJump : MonoBehaviour
         //プレイヤが存在しないor死んでいるorジャンプ中なら処理をしない
         if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead) { return; }
         if (gamepad == null) { gamepad = Gamepad.current; }
+
+        //地面に接地していてボタンを押したとき
         if (playerFoot.GetComponent<PlayerGroundCheck>().isGround)
         {
             if (gamepad.buttonSouth.wasPressedThisFrame)
@@ -38,24 +38,23 @@ public class PlayerJump : MonoBehaviour
         }
         else
         {
+            //接地していないなら重力加算
             Debug.Log("重力加算中");
             PlayerGravity();
         }
-
+        //移動処理
         controller.Move(jumping * Time.deltaTime);
     }
+    //重力
     private void PlayerGravity()
     {
         jumping.y -= gravity * Time.deltaTime;
     }
-    //private void PlayerJump()
-    //{
-    //    jumping.y = jumpPow;
-    //    playerStatus.SetState(PlayerStatus_Solo.State.Jump);
-    //}
+
+    //ジャンプ用コルーチン
     IEnumerator Jump()
     {
-        jumping.y = jumpPow;
+        jumping.y = playerStatus.GetJumpPower();
         playerStatus.SetState(PlayerStatus_Solo.State.Jump);
 
         yield return new WaitForSeconds(0.5f);
