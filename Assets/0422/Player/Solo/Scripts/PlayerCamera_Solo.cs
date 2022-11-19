@@ -17,7 +17,12 @@ public class PlayerCamera_Solo : MonoBehaviour
     [SerializeField] float followSpeed;  //ƒJƒƒ‰‚Ì’Ç]‘¬“x
 
     float horizontal;
-    float vertical;  
+    float vertical;
+
+    [SerializeField]
+    float angleUpLimit = 50f; //ƒJƒƒ‰‚ÌY•ûŒü‚ÌãŒÀ
+    [SerializeField]
+    float angleDownLimit = -40f; //ƒJƒƒ‰‚ÌY•ûŒü‚Ì‰ºŒÀ
 
     void Start()
     {
@@ -31,14 +36,24 @@ public class PlayerCamera_Solo : MonoBehaviour
     {
         if (gamepad == null) { gamepad = Gamepad.current; }
 
+        //ƒJƒƒ‰‚Ìã‰º‚ÌŠp“x§ŒÀ
+        float angle_x = 180f <= transform.eulerAngles.x ? transform.eulerAngles.x - 360 : transform.eulerAngles.x;
+        transform.eulerAngles = new Vector3(
+            Mathf.Clamp(angle_x, angleDownLimit, angleUpLimit),
+            transform.eulerAngles.y,
+            transform.eulerAngles.z
+        );
+
         StickValue();
         rotateCameraAngle();
+
+        transform.position = Vector3.Lerp(transform.position, player.transform.position, followSpeed); //©•ª‚É’Ç]
     }
 
-    private void FixedUpdate()
-    {
-        transform.position = Vector3.Lerp(transform.position, player.transform.position, 0.15f); //©•ª‚É’Ç]
-    }
+    //private void FixedUpdate()
+    //{
+    //    transform.position = Vector3.Lerp(transform.position, player.transform.position, followSpeed); //©•ª‚É’Ç]
+    //}
 
     private void StickValue()
     {
@@ -49,6 +64,14 @@ public class PlayerCamera_Solo : MonoBehaviour
     //ƒJƒƒ‰‚Ì‰ñ“]
     private void rotateCameraAngle()
     {
-        transform.eulerAngles += new Vector3(0, horizontal * rotateSpeed * Time.deltaTime);
+        //transform.eulerAngles += new Vector3(0, horizontal * rotateSpeed * Time.deltaTime);
+
+        Vector3 angle = new Vector3(
+        horizontal * rotateSpeed,
+        vertical * rotateSpeed,
+        0
+        );
+
+        transform.eulerAngles += new Vector3(-angle.y, angle.x) * Time.deltaTime;
     }
 }
