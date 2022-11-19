@@ -12,11 +12,12 @@ public class PlayerJumping : MonoBehaviour
     [SerializeField] PlayerMovement playerMove;
     [SerializeField] Animator playerAnimator;
     [Header("ジャンプ")]
-    [SerializeField] Vector3 jumping;
+    public Vector3 jumping;
     [SerializeField] float jumpPow;
     [Header("重力")]
     [SerializeField] float gravity;
-
+    [SerializeField] GameObject playerFoot;
+    
 
     private void Start()
     {
@@ -26,20 +27,18 @@ public class PlayerJumping : MonoBehaviour
     private void Update()
     {
         //プレイヤが存在しないor死んでいるorジャンプ中なら処理をしない
-        if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead ||
-            playerStatus.GetState() == PlayerStatus_Solo.State.Jump) { return; }
+        if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead ) { return; }
         if (gamepad == null) { gamepad = Gamepad.current; }
-        if(controller.isGrounded)
-        {
+        if(playerFoot.GetComponent<PlayerGroundCheck>().isGround)
+        { 
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
-                Debug.Log("ジャンプ");
-                PlayerJump();
+                StartCoroutine("PlayerJump");
             }
         }
         else
         {
-            Debug.Log("地上");
+            Debug.Log("重力加算中");
             PlayerGravity();
         }
 
@@ -49,8 +48,18 @@ public class PlayerJumping : MonoBehaviour
     {
         jumping.y -= gravity * Time.deltaTime;
     }
-    private void PlayerJump()
+    //private void PlayerJump()
+    //{
+    //    jumping.y = jumpPow;
+    //    playerStatus.SetState(PlayerStatus_Solo.State.Jump);
+    //}
+    IEnumerator PlayerJump()
     {
         jumping.y = jumpPow;
+        playerStatus.SetState(PlayerStatus_Solo.State.Jump);
+
+        yield return new WaitForSeconds(0.5f);
+
+        playerStatus.SetState(PlayerStatus_Solo.State.Stay);
     }
 }

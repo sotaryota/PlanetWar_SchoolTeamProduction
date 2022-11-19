@@ -10,27 +10,26 @@ public class PlayerMove_Solo : MonoBehaviour
     Camera myCamera;
     [Header("スクリプト")]
     public PlayerStatus_Solo playerStatus;
-    [SerializeField] PlayerGroundCheck GroundCheck;
     [SerializeField] PlayerAnimManeger playerAnimator;
 
-    private Vector3 moveDirection;
+    public Vector3 moveDirection;
     private float horizontal;
     private float vertical;
     private float waitcnt = 0.0f;
 
-    Rigidbody rb;
+    CharacterController controller;
     Gamepad gamepad;
     Vector3 moveForward;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
     }
 
     private void Update()
     {
         //プレイヤが存在しないor死んでいるなら処理をしない
-        if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead){ return; }
+        if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead) { return; }
         if (gamepad == null) { gamepad = Gamepad.current; }
 
         StickValue();
@@ -73,7 +72,6 @@ public class PlayerMove_Solo : MonoBehaviour
     //--------------------------------------
     //動きの処理
     //--------------------------------------
-    [SerializeField] float moveSpeed;
 
     private void MoveOrStop()
     {
@@ -86,9 +84,6 @@ public class PlayerMove_Solo : MonoBehaviour
                 //プレイヤをStay状態に
                 playerStatus.SetState(PlayerStatus_Solo.State.Stay);
             }
-
-            //減速処理
-            rb.AddForce(-rb.velocity * (Time.deltaTime * 20));
 
             //待機時間のカウント
             waitcnt += Time.deltaTime;
@@ -114,23 +109,8 @@ public class PlayerMove_Solo : MonoBehaviour
                 //プレイヤをMove状態に
                 playerStatus.SetState(PlayerStatus_Solo.State.Move);
             }
+            controller.Move(moveDirection * Time.deltaTime);
 
-            if (GroundCheck.isGroung)
-            {
-                if (rb.velocity.magnitude <= 10.0f)
-                {
-                    //移動処理
-                    rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Impulse);
-                }
-            }
-            else
-        {
-                if (rb.velocity.magnitude <= 10.0f)
-                {
-                    //移動処理
-                    rb.AddForce(moveDirection * Time.deltaTime - rb.velocity * (Time.deltaTime * 20));
-                }
-            }
             //待機ボイスのカウントを0に
             waitcnt = 0.0f;
 
