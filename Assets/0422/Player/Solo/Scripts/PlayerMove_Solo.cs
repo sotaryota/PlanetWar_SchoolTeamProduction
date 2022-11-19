@@ -109,6 +109,7 @@ public class PlayerMove_Solo : MonoBehaviour
                 //プレイヤをMove状態に
                 playerStatus.SetState(PlayerStatus_Solo.State.Move);
             }
+            //移動処理
             controller.Move(moveDirection * Time.deltaTime);
 
             //待機ボイスのカウントを0に

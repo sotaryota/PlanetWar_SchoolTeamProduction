@@ -120,7 +120,6 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
     {
         //d’¼ŠÔ’†‚Íˆ—‚ğ‚µ‚È‚¢
         if (!throwFlag) return;
-
         //˜f¯‚ğŠ‚µ‚Ä‚¢‚éê‡‚Íˆ—‚ğ‚µ‚È‚¢
         if (planet) { return; }
         //˜f¯‚Å‚ ‚éê‡
@@ -129,6 +128,7 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
             //˜f¯‚Ìó‘Ô‚ªIdle‚È‚ç
             if (other.GetComponent<PlanetStateMachine>().GetState() == PlanetStateMachine.State.Idle)
             {
+                Debug.Log("4");
                 //ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½
                 if (gamepad.buttonEast.isPressed)
                 {

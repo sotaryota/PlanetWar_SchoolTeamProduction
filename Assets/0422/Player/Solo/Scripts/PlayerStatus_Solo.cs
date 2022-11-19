@@ -6,16 +6,18 @@ public class PlayerStatus_Solo : MonoBehaviour
 {
     [Header("パラメータ")]
     [SerializeField]
-    private int playerID_;     //プレイヤーのID
+    private int playerID;     //プレイヤーのID
     [SerializeField]
     [Range(0, 100)]
-    private float hp_;         //HP
+    private float hp;         //HP
     [SerializeField]
-    private float power_;      //攻撃力
+    private float power;      //攻撃力
     [SerializeField]
-    private float defense_;    //防御力
+    private float defense;    //防御力
     [SerializeField]
-    private float speed_;      //移動スピード
+    private float speed;      //移動スピード
+    [SerializeField]
+    private float jumpPow;    //ジャンプ力
 
     //--------------------------------------
     //プレイヤの状態の変更と取得
@@ -53,23 +55,27 @@ public class PlayerStatus_Solo : MonoBehaviour
 
     public int GetID()
     {
-        return this.playerID_;
+        return this.playerID;
     }
     public float GetHp()
     {
-        return this.hp_;
+        return this.hp;
     }
     public float GetPower()
     {
-        return this.power_;
+        return this.power;
     }
     public float GetDefense()
     {
-        return this.defense_;
+        return this.defense;
     }
     public float GetSpeed()
     {
-        return this.speed_;
+        return this.speed;
+    }
+    public float GetJumpPower()
+    {
+        return this.jumpPow;
     }
 
     //--------------------------------------
@@ -77,18 +83,18 @@ public class PlayerStatus_Solo : MonoBehaviour
     //--------------------------------------
     public void SetSpeed(float speed)
     {
-        this.speed_ = speed;
+        this.speed = speed;
     }
     public void PowerUp(float powerUpPoint)
     {
-        this.power_ += powerUpPoint;
+        this.power += powerUpPoint;
     }
     public void Damage(float damage)
     {
-        this.hp_ -= damage;
+        this.hp -= damage;
     }
     public void Escape(float escapeCost)
     {
-        this.defense_ -= escapeCost;
+        this.defense -= escapeCost;
     }
 }
