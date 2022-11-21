@@ -38,13 +38,13 @@ public class Write_Effect : MonoBehaviour
         canvas.SetActive(false);
 
         //テスト用
-        SetText(npc.talk[0]);
+        SetText(npc.GetTalk()[0]);
     }
 
     void Update()
     {
         //会話中じゃないとき、話しかけたら
-        if (!isTalking && npc.flag)
+        if (!isTalking && npc.GetTalkFlag())
         {
             //テスト用
             //SetText(npc.talk[0]);
@@ -66,7 +66,7 @@ public class Write_Effect : MonoBehaviour
     }
     IEnumerator TextDisplay()
     {
-        for (int i = 1; i <= npc.talk.Length; ++i)
+        for (int i = 1; i <= npc.GetTalk().Length; ++i)
         {
             //出てない文字があれば
             while (visibleLength < text.Length)
@@ -78,10 +78,9 @@ public class Write_Effect : MonoBehaviour
                 textObject.text = text.Substring(0, visibleLength);
             }
             //会話終了
-            if (i == npc.talk.Length)
+            if (i == npc.GetTalk().Length)
             {
                 isTalking = false;
-                npc.flag = false;
                 //テキストボックス非表示
                 yield return new WaitForSeconds(nTime);
                 canvas.SetActive(false);
@@ -90,7 +89,7 @@ public class Write_Effect : MonoBehaviour
             else
             {
                 yield return new WaitForSeconds(nTime);
-                SetText(npc.talk[i]);
+                SetText(npc.GetTalk()[i]);
                 //Debug.Log(text);
             }
         }
