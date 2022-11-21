@@ -923,11 +923,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c26566b5ee64654e94aa97e943848ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID_: 1
-  hp_: 100
-  power_: 70
-  defense_: 30
-  speed_: 100
+  playerID: 1
+  hp: 100
+  power: 70
+  defense: 30
+  speed: 100
   nowState: 5
 --- !u!95 &176521505
 Animator:
@@ -6179,11 +6179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c26566b5ee64654e94aa97e943848ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID_: 0
-  hp_: 100
-  power_: 70
-  defense_: 30
-  speed_: 100
+  playerID: 0
+  hp: 100
+  power: 70
+  defense: 30
+  speed: 100
   nowState: 5
 --- !u!114 &2131034316
 MonoBehaviour:

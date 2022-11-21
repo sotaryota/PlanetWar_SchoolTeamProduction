@@ -81,6 +81,24 @@ public class ESC : MonoBehaviour
             SceneManager.LoadScene("Result");
         }
 
+        //ストーリーメニュー
+        if(key.numpad6Key.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene("StoryMenu");
+        }
+
+        //ストーリー
+        if(key.numpad7Key.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene("Story");
+        }
+        
+        //ストーリーバトル
+        if(key.numpad8Key.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene("StoryBattle");
+        }
+
         //ゲーム終了
         if (key.escapeKey.wasPressedThisFrame)
         {
