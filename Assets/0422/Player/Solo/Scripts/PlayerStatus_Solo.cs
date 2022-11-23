@@ -29,6 +29,7 @@ public class PlayerStatus_Solo : MonoBehaviour
         Jump,    //ジャンプ
         Catch,   //惑星を所持
         Damage,  //ダメージ
+        Talking, //会話中
         Dead,    //死亡
 
         Non,     //存在しない(基本使わない)

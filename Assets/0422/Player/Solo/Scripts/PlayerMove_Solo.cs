@@ -28,8 +28,13 @@ public class PlayerMove_Solo : MonoBehaviour
 
     private void Update()
     {
-        //プレイヤが存在しないor死んでいるなら処理をしない
-        if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead) { return; }
+        //プレイヤが存在しないor死んでいるor会話中なら処理をしない
+        if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead ||
+            playerStatus.GetState() == PlayerStatus_Solo.State.Talking)
+        {
+            playerAnimator.PlayAnimSetRun(false);
+            return;
+        }
         if (gamepad == null) { gamepad = Gamepad.current; }
 
         StickValue();
