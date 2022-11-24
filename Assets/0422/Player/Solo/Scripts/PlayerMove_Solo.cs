@@ -12,6 +12,7 @@ public class PlayerMove_Solo : MonoBehaviour
     [Header("スクリプト")]
     public PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerAnimManeger playerAnimator;
+    [SerializeField] PlayerGroundCheck ground;
 
     public Vector3 moveDirection;
     private float horizontal;
@@ -135,6 +136,7 @@ public class PlayerMove_Solo : MonoBehaviour
 
     void SlopeSlide()
     {
+        if (ground.isGround) { return; }
         var rayPos       = this.transform.position + new Vector3(0,1,0);
         var rayDirection = this.transform.forward;
 
