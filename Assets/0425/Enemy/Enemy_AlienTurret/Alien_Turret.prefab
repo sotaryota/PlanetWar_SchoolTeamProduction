@@ -50,7 +50,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -9816,10 +9816,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6de8c5304d3f5498d9c7fd73827cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp_: 18.3
-  die: 0
-  power_: 20
-  defense_: 20
+  hp_: 100
+  power_: 15
+  defense_: 10
   speed_: 0.5
   nowState: 0
 --- !u!114 &333007703
@@ -24197,7 +24196,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -29095,7 +29094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19815720, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
       propertyPath: lengthInSec
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19815720, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
       propertyPath: playOnAwake
@@ -29120,6 +29119,10 @@ PrefabInstance:
     - target: {fileID: 19815720, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19815720, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
+      propertyPath: CollisionModule.m_Planes.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 19815720, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
       propertyPath: CollisionModule.m_Planes.Array.data[0]
@@ -29170,6 +29173,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19874038, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19874038, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -29190,6 +29197,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19878382, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19878382, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -29204,6 +29215,10 @@ PrefabInstance:
     - target: {fileID: 19878382, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 19878382, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19878382, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
       propertyPath: CollisionModule.m_EnergyLossOnCollision.scalar
@@ -29211,6 +29226,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
+--- !u!198 &2373544385434672853 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19815720, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
+  m_PrefabInstance: {fileID: 2373544385449722877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2373544385449611337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 152500, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
+  m_PrefabInstance: {fileID: 2373544385449722877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1071624726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373544385449611337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9e6367b97127b42ad5b433b24b0a37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStatus_Solo: {fileID: 0}
+  ailianTurret_Status: {fileID: 333007702}
+--- !u!1 &2373544385449771487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 115234, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}
+  m_PrefabInstance: {fileID: 2373544385449722877}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1707746407
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373544385449771487}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100.00001, y: 2.4320796, z: 1}
+  m_Center: {x: 50.000004, y: -0.05883435, z: 0}
+--- !u!114 &1707746410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373544385449771487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9a23902fb2e9574592bd4da9e7fe144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ailianTurret_Status: {fileID: 333007702}
+  attack_Beem: {fileID: 2373544385434672853}
+  attackInterval: 5
+  playerStatus_Solo: {fileID: 0}
 --- !u!4 &2373544385449831539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 438158, guid: 6c4b402c56ee6254f9482eca3910e8c0, type: 3}

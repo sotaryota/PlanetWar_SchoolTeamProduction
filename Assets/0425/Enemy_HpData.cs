@@ -8,8 +8,6 @@ public class Enemy_HpData : MonoBehaviour
     [Range(0, 100)]
     private float hp_;         //HP
 
-    public bool die = false;
-
     public float GetHp()
     {
         return this.hp_;
@@ -20,11 +18,12 @@ public class Enemy_HpData : MonoBehaviour
         this.hp_ -= damage;
     }
 
-    public void JudgeDie()
+    public bool JudgeDie()
     {
-        if(this.hp_ < 0)
+        if(this.hp_ <= 0)
         {
-            die = true;
+            return true;
         }
+        return false;
     }
 }
