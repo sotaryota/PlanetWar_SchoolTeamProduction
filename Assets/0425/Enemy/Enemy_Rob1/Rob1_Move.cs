@@ -13,8 +13,6 @@ public class Rob1_Move : MonoBehaviour
     
     [SerializeField] GameObject player;
 
-    [SerializeField] bool sensing = false;
-
     bool die = false;
 
     private void Update()
@@ -31,7 +29,7 @@ public class Rob1_Move : MonoBehaviour
 
         PlayerLook();
 
-        if (sensing == false)
+        if (rob1_Attack.sensing == false)
         {
             MoveOrStop();
         }
@@ -69,15 +67,15 @@ public class Rob1_Move : MonoBehaviour
         rob1Animator.PlayRob1AnimSetRun(true);
     }
 
-    public void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Player" && rob1_Attack.throwFlag)
-            sensing = true;
-    }
+    //public void OnTriggerStay(Collider other)
+    //{
+    //    if (other.tag == "Player" && rob1_Attack.throwFlag)
+    //        sensing = true;
+    //}
 
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-            sensing = false;
-    }
+    //public void OnTriggerExit(Collider other)
+    //{
+    //    if (other.tag == "Player")
+    //        sensing = false;
+    //}
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlanetHitJudge_Solo : PlanetStateFanction
 {
+    [Header("ソロモードのプレイヤーとのみ判定")]
     [SerializeField] Enemy_HpData enemy_HpData;
     [SerializeField] PlayerStatus_Solo playerStatus_Solo;
     [SerializeField] PlanetData planetData;
@@ -30,14 +31,7 @@ public class PlanetHitJudge_Solo : PlanetStateFanction
         if (psm.GetState() == PlanetStateMachine.State.Throw)
         {
             if (other.transform.tag == "Player") {
-
                 playerStatus_Solo.Damage(planetData.GetDamage());
-                hit = true;
-            }
-            else if (other.transform.tag == "Enemy")
-            {
-                enemy_HpData.Damage(10);
-
                 hit = true;
             }
         }
