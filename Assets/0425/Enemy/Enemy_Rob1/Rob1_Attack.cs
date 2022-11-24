@@ -28,6 +28,9 @@ public class Rob1_Attack : MonoBehaviour
     float attackDelay;
     bool attackGenerate = true;
 
+    [SerializeField]
+    public bool sensing = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -112,6 +115,10 @@ public class Rob1_Attack : MonoBehaviour
     {
         if (rob1Status.GetState() == Rob1_Status.State.Non || rob1Status.GetState() == Rob1_Status.State.Dead)
         { return; }
+        if (other.tag != "Player")
+        { return; }
+
+        sensing = true;
 
         //d’¼ŠÔ’†‚Íˆ—‚ğ‚µ‚È‚¢
         if (!throwFlag) return;
@@ -147,5 +154,11 @@ public class Rob1_Attack : MonoBehaviour
             attackDelay = 0;
             attackGenerate = true;
         }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+            sensing = false;
     }
 }

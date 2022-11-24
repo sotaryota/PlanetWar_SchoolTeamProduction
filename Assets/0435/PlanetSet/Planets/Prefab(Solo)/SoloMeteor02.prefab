@@ -119,11 +119,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoScaleSettingMode: 1
-  scaleRange: {x: 0.5, y: 1.5}
-  autoDataSettingMode: 1
+  scaleRange: {x: 0.9, y: 1.1}
+  autoDataSettingMode: 0
   settingRate_Damage: 4
   settingRate_Weight: 1
-  damage: 0
+  damage: 10
   weight: 0
 --- !u!114 &8194584007146059527
 MonoBehaviour:
@@ -212,9 +212,6 @@ MonoBehaviour:
   crashEffect: {fileID: 4166501065544445604, guid: aa8bd5faa6a4c9b48a97dbc6a87740e6, type: 3}
   moveTime: 20
   targetPos: {x: 0, y: 0, z: 0}
-  Range_X: {x: -10, y: 10}
-  posY: 0
-  Range_Z: {x: -10, y: 10}
 --- !u!114 &6246025320441079529
 MonoBehaviour:
   m_ObjectHideFlags: 0

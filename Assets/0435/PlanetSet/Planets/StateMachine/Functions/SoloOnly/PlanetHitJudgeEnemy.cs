@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlanetHitJudgeEnemy : PlanetStateFanction
 {
+
+
     bool hit;
 
     private void Start()
@@ -26,13 +28,13 @@ public class PlanetHitJudgeEnemy : PlanetStateFanction
         if (psm.GetState() == PlanetStateMachine.State.Throw)
         {
             PlayerStatus ps;
-            if (other.transform.tag == "Player") { return; }
-            if (other.transform.tag == "CatchArea") { return; }
+            if (other.transform.tag != "Enemy") { return; }
 
-            PlanetData pd;
-            if (pd = other.GetComponent<PlanetData>())
+            PlanetData pd = this.GetComponent<PlanetData>();
+            Enemy_HpData ehp;
+            if (ehp = other.GetComponent<Enemy_HpData>())
             {
-                return;
+                ehp.Damage(pd.GetDamage());
             }
 
             hit = true;

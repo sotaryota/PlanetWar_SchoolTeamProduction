@@ -12,9 +12,12 @@ public class AilianTurret_Attack : MonoBehaviour
 
     [SerializeField] PlayerStatus_Solo playerStatus_Solo;
 
+    float attackTime = 0;
+
+
     private void Update()
     {
-       
+        attackTime += Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,12 +25,10 @@ public class AilianTurret_Attack : MonoBehaviour
         if (ailianTurret_Status.GetState() == AilianTurret_Status.State.Non || ailianTurret_Status.GetState() == AilianTurret_Status.State.Dead)
         { return; }
 
-        attack_Beem.Play();
+        if (attackTime > attackInterval)
+        {
+            attack_Beem.Play();
+            attackTime = 0;
+        }
     }
-
-    private void OnParticleCollision(GameObject other)
-    {
-        playerStatus_Solo.Damage(ailianTurret_Status.GetPower());
-    } 
-
 }

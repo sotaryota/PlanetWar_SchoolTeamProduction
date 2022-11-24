@@ -65,9 +65,14 @@ public class Rob1_Status : Enemy_HpData
 
     public void Die()
     {
-        if(die)
+        if(JudgeDie())
         {
             nowState = State.Dead;
         }
+    }
+
+    private void Update()
+    {
+        Die();
     }
 }
