@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerMove_Solo : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlayerMove_Solo : MonoBehaviour
     CharacterController controller;
     Gamepad gamepad;
     Vector3 moveForward;
+
+    private RaycastHit hit;
 
     private void Start()
     {
@@ -85,6 +88,8 @@ public class PlayerMove_Solo : MonoBehaviour
                 playerStatus.SetState(PlayerStatus_Solo.State.Stay);
             }
 
+            SlopeSlide();
+
             //待機時間のカウント
             waitcnt += Time.deltaTime;
 
@@ -109,6 +114,8 @@ public class PlayerMove_Solo : MonoBehaviour
                 //プレイヤをMove状態に
                 playerStatus.SetState(PlayerStatus_Solo.State.Move);
             }
+
+            SlopeSlide();
             //移動処理
             controller.Move(moveDirection * Time.deltaTime);
 
@@ -120,4 +127,32 @@ public class PlayerMove_Solo : MonoBehaviour
 
         }
     }
+
+    void SlopeSlide()
+    {
+        var rayPos       = this.transform.position + new Vector3(0,1,0);
+        var rayDirection = this.transform.forward;
+
+        Ray ray = new Ray(rayPos, rayDirection);
+        Debug.DrawRay(rayPos, rayDirection, Color.red,50f); ;
+        if(Physics.Raycast(ray,out hit,1.0f))
+        {
+            Debug.Log("1");
+            if(hit.transform.CompareTag("Ground"))
+            {
+                Debug.Log("2");
+                if (Vector3.Angle(hit.normal,Vector3.up) > controller.slopeLimit)
+                {
+                    Debug.Log("3");
+                    //滑るフラグが立ってたら
+                    Debug.Log("滑る処理です");
+                    Vector3 hitNormal = hit.normal;
+                    moveDirection.x = hitNormal.x;
+                    moveDirection.y = 20 * Time.deltaTime;//重力落下
+                    moveDirection.z = hitNormal.z;
+                }
+            }
+        }
+    }
+
 }
