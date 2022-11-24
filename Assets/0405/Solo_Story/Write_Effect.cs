@@ -28,27 +28,20 @@ public class Write_Effect : MonoBehaviour
     int visibleLength;
     //会話中かのフラグ
     bool isTalking;
-    //勝手に追加
-    [SerializeField] NPCClass npc;
+    //会話中にボタンを押せなくするフラグ
+    public bool buttonFlag = true;
+    //接触中のNPC
+    public GameObject npc;
+    [SerializeField] PlayerStatus_Solo playerStatus;
 
-    void Start()
-    {
-        visibleLength = 0;
-        isTalking = false;
-        canvas.SetActive(false);
-
-        //テスト用
-        SetText(npc.GetTalk()[0]);
-    }
 
     void Update()
     {
-        //会話中じゃないとき、話しかけたら
-        if (!isTalking && npc.GetTalkFlag())
-        {
-            //テスト用
-            //SetText(npc.talk[0]);
+        if (buttonFlag) { return; }
 
+        //会話中じゃないとき、話しかけたら
+        if (!isTalking && npc.GetComponent<NPCClass>().GetTalkFlag())
+        {
             //テキストボックス表示
             canvas.SetActive(true);
             //文字送り開始
@@ -64,9 +57,18 @@ public class Write_Effect : MonoBehaviour
         //現在のテキストを消去
         textObject.text = "";
     }
+
     IEnumerator TextDisplay()
     {
-        for (int i = 1; i <= npc.GetTalk().Length; ++i)
+        //一度だけ呼び出す処理
+        //-------------------------------------------------
+        buttonFlag = true;
+        visibleLength = 0;
+        isTalking = false;
+        SetText(npc.GetComponent<NPCClass>().GetTalk()[0]);
+        //-------------------------------------------------
+        
+        for (int i = 1; i <= npc.GetComponent<NPCClass>().GetTalk().Length; ++i)
         {
             //出てない文字があれば
             while (visibleLength < text.Length)
@@ -78,18 +80,23 @@ public class Write_Effect : MonoBehaviour
                 textObject.text = text.Substring(0, visibleLength);
             }
             //会話終了
-            if (i == npc.GetTalk().Length)
+            if (i == npc.GetComponent<NPCClass>().GetTalk().Length)
             {
                 isTalking = false;
                 //テキストボックス非表示
                 yield return new WaitForSeconds(nTime);
                 canvas.SetActive(false);
+                //会話対象をnullにする
+                npc = null;
+                //プレイヤーを待機状態に変更
+                playerStatus.SetState(PlayerStatus_Solo.State.Stay);
                 break;
             }
             else
             {
                 yield return new WaitForSeconds(nTime);
-                SetText(npc.GetTalk()[i]);
+                //次のテキストを読み込み
+                SetText(npc.GetComponent<NPCClass>().GetTalk()[i]);
                 //Debug.Log(text);
             }
         }
