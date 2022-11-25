@@ -32,4 +32,8 @@ public class NPCClass : MonoBehaviour
         return this.talk;
     }
 
+    public void SetTalkFlag(bool flag)
+    {
+        this.talkFlag = flag;
+    }
 }

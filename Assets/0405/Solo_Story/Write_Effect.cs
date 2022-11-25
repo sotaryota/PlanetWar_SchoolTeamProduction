@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 //using TMPro;
 
@@ -10,6 +11,7 @@ using UnityEngine.UI;
 
 public class Write_Effect : MonoBehaviour
 {
+    Gamepad gamepad;
     //テキストボックス
     [SerializeField]
     Text textObject = default;
@@ -27,7 +29,7 @@ public class Write_Effect : MonoBehaviour
     //表示する文字数
     int visibleLength;
     //会話中かのフラグ
-    bool isTalking;
+    public bool isTalking;
     //会話中にボタンを押せなくするフラグ
     public bool buttonFlag = true;
     //接触中のNPC
@@ -38,7 +40,8 @@ public class Write_Effect : MonoBehaviour
     void Update()
     {
         if (buttonFlag) { return; }
-
+        if (gamepad == null)
+            gamepad = Gamepad.current;
         //会話中じゃないとき、話しかけたら
         if (!isTalking && npc.GetComponent<NPCClass>().GetTalkFlag())
         {
@@ -46,7 +49,6 @@ public class Write_Effect : MonoBehaviour
             canvas.SetActive(true);
             //文字送り開始
             StartCoroutine("TextDisplay");
-            isTalking = true;
         }
     }
     //これでテキストを更新する
@@ -62,41 +64,48 @@ public class Write_Effect : MonoBehaviour
     {
         //一度だけ呼び出す処理
         //-------------------------------------------------
-        buttonFlag = true;
         visibleLength = 0;
-        isTalking = false;
-        SetText(npc.GetComponent<NPCClass>().GetTalk()[0]);
+        isTalking = true;
         //-------------------------------------------------
-        
-        for (int i = 1; i <= npc.GetComponent<NPCClass>().GetTalk().Length; ++i)
+
+        for (int i = 0; i < npc.GetComponent<NPCClass>().GetTalk().Length; ++i)
         {
+            Debug.Log("配列番号" + i);
+            SetText(npc.GetComponent<NPCClass>().GetTalk()[i]);
+            Debug.Log(text);
             //出てない文字があれば
             while (visibleLength < text.Length)
             {
-                //Debug.Log(text);
                 yield return new WaitForSeconds(feedTime);
                 // 1文字ずつ増やす
                 visibleLength++;
                 textObject.text = text.Substring(0, visibleLength);
+                if (gamepad.buttonWest.isPressed)
+                {
+                    visibleLength = text.Length - 1;
+                }
             }
             //会話終了
-            if (i == npc.GetComponent<NPCClass>().GetTalk().Length)
+            if (i == npc.GetComponent<NPCClass>().GetTalk().Length - 1)
             {
-                isTalking = false;
+                Debug.Log("会話終了");
                 //テキストボックス非表示
                 yield return new WaitForSeconds(nTime);
                 canvas.SetActive(false);
                 //会話対象をnullにする
+                npc.GetComponent<NPCClass>().SetTalkFlag(false);
                 npc = null;
+                //ボタンを押せるようにする
+                buttonFlag = true;
                 //プレイヤーを待機状態に変更
                 playerStatus.SetState(PlayerStatus_Solo.State.Stay);
-                break;
+                
+                isTalking = false;
+                yield break;
             }
             else
             {
                 yield return new WaitForSeconds(nTime);
-                //次のテキストを読み込み
-                SetText(npc.GetComponent<NPCClass>().GetTalk()[i]);
                 //Debug.Log(text);
             }
         }

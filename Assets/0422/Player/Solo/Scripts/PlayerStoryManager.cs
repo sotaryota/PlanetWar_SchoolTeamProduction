@@ -8,7 +8,6 @@ public class PlayerStoryManager : MonoBehaviour
 {
     Gamepad gamepad;
     [SerializeField] Write_Effect effect;
-    [SerializeField] GameObject talkNpc;
     [SerializeField] PlayerStatus_Solo playerStatus;
     private void Update()
     {
@@ -17,7 +16,7 @@ public class PlayerStoryManager : MonoBehaviour
             gamepad = Gamepad.current;
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.tag == "NPC")
         {
