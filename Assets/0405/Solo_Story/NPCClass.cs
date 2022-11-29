@@ -7,30 +7,38 @@ public class NPCClass : MonoBehaviour
     [Header("NPCプロパティ")]
     public int       id;           //ID
     public bool      talkFlag;     //話しかけられるフラグ
+    public bool      selectFlag;   //選択肢の有無
     public string    name;         //名前
 
 #pragma warning disable CS8632 // '#nullable' 注釈コンテキスト内のコードでのみ、Null 許容参照型の注釈を使用する必要があります。
-    public string?[] normalTalk;   //通常会話内容
-    public string?[] battlelTalk;  //戦闘会話内容
-    public string?[] friendTalk;   //友好会話内容
+    public string?[] normalTalkData;   //通常会話内容
+    public string?[] battlelTalkData;  //戦闘会話内容
+    public string?[] friendTalkData;   //友好会話内容
+    public string?[] endTalkData;      //会話終了
+    public string?[] selectTalkData = new string?[2];
 #pragma warning restore CS8632 // '#nullable' 注釈コンテキスト内のコードでのみ、Null 許容参照型の注釈を使用する必要があります。
 
     public enum NPCState
     { 
         Normal,   //通常会話
-        Select,   //セレクト状態
         Battle,   //バトル状態
         Friend,   //友好状態
         End,      //会話終了
 
-        NonEvent, //イベントなし
+        ENUMEND,  //基本状態のLength
 
-        ENUMEND   //enumの最終値
+        Select,   //セレクト状態
+        NonEvent  //イベントなし
+
     };
     [Header("NPCの状態")]
     public NPCState firstState;
     public NPCState nowState;
 
+    private void OnEnable()
+    {
+       nowState = firstState;
+    }
     public NPCState GetState()
     {
         return nowState;
@@ -51,9 +59,23 @@ public class NPCClass : MonoBehaviour
     {
         return this.name;
     }
-    public string[] GetTalk()
+    public string[] GetTalk(NPCState state)
     {
-        return this.normalTalk;
+        switch (state)
+        {
+            case NPCState.Normal:
+                return this.normalTalkData;
+            case NPCState.Battle:
+                return this.battlelTalkData;
+            case NPCState.Friend:
+                return this.friendTalkData;
+            case NPCState.End:
+                return this.endTalkData;
+            default:
+                Debug.Log("なんもないよ");
+                break;
+        }
+        return null;
     }
 
     public void SetTalkFlag(bool flag)

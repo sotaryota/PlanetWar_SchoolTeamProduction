@@ -195,6 +195,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1178687565961780579, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1278641891873096696, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_Center.y
       value: 1
@@ -695,6 +699,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &830046630 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4988328781634561657, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+  m_PrefabInstance: {fileID: 247627051}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &830046638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830046630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0243457be5de2b64c8fada0670b3e00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  talkFlag: 0
+  selectFlag: 0
+  name: 
+  normalTalkData: []
+  battlelTalkData: []
+  friendTalkData: []
+  endTalkData: []
+  selectTalkData:
+  - 
+  - 
+  firstState: 0
+  nowState: 0
 --- !u!1 &891670551
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,7 +789,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effect: {fileID: 1272047280}
-  talkNpc: {fileID: 0}
   playerStatus: {fileID: 454796601}
 --- !u!1001 &908630768
 PrefabInstance:
@@ -764,21 +797,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1178687565961780579, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
-      propertyPath: talk.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1178687565961780579, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
-      propertyPath: talk.Array.data[0]
-      value: "\u306A\u3093\u3060\u304A\u307E\u3048"
-      objectReference: {fileID: 0}
     - target: {fileID: 4988328781634561657, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_Name
       value: NPC_Rob (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4988328781634561657, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
-      propertyPath: m_TagString
-      value: NPC
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_RootOrder
@@ -824,7 +845,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1178687565961780579, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
 --- !u!1 &1272047279
 GameObject:
@@ -859,6 +881,7 @@ MonoBehaviour:
   canvas: {fileID: 739730296}
   feedTime: 0.1
   nTime: 0.5
+  isTalking: 0
   buttonFlag: 1
   npc: {fileID: 0}
   playerStatus: {fileID: 454796601}
@@ -1052,6 +1075,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1733565512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4988328781634561657, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+  m_PrefabInstance: {fileID: 908630768}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1733565520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733565512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0243457be5de2b64c8fada0670b3e00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  talkFlag: 1
+  selectFlag: 0
+  name: 
+  normalTalkData: []
+  battlelTalkData: []
+  friendTalkData:
+  - bbbbbbbbb
+  - bbbbbbbbb
+  endTalkData: []
+  selectTalkData:
+  - 
+  - 
+  firstState: 2
+  nowState: 0
 --- !u!1 &1797360963
 GameObject:
   m_ObjectHideFlags: 0

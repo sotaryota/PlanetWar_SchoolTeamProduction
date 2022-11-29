@@ -814,11 +814,10 @@ GameObject:
   - component: {fileID: 1278641891873096696}
   - component: {fileID: 3898982094128299783}
   - component: {fileID: 3898982094128299897}
-  - component: {fileID: 1178687565961780579}
   - component: {fileID: 3898982094128299899}
   m_Layer: 0
   m_Name: NPC_Rob
-  m_TagString: Enemy
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -903,26 +902,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1178687565961780579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4988328781634561657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0243457be5de2b64c8fada0670b3e00b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  talkFlag: 1
-  battleFlag: 0
-  name: Rob
-  talk:
-  - "\u3053\u3093\u306B\u3061\u306F"
-  - "\u79C1\u305F\u3061\u306E\u8857\u3078\u3088\u3046\u3053\u305D"
-  - "\u541B\u306F\u3069\u3046\u3057\u3066\u3053\u3093\u306A\u3068\u3053\u308D\u3078\u6765\u305F\u306E\uFF1F"
 --- !u!114 &3898982094128299899
 MonoBehaviour:
   m_ObjectHideFlags: 0
