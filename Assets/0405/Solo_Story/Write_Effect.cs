@@ -47,8 +47,25 @@ public class Write_Effect : MonoBehaviour
         {
             //テキストボックス表示
             canvas.SetActive(true);
-            //文字送り開始
-            StartCoroutine("TextDisplay");
+            switch (npc.GetComponent<NPCClass>().GetState())
+            {
+                case NPCClass.NPCState.Normal:
+                    //文字送り開始
+                    StartCoroutine("TextDisplay");
+                    break;
+                case NPCClass.NPCState.Battle:
+                    //文字送り開始
+                    StartCoroutine("TextDisplay");
+                    break;
+                case NPCClass.NPCState.Friend:
+                    //文字送り開始
+                    StartCoroutine("TextDisplay");
+                    break;
+                case NPCClass.NPCState.End:
+                    //文字送り開始
+                    StartCoroutine("TextDisplay");
+                    break;
+            }
         }
     }
     //これでテキストを更新する
@@ -68,10 +85,10 @@ public class Write_Effect : MonoBehaviour
         isTalking = true;
         //-------------------------------------------------
 
-        for (int i = 0; i < npc.GetComponent<NPCClass>().GetTalk().Length; ++i)
+        for (int i = 0; i < npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState()).Length; ++i)
         {
             Debug.Log("配列番号" + i);
-            SetText(npc.GetComponent<NPCClass>().GetTalk()[i]);
+            SetText(npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState())[i]);
             Debug.Log(text);
             //出てない文字があれば
             while (visibleLength < text.Length)
@@ -86,7 +103,7 @@ public class Write_Effect : MonoBehaviour
                 }
             }
             //会話終了
-            if (i == npc.GetComponent<NPCClass>().GetTalk().Length - 1)
+            if (i == npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState()).Length - 1)
             {
                 Debug.Log("会話終了");
                 //テキストボックス非表示
