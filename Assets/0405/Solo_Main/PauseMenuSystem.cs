@@ -23,9 +23,6 @@ public class PauseMenuSystem : MonoBehaviour
     //多重クリック防止のbool
     bool onButton;
 
-    //ポーズ中かの取得用
-    [SerializeField]
-    PauseMenu pauseMenu;
     //フェード
     [SerializeField]
     Fade fadeScript;
@@ -51,20 +48,13 @@ public class PauseMenuSystem : MonoBehaviour
         selectLock = false;
         onButton = false;
         ispauseNow = false;
-    }
-    private void OnEnable()
-    {
+    
         //初期位置
         nowSelecting = 0;
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
-        button_Images[0].GetComponent<Animator>().SetBool("selected", true);
         PauseImage.SetActive(false);
     }
-    //private void OnDisable()
-    //{
-    //    button_Images[prevSelecting].GetComponent<Animator>().SetBool("selected", false);
-    //}
 
     void Update()
     {
@@ -170,11 +160,15 @@ public class PauseMenuSystem : MonoBehaviour
         if (gamepad.buttonNorth.wasPressedThisFrame)
         {
             ispauseNow = !ispauseNow;
+            
+
             //ポーズ中であれば
             if (ispauseNow)
             {
                 //audioSource.PlayOneShot(se);
                 PauseImage.SetActive(true);
+                nowSelecting = 0;
+                button_Images[nowSelecting].GetComponent<Animator>().SetBool("selected", true);
                 Time.timeScale = 0.0f;
 
             }
@@ -182,6 +176,11 @@ public class PauseMenuSystem : MonoBehaviour
             else
             {
                 //audioSource.PlayOneShot(se_);
+                for (int i = 0; i < button_Images.Length; ++i)
+                {
+                    button_Images[i].GetComponent<Animator>().SetBool("selected", false);
+                }
+                print("falseNow");
                 PauseImage.SetActive(false);
                 Time.timeScale = 1.0f;
             }

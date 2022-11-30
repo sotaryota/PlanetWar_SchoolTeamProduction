@@ -401,8 +401,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 316225823}
-  - component: {fileID: 316225822}
   - component: {fileID: 316225824}
+  - component: {fileID: 316225825}
   m_Layer: 0
   m_Name: SoloMenuManager
   m_TagString: Untagged
@@ -410,24 +410,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &316225822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316225821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d21c49768dd427441a801bc6d7ac0dd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button_Images:
-  - {fileID: 2103005606}
-  - {fileID: 1146498370}
-  - {fileID: 1118046629}
-  audioSource: {fileID: 316225824}
-  selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
 --- !u!4 &316225823
 Transform:
   m_ObjectHideFlags: 0
@@ -539,6 +521,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &316225825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316225821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21c49768dd427441a801bc6d7ac0dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button_Images:
+  - {fileID: 2103005606}
+  - {fileID: 1146498370}
+  - {fileID: 1118046629}
+  audioSource: {fileID: 316225824}
+  selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
 --- !u!1 &493539157
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,10 +881,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 877373370}
-  - component: {fileID: 877373369}
-  - component: {fileID: 877373368}
-  - component: {fileID: 877373367}
   - component: {fileID: 877373371}
+  - component: {fileID: 877373373}
+  - component: {fileID: 877373372}
   m_Layer: 0
   m_Name: PauseSystem
   m_TagString: Untagged
@@ -892,53 +891,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &877373367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877373366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85aca9d9b0ec8334b967e4bbb90b4c82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  image: {fileID: 1824457819}
-  fademode: 0
---- !u!114 &877373368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877373366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0116e70b9363bc74a81d36cfab9b064d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 877373369}
-  fadeScript: {fileID: 877373367}
-  button_Images:
-  - {fileID: 739651427}
-  - {fileID: 493539157}
-  - {fileID: 260914288}
-  PauseImage: {fileID: 1786237983}
-  audioSource: {fileID: 877373371}
-  selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
---- !u!114 &877373369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877373366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc03d5b3b3518864991e0b197323dfec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &877373370
 Transform:
   m_ObjectHideFlags: 0
@@ -1050,6 +1002,40 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &877373372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877373366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85aca9d9b0ec8334b967e4bbb90b4c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1824457819}
+  fademode: 0
+--- !u!114 &877373373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 877373366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0116e70b9363bc74a81d36cfab9b064d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeScript: {fileID: 877373372}
+  button_Images:
+  - {fileID: 739651427}
+  - {fileID: 493539157}
+  - {fileID: 260914288}
+  PauseImage: {fileID: 1786237983}
+  audioSource: {fileID: 877373371}
+  selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
 --- !u!1 &878703307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,7 +1235,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3578670530252736689, guid: ed1d521e06a152045b8cace6c13cc795, type: 3}
+    - {fileID: 3578670530252736690, guid: ed1d521e06a152045b8cace6c13cc795, type: 3}
+    - {fileID: 3578670530252736655, guid: ed1d521e06a152045b8cace6c13cc795, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ed1d521e06a152045b8cace6c13cc795, type: 3}
 --- !u!1 &1118046629
 GameObject:
