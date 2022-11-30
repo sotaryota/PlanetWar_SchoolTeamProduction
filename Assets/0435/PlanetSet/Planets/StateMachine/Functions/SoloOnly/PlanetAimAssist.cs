@@ -14,6 +14,9 @@ public class PlanetAimAssist : PlanetStateFanction
     [Header("画面の中心からアシストを行う範囲"), Range(0,1), SerializeField]
     private float assistScreenArea;
 
+    [Header("補完最大距離"), SerializeField]
+    private float assistDistance;
+
     [Header("補完値"), SerializeField]
     private float rotateValue;
 
@@ -73,7 +76,7 @@ public class PlanetAimAssist : PlanetStateFanction
                     //参照が無いので保存
                     targetEnemy = en;
                 }
-            }
+            }          
         }
 
         //容量削減の為カメラ削除
@@ -83,8 +86,12 @@ public class PlanetAimAssist : PlanetStateFanction
     public void Assist()
     {
         //ほんの少しだけ敵の方向へ傾く処理
-        Vector3 targetPos = targetEnemy.transform.position;
-        targetPos.y = this.transform.position.y;
-        this.transform.LookAt(targetPos);
+        float targetDis = (targetEnemy.transform.position - this.transform.position).magnitude;
+        if(targetDis <= assistDistance)
+        {
+            Vector3 targetPos = targetEnemy.transform.position;
+            targetPos.y = this.transform.position.y;
+            this.transform.LookAt(targetPos);
+        }
     }
 }

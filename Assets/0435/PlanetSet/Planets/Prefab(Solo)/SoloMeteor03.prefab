@@ -196,8 +196,8 @@ MonoBehaviour:
   - scripts: []
   - scripts:
     - {fileID: 1610063795784321691}
-    - {fileID: 6233094336856099404}
     - {fileID: 8488495566482080899}
+    - {fileID: 6233094336856099404}
   - scripts:
     - {fileID: 1610063795784321689}
 --- !u!114 &2871858580426845944
@@ -242,6 +242,7 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   targetCamera: {fileID: 1597746870402245889}
   assistScreenArea: 0.2
+  assistDistance: 15
   rotateValue: 90
 --- !u!20 &1597746870402245889
 Camera:
@@ -267,7 +268,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 1000
+  far clip plane: 5
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -431,21 +432,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3227043935615972179, guid: 2408f749a3ad04e23b2abe82997c4b61, type: 3}
   m_PrefabInstance: {fileID: 1610063795585433686}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8739861145200898665 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8003495884289897023, guid: 2408f749a3ad04e23b2abe82997c4b61, type: 3}
-  m_PrefabInstance: {fileID: 1610063795585433686}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1610063795585433682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8739861145200898665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d5da0c76eee034d9416136ca92a5f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: {x: 0, y: 50, z: 0}

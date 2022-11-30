@@ -28,9 +28,7 @@ public class PlanetHitJudge_Solo : PlanetStateFanction
         PlanetStateMachine psm = GetComponent<PlanetStateMachine>();
         if (psm.GetState() == PlanetStateMachine.State.Throw)
         {
-            print("ƒqƒbƒg‚µ‚½‚æ");
             if (other.transform.tag == "Player") {
-
                 PlayerStatus_Solo pss;
                 if(pss = other.GetComponent<PlayerStatus_Solo>())
                 {
