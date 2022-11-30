@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  flag: 0
+  talkFlag: 0
+  battleFlag: 0
   name: "\u5B87\u5B99\u4EBA1"
   talk:
   - "\u3053\u3093\u306B\u3061\u306F"
