@@ -1193,6 +1193,7 @@ GameObject:
   - component: {fileID: 8998669171743165671}
   - component: {fileID: 3225931615792004985}
   - component: {fileID: 5802731200430829288}
+  - component: {fileID: 5335712919986414366}
   - component: {fileID: 4287488315982162273}
   m_Layer: 0
   m_Name: Player_Solo
@@ -1367,11 +1368,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed49cd5d33126d49b82fc0fa2562a4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerID_: 0
-  hp_: 100
-  power_: 50
-  defense_: 50
-  speed_: 50
+  playerID: 0
+  hp: 0
+  power: 0
+  defense: 0
+  speed: 0
+  jumpPow: 0
   nowState: 0
 --- !u!114 &8998669171743165671
 MonoBehaviour:
@@ -1388,6 +1390,7 @@ MonoBehaviour:
   myCamera: {fileID: 0}
   playerStatus: {fileID: 4966481264712600106}
   playerAnimator: {fileID: 4287488315982162273}
+  ground: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &3225931615792004985
 MonoBehaviour:
@@ -1405,7 +1408,6 @@ MonoBehaviour:
   playerMove: {fileID: 0}
   playerAnimator: {fileID: 0}
   jumping: {x: 0, y: 0, z: 0}
-  jumpPow: 0
   gravity: 0
   playerFoot: {fileID: 0}
 --- !u!114 &5802731200430829288
@@ -1422,10 +1424,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planet: {fileID: 0}
   planetPos: {fileID: 1257739016295255647}
+  throwPlanetSpeed: 0
   playerStatus: {fileID: 4966481264712600106}
   playerAnimator: {fileID: 4287488315982162273}
   waitTime: 0
   throwFlag: 1
+--- !u!114 &5335712919986414366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361345950793917809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb6a5c1dfc82fc4ca7bb20df6965c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStatus: {fileID: 0}
+  playerAnimManeger: {fileID: 0}
 --- !u!114 &4287488315982162273
 MonoBehaviour:
   m_ObjectHideFlags: 0
