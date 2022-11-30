@@ -13,10 +13,9 @@ public class EnemyCreater_Data : MonoBehaviour
         c,
         d,
 
-
-
         //Ç±ÇÍÇÊÇËè„Ç…ìGÇí«â¡Ç∑ÇÈÇ±Ç∆
-        ENUM_END
+        ENUM_END,
+        Error
     }
 
     [System.Serializable]
@@ -27,6 +26,7 @@ public class EnemyCreater_Data : MonoBehaviour
         [HideInInspector]
         public Vector3 pos;
     }
+
     [HideInInspector]
     public Enemys[] enemyData = new Enemys[1];
 
