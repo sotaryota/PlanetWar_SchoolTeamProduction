@@ -24,6 +24,9 @@ public class PlayerCamera_Solo : MonoBehaviour
     [SerializeField]
     float angleDownLimit = -40f; //ƒJƒƒ‰‚ÌY•ûŒü‚Ì‰ºŒÀ
 
+    [SerializeField]
+    bool cameraReverse;
+
     void Start()
     {
         testInputActions = new TestInputActions();
@@ -72,6 +75,13 @@ public class PlayerCamera_Solo : MonoBehaviour
         0
         );
 
-        transform.eulerAngles += new Vector3(-angle.y, angle.x) * Time.deltaTime;
+        if(!cameraReverse)
+        {
+            transform.eulerAngles += new Vector3(-angle.y, angle.x) * Time.deltaTime;
+        }
+        else
+        {
+            transform.eulerAngles += new Vector3(angle.y, angle.x) * Time.deltaTime;
+        }
     }
 }
