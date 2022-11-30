@@ -6,13 +6,8 @@ public class EnemyCreater_Data : MonoBehaviour
 {
     public enum EnemyName
     {
-        test,
-        sab,
-        a,
-        b,
-        c,
-        d,
-
+        rob1set,
+        rob2set,
         //‚±‚ê‚æ‚èã‚É“G‚ğ’Ç‰Á‚·‚é‚±‚Æ
         ENUM_END,
         Error
