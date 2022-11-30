@@ -94,8 +94,20 @@ public class PlayerStatus_Solo : MonoBehaviour
     {
         this.hp -= damage;
     }
+    public void Die()
+    {
+        if(this.hp <= 0)
+        {
+            nowState = State.Dead;
+        }
+    }
     public void Escape(float escapeCost)
     {
         this.defense -= escapeCost;
+    }
+
+    private void Update()
+    {
+        Die();
     }
 }
