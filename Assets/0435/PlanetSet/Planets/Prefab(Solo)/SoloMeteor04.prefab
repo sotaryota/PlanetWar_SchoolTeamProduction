@@ -241,8 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetEnemy: {fileID: 0}
   targetCamera: {fileID: 6487085295581168638}
-  assistScreenArea: 0.2
-  assistDistance: 15
+  assistScreenArea: 0.35
+  assistDistance: 20
   rotateValue: 90
 --- !u!20 &6487085295581168638
 Camera:
