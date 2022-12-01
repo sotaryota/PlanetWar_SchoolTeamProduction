@@ -11,13 +11,16 @@ public class NPCClass : MonoBehaviour
     public bool      selectFlag;   //選択肢の有無
     public bool      battleFlag;   //戦闘のフラグ
 
-#pragma warning disable CS8632
     public string[] normalTalkData;   //通常会話内容
     public string[] battlelTalkData;  //戦闘会話内容
     public string[] friendTalkData;   //友好会話内容
     public string[] endTalkData;      //会話終了
     public string[] selectTalkData = new string[2];
-#pragma warning restore CS8632
+    public enum SelectNom
+    {
+        First,
+        Second,
+    }
 
     public enum NPCState
     { 
@@ -35,6 +38,8 @@ public class NPCClass : MonoBehaviour
     [Header("NPCの状態")]
     public NPCState firstState;
     public NPCState nowState;
+    public NPCState firstSelectState;
+    public NPCState secondSelectState;
 
     private void OnEnable()
     {
@@ -42,13 +47,20 @@ public class NPCClass : MonoBehaviour
     }
     public NPCState GetState()
     {
-        return nowState;
+        return this.nowState;
     }
     public void SetState(NPCState state)
     {
         this.nowState = state;
     }
-
+    public NPCState GetFirstSelectState()
+    {
+        return this.firstSelectState;
+    }
+    public NPCState GetSecondSelectState()
+    {
+        return this.secondSelectState;
+    }
     //--------------------------------------
     //ゲッター
     //--------------------------------------
