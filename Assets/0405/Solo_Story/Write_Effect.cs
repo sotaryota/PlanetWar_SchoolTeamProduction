@@ -137,14 +137,14 @@ public class Write_Effect : MonoBehaviour
         switch (nowSelect)
         {
             case (int)TalkSelect.Yes:
-                print("YESボタンを押しました");
-                npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.Friend);
+                print("ひとつめのボタンを押しました");
+                npc.GetComponent<NPCClass>().SetState(npc.GetComponent<NPCClass>().GetFirstSelectState());
                 selectCanvas.SetActive(false);
                 isTalking = false;
                 yield break;
             case (int)TalkSelect.No:
-                print("NOボタンを押しました");
-                npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.Battle);
+                print("ふたつめのボタンを押しました");
+                npc.GetComponent<NPCClass>().SetState(npc.GetComponent<NPCClass>().GetSecondSelectState());
                 selectCanvas.SetActive(false);
                 isTalking = false;
                 yield break;

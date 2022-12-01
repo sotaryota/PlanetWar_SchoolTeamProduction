@@ -37,8 +37,10 @@ public class NPCClass_Editor : Editor
 
         if (npc.selectFlag)
         {
-            npc.selectTalkData[0] = EditorGUILayout.TextField("YESの選択肢", npc.selectTalkData[0]);
-            npc.selectTalkData[1] = EditorGUILayout.TextField("NOの選択肢", npc.selectTalkData[1]);
+            npc.selectTalkData[(int)NPCClass.SelectNom.First] = EditorGUILayout.TextField("選択肢のテキスト", npc.selectTalkData[(int)NPCClass.SelectNom.First]);
+            npc.firstSelectState = (NPCClass.NPCState)EditorGUILayout.EnumPopup("選択後の状態", npc.firstSelectState);
+            npc.selectTalkData[(int)NPCClass.SelectNom.Second] = EditorGUILayout.TextField("選択肢のテキスト", npc.selectTalkData[(int)NPCClass.SelectNom.Second]);
+            npc.secondSelectState = (NPCClass.NPCState)EditorGUILayout.EnumPopup("選択後の状態", npc.secondSelectState);
         }
 
         //会話可能か否かの判定
