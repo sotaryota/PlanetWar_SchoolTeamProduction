@@ -4602,6 +4602,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerstatus: {fileID: 1450203579}
   HPBlackGauge: {fileID: 1119310068}
+  damageMotion: {fileID: 1510402115}
+--- !u!1 &1510402114 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4583461934220635931, guid: 36b12141196d1f44eb277b8f08823761, type: 3}
+  m_PrefabInstance: {fileID: 632499539}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1510402115
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510402114}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c60e4b63cd8328d4ba9614cf8f34f19d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1512785881
 GameObject:
   m_ObjectHideFlags: 0
