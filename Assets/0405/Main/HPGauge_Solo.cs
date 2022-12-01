@@ -13,17 +13,27 @@ public class HPGauge_Solo : MonoBehaviour
     //[SerializeField]
     //private GameObject HPgauge_Color;
 
+    [SerializeField]
+    Animator damageMotion;
+
     float maxHP = 100f;
+    float nowHP;
+    float beforeHp;
     void Start()
     {
         HPBlackGauge.fillAmount = 0;
         maxHP = playerstatus.GetHp();
+        nowHP = maxHP;
+        beforeHp = nowHP;
     }
 
     void Update()
     {
+        nowHP = playerstatus.GetHp();
         //ƒQ[ƒW‚Ì•‰æ‘œ‚ðŒ¸‚ç‚·ˆ—
-        GaugeUpdate(playerstatus.GetHp());
+        GaugeUpdate(nowHP);
+
+        DamageMotion();
     }
     public void GaugeUpdate(float nowHP)
     {
@@ -31,5 +41,14 @@ public class HPGauge_Solo : MonoBehaviour
 
         //Slider‚Ìê‡
         //drawGauge();
+    }
+
+    void DamageMotion()
+    {
+        if (beforeHp > nowHP)
+        {
+            damageMotion.SetTrigger("damage");
+            beforeHp = nowHP;
+        }
     }
 }
