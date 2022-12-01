@@ -19,6 +19,9 @@ public class Gameover_Solo: MonoBehaviour
     bool dead = false;
     [SerializeField]
     float deadTime = 0;
+
+    [SerializeField]
+    ParticleSystem deadEffecrt;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,15 +35,17 @@ public class Gameover_Solo: MonoBehaviour
         if(playerStatus.GetState() == PlayerStatus_Solo.State.Dead)
         {
             DeadStop();
+            DeadEffect();
 
             if (dead == false)
             {
+                deadEffecrt.Play();
                 playerAnimManeger.PlayAnimDie();
                 gameoverStaging.SetActive(true);
                 gameStart_solo.ScriptStop();
             }
             dead = true;
-        }    
+        }
     }
 
     void DeadStop()
@@ -59,5 +64,14 @@ public class Gameover_Solo: MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+
+    void DeadEffect()
+    {
+        deadEffecrt.Simulate(
+        Time.unscaledDeltaTime / 2.0f, //パーティクルシステムを早送りする時間
+        true,        //子のパーティクルシステムもすべて早送りするかどうか
+        false             //再起動し最初から再生するかどうか
+        );
     }
 }
