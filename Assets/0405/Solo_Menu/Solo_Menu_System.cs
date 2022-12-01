@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 
 public class Solo_Menu_System : MonoBehaviour
 {
-    //PauseNowを取得してUpdateでif
-
     enum menu
     {
         NewGame = 0,
@@ -24,8 +22,10 @@ public class Solo_Menu_System : MonoBehaviour
     bool onButton;
 
     //フェード
-    //[SerializeField]
-    //Fade fadeScript;
+    [SerializeField]
+    Fade fadeScript;
+    //移行するシーンを保存する場所
+    string nextscene;
     //ボタン画像の読み込み
     [Header("アニメーションさせるオブジェクト")]
     [SerializeField]
@@ -43,6 +43,7 @@ public class Solo_Menu_System : MonoBehaviour
     {
         selectLock = false;
         onButton = false;
+        nextscene = "";
 
         //初期位置
         nowSelecting = 0;
@@ -53,12 +54,9 @@ public class Solo_Menu_System : MonoBehaviour
 
     void Update()
     {
-        for (int i = 0; i < Gamepad.all.Count; ++i)
-        {
-            gamepad = Gamepad.all[i];
-            SelectSystem();
-            onClickAction();
-        }
+        gamepad = Gamepad.current;
+        SelectSystem();
+        onClickAction();
         //決定押されていない　＆　上入力なし　＆　下入力なし
         if (!gamepad.buttonSouth.wasPressedThisFrame &&
             gamepad.leftStick.ReadValue().y <= 0.1f &&
@@ -81,17 +79,18 @@ public class Solo_Menu_System : MonoBehaviour
             //直前の選択を更新
             prevSelecting = nowSelecting;
         }
-        //フェードが終わったらメニューに戻す
-        /*if (fadeScript.FadeOut())
+
+        //フェードが終わったらシーン遷移
+        if (fadeScript.FadeOut())
         {
-            SceneManager.LoadScene("Menu");
-        }*/
+            SceneManager.LoadScene(nextscene);
+        }
     }
 
     void SelectSystem()
     {
-        //ロックがかかっていない場合
-        if (selectLock == false)
+        //何もロックがかかっていない場合
+        if (selectLock == false && onButton == false)
         {
             //下入力
             if (gamepad.leftStick.ReadValue().y < -0.1f)
@@ -125,22 +124,20 @@ public class Solo_Menu_System : MonoBehaviour
                 //操作を止めて
                 selectLock = true;
                 onButton = true;
-
                 //選んでいる項目別に挙動を変える
                 switch (nowSelecting)
                 {
                     case (int)menu.NewGame:
-                        //fadeScript.fademode = true;
-                        Time.timeScale = 1.0f;
-                        SceneManager.LoadScene("Title");
+                        fadeScript.fademode = true;
+                        nextscene = "Title";
                         break;
                     case (int)menu.Continue:
-                        //fadeScript.fademode = true;
-                        SceneManager.LoadScene("Main");
+                        fadeScript.fademode = true;
+                        nextscene = "Main";
                         break;
                     case (int)menu.BackMenu:
-                        //fadeScript.fademode = true;
-                        SceneManager.LoadScene("Menu");
+                        fadeScript.fademode = true;
+                        nextscene = "Menu";
                         break;
                     default:
                         break;

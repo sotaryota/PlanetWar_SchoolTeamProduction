@@ -4,10 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
+//ポーズさせたいシーンにこれを置く。
+//フェードくん、ボタンにしたい画像、そのボタンをまとめるオブジェクト等をアタッチすればおｋ
+//ボタンにはアニメーションを持たせること。なお、「UpdateMode」を「UnscaledTime」にすること！
+//そのシーンのマネージャーのUpdateに下記を置いとかないと動いたりするので注意
+
+//PauseMenuSystem pauseMenuSystem;
+//if (pauseMenuSystem.pausejudge()) { }
+
+//SetCanPause(_bool_); でポーズ不可にできる。
+//会話が始まるときにFalseを送り、終わったらTrueを送る等
+
 public class PauseMenuSystem : MonoBehaviour
 {
-    //PauseNowを取得してUpdateでif
-
     enum menu
     {
         resume = 0,
@@ -31,7 +40,7 @@ public class PauseMenuSystem : MonoBehaviour
     GameObject[] button_Images = new GameObject[(int)menu.ENUMEND];
     //ボタン画像を置いてあるパネルや画像
     [SerializeField]
-    GameObject PauseImage;
+    GameObject PausePanel;
     //オーディオ
     [SerializeField]
     AudioSource audioSource;
@@ -42,34 +51,43 @@ public class PauseMenuSystem : MonoBehaviour
     int prevSelecting;
     //ポーズ中か
     bool ispauseNow;
+    //ポーズメニューを展開できる状態かどうか
+    bool canPause;
+    public void SetCanPause(bool value)
+    {
+        canPause = value;
+    }
 
     void Start()
     {
         selectLock = false;
         onButton = false;
         ispauseNow = false;
-    
+        canPause = true;
+
         //初期位置
         nowSelecting = 0;
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
-        PauseImage.SetActive(false);
+        PausePanel.SetActive(false);
     }
 
     void Update()
     {
+        gamepad = Gamepad.current;
 
-        for (int i = 0; i < Gamepad.all.Count; ++i)
+        if (canPause)
         {
-            gamepad = Gamepad.all[i];
             PauseSystem();
-            //メニューを表示している場合のみ
-            if (ispauseNow)
-            {
-                SelectSystem();
-                onClickAction();
-            }
         }
+
+        //メニューを表示している場合のみ
+        if (ispauseNow)
+        {
+            SelectSystem();
+            onClickAction();
+        }
+
         //決定押されていない　＆　上入力なし　＆　下入力なし
         if (!gamepad.buttonSouth.wasPressedThisFrame &&
             gamepad.leftStick.ReadValue().y <= 0.1f &&
@@ -97,13 +115,12 @@ public class PauseMenuSystem : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
-
     }
 
     void SelectSystem()
     {
-        //ロックがかかっていない場合
-        if (selectLock == false)
+        //何もロックがかかっていない場合
+        if (selectLock == false && onButton == false)
         {
             //下入力
             if (gamepad.leftStick.ReadValue().y < -0.1f)
@@ -126,6 +143,8 @@ public class PauseMenuSystem : MonoBehaviour
             }
         }
     }
+
+    //クリックしたときの挙動
     void onClickAction()
     {
         //連打防止用
@@ -133,15 +152,14 @@ public class PauseMenuSystem : MonoBehaviour
         {
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
-                //一番下を選択中
                 switch (nowSelecting)
                 {
                     case (int)menu.resume:
-
+                        ispauseNow = false;
+                        PausePanel.SetActive(false);
                         Time.timeScale = 1.0f;
                         break;
                     case (int)menu.backmenu:
-
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
@@ -160,13 +178,13 @@ public class PauseMenuSystem : MonoBehaviour
         if (gamepad.buttonNorth.wasPressedThisFrame)
         {
             ispauseNow = !ispauseNow;
-            
+
 
             //ポーズ中であれば
             if (ispauseNow)
             {
                 //audioSource.PlayOneShot(se);
-                PauseImage.SetActive(true);
+                PausePanel.SetActive(true);
                 nowSelecting = 0;
                 button_Images[nowSelecting].GetComponent<Animator>().SetBool("selected", true);
                 Time.timeScale = 0.0f;
@@ -180,10 +198,15 @@ public class PauseMenuSystem : MonoBehaviour
                 {
                     button_Images[i].GetComponent<Animator>().SetBool("selected", false);
                 }
-                print("falseNow");
-                PauseImage.SetActive(false);
+                PausePanel.SetActive(false);
                 Time.timeScale = 1.0f;
             }
         }
+    }
+
+    //ポーズ中かを返す
+    public bool pausejudge()
+    {
+        return ispauseNow;
     }
 }
