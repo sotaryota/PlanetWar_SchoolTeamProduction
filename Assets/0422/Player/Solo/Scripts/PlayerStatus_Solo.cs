@@ -29,6 +29,7 @@ public class PlayerStatus_Solo : MonoBehaviour
         Jump,    //ジャンプ
         Catch,   //惑星を所持
         Damage,  //ダメージ
+        Talking, //会話中
         Dead,    //死亡
 
         Non,     //存在しない(基本使わない)
@@ -93,8 +94,20 @@ public class PlayerStatus_Solo : MonoBehaviour
     {
         this.hp -= damage;
     }
+    public void Die()
+    {
+        if(this.hp <= 0)
+        {
+            nowState = State.Dead;
+        }
+    }
     public void Escape(float escapeCost)
     {
         this.defense -= escapeCost;
+    }
+
+    private void Update()
+    {
+        Die();
     }
 }

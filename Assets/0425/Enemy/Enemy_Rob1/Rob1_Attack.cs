@@ -17,16 +17,23 @@ public class Rob1_Attack : MonoBehaviour
     [SerializeField] Rob1_AnimManeger rob1Animator;
 
     [Header("惑星を投げた時のウェイト")]
-    [SerializeField]
-    private float waitTime;
+    [Header("手を挙げてから、惑星を生成するまでの時間"), SerializeField]
+    float planetCreateTime;
+    float planetCreateCnt = 0;
+
+    [Header("惑星生成後、投げるまでの時間"), SerializeField]
+    float planetThrowTime;
+    float planetThrowCnt = 0;
+
+    [Header("投げた後の待機時間"), SerializeField]
+    private float attackEndWait;
+
     public bool throwFlag = true;
 
-    float attackCount;
-    [SerializeField]
-    int attackInterval;
-
-    float attackDelay;
     bool attackGenerate = true;
+
+    [SerializeField]
+    public bool sensing = false;
 
     // Update is called once per frame
     void Update()
@@ -34,21 +41,17 @@ public class Rob1_Attack : MonoBehaviour
         if (rob1Status.GetState() == Rob1_Status.State.Non || rob1Status.GetState() == Rob1_Status.State.Dead)
         { return; }
 
-            if (planet)
+        if (planet)
         {
-            attackCount += Time.deltaTime;
+            planetThrowCnt += Time.deltaTime;
 
             //所持している惑星の位置を腕の位置に
             planet.transform.position = handPos.transform.position;
 
-            if (attackCount > attackInterval)
+            if (planetThrowCnt >= planetThrowTime)
             {
                 PlanetThrow();
             }
-        }
-        else
-        {
-            attackCount = 0;
         }
     }
 
@@ -83,6 +86,9 @@ public class Rob1_Attack : MonoBehaviour
         //アニメーション
         rob1Animator.PlayRob1AnimThrow();
 
+        //投げたらカウントリセット
+        planetThrowCnt = 0;
+        
         //硬直時間
         StartCoroutine("ThrowWait");
 
@@ -96,7 +102,7 @@ public class Rob1_Attack : MonoBehaviour
     {
         throwFlag = false;
 
-        yield return new WaitForSeconds(waitTime);
+        yield return new WaitForSeconds(attackEndWait);
 
         //エネミーをStay状態にする
         rob1Status.SetState(Rob1_Status.State.Stay);
@@ -112,6 +118,10 @@ public class Rob1_Attack : MonoBehaviour
     {
         if (rob1Status.GetState() == Rob1_Status.State.Non || rob1Status.GetState() == Rob1_Status.State.Dead)
         { return; }
+        if (other.tag != "Player")
+        { return; }
+
+        sensing = true;
 
         //硬直時間中は処理をしない
         if (!throwFlag) return;
@@ -119,7 +129,7 @@ public class Rob1_Attack : MonoBehaviour
         //惑星を所持している場合は処理をしない
         if (planet) { return; }
 
-        attackDelay += Time.deltaTime;
+        planetCreateCnt += Time.deltaTime;
 
         //プレイヤをCatch状態に
         rob1Status.SetState(Rob1_Status.State.Catch);
@@ -132,7 +142,7 @@ public class Rob1_Attack : MonoBehaviour
         }
         
 
-        if (attackDelay > 3)
+        if (planetCreateCnt > planetCreateTime)
         {
             //惑星の生成
             GameObject go = Instantiate(planetPrefab);
@@ -144,8 +154,14 @@ public class Rob1_Attack : MonoBehaviour
             //プラネットの状態をCatch状態にする           
             go.GetComponent<PlanetStateMachine>().SetState(PlanetStateMachine.State.Catch);
 
-            attackDelay = 0;
+            planetCreateCnt = 0;
             attackGenerate = true;
         }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+            sensing = false;
     }
 }

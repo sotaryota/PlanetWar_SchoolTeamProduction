@@ -12,6 +12,7 @@ public class PlayerMove_Solo : MonoBehaviour
     [Header("スクリプト")]
     public PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerAnimManeger playerAnimator;
+    [SerializeField] PlayerGroundCheck ground;
 
     public Vector3 moveDirection;
     private float horizontal;
@@ -31,8 +32,13 @@ public class PlayerMove_Solo : MonoBehaviour
 
     private void Update()
     {
-        //プレイヤが存在しないor死んでいるなら処理をしない
-        if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead) { return; }
+        //プレイヤが存在しないor死んでいるor会話中なら処理をしない
+        if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead ||
+            playerStatus.GetState() == PlayerStatus_Solo.State.Talking)
+        {
+            playerAnimator.PlayAnimSetRun(false);
+            return;
+        }
         if (gamepad == null) { gamepad = Gamepad.current; }
 
         StickValue();
@@ -130,6 +136,7 @@ public class PlayerMove_Solo : MonoBehaviour
 
     void SlopeSlide()
     {
+        if (ground.isGround) { return; }
         var rayPos       = this.transform.position + new Vector3(0,1,0);
         var rayDirection = this.transform.forward;
 

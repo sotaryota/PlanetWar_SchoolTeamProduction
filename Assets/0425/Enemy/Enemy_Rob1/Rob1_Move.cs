@@ -10,12 +10,15 @@ public class Rob1_Move : MonoBehaviour
     [SerializeField] Rob1_Attack rob1_Attack;
 
     [SerializeField] Rob1_AnimManeger rob1Animator;
-    
-    [SerializeField] GameObject player;
 
-    [SerializeField] bool sensing = false;
+    GameObject player;
 
     bool die = false;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void Update()
     {
@@ -31,7 +34,7 @@ public class Rob1_Move : MonoBehaviour
 
         PlayerLook();
 
-        if (sensing == false)
+        if (rob1_Attack.sensing == false)
         {
             MoveOrStop();
         }
@@ -47,7 +50,9 @@ public class Rob1_Move : MonoBehaviour
 
     private void PlayerLook()
     {
-        transform.LookAt(player.transform);
+        Vector3 lookPos = player.transform.position;
+        lookPos.y = this.transform.position.y;
+        transform.LookAt(lookPos);
     }
 
     //--------------------------------------
@@ -63,21 +68,23 @@ public class Rob1_Move : MonoBehaviour
             }
 
         //移動処理
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, rob1Status.GetSpeed() * Time.deltaTime);
+        Vector3 movePos = player.transform.position;
+        movePos.y = this.transform.position.y; ;
+        transform.position = Vector3.MoveTowards(transform.position, movePos, rob1Status.GetSpeed() * Time.deltaTime);
 
         //アニメーション
         rob1Animator.PlayRob1AnimSetRun(true);
     }
 
-    public void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Player" && rob1_Attack.throwFlag)
-            sensing = true;
-    }
+    //public void OnTriggerStay(Collider other)
+    //{
+    //    if (other.tag == "Player" && rob1_Attack.throwFlag)
+    //        sensing = true;
+    //}
 
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-            sensing = false;
-    }
+    //public void OnTriggerExit(Collider other)
+    //{
+    //    if (other.tag == "Player")
+    //        sensing = false;
+    //}
 }

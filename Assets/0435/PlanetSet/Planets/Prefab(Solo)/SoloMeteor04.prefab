@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 5503834954525785210}
   - component: {fileID: 8032102257835825852}
   - component: {fileID: 3615420558135247159}
+  - component: {fileID: 4259266108717422318}
+  - component: {fileID: 6487085295581168638}
   m_Layer: 0
   m_Name: SoloMeteor04
   m_TagString: Planet
@@ -119,11 +121,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   autoScaleSettingMode: 1
-  scaleRange: {x: 0.5, y: 1.5}
-  autoDataSettingMode: 1
+  scaleRange: {x: 0.9, y: 1.1}
+  autoDataSettingMode: 0
   settingRate_Damage: 4
   settingRate_Weight: 1
-  damage: 0
+  damage: 10
   weight: 0
 --- !u!114 &6286554408984997815
 MonoBehaviour:
@@ -194,6 +196,7 @@ MonoBehaviour:
   - scripts: []
   - scripts:
     - {fileID: 6286554408984997809}
+    - {fileID: 4259266108717422318}
     - {fileID: 3615420558135247159}
   - scripts:
     - {fileID: 6286554408984997815}
@@ -212,9 +215,6 @@ MonoBehaviour:
   crashEffect: {fileID: 4166501065544445604, guid: aa8bd5faa6a4c9b48a97dbc6a87740e6, type: 3}
   moveTime: 20
   targetPos: {x: 0, y: 0, z: 0}
-  Range_X: {x: -10, y: 10}
-  posY: 0
-  Range_Z: {x: -10, y: 10}
 --- !u!114 &3615420558135247159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,6 +227,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f619bb84b1aa30468e3a7abc7090d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4259266108717422318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6286554408984997816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79484f7a6c863d41bd49dcaa0291cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetEnemy: {fileID: 0}
+  targetCamera: {fileID: 6487085295581168638}
+  assistScreenArea: 0.2
+  assistDistance: 15
+  rotateValue: 90
+--- !u!20 &6487085295581168638
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6286554408984997816}
+  m_Enabled: 0
+  serializedVersion: 2
+  m_ClearFlags: 4
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.1
+  far clip plane: 5
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -99
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1001 &6286554408011837094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -301,24 +361,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1714766844072660152, guid: e0cfb534d47614c7b825642df2d44a40, type: 3}
   m_PrefabInstance: {fileID: 6286554408011837094}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7258152928019646353 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3712215468181072183, guid: e0cfb534d47614c7b825642df2d44a40, type: 3}
-  m_PrefabInstance: {fileID: 6286554408011837094}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6286554409344080048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7258152928019646353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d5da0c76eee034d9416136ca92a5f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: {x: 0, y: 50, z: 0}
 --- !u!1001 &6286554408064474745
 PrefabInstance:
   m_ObjectHideFlags: 0

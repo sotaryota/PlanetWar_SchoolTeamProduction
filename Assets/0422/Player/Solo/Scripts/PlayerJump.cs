@@ -24,8 +24,9 @@ public class PlayerJump : MonoBehaviour
 
     private void Update()
     {
-        //プレイヤが存在しないor死んでいるorジャンプ中なら処理をしない
-        if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead) { return; }
+        //プレイヤが存在しないor死んでいるor会話中なら処理をしない
+        if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead ||
+            playerStatus.GetState() == PlayerStatus_Solo.State.Talking) { return; }
         if (gamepad == null) { gamepad = Gamepad.current; }
 
         //地面に接地していてボタンを押したとき
