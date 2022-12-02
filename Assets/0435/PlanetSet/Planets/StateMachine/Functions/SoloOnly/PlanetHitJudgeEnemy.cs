@@ -28,7 +28,16 @@ public class PlanetHitJudgeEnemy : PlanetStateFanction
         if (psm.GetState() == PlanetStateMachine.State.Throw)
         {
             PlayerStatus ps;
+            
+            if(other.transform.tag == "Ground")
+            {
+                hit = true;
+                return;
+            }
+            
             if (other.transform.tag != "Enemy") { return; }
+
+
 
             PlanetData pd = this.GetComponent<PlanetData>();
             Enemy_HpData ehp;
