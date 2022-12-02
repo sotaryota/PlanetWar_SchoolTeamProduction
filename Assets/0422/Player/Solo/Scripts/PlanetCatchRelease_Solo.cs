@@ -49,7 +49,7 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
         if (!planet) return;
 
         //Aボタンが押されたら
-        if (gamepad.buttonEast.wasPressedThisFrame)
+        if (gamepad.buttonWest.wasPressedThisFrame)
         {
             PlanetStateMachine stateMachine = planet.GetComponent<PlanetStateMachine>();
             PlanetThrowMove throwMove = planet.GetComponent<PlanetThrowMove>();
@@ -133,7 +133,7 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
             {
                 Debug.Log("4");
                 //ボタンが押された
-                if (gamepad.buttonEast.isPressed)
+                if (gamepad.buttonWest.isPressed)
                 {
                     //プレイヤーのパワー+ウェイトよりも惑星の重さが小さい
                     if (other.GetComponent<PlanetData>().GetWeight() <= playerStatus.GetPower() + (playerStatus.GetDefense()))

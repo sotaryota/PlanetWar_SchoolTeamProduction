@@ -38,79 +38,86 @@ public class MeteorCreater_Solo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < meteors.Length; ++i)
+
+        Vector3 targeter = this.transform.position;
+        //targeter.y = player.transform.position.y;
+        if ((targeter - player.transform.position).magnitude < 65)
         {
-            //隕石が格納されていなかった場合、惑星を生成
-            if (!meteors[i])
+
+            for (int i = 0; i < meteors.Length; ++i)
             {
-                //位置を決定
-                GameObject go = Instantiate(createPlanets[Random.Range(0, createPlanets.Length)]);
-
-                //生成座標はランダム
-                Vector3 createPos = new Vector3(
-                    Random.Range(min_firstCreatePos.x, max_firstCreatePos.x),
-                    Random.Range(min_firstCreatePos.y, max_firstCreatePos.y),
-                    Random.Range(min_firstCreatePos.z, max_firstCreatePos.z)
-                    );
-                if (addMyPos)
+                //隕石が格納されていなかった場合、惑星を生成
+                if (!meteors[i])
                 {
-                    createPos += this.transform.position;
-                }
+                    //位置を決定
+                    GameObject go = Instantiate(createPlanets[Random.Range(0, createPlanets.Length)]);
 
-                //オーディオソースを割り当てる
-                PlanetAttackHit pah;
-                if (pah = go.GetComponent<PlanetAttackHit>())
-                {
-                    pah.source = this.source;
-                }
-
-                //プレイヤの位置を割り当てる
-                PlanetStateMachine psm;
-                if(psm = go.GetComponent<PlanetStateMachine>())
-                {
-                    psm.middleObject = player;
-                }
-
-                //X軸マイナス判定
-                if (Random.Range(0, 2) == 1)
-                {
-                    createPos = new Vector3(
-                        createPos.x * -1,
-                        createPos.y,
-                        createPos.z
+                    //生成座標はランダム
+                    Vector3 createPos = new Vector3(
+                        Random.Range(min_firstCreatePos.x, max_firstCreatePos.x),
+                        Random.Range(min_firstCreatePos.y, max_firstCreatePos.y),
+                        Random.Range(min_firstCreatePos.z, max_firstCreatePos.z)
                         );
-                }
-                //Z軸マイナス判定
-                if (Random.Range(0, 2) == 1)
-                {
-                    createPos = new Vector3(
-                        createPos.x,
-                        createPos.y,
-                        createPos.z * -1
-                        );
-                }
+                    if (addMyPos)
+                    {
+                        createPos += this.transform.position;
+                    }
 
-                go.transform.position = createPos;
+                    //オーディオソースを割り当てる
+                    PlanetAttackHit pah;
+                    if (pah = go.GetComponent<PlanetAttackHit>())
+                    {
+                        pah.source = this.source;
+                    }
 
-                //目標座標設定          
-                Vector3 targetPos = new Vector3(
-                    Random.Range(min_TargetPos.x, max_TargetPos.x),
-                    Random.Range(min_TargetPos.y, max_TargetPos.y),
-                    Random.Range(min_TargetPos.z, max_TargetPos.z));
-                if (addMyPos)
-                {
-                    targetPos += this.transform.position;
+                    //プレイヤの位置を割り当てる
+                    PlanetStateMachine psm;
+                    if (psm = go.GetComponent<PlanetStateMachine>())
+                    {
+                        psm.middleObject = player;
+                    }
+
+                    //X軸マイナス判定
+                    if (Random.Range(0, 2) == 1)
+                    {
+                        createPos = new Vector3(
+                            createPos.x * -1,
+                            createPos.y,
+                            createPos.z
+                            );
+                    }
+                    //Z軸マイナス判定
+                    if (Random.Range(0, 2) == 1)
+                    {
+                        createPos = new Vector3(
+                            createPos.x,
+                            createPos.y,
+                            createPos.z * -1
+                            );
+                    }
+
+                    go.transform.position = createPos;
+
+                    //目標座標設定          
+                    Vector3 targetPos = new Vector3(
+                        Random.Range(min_TargetPos.x, max_TargetPos.x),
+                        Random.Range(min_TargetPos.y, max_TargetPos.y),
+                        Random.Range(min_TargetPos.z, max_TargetPos.z));
+                    if (addMyPos)
+                    {
+                        targetPos += this.transform.position;
+                    }
+
+                    //適用
+                    PlanetFallMeteor pfm;
+                    if (pfm = go.GetComponent<PlanetFallMeteor>())
+                    {
+                        pfm.targetPos = targetPos;
+                    }
+
+                    //隕石を紐づけ
+                    meteors[i] = go;
                 }
-
-                //適用
-                PlanetFallMeteor pfm;
-                if(pfm = go.GetComponent<PlanetFallMeteor>())
-                {
-                    pfm.targetPos = targetPos;
-                }
-
-                //隕石を紐づけ
-                meteors[i] = go;
             }
         }
     }
