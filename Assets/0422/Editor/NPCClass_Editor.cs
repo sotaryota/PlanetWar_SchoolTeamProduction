@@ -20,7 +20,7 @@ public class NPCClass_Editor : Editor
         serializedObject.FindProperty(nameof(NPCClass.name)).stringValue = EditorGUILayout.TextField("名前", serializedObject.FindProperty(nameof(NPCClass.name)).stringValue);
         //ID
         serializedObject.FindProperty(nameof(NPCClass.id)).intValue = EditorGUILayout.IntField("ID", serializedObject.FindProperty(nameof(NPCClass.id)).intValue);
-
+        GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
         //NPCの初期状態と現在の状態表示
         //------------------------------------------------------------------------------------------
         npc.firstState = (NPCClass.NPCState)EditorGUILayout.EnumPopup("初期の状態", npc.firstState);
@@ -31,18 +31,20 @@ public class NPCClass_Editor : Editor
 
         EditorGUILayout.EndHorizontal();
         //------------------------------------------------------------------------------------------
-        
+        GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
         //選択肢の有無
         serializedObject.FindProperty(nameof(NPCClass.selectFlag)).boolValue = EditorGUILayout.Toggle("選択肢の有無", serializedObject.FindProperty(nameof(NPCClass.selectFlag)).boolValue);
 
         if (npc.selectFlag)
         {
+            GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
             npc.selectTalkData[(int)NPCClass.SelectNom.First] = EditorGUILayout.TextField("選択肢のテキスト", npc.selectTalkData[(int)NPCClass.SelectNom.First]);
             npc.firstSelectState = (NPCClass.NPCState)EditorGUILayout.EnumPopup("選択後の状態", npc.firstSelectState);
+            GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
             npc.selectTalkData[(int)NPCClass.SelectNom.Second] = EditorGUILayout.TextField("選択肢のテキスト", npc.selectTalkData[(int)NPCClass.SelectNom.Second]);
             npc.secondSelectState = (NPCClass.NPCState)EditorGUILayout.EnumPopup("選択後の状態", npc.secondSelectState);
         }
-
+        GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
         //会話可能か否かの判定
         serializedObject.FindProperty(nameof(NPCClass.talkFlag)).boolValue = EditorGUILayout.Toggle("会話可能？", serializedObject.FindProperty(nameof(NPCClass.talkFlag)).boolValue);
 
