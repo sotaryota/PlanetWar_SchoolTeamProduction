@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rob1_Move : MonoBehaviour
+public class Rob2_Move : MonoBehaviour
 {
     [Header("スクリプト")]
-    [SerializeField] Rob1_Status rob1Status;
-    [SerializeField] Rob1_Attack rob1_Attack;
+    [SerializeField] Rob2_Status rob2_Status;
+    [SerializeField] Rob2_Attack rob2_Attack;
+    [SerializeField] Rob2_Sensing rob2_Sensing;
 
-    [SerializeField] Rob1_AnimManeger rob1Animator;
+    [SerializeField] Rob2_AnimManeger rob2Animator;
 
     GameObject player;
 
@@ -22,24 +23,25 @@ public class Rob1_Move : MonoBehaviour
     private void Update()
     {
         //エネミーが存在しないor死んでいるなら処理をしない
-        if (rob1Status.GetState() == Rob1_Status.State.Non || rob1Status.GetState() == Rob1_Status.State.Dead)
+        if (rob2_Status.GetState() == Rob2_Status.State.Non || rob2_Status.GetState() == Rob2_Status.State.Dead)
         {
             if (die == false)
             {
-                rob1Animator.PlayRob1AnimDie();
+                rob2Animator.PlayRob2AnimDie();
                 die = true;
             }
-            return; }
+            return;
+        }
 
         PlayerLook();
 
-        if (rob1_Attack.sensing == false)
-        {
+        if (rob2_Sensing.sensing == false)
+        {   
             MoveOrStop();
         }
         else
         {
-            rob1Animator.PlayRob1AnimSetRun(false);
+            rob2Animator.PlayRob2AnimSetRun(false);
         }
     }
 
@@ -59,19 +61,22 @@ public class Rob1_Move : MonoBehaviour
     //--------------------------------------
     private void MoveOrStop()
     {
+        if (rob2_Status.GetState() == Rob2_Status.State.Attack)
+        { return; }
+
             //Catch状態でないなら
-            if (rob1Status.GetState() != Rob1_Status.State.Catch)
-            {
-                //プレイヤをMove状態に
-                rob1Status.SetState(Rob1_Status.State.Move);
-            }
+            if (rob2_Status.GetState() != Rob2_Status.State.Attack)
+        {
+            //プレイヤをMove状態に
+            rob2_Status.SetState(Rob2_Status.State.Move);
+        }
 
         //移動処理
         Vector3 movePos = player.transform.position;
         movePos.y = this.transform.position.y; ;
-        transform.position = Vector3.MoveTowards(transform.position, movePos, rob1Status.GetSpeed() * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, movePos, rob2_Status.GetSpeed() * Time.deltaTime);
 
         //アニメーション
-        rob1Animator.PlayRob1AnimSetRun(true);
+        rob2Animator.PlayRob2AnimSetRun(true);
     }
 }
