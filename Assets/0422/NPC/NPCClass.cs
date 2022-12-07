@@ -29,7 +29,7 @@ public class NPCClass : MonoBehaviour
         Normal,   // 通常会話
         Battle,   // バトル状態
         Friend,   // 友好状態
-        End,      // 会話終了
+        EventEnd, // 会話終了
 
         ENUMEND,  // 基本状態のLength
 
@@ -37,18 +37,13 @@ public class NPCClass : MonoBehaviour
         NonEvent  // イベントなし
 
     };
-    [Header("NPCの状態")]
-    public NPCState firstState;
+    // NPCの状態
     public NPCState nowState;
 
     // 選択肢の分岐先
     public NPCState firstSelectState;  
     public NPCState secondSelectState;
 
-    private void OnEnable()
-    {
-       nowState = firstState;
-    }
     public NPCState GetState()
     {
         return this.nowState;
@@ -98,7 +93,7 @@ public class NPCClass : MonoBehaviour
                 return this.battlelTalkData;
             case NPCState.Friend:
                 return this.friendTalkData;
-            case NPCState.End:
+            case NPCState.EventEnd:
                 return this.endTalkData;
             case NPCState.Select:
                 return this.selectTalkData;

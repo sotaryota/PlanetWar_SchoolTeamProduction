@@ -21,9 +21,8 @@ public class NPCClass_Editor : Editor
         //ID
         serializedObject.FindProperty(nameof(NPCClass.eventId)).intValue = EditorGUILayout.IntField("イベントID", serializedObject.FindProperty(nameof(NPCClass.eventId)).intValue);
         GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
-        //NPCの初期状態と現在の状態表示
+        //NPCの現在の状態表示
         //------------------------------------------------------------------------------------------
-        npc.firstState = (NPCClass.NPCState)EditorGUILayout.EnumPopup("初期の状態", npc.firstState);
         EditorGUILayout.BeginHorizontal();
 
         EditorGUILayout.LabelField("現在の状態");

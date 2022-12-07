@@ -66,7 +66,7 @@ public class Write_Effect : MonoBehaviour
                     //文字送り開始
                     StartCoroutine("TextDisplay");
                     break;
-                case NPCClass.NPCState.End:
+                case NPCClass.NPCState.EventEnd:
                     //文字送り開始
                     StartCoroutine("TextDisplay");
                     break;
@@ -106,7 +106,7 @@ public class Write_Effect : MonoBehaviour
             selectText[i] = npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState())[i];
             selectTextObj[i].text = selectText[i];
         }
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0);
         while(!gamepad.buttonEast.isPressed)
         {
             print("ぼたんをおしてね");
@@ -226,22 +226,21 @@ public class Write_Effect : MonoBehaviour
                         break;
                     case NPCClass.NPCState.Battle:
                         yield return new WaitForSeconds(nTime);
-                        //会話終了状態に変更
-                        npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.End);
-                        npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName());
+                        //
                         playerData.StoryEndPlayerData(playerStatus.GetHp(), playerStatus.GetPower(), player.transform.position);
-                        sceneData.BattleSceneChange();
+                        npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(),npc.GetComponent<NPCClass>().GetEventID());
+                       
                         //会話を区切る
                         isTalking = false;
                         yield break;
                     case NPCClass.NPCState.Friend:
                         yield return new WaitForSeconds(nTime);
                         //会話終了状態に変更
-                        npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.End);
+                        npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.EventEnd);
                         //会話を区切る
                         isTalking = false;
                         yield break;
-                    case NPCClass.NPCState.End:
+                    case NPCClass.NPCState.EventEnd:
                         yield return new WaitForSeconds(nTime);
                         //テキストボックス非表示
                         canvas.SetActive(false);

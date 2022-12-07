@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPCDataManager : MonoBehaviour
 {
@@ -41,12 +42,21 @@ public class NPCDataManager : MonoBehaviour
 
     [Header("NPCデータ")]
     [SerializeField] EnemyCreater_Data.EnemyName enemyName;
+    [SerializeField] int eventId;
+    public List<NPCClass.NPCState> npcStateList;
     /// <summary>
     /// バトル移行時に呼ぶ関数
     /// </summary>
     /// <param name="enemyName">敵の種類</param>
-    public void StoryEndNPCData(EnemyCreater_Data.EnemyName enemy)
+    public void StoryEndNPCData(EnemyCreater_Data.EnemyName enemy,int id)
     {
+        eventId = id;
         enemyName = enemy;
+        SceneManager.LoadScene("StoryBattle");
     }    
+
+    public void BattleEndData()
+    {
+        npcStateList[eventId] = NPCClass.NPCState.EventEnd;
+    }
 }
