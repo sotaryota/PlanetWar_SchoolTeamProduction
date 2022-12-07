@@ -67,11 +67,19 @@ public class AilianTurret_Status : Enemy_HpData
         if (JudgeDie())
         {
             nowState = State.Dead;
+            StartCoroutine("DieProcces");
         }
     }
 
     private void Update()
     {
         Die();
+    }
+
+    IEnumerator DieProcces()
+    {
+        
+        yield return new WaitForSeconds(3);
+        Destroy(this.gameObject);
     }
 }

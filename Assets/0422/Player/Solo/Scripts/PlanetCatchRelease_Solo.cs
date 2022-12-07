@@ -13,6 +13,9 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
     [SerializeField]
     private GameObject planetPos;
 
+    [Header("投げた惑星の速度"), SerializeField]
+    private float throwPlanetSpeed;
+
     [Header("ステータス管理スクリプト")]
     public PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerAnimManeger playerAnimator;
@@ -46,7 +49,7 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
         if (!planet) return;
 
         //Aボタンが押されたら
-        if (gamepad.buttonEast.wasPressedThisFrame)
+        if (gamepad.buttonWest.wasPressedThisFrame)
         {
             PlanetStateMachine stateMachine = planet.GetComponent<PlanetStateMachine>();
             PlanetThrowMove throwMove = planet.GetComponent<PlanetThrowMove>();
@@ -55,7 +58,7 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
             stateMachine.SetState(PlanetStateMachine.State.Throw);
 
             //惑星のスピードと飛ぶ方向を決める
-            Vector3 throwSpeed = new Vector3(0, 0, 10);
+            Vector3 throwSpeed = new Vector3(0, 0, throwPlanetSpeed);
             Vector3 playerAngle = this.transform.rotation.eulerAngles;
             Vector3 throwAngle = new Vector3(0, playerAngle.y, 0);
             throwMove.ThrowMoveSetting(throwSpeed, throwAngle);
@@ -130,7 +133,7 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
             {
                 Debug.Log("4");
                 //ボタンが押された
-                if (gamepad.buttonEast.isPressed)
+                if (gamepad.buttonWest.isPressed)
                 {
                     //プレイヤーのパワー+ウェイトよりも惑星の重さが小さい
                     if (other.GetComponent<PlanetData>().GetWeight() <= playerStatus.GetPower() + (playerStatus.GetDefense()))

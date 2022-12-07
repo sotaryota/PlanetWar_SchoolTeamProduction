@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 4078499942385128906}
   - component: {fileID: 3873080354982079021}
   - component: {fileID: 2003582655807787566}
+  - component: {fileID: 3205760555725361087}
+  - component: {fileID: 7265804452311810274}
   m_Layer: 0
   m_Name: SoloMeteor01
   m_TagString: Planet
@@ -194,6 +196,7 @@ MonoBehaviour:
   - scripts: []
   - scripts:
     - {fileID: 8829398224421192865}
+    - {fileID: 3205760555725361087}
     - {fileID: 2003582655807787566}
   - scripts:
     - {fileID: 8829398224421192895}
@@ -224,6 +227,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f619bb84b1aa30468e3a7abc7090d93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3205760555725361087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829398224421192872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d79484f7a6c863d41bd49dcaa0291cd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetEnemy: {fileID: 0}
+  targetCamera: {fileID: 7265804452311810274}
+  assistScreenArea: 0.35
+  assistDistance: 20
+  rotateValue: 90
+--- !u!20 &7265804452311810274
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8829398224421192872}
+  m_Enabled: 0
+  serializedVersion: 2
+  m_ClearFlags: 4
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.1
+  far clip plane: 5
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -99
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1001 &8829398224084094605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -298,24 +361,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7338618689535840697, guid: d57d6419728ca4fa486055a9b54eb326, type: 3}
   m_PrefabInstance: {fileID: 8829398224084094605}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5934643374187074430 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2942051580892192243, guid: d57d6419728ca4fa486055a9b54eb326, type: 3}
-  m_PrefabInstance: {fileID: 8829398224084094605}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8829398224832709777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5934643374187074430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8d5da0c76eee034d9416136ca92a5f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotateSpeed: {x: 0, y: 50, z: 0}
 --- !u!1001 &8829398224768718872
 PrefabInstance:
   m_ObjectHideFlags: 0
