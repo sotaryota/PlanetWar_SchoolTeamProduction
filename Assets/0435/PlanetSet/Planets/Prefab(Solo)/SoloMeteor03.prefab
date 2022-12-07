@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   middleObject: {fileID: 0}
-  deleteDistance: 50.5
+  deleteDistance: 200
   firstState: 0
   nowState: 0
   data:
