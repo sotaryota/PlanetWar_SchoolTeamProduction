@@ -60,6 +60,6 @@ public class NPCDataManager : MonoBehaviour
     public void BattleEndData()
     {
         // イベントが終了したNPCの状態をEventEndに変更
-        npcStateList[eventId] = NPCClass.NPCState.EventEnd;
+        npcStateList[eventId] = NPCClass.NPCState.BattleEventEnd;
     }
 }
