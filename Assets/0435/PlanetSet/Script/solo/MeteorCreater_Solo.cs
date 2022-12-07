@@ -38,12 +38,10 @@ public class MeteorCreater_Solo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Vector3 targeter = this.transform.position;
         //targeter.y = player.transform.position.y;
         if ((targeter - player.transform.position).magnitude < 65)
         {
-
             for (int i = 0; i < meteors.Length; ++i)
             {
                 //è¦Î‚ªŠi”[‚³‚ê‚Ä‚¢‚È‚©‚Á‚½ê‡A˜f¯‚ð¶¬
@@ -58,6 +56,7 @@ public class MeteorCreater_Solo : MonoBehaviour
                         Random.Range(min_firstCreatePos.y, max_firstCreatePos.y),
                         Random.Range(min_firstCreatePos.z, max_firstCreatePos.z)
                         );
+
                     if (addMyPos)
                     {
                         createPos += this.transform.position;
