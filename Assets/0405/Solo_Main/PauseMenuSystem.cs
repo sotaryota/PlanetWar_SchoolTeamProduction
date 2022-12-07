@@ -35,6 +35,8 @@ public class PauseMenuSystem : MonoBehaviour
     //フェード
     [SerializeField]
     Fade fadeScript;
+    //移行するシーンを保存する場所
+    string nextscene;
     //ボタン画像の読み込み
     [SerializeField]
     GameObject[] button_Images = new GameObject[(int)menu.ENUMEND];
@@ -64,6 +66,7 @@ public class PauseMenuSystem : MonoBehaviour
         onButton = false;
         ispauseNow = false;
         canPause = true;
+        nextscene = "";
 
         //初期位置
         nowSelecting = 0;
@@ -113,7 +116,7 @@ public class PauseMenuSystem : MonoBehaviour
         //フェードが終わったらメニューに戻す
         if (fadeScript.FadeOut())
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(nextscene);
         }
     }
 
@@ -164,6 +167,7 @@ public class PauseMenuSystem : MonoBehaviour
                         onButton = true;
                         fadeScript.fademode = true;
                         Time.timeScale = 1.0f;
+                        nextscene = "StoryMenu";
                         break;
                     default:
                         break;

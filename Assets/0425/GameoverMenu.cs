@@ -34,6 +34,8 @@ public class GameoverMenu : MonoBehaviour
     //フェード
     [SerializeField]
     Fade fadeScript;
+    //移行するシーンを保存する場所
+    string nextscene;
     //ボタン画像の読み込み
     [SerializeField]
     GameObject[] button_Images = new GameObject[(int)menu.ENUMEND];
@@ -50,19 +52,19 @@ public class GameoverMenu : MonoBehaviour
     int prevSelecting;
     //ポーズ中か
     bool ispauseNow;
+    PauseMenuSystem pauseMenuSystem;
     //ポーズメニューを展開できる状態かどうか
-    bool canPause;
-    public void SetCanPause(bool value)
+    /*public void SetCanPause(bool value)
     {
         canPause = value;
-    }
+    }*/
 
     void Start()
     {
         selectLock = false;
         onButton = false;
         ispauseNow = false;
-        canPause = true;
+        nextscene = "";
 
         //初期位置
         nowSelecting = 0;
@@ -109,7 +111,7 @@ public class GameoverMenu : MonoBehaviour
         //フェードが終わったらメニューに戻す
         if (fadeScript.FadeOut())
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(nextscene);
         }
     }
 
@@ -154,13 +156,13 @@ public class GameoverMenu : MonoBehaviour
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
-                        Time.timeScale = 1.0f;
+                        nextscene = "Story";
                         break;
                     case (int)menu.backmenu:
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
-                        Time.timeScale = 1.0f;
+                        nextscene = "Menu";
                         break;
                     default:
                         break;
