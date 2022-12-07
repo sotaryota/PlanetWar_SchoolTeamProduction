@@ -41,9 +41,11 @@ public class NPCDataManager : MonoBehaviour
     #endregion
 
     [Header("NPCデータ")]
-    [SerializeField] EnemyCreater_Data.EnemyName enemyName;
-    [SerializeField] int eventId;
+    [SerializeField] EnemyCreater_Data.EnemyName enemyName; // 生成したい敵の名前
+    [SerializeField] int eventId; // 話しかけたNPCのイベントID
+    [Header("全NPCの状態")]
     public List<NPCClass.NPCState> npcStateList;
+
     /// <summary>
     /// バトル移行時に呼ぶ関数
     /// </summary>
@@ -57,6 +59,7 @@ public class NPCDataManager : MonoBehaviour
 
     public void BattleEndData()
     {
+        // イベントが終了したNPCの状態をEventEndに変更
         npcStateList[eventId] = NPCClass.NPCState.EventEnd;
     }
 }

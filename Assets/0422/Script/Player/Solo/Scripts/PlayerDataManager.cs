@@ -41,9 +41,9 @@ public class PlayerDataManager : MonoBehaviour
     #endregion
 
     [Header("プレイヤーデータ")]
-    [SerializeField] private float playerHp;
-    [SerializeField] private float playerPower;
-    [SerializeField] private Vector3 playerPos;
+    [SerializeField] private float playerHp;    //プレイヤーのHP
+    [SerializeField] private float playerPower; //プレイヤーのパワー
+    [SerializeField] private Vector3 playerPos; //プレイヤーの復帰位置
 
     /// <summary>
     /// ストーリー復帰時に呼ぶ関数
