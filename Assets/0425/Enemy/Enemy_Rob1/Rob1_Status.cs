@@ -45,7 +45,7 @@ public class Rob1_Status : Enemy_HpData
     //--------------------------------------
     //ÉQÉbÉ^Å[
     //--------------------------------------
-    
+
     public float GetPower()
     {
         return this.power_;
@@ -65,14 +65,22 @@ public class Rob1_Status : Enemy_HpData
 
     public void Die()
     {
-        if(JudgeDie())
+        if (JudgeDie())
         {
             nowState = State.Dead;
+            StartCoroutine("DieProcces");
         }
     }
 
     private void Update()
     {
         Die();
+    }
+
+    IEnumerator DieProcces()
+    {
+
+        yield return new WaitForSeconds(3);
+        Destroy(this.gameObject);
     }
 }

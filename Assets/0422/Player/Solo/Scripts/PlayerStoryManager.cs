@@ -27,7 +27,7 @@ public class PlayerStoryManager : MonoBehaviour
             effect.npc = other.gameObject;
             if (!effect.buttonFlag) { return; }
             Debug.Log("会話できます");
-            if (gamepad.buttonWest.isPressed)
+            if (gamepad.buttonEast.isPressed)
             {
                 Debug.Log("会話開始");
                 effect.buttonFlag = false;

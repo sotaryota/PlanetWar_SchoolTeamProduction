@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class AilianTurret_BeemDamage : MonoBehaviour
 {
-    [SerializeField] PlayerStatus_Solo playerStatus_Solo;
     [SerializeField] AilianTurret_Status ailianTurret_Status;
 
 
     private void OnParticleCollision(GameObject other)
     {
-        playerStatus_Solo.Damage(ailianTurret_Status.GetPower());
+        PlayerStatus_Solo pss;
+        if(pss = other.GetComponent<PlayerStatus_Solo>())
+        {
+            pss.Damage(ailianTurret_Status.GetPower());
+        }
     }
 }
