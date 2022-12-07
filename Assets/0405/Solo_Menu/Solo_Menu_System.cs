@@ -129,11 +129,11 @@ public class Solo_Menu_System : MonoBehaviour
                 {
                     case (int)menu.NewGame:
                         fadeScript.fademode = true;
-                        nextscene = "Title";
+                        nextscene = "Story";
                         break;
                     case (int)menu.Continue:
                         fadeScript.fademode = true;
-                        nextscene = "Main";
+                        nextscene = "Story";
                         break;
                     case (int)menu.BackMenu:
                         fadeScript.fademode = true;
