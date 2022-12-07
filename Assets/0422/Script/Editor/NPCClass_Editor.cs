@@ -86,6 +86,88 @@ public class NPCClass_Editor : Editor
                 npc.normalTalkData[i] = EditorGUILayout.TextField((i + 1).ToString() + "行目", npc.normalTalkData[i]);
             }
 
+        }//-----------------------------------------------------------------------------------------------
+        GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
+        //友好状態の時の会話
+        //-----------------------------------------------------------------------------------------------
+        EditorGUILayout.LabelField("友好状態の時の会話");
+        EditorGUILayout.BeginHorizontal();
+        //配列の長さ変更
+        if (npc.friendTalkData.Length > 0)
+        {
+            if (GUILayout.Button("行を追加", GUILayout.Width(100), GUILayout.Height(20)))
+            {
+                Array.Resize(ref npc.friendTalkData, npc.friendTalkData.Length + 1);
+            }
+
+            if (GUILayout.Button("末尾の行を削除", GUILayout.Width(100), GUILayout.Height(20)))
+            {
+                if (npc.friendTalkData.Length > 1)
+                {
+                    Array.Resize(ref npc.friendTalkData, npc.friendTalkData.Length - 1);
+                }
+                else
+                {
+                    npc.friendTalkData = new string[0];
+                }
+            }
+        }
+        else
+        {
+            if (GUILayout.Button("このイベントは存在しません", GUILayout.Width(200), GUILayout.Height(20)))
+            {
+                npc.friendTalkData = new string[1];
+            }
+        }
+        EditorGUILayout.EndHorizontal();
+        if (npc.friendTalkData.Length != 0)
+        {
+            for (int i = 0; i < npc.friendTalkData.Length; i++)
+            {
+                npc.friendTalkData[i] = EditorGUILayout.TextField((i + 1).ToString() + "行目", npc.friendTalkData[i]);
+            }
+        }
+
+        //-----------------------------------------------------------------------------------------------
+        GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
+        //会話終了状態の時の会話
+        //-----------------------------------------------------------------------------------------------
+        EditorGUILayout.LabelField("友好状態で会話終了");
+        EditorGUILayout.BeginHorizontal();
+        //配列の長さ変更
+        if (npc.FriendEndTalkData.Length > 0)
+        {
+            if (GUILayout.Button("行を追加", GUILayout.Width(100), GUILayout.Height(20)))
+            {
+                Array.Resize(ref npc.FriendEndTalkData, npc.FriendEndTalkData.Length + 1);
+            }
+
+            if (GUILayout.Button("末尾の行を削除", GUILayout.Width(100), GUILayout.Height(20)))
+            {
+                if (npc.FriendEndTalkData.Length > 1)
+                {
+                    Array.Resize(ref npc.FriendEndTalkData, npc.FriendEndTalkData.Length - 1);
+                }
+                else
+                {
+                    npc.FriendEndTalkData = new string[0];
+                }
+            }
+        }
+        else
+        {
+            if (GUILayout.Button("このイベントは存在しません", GUILayout.Width(200), GUILayout.Height(20)))
+            {
+                npc.FriendEndTalkData = new string[1];
+            }
+        }
+        EditorGUILayout.EndHorizontal();
+        if (npc.FriendEndTalkData.Length > 0)
+        {
+            for (int i = 0; i < npc.FriendEndTalkData.Length; i++)
+            {
+                npc.FriendEndTalkData[i] = EditorGUILayout.TextField((i + 1).ToString() + "行目", npc.FriendEndTalkData[i]);
+            }
         }
         //-----------------------------------------------------------------------------------------------
         GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
@@ -129,71 +211,29 @@ public class NPCClass_Editor : Editor
             }
             GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
             npc.enemyName = (EnemyCreater_Data.EnemyName)EditorGUILayout.EnumPopup("戦う敵の種類", npc.enemyName);
-        }
-        //-----------------------------------------------------------------------------------------------
-        GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
-        //友好状態の時の会話
-        //-----------------------------------------------------------------------------------------------
-        EditorGUILayout.LabelField("友好状態の時の会話");
-        EditorGUILayout.BeginHorizontal();
-        //配列の長さ変更
-        if (npc.friendTalkData.Length > 0)
-        {
-            if (GUILayout.Button("行を追加", GUILayout.Width(100), GUILayout.Height(20)))
-            {
-                Array.Resize(ref npc.friendTalkData, npc.friendTalkData.Length + 1);
-            }
-
-            if (GUILayout.Button("末尾の行を削除", GUILayout.Width(100), GUILayout.Height(20)))
-            {
-                if (npc.friendTalkData.Length > 1)
-                {
-                    Array.Resize(ref npc.friendTalkData, npc.friendTalkData.Length - 1);
-                }
-                else
-                {
-                    npc.friendTalkData = new string[0];
-                }
-            }
-        }
-        else
-        {
-            if (GUILayout.Button("このイベントは存在しません", GUILayout.Width(200), GUILayout.Height(20)))
-            {
-                npc.friendTalkData = new string[1];
-            }
-        }
-        EditorGUILayout.EndHorizontal();
-        if (npc.friendTalkData.Length != 0)
-        {
-            for (int i = 0; i < npc.friendTalkData.Length; i++)
-            {
-                npc.friendTalkData[i] = EditorGUILayout.TextField((i + 1).ToString() + "行目", npc.friendTalkData[i]);
-            }
-        }
-        //-----------------------------------------------------------------------------------------------
+        }//-----------------------------------------------------------------------------------------------
         GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
         //会話終了状態の時の会話
         //-----------------------------------------------------------------------------------------------
-        EditorGUILayout.LabelField("会話終了状態の時の会話");
+        EditorGUILayout.LabelField("バトル終了後の会話");
         EditorGUILayout.BeginHorizontal();
         //配列の長さ変更
-        if (npc.endTalkData.Length > 0)
+        if (npc.BattleEndTalkData.Length > 0)
         {
             if (GUILayout.Button("行を追加", GUILayout.Width(100), GUILayout.Height(20)))
             {
-                Array.Resize(ref npc.endTalkData, npc.endTalkData.Length + 1);
+                Array.Resize(ref npc.BattleEndTalkData, npc.BattleEndTalkData.Length + 1);
             }
 
             if (GUILayout.Button("末尾の行を削除", GUILayout.Width(100), GUILayout.Height(20)))
             {
-                if (npc.endTalkData.Length > 1)
+                if (npc.BattleEndTalkData.Length > 1)
                 {
-                    Array.Resize(ref npc.endTalkData, npc.endTalkData.Length - 1);
+                    Array.Resize(ref npc.BattleEndTalkData, npc.BattleEndTalkData.Length - 1);
                 }
                 else
                 {
-                    npc.endTalkData = new string[0];
+                    npc.BattleEndTalkData = new string[0];
                 }
             }
         }
@@ -201,17 +241,18 @@ public class NPCClass_Editor : Editor
         {
             if (GUILayout.Button("このイベントは存在しません", GUILayout.Width(200), GUILayout.Height(20)))
             {
-                npc.endTalkData = new string[1];
+                npc.BattleEndTalkData = new string[1];
             }
         }
         EditorGUILayout.EndHorizontal();
-        if (npc.endTalkData.Length > 0)
+        if (npc.BattleEndTalkData.Length > 0)
         {
-            for (int i = 0; i < npc.endTalkData.Length; i++)
+            for (int i = 0; i < npc.BattleEndTalkData.Length; i++)
             {
-                npc.endTalkData[i] = EditorGUILayout.TextField((i + 1).ToString() + "行目", npc.endTalkData[i]);
+                npc.BattleEndTalkData[i] = EditorGUILayout.TextField((i + 1).ToString() + "行目", npc.BattleEndTalkData[i]);
             }
         }
+        
         //現在の情報を保存
         serializedObject.ApplyModifiedProperties();
     }

@@ -66,8 +66,12 @@ public class Write_Effect : MonoBehaviour
                     //文字送り開始
                     StartCoroutine("TextDisplay");
                     break;
-                case NPCClass.NPCState.EventEnd:
+                case NPCClass.NPCState.FriendEventEnd:
                     //文字送り開始
+                    StartCoroutine("TextDisplay");
+                    break;
+                case NPCClass.NPCState.BattleEventEnd:
+                    //会話開始
                     StartCoroutine("TextDisplay");
                     break;
             }
@@ -201,8 +205,18 @@ public class Write_Effect : MonoBehaviour
                             print("通常会話終了1");
                             yield break;
                         }
+                        //会話の分岐が存在しない
+                        else
+                        {
+                            print("会話終了");
+                            yield return new WaitForSeconds(nTime);
+                            npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.FriendEventEnd);
+                            //会話を区切る
+                            isTalking = false;
+                            yield break;
+                        }
                         //戦闘用の会話イベントが存在しない
-                        else if(npc.GetComponent<NPCClass>().GetTalk(NPCClass.NPCState.Battle).Length <= 0)
+                        if(npc.GetComponent<NPCClass>().GetTalk(NPCClass.NPCState.Battle).Length <= 0)
                         {
                             yield return new WaitForSeconds(nTime);
                             //戦闘状態に変更
@@ -237,11 +251,27 @@ public class Write_Effect : MonoBehaviour
                     case NPCClass.NPCState.Friend:
                         yield return new WaitForSeconds(nTime);
                         //会話終了状態に変更
-                        npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.EventEnd);
+                        npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.FriendEventEnd);
                         //会話を区切る
                         isTalking = false;
                         yield break;
-                    case NPCClass.NPCState.EventEnd:
+                    case NPCClass.NPCState.BattleEventEnd:
+                        yield return new WaitForSeconds(nTime);
+                        //テキストボックス非表示
+                        canvas.SetActive(false);
+                        talkCanvas.SetActive(false);
+                        //会話対象をnullにする
+                        npc = null;
+                        //ボタンを押せるようにする
+                        buttonFlag = true;
+                        //プレイヤーを待機状態に変更
+                        playerStatus.SetState(PlayerStatus_Solo.State.Stay);
+                        //会話終了
+                        isTalking = false;
+
+                        Debug.Log("会話終了");
+                        yield break;
+                    case NPCClass.NPCState.FriendEventEnd:
                         yield return new WaitForSeconds(nTime);
                         //テキストボックス非表示
                         canvas.SetActive(false);

@@ -11,10 +11,11 @@ public class NPCClass : MonoBehaviour
     public bool      selectFlag;   // 選択肢の有無
     public EnemyCreater_Data.EnemyName enemyName; // バトル発展先の敵の種類
 
-    public string[] normalTalkData;   // 通常会話内容
-    public string[] battlelTalkData;  // 戦闘会話内容
-    public string[] friendTalkData;   // 友好会話内容
-    public string[] endTalkData;      // 会話終了
+    public string[] normalTalkData;    // 通常会話内容
+    public string[] battlelTalkData;   // 戦闘会話内容
+    public string[] friendTalkData;    // 友好会話内容
+    public string[] BattleEndTalkData; // バトル終了
+    public string[] FriendEndTalkData; // 友好状態で会話終了
     public string[] selectTalkData = new string[2];
     
     // 分岐数
@@ -26,10 +27,11 @@ public class NPCClass : MonoBehaviour
 
     public enum NPCState
     { 
-        Normal,   // 通常会話
-        Battle,   // バトル状態
-        Friend,   // 友好状態
-        EventEnd, // 会話終了
+        Normal,         // 通常会話
+        Battle,         // バトル状態
+        Friend,         // 友好状態
+        BattleEventEnd, // バトル終了
+        FriendEventEnd, // 友好状態で会話終了
 
         ENUMEND,  // 基本状態のLength
 
@@ -93,8 +95,10 @@ public class NPCClass : MonoBehaviour
                 return this.battlelTalkData;
             case NPCState.Friend:
                 return this.friendTalkData;
-            case NPCState.EventEnd:
-                return this.endTalkData;
+            case NPCState.BattleEventEnd:
+                return this.BattleEndTalkData;
+            case NPCState.FriendEventEnd:
+                return this.FriendEndTalkData;
             case NPCState.Select:
                 return this.selectTalkData;
             default:
