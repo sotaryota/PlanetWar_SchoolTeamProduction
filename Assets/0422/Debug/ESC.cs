@@ -20,7 +20,7 @@ public class ESC : MonoBehaviour
 
                 if (instance == null)
                 {
-                    Debug.LogError("FadeManager Instance nothing");
+                    Debug.LogError("ESC Instance nothing");
                 }
             }
 

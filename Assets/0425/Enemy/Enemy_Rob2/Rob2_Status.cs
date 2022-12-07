@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rob1_Status : Enemy_HpData
+public class Rob2_Status : Enemy_HpData
 {
     [Header("パラメータ")]
 
@@ -20,7 +20,7 @@ public class Rob1_Status : Enemy_HpData
     {
         Stay,　　//待機
         Move,    //移動
-        Catch,   //惑星を所持
+        Attack,  //攻撃
         Damage,  //ダメージ
         Dead,    //死亡
 

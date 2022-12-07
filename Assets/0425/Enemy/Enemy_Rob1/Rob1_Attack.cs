@@ -131,7 +131,7 @@ public class Rob1_Attack : MonoBehaviour
 
         planetCreateCnt += Time.deltaTime;
 
-        //プレイヤをCatch状態に
+        //rob1をCatch状態に
         rob1Status.SetState(Rob1_Status.State.Catch);
 
         //アニメーション
