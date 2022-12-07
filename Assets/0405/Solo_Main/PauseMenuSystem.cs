@@ -57,6 +57,11 @@ public class PauseMenuSystem : MonoBehaviour
     {
         canPause = value;
     }
+    //ポーズ中かを返す
+    public bool pausejudge()
+    {
+        return ispauseNow;
+    }
 
     void Start()
     {
@@ -202,11 +207,5 @@ public class PauseMenuSystem : MonoBehaviour
                 Time.timeScale = 1.0f;
             }
         }
-    }
-
-    //ポーズ中かを返す
-    public bool pausejudge()
-    {
-        return ispauseNow;
     }
 }
