@@ -3927,7 +3927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ecd: {fileID: 1297518767}
-  enemyName: 1
+  enemyName: 2
   createPrefab: {fileID: 0}
 --- !u!114 &1297518767
 MonoBehaviour:
