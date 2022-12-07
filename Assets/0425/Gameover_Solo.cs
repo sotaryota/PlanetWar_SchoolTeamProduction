@@ -22,6 +22,9 @@ public class Gameover_Solo: MonoBehaviour
 
     [SerializeField]
     ParticleSystem deadEffecrt;
+
+    [SerializeField]
+    GameoverMenu gameoverMenu;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,14 +38,15 @@ public class Gameover_Solo: MonoBehaviour
         if(playerStatus.GetState() == PlayerStatus_Solo.State.Dead)
         {
             DeadStop();
-            DeadEffect();
+            //DeadEffect();
 
             if (dead == false)
             {
-                deadEffecrt.Play();
+                //deadEffecrt.Play();
                 playerAnimManeger.PlayAnimDie();
                 gameoverStaging.SetActive(true);
                 gameStart_solo.ScriptStop();
+                gameoverMenu.PauseSystem();
             }
             dead = true;
         }
