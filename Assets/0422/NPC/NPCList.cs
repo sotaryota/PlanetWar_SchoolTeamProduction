@@ -9,10 +9,11 @@ public class NPCList : MonoBehaviour
    
     private void Awake()
     {
+        //”ß‚µ‚Ý‚ÌFind
         npcData = GameObject.Find("DataManager").GetComponent<NPCDataManager>();
-        print("1");
         for (int i = 0;i < npcList.Count;++i)
         {
+            //NPC‚Ìó‘Ô‚ðXV
             npcList[i].SetState(npcData.npcStateList[i]);
             print(npcData.npcStateList[i]);
         }

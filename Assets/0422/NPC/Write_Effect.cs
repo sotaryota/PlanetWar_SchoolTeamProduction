@@ -226,7 +226,8 @@ public class Write_Effect : MonoBehaviour
                         break;
                     case NPCClass.NPCState.Battle:
                         yield return new WaitForSeconds(nTime);
-                        //
+
+                        //必要なデータを保存
                         playerData.StoryEndPlayerData(playerStatus.GetHp(), playerStatus.GetPower(), player.transform.position);
                         npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(),npc.GetComponent<NPCClass>().GetEventID());
                        
