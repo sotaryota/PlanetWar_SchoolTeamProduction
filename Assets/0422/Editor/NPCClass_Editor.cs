@@ -19,7 +19,7 @@ public class NPCClass_Editor : Editor
         //NPCの名前入力
         serializedObject.FindProperty(nameof(NPCClass.name)).stringValue = EditorGUILayout.TextField("名前", serializedObject.FindProperty(nameof(NPCClass.name)).stringValue);
         //ID
-        serializedObject.FindProperty(nameof(NPCClass.id)).intValue = EditorGUILayout.IntField("ID", serializedObject.FindProperty(nameof(NPCClass.id)).intValue);
+        serializedObject.FindProperty(nameof(NPCClass.eventId)).intValue = EditorGUILayout.IntField("イベントID", serializedObject.FindProperty(nameof(NPCClass.eventId)).intValue);
         GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
         //NPCの初期状態と現在の状態表示
         //------------------------------------------------------------------------------------------
@@ -38,10 +38,10 @@ public class NPCClass_Editor : Editor
         if (npc.selectFlag)
         {
             GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
-            npc.selectTalkData[(int)NPCClass.SelectNom.First] = EditorGUILayout.TextField("選択肢のテキスト", npc.selectTalkData[(int)NPCClass.SelectNom.First]);
+            npc.selectTalkData[(int)NPCClass.SelectNom.First] = EditorGUILayout.TextField("1つ目の選択肢", npc.selectTalkData[(int)NPCClass.SelectNom.First]);
             npc.firstSelectState = (NPCClass.NPCState)EditorGUILayout.EnumPopup("選択後の状態", npc.firstSelectState);
             GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
-            npc.selectTalkData[(int)NPCClass.SelectNom.Second] = EditorGUILayout.TextField("選択肢のテキスト", npc.selectTalkData[(int)NPCClass.SelectNom.Second]);
+            npc.selectTalkData[(int)NPCClass.SelectNom.Second] = EditorGUILayout.TextField("2つ目の選択肢", npc.selectTalkData[(int)NPCClass.SelectNom.Second]);
             npc.secondSelectState = (NPCClass.NPCState)EditorGUILayout.EnumPopup("選択後の状態", npc.secondSelectState);
         }
         GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
@@ -128,6 +128,8 @@ public class NPCClass_Editor : Editor
             {
                 npc.battlelTalkData[i] = EditorGUILayout.TextField((i + 1).ToString() + "行目", npc.battlelTalkData[i]);
             }
+            GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
+            npc.enemyName = (EnemyCreater_Data.EnemyName)EditorGUILayout.EnumPopup("戦う敵の種類", npc.enemyName);
         }
         //-----------------------------------------------------------------------------------------------
         GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
@@ -172,7 +174,7 @@ public class NPCClass_Editor : Editor
         }
         //-----------------------------------------------------------------------------------------------
         GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
-        //友好状態の時の会話
+        //会話終了状態の時の会話
         //-----------------------------------------------------------------------------------------------
         EditorGUILayout.LabelField("会話終了状態の時の会話");
         EditorGUILayout.BeginHorizontal();

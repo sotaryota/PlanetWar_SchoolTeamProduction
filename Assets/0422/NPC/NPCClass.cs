@@ -5,17 +5,19 @@ public class NPCClass : MonoBehaviour
     //エディター用にpublicにしています
     //読み取り書き換えは基本getsetを使え
     [Header("NPCプロパティ")]
-    public string    name;         //名前
-    public int       id;           //ID
-    public bool      talkFlag;     //話しかけられるフラグ
-    public bool      selectFlag;   //選択肢の有無
-    public bool      battleFlag;   //戦闘のフラグ
+    public string    name;         // 名前
+    public int       eventId;      // イベントのID
+    public bool      talkFlag;     // 話しかけられるフラグ
+    public bool      selectFlag;   // 選択肢の有無
+    public EnemyCreater_Data.EnemyName enemyName; // バトル発展先の敵の種類
 
-    public string[] normalTalkData;   //通常会話内容
-    public string[] battlelTalkData;  //戦闘会話内容
-    public string[] friendTalkData;   //友好会話内容
-    public string[] endTalkData;      //会話終了
+    public string[] normalTalkData;   // 通常会話内容
+    public string[] battlelTalkData;  // 戦闘会話内容
+    public string[] friendTalkData;   // 友好会話内容
+    public string[] endTalkData;      // 会話終了
     public string[] selectTalkData = new string[2];
+    
+    // 分岐数
     public enum SelectNom
     {
         First,
@@ -24,21 +26,23 @@ public class NPCClass : MonoBehaviour
 
     public enum NPCState
     { 
-        Normal,   //通常会話
-        Battle,   //バトル状態
-        Friend,   //友好状態
-        End,      //会話終了
+        Normal,   // 通常会話
+        Battle,   // バトル状態
+        Friend,   // 友好状態
+        End,      // 会話終了
 
-        ENUMEND,  //基本状態のLength
+        ENUMEND,  // 基本状態のLength
 
-        Select,   //セレクト状態
-        NonEvent  //イベントなし
+        Select,   // セレクト状態
+        NonEvent  // イベントなし
 
     };
     [Header("NPCの状態")]
     public NPCState firstState;
     public NPCState nowState;
-    public NPCState firstSelectState;
+
+    // 選択肢の分岐先
+    public NPCState firstSelectState;  
     public NPCState secondSelectState;
 
     private void OnEnable()
@@ -53,6 +57,9 @@ public class NPCClass : MonoBehaviour
     {
         this.nowState = state;
     }
+
+    // 選択肢ごとの状態の取得
+    //--------------------------------------
     public NPCState GetFirstSelectState()
     {
         return this.firstSelectState;
@@ -61,12 +68,13 @@ public class NPCClass : MonoBehaviour
     {
         return this.secondSelectState;
     }
+
     //--------------------------------------
-    //ゲッター
+    // ゲッター
     //--------------------------------------
-    public int GetID()
+    public int GetEventID()
     {
-        return this.id;
+        return this.eventId;
     }
     public bool GetTalkFlag()
     {
@@ -99,6 +107,10 @@ public class NPCClass : MonoBehaviour
                 break;
         }
         return null;
+    }
+    public EnemyCreater_Data.EnemyName GetEnemyName()
+    {
+        return this.enemyName;
     }
 
     public void SetTalkFlag(bool flag)

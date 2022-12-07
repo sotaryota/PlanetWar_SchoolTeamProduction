@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+
 //using TMPro;
 
 // 簡易説明
@@ -14,6 +15,9 @@ public class Write_Effect : MonoBehaviour
     Gamepad gamepad;
     [Header("スクリプト")]
     [SerializeField] PlayerStatus_Solo playerStatus;
+    [SerializeField] PlayerDataManager playerData;
+    [SerializeField] NPCDataManager    npcData;
+    [SerializeField] SceneDataManager  sceneData;
     [Header("キャンバス")]
     [SerializeField] GameObject canvas = default;
     [SerializeField] GameObject talkCanvas = default;
@@ -34,7 +38,8 @@ public class Write_Effect : MonoBehaviour
     public bool buttonFlag; //会話中にボタンを押せなくするフラグ
     [Header("NPC")]
     public GameObject npc;  //接触中のNPC
-
+    [Header("プレイヤー")]
+    [SerializeField] GameObject player;
     void Update()
     {
         if (buttonFlag) { return; }
@@ -102,7 +107,7 @@ public class Write_Effect : MonoBehaviour
             selectTextObj[i].text = selectText[i];
         }
         yield return new WaitForSeconds(1.0f);
-        while(!gamepad.buttonWest.isPressed)
+        while(!gamepad.buttonEast.isPressed)
         {
             print("ぼたんをおしてね");
             if (gamepad.leftStick.ReadValue().y > 0 || gamepad.leftStick.ReadValue().y < 0)
@@ -223,6 +228,9 @@ public class Write_Effect : MonoBehaviour
                         yield return new WaitForSeconds(nTime);
                         //会話終了状態に変更
                         npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.End);
+                        npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName());
+                        playerData.StoryEndPlayerData(playerStatus.GetHp(), playerStatus.GetPower(), player.transform.position);
+                        sceneData.BattleSceneChange();
                         //会話を区切る
                         isTalking = false;
                         yield break;
