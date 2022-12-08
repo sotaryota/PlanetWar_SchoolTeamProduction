@@ -6,14 +6,14 @@ public class Enemy_HpData : MonoBehaviour
 {
     [SerializeField]
     [Range(0, 100)]
-    private float hp_;         //HP
+    protected float hp_;         //HP
 
     public float GetHp()
     {
         return this.hp_;
     }
 
-    public void Damage(float damage)
+    public virtual void Damage(float damage)
     {
         this.hp_ -= damage;
     }
