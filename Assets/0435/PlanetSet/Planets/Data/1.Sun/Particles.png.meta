@@ -258,7 +258,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -295,18 +295,6 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -1709,17 +1697,17 @@ TextureImporter:
       Particles_3: -6285070063975550627
       Particles_58: -8729985979480033269
       Particles_10: -1107820336431123379
-      Particles_37: -581340975559988190
-      Particles_38: 7127442103389448838
       Particles_29: 9069393078020840082
-      Particles_55: -839969865704846398
-      Particles_39: -5200795266123514583
+      Particles_37: -581340975559988190
       Particles_8: -8851187839486611718
-      Particles_47: 4534066443471242587
+      Particles_38: 7127442103389448838
+      Particles_39: -5200795266123514583
       Particles_31: -3579723698414649883
+      Particles_55: -839969865704846398
+      Particles_47: 4534066443471242587
+      Particles_63: 8131722241453773699
       Particles_16: -8323187150426648909
       Particles_7: 3847788528400304303
-      Particles_63: 8131722241453773699
       Particles_4: 3166776664542397520
       Particles_23: 1860669577197233875
       Particles_56: 1837446451868832737
