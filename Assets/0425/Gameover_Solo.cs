@@ -25,6 +25,10 @@ public class Gameover_Solo: MonoBehaviour
 
     [SerializeField]
     GameoverMenu gameoverMenu;
+
+    [SerializeField]
+    PauseMenuSystem pauseMenuSystem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +51,7 @@ public class Gameover_Solo: MonoBehaviour
                 gameoverStaging.SetActive(true);
                 gameStart_solo.ScriptStop();
                 gameoverMenu.PauseSystem();
+                pauseMenuSystem.SetCanPause(false);
             }
             dead = true;
         }

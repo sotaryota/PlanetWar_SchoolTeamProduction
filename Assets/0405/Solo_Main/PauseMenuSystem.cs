@@ -72,6 +72,7 @@ public class PauseMenuSystem : MonoBehaviour
         nowSelecting = 0;
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
+        button_Images[0].GetComponent<Animator>().SetBool("selected", true);
         PausePanel.SetActive(false);
     }
 
@@ -161,6 +162,13 @@ public class PauseMenuSystem : MonoBehaviour
                         ispauseNow = false;
                         PausePanel.SetActive(false);
                         Time.timeScale = 1.0f;
+                        break;
+                    case (int)menu.retry:
+                        selectLock = true;
+                        onButton = true;
+                        fadeScript.fademode = true;
+                        Time.timeScale = 1.0f;
+                        nextscene = "StoryBattle";
                         break;
                     case (int)menu.backmenu:
                         selectLock = true;

@@ -52,7 +52,6 @@ public class GameoverMenu : MonoBehaviour
     int prevSelecting;
     //ポーズ中か
     bool ispauseNow;
-    PauseMenuSystem pauseMenuSystem;
     //ポーズメニューを展開できる状態かどうか
     /*public void SetCanPause(bool value)
     {
