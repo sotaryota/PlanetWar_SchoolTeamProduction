@@ -6,7 +6,6 @@ public class Rob2_Move : MonoBehaviour
 {
     [Header("スクリプト")]
     [SerializeField] Rob2_Status rob2_Status;
-    [SerializeField] Rob2_Attack rob2_Attack;
     [SerializeField] Rob2_Sensing rob2_Sensing;
 
     [SerializeField] Rob2_AnimManeger rob2Animator;
