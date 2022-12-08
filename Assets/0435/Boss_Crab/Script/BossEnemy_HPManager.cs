@@ -7,9 +7,9 @@ public class BossEnemy_HPManager : Enemy_HpData
     [Header("ダメージカット率"), SerializeField]
     private float damageCutValue;
 
-    public void getDamage(float damage, float critical)
+    public override void Damage(float damage)
     {
-        Damage((damage * critical) / damageCutValue);
+        this.hp_ -= damage / damageCutValue;
     }
 
 
