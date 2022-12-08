@@ -180,7 +180,7 @@ public class Write_Effect : MonoBehaviour
                 // 1文字ずつ増やす
                 visibleLength++;
                 talkTextObj.text = talkText.Substring(0, visibleLength);
-                if (gamepad.buttonWest.isPressed)
+                if (gamepad.buttonEast.isPressed)
                 {
                     visibleLength = talkText.Length - 1;
                 }
@@ -215,29 +215,6 @@ public class Write_Effect : MonoBehaviour
                             isTalking = false;
                             yield break;
                         }
-                        //戦闘用の会話イベントが存在しない
-                        if(npc.GetComponent<NPCClass>().GetTalk(NPCClass.NPCState.Battle).Length <= 0)
-                        {
-                            yield return new WaitForSeconds(nTime);
-                            //戦闘状態に変更
-                            npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.Friend);
-                            //会話を区切る
-                            isTalking = false;
-                            print("通常会話終了2");
-                            yield break;
-                        }
-                        //友好用の会話イベントが存在しない
-                        else if (npc.GetComponent<NPCClass>().GetTalk(NPCClass.NPCState.Friend).Length <= 0)
-                        {
-                            yield return new WaitForSeconds(nTime);
-                            //友好状態に変更
-                            npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.Battle);
-                            //会話を区切る
-                            isTalking = false;
-                            print("通常会話終了3");
-                            yield break;
-                        }
-                        break;
                     case NPCClass.NPCState.Battle:
                         yield return new WaitForSeconds(nTime);
 
@@ -254,6 +231,7 @@ public class Write_Effect : MonoBehaviour
                         npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.FriendEventEnd);
                         //会話を区切る
                         isTalking = false;
+                        print("友好会話終了");
                         yield break;
                     case NPCClass.NPCState.BattleEventEnd:
                         yield return new WaitForSeconds(nTime);
