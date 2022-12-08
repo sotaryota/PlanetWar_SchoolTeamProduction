@@ -2330,9 +2330,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScript: {fileID: 593975890}
-  button_Images:
-  - {fileID: 131384439}
-  - {fileID: 818758450}
+  buttonClass:
+  - buttonImage: {fileID: 131384439}
+    menuCell: 0
+  - buttonImage: {fileID: 818758450}
+    menuCell: 1
   PausePanel: {fileID: 1628145158}
   audioSource: {fileID: 593975893}
   selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
@@ -2362,7 +2364,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2740,6 +2742,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3225931615792004985, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 1890687750}
+    - target: {fileID: 3225931615792004985, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: gravity
       value: 20
       objectReference: {fileID: 0}
@@ -2896,6 +2902,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5802731200430829288, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 1890687750}
+    - target: {fileID: 5802731200430829288, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: waitTime
       value: 1
       objectReference: {fileID: 0}
@@ -2923,6 +2933,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 8d204949c18e64f4bb7a02a7bd391768, type: 2}
+    - target: {fileID: 8998669171743165671, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 1890687750}
     - target: {fileID: 8998669171743165671, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: ground
       value: 
@@ -3418,6 +3432,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7098140168121519948, guid: 0dc61541cf6b9f14b9356e1305cc9351, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1450203574}
     - target: {fileID: 7098140168121519951, guid: 0dc61541cf6b9f14b9356e1305cc9351, type: 3}
       propertyPath: m_Name
       value: MeteorCreater
@@ -4049,6 +4067,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 450725428}
     - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
+      propertyPath: buttonClass.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
       propertyPath: button_Images.Array.data[0]
       value: 
       objectReference: {fileID: 186092007}
@@ -4058,6 +4080,26 @@ PrefabInstance:
       objectReference: {fileID: 1324366615}
     - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
       propertyPath: button_Images.Array.data[2]
+      value: 
+      objectReference: {fileID: 1477058411}
+    - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
+      propertyPath: buttonClass.Array.data[1].menuCell
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
+      propertyPath: buttonClass.Array.data[2].menuCell
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
+      propertyPath: buttonClass.Array.data[0].buttonImage
+      value: 
+      objectReference: {fileID: 186092007}
+    - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
+      propertyPath: buttonClass.Array.data[1].buttonImage
+      value: 
+      objectReference: {fileID: 1324366615}
+    - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
+      propertyPath: buttonClass.Array.data[2].buttonImage
       value: 
       objectReference: {fileID: 1477058411}
     - target: {fileID: 6746115403484419092, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
@@ -4102,6 +4144,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6746115403484419092, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6746115403484419093, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6746115403484419096, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}

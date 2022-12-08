@@ -66,7 +66,6 @@ MonoBehaviour:
   - {fileID: 8495475582640043548}
   - {fileID: 4899363919986702987}
   - {fileID: 5277381361621076672}
-  - {fileID: 5277381361723028606}
 --- !u!1001 &1154299397615977059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -174,10 +173,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 445783141209976012}
     m_Modifications:
+    - target: {fileID: 6200553635958474434, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+      propertyPath: attackActive
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200553635958474434, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+      propertyPath: attackStartup
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7008775697644610165, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+      propertyPath: rob2_Sensing
+      value: 
+      objectReference: {fileID: 9112436337738492299}
     - target: {fileID: 7008775697719977352, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
       propertyPath: hp_
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 7008775697719977353, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+      propertyPath: rob2_Sensing
+      value: 
+      objectReference: {fileID: 9112436337738492299}
     - target: {fileID: 7008775697719977359, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
       propertyPath: m_Name
       value: Enemy_Rob2
@@ -226,6 +241,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8659571302323155987, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
 --- !u!4 &5277381361621076668 stripped
@@ -244,9 +263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e5e157218e7084aaec30ad22c5c06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5277381361723028606 stripped
+--- !u!114 &9112436337738492299 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7008775696269499191, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6200553635958474434, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
   m_PrefabInstance: {fileID: 2916408687382523721}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

@@ -1,5 +1,71 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1542793550224658638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8139696858215494012}
+  - component: {fileID: 8659571302323155987}
+  - component: {fileID: 6200553635958474434}
+  m_Layer: 0
+  m_Name: SearchAria
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8139696858215494012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542793550224658638}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7655304341803108577}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8659571302323155987
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542793550224658638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7632858, y: 0.17270327, z: 1.7628427}
+  m_Center: {x: 0.07338166, y: 0.41364866, z: 0.38142103}
+--- !u!114 &6200553635958474434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1542793550224658638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602989c812586684ab594f11176b8a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rob2_Status: {fileID: 7008775697719977352}
+  rob2_Animtor: {fileID: 7008775697719977354}
+  attackArea: {fileID: 7008775696197323994}
+  sensing: 0
+  attackStartup: 1.5
+  attackActive: 1.5
+  attackHit: 0
+  attackRecovery: 2
 --- !u!1 &7008775697719977359
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rob2_Status: {fileID: 7008775697719977352}
   rob2_Attack: {fileID: 7008775697644610165}
-  rob2_Sensing: {fileID: 7008775696269499191}
+  rob2_Sensing: {fileID: 0}
   rob2Animator: {fileID: 7008775697719977354}
 --- !u!114 &7008775697719977352
 MonoBehaviour:
@@ -131,7 +197,7 @@ PrefabInstance:
     - target: {fileID: 659781494, guid: 1ba523fc941b37d4d8ec357cd4d1dc2f, type: 3}
       propertyPath: rob2_Sensing
       value: 
-      objectReference: {fileID: 7008775696269499191}
+      objectReference: {fileID: 0}
     - target: {fileID: 1503972916, guid: 1ba523fc941b37d4d8ec357cd4d1dc2f, type: 3}
       propertyPath: sensing
       value: 0
@@ -214,23 +280,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba523fc941b37d4d8ec357cd4d1dc2f, type: 3}
---- !u!114 &7008775696269499191 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1503972916, guid: 1ba523fc941b37d4d8ec357cd4d1dc2f, type: 3}
+--- !u!1 &7008775696197323994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1561827801, guid: 1ba523fc941b37d4d8ec357cd4d1dc2f, type: 3}
   m_PrefabInstance: {fileID: 7008775697219720451}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 602989c812586684ab594f11176b8a30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7008775697644610165 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 659781494, guid: 1ba523fc941b37d4d8ec357cd4d1dc2f, type: 3}
   m_PrefabInstance: {fileID: 7008775697219720451}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7008775696197323994}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2025f28b8505d4244b75344f52dbb2dd, type: 3}

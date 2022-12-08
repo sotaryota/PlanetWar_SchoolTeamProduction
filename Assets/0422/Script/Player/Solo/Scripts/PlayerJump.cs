@@ -11,6 +11,7 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerMove_Solo playerMove;
     [SerializeField] Animator playerAnimator;
+    [SerializeField] PauseMenuSystem pause;
     [Header("重力")]
     public Vector3 jumping;                 //ジャンプ用
     [SerializeField] float gravity;         //重力
@@ -27,6 +28,7 @@ public class PlayerJump : MonoBehaviour
         //プレイヤが存在しないor死んでいるor会話中なら処理をしない
         if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead ||
             playerStatus.GetState() == PlayerStatus_Solo.State.Talking) { return; }
+        if (pause.pausejudge()) { return; }
         if (gamepad == null) { gamepad = Gamepad.current; }
 
         //地面に接地していてボタンを押したとき

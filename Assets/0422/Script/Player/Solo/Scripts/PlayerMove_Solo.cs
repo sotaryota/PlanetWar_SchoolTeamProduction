@@ -13,6 +13,7 @@ public class PlayerMove_Solo : MonoBehaviour
     public PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerAnimManeger playerAnimator;
     [SerializeField] PlayerGroundCheck ground;
+    [SerializeField] PauseMenuSystem pause;
 
     public Vector3 moveDirection;
     private float horizontal;
@@ -39,6 +40,7 @@ public class PlayerMove_Solo : MonoBehaviour
             playerAnimator.PlayAnimSetRun(false);
             return;
         }
+        if (pause.pausejudge()) { return; }
         if (gamepad == null) { gamepad = Gamepad.current; }
 
         StickValue();

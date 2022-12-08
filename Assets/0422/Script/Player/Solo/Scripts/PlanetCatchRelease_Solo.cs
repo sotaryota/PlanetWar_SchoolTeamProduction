@@ -16,9 +16,10 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
     [Header("投げた惑星の速度"), SerializeField]
     private float throwPlanetSpeed;
 
-    [Header("ステータス管理スクリプト")]
-    public PlayerStatus_Solo playerStatus;
+    [Header("スクリプト")]
+    [SerializeField] PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerAnimManeger playerAnimator;
+    [SerializeField] PauseMenuSystem pause;
 
     [Header("惑星を投げた時のウェイト")]
     [SerializeField]
@@ -29,6 +30,7 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
     void Update()
     {
         if (gamepad == null) { gamepad = Gamepad.current; }
+        if (pause.pausejudge()) { return; }
 
         if (planet)
         {
@@ -121,8 +123,9 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (pause.pausejudge()) { return; }
         //硬直時間中は処理をしない
-        if (!throwFlag) return;
+        if (!throwFlag) { return; }
         //惑星を所持している場合は処理をしない
         if (planet) { return; }
         //惑星である場合

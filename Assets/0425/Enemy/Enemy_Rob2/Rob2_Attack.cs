@@ -6,7 +6,7 @@ public class Rob2_Attack : MonoBehaviour
 {
     [Header("ステータス管理スクリプト")]
     [SerializeField] Rob2_Status rob2_Status;
-    [SerializeField] PlayerStatus_Solo playerStatus;
+    PlayerStatus_Solo playerStatus;
     [SerializeField] Rob2_Sensing rob2_Sensing;
 
     private void Start()
