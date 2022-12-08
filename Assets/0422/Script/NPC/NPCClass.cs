@@ -28,10 +28,10 @@ public class NPCClass : MonoBehaviour
     public enum NPCState
     { 
         Normal,         // 通常会話
-        Battle,         // バトル状態
         Friend,         // 友好状態
-        BattleEventEnd, // バトル終了
         FriendEventEnd, // 友好状態で会話終了
+        Battle,         // バトル状態
+        BattleEventEnd, // バトル終了
 
         ENUMEND,  // 基本状態のLength
 
@@ -91,14 +91,14 @@ public class NPCClass : MonoBehaviour
         {
             case NPCState.Normal:
                 return this.normalTalkData;
-            case NPCState.Battle:
-                return this.battlelTalkData;
             case NPCState.Friend:
                 return this.friendTalkData;
-            case NPCState.BattleEventEnd:
-                return this.BattleEndTalkData;
             case NPCState.FriendEventEnd:
                 return this.FriendEndTalkData;
+            case NPCState.Battle:
+                return this.battlelTalkData;
+            case NPCState.BattleEventEnd:
+                return this.BattleEndTalkData;
             case NPCState.Select:
                 return this.selectTalkData;
             default:
