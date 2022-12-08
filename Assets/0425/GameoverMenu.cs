@@ -15,12 +15,11 @@ using UnityEngine.InputSystem;
 //SetCanPause(_bool_); でポーズ不可にできる。
 //会話が始まるときにFalseを送り、終わったらTrueを送る等
 
-public class PauseMenuSystem : MonoBehaviour
+public class GameoverMenu : MonoBehaviour
 {
     enum menu
     {
-        resume = 0,
-        retry,
+        retry = 0,
         backmenu,
 
         ENUMEND
@@ -54,25 +53,22 @@ public class PauseMenuSystem : MonoBehaviour
     //ポーズ中か
     bool ispauseNow;
     //ポーズメニューを展開できる状態かどうか
-    bool canPause;
-    public void SetCanPause(bool value)
+    /*public void SetCanPause(bool value)
     {
         canPause = value;
-    }
+    }*/
 
     void Start()
     {
         selectLock = false;
         onButton = false;
         ispauseNow = false;
-        canPause = true;
         nextscene = "";
 
         //初期位置
         nowSelecting = 0;
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
-        button_Images[0].GetComponent<Animator>().SetBool("selected", true);
         PausePanel.SetActive(false);
     }
 
@@ -80,10 +76,7 @@ public class PauseMenuSystem : MonoBehaviour
     {
         gamepad = Gamepad.current;
 
-        if (canPause)
-        {
-            PauseSystem();
-        }
+
 
         //メニューを表示している場合のみ
         if (ispauseNow)
@@ -158,24 +151,17 @@ public class PauseMenuSystem : MonoBehaviour
             {
                 switch (nowSelecting)
                 {
-                    case (int)menu.resume:
-                        ispauseNow = false;
-                        PausePanel.SetActive(false);
-                        Time.timeScale = 1.0f;
-                        break;
                     case (int)menu.retry:
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
-                        Time.timeScale = 1.0f;
-                        nextscene = "StoryBattle";
+                        nextscene = "Story";
                         break;
                     case (int)menu.backmenu:
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
-                        Time.timeScale = 1.0f;
-                        nextscene = "StoryMenu";
+                        nextscene = "Menu";
                         break;
                     default:
                         break;
@@ -184,36 +170,12 @@ public class PauseMenuSystem : MonoBehaviour
         }
     }
 
-    void PauseSystem()
+    public void PauseSystem()
     {
-        //押したらポーズ切り替え
-        if (gamepad.buttonNorth.wasPressedThisFrame)
-        {
-            ispauseNow = !ispauseNow;
-
-
-            //ポーズ中であれば
-            if (ispauseNow)
-            {
-                //audioSource.PlayOneShot(se);
-                PausePanel.SetActive(true);
-                nowSelecting = 0;
-                button_Images[nowSelecting].GetComponent<Animator>().SetBool("selected", true);
-                Time.timeScale = 0.0f;
-
-            }
-            //非ポーズ中であれば
-            else
-            {
-                //audioSource.PlayOneShot(se_);
-                for (int i = 0; i < button_Images.Length; ++i)
-                {
-                    button_Images[i].GetComponent<Animator>().SetBool("selected", false);
-                }
-                PausePanel.SetActive(false);
-                Time.timeScale = 1.0f;
-            }
-        }
+        ispauseNow = true;
+        PausePanel.SetActive(true);
+        nowSelecting = 0;
+        button_Images[nowSelecting].GetComponent<Animator>().SetBool("selected", true);
     }
 
     //ポーズ中かを返す
