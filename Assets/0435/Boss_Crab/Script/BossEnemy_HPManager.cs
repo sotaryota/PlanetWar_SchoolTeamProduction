@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class BossEnemy_HPManager : Enemy_HpData
 {
-    [Header("ダメージカット率"), SerializeField]
-    private float damageCutValue;
-
-    public override void Damage(float damage)
+    public void BaseDamage(float damage)
     {
-        this.hp_ -= damage / damageCutValue;
+        Damage(damage);
     }
-
-
 }
