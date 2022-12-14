@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: ff377b8f34a0d4f4f9037f3f32f70808, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.29203483, g: 0.13791645, b: 0.24278331, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -617,7 +617,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &155345006 stripped
 GameObject:
@@ -2656,7 +2656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6191628309851457382, guid: b2c6b36bd49925740b9d08d7289ca9cc, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6191628309851457382, guid: b2c6b36bd49925740b9d08d7289ca9cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2729,6 +2729,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7098140168121519948, guid: 0dc61541cf6b9f14b9356e1305cc9351, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1450203574}
+    - target: {fileID: 7098140168121519948, guid: 0dc61541cf6b9f14b9356e1305cc9351, type: 3}
+      propertyPath: gizumos_CreateArea
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7098140168121519951, guid: 0dc61541cf6b9f14b9356e1305cc9351, type: 3}
       propertyPath: m_Name
       value: MeteorCreater
@@ -3913,7 +3921,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1297518766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3927,7 +3935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ecd: {fileID: 1297518767}
-  enemyName: 2
+  enemyName: 4
   createPrefab: {fileID: 0}
 --- !u!114 &1297518767
 MonoBehaviour:
@@ -3949,6 +3957,8 @@ MonoBehaviour:
   - prefab: {fileID: 4818214183151870499, guid: 543739dc3f55faa418c1aa68eb6b8da4, type: 3}
     pos: {x: 0, y: 0, z: 0}
   - prefab: {fileID: 3887958406796894342, guid: 731835f58a51abf49826adb4ef557ef1, type: 3}
+    pos: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 3794961948396049526, guid: 5bc186a4d8dc3c24d8df22830df584e1, type: 3}
     pos: {x: 0, y: 0, z: 0}
 --- !u!4 &1297518768
 Transform:

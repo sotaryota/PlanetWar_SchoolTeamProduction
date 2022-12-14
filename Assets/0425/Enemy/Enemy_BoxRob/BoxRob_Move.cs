@@ -14,10 +14,6 @@ public class BoxRob_Move : MonoBehaviour
 
     bool die = false;
 
-
-    [SerializeField]
-    public bool sensing = false;
-
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
