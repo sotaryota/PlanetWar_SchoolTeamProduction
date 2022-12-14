@@ -7,8 +7,9 @@ public class BoxRob_Sensing : MonoBehaviour
     [SerializeField] BoxRob_Status boxRob_Status;
     [SerializeField] BoxRob_AnimManeger boxRob_Animtor;
 
-    [SerializeField] GameObject attack_Fire;
+    [SerializeField] ParticleSystem attack_Fire;
 
+  
 
     public bool sensing;
 
@@ -23,12 +24,14 @@ public class BoxRob_Sensing : MonoBehaviour
     [SerializeField]
     float attackActive = 1.5f;
 
-    //çUåÇÇ™ìñÇΩÇ¡ÇΩÇ©ÇÃÉtÉâÉO
-    public bool attackHit = false;
-
     //çUåÇèIóπéûÇÃçdíº
     [SerializeField]
     float attackRecovery = 2.0f;
+
+    private void Start()
+    {
+        sensing = false;
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -47,6 +50,7 @@ public class BoxRob_Sensing : MonoBehaviour
 
     IEnumerator AttackWait()
     {
+
         attackFlag = false;
 
         //rob2ÇAttackèÛë‘Ç…
@@ -56,11 +60,13 @@ public class BoxRob_Sensing : MonoBehaviour
 
         yield return new WaitForSeconds(attackStartup);
 
-      
+        attack_Fire.Play();
 
         yield return new WaitForSeconds(attackActive);
 
+        attack_Fire.Stop();
 
+        boxRob_Animtor.PlayBoxRobAnimAttack(false);
 
         yield return new WaitForSeconds(attackRecovery);
 
@@ -68,14 +74,6 @@ public class BoxRob_Sensing : MonoBehaviour
         boxRob_Status.SetState(BoxRob_Status.State.Stay);
 
         attackFlag = true;
-        attackHit = false;
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            sensing = false;
-        }
+        sensing = false;
     }
 }
