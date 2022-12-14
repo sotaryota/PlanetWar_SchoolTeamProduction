@@ -6,17 +6,24 @@ public class CrabBreathController : MonoBehaviour
 {
     [Header("滞空する時間"), SerializeField]
     private float stayTime;
-    private Rigidbody rigidbody;
+
+    [Header("目標座標と弾丸速度"), SerializeField]
+    private Vector3 targetPos;//終了座標
+    private Vector3 startPos;//開始座標
+    public void SetTarget(Vector3 pos)
+    {
+        targetPos = pos;
+    }
+    [SerializeField] private float speed;//補完値
+    float nowCountPos;
 
     [Header("着弾時に生成するPrefab"), SerializeField]
     private GameObject prefab;
 
     private void Start()
     {
-        if(rigidbody = this.GetComponent<Rigidbody>())
-        {
-            rigidbody.useGravity = false;
-        }
+        startPos = this.transform.position;
+        nowCountPos = 0;
     }
 
     private void Update()
@@ -24,22 +31,14 @@ public class CrabBreathController : MonoBehaviour
         stayTime -= Time.deltaTime;
         if(stayTime <= 0)
         {
-            if (rigidbody)
+            nowCountPos += speed * Time.deltaTime;
+            this.transform.position = Vector3.Lerp(startPos, targetPos, nowCountPos);
+            if(nowCountPos >= 1)
             {
-                rigidbody.useGravity = true;
+                GameObject go = Instantiate(prefab);
+                go.transform.position = this.transform.position;
+                Destroy(gameObject);
             }
-            
         }
     }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if(other.transform.tag == "Ground")
-        {
-            GameObject go = Instantiate(prefab);
-            go.transform.position = this.transform.position;
-            Destroy(gameObject);
-        }
-    }
-
 }
