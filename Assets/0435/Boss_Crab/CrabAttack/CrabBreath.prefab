@@ -24096,7 +24096,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6928607092891211521}
   - component: {fileID: 6928607092909546721}
-  - component: {fileID: 7039794364391737939}
   - component: {fileID: 1691275889}
   - component: {fileID: 1691275888}
   - component: {fileID: 1691275887}
@@ -28843,21 +28842,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &7039794364391737939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6928607092891623979}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c4f4934bc63b1f4e95c3c39cff32c5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  x: 0
-  y: 1
-  z: 0
 --- !u!54 &1691275889
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -28869,7 +28853,7 @@ Rigidbody:
   m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -28899,7 +28883,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f4010befc2e7444b66c3c21b5203ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stayTime: 1
+  stayTime: 3
+  targetPos: {x: 0, y: 0, z: 0}
+  speed: 0.25
   prefab: {fileID: 3114629893125563987, guid: bf42daf7fcdc4814ab098fc9bd134db7, type: 3}
 --- !u!1 &6928607092891627763
 GameObject:
