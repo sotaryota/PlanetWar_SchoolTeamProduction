@@ -908,25 +908,27 @@ MonoBehaviour:
   HPData: {fileID: 1282758892}
   bossAnimator: {fileID: 1282758891}
   player: {fileID: 1389656586}
+  lookingTime: 1
+  lookingSpeed: 5
   smashAttack: {fileID: 5552252390980070708, guid: 2500f603bbc2f484cadc3e0b3096d905, type: 3}
   smashData:
   - createPos: {fileID: 600245446}
     animTriggerName: Attack_LeftSpike
-    startWait: 2.75
-    endWait: 4
+    startWait: 1.25
+    endWait: 2
   - createPos: {fileID: 1352299316}
     animTriggerName: Attack_RightSpike
-    startWait: 2.75
-    endWait: 4
+    startWait: 1.25
+    endWait: 2
   - createPos: {fileID: 158040929}
     animTriggerName: Attack_DoubleSpike
-    startWait: 2.5
-    endWait: 4
+    startWait: 1.5
+    endWait: 2
   breathTargetPos: {fileID: 1070519237}
   breathPrefab: {fileID: 6928607092891623979, guid: 0d51056a0e2b6e1439a885903b585cac, type: 3}
   createPosObject: {fileID: 1574293969}
-  breathCreateWait: 6.5
-  breathEndWait: 13.5
+  breathCreateWait: 3
+  breathEndWait: 10
 --- !u!4 &1282758894 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1011876096989930660, guid: dff5810d684c16345a15ee262c142a95, type: 3}

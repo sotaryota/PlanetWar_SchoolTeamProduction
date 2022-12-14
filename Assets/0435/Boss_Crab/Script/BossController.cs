@@ -12,9 +12,11 @@ public class BossController : MonoBehaviour
 
     [Header("プレイヤー参照"), SerializeField]
     private GameObject player;
+    private Vector3 lockPos;
 
-    private string nowCoroutine;
-
+    [Header("軸合わせ速度と合わせる時間")]
+    [SerializeField] private float lookingTime;
+    [SerializeField] private float lookingSpeed;
 
     [System.Serializable]
     public class SmashData
@@ -40,7 +42,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private float breathCreateWait;
     [SerializeField] private float breathEndWait;
 
-
+    private string nowCoroutine; //現在のコルーチン名
     private bool attack;//攻撃
     private bool looking;//軸合わせ
     private bool dieAnimPlayed;//死亡アニメーション
@@ -61,8 +63,9 @@ public class BossController : MonoBehaviour
             //アタックフラグがtrueなら攻撃、falseなら軸合わせ
             if (attack)
             {
-                int sttackSelect = Random.Range(0, 2);
-                switch (sttackSelect)
+                int attackSelect = Random.Range(0, 6);
+                attackSelect /= 5;
+                switch (attackSelect)
                 {
                     case 0:
                         nowCoroutine = "Attack_Smash";
@@ -81,15 +84,40 @@ public class BossController : MonoBehaviour
             }
             else if(looking)
             {
-                //仮
-                Vector3 lookPos = player.transform.position;
-                lookPos.y = this.transform.position.y;
-                this.transform.LookAt(lookPos);
-
-                attack = true;
-                looking = false;
+                nowCoroutine = "Looking";
+                StartCoroutine(nowCoroutine);
             }
         }
+    }
+
+    //軸合わせ
+    IEnumerator Looking()
+    {
+        //軸合わせ無効
+        looking = false;
+
+
+
+        //指定フレームかけて敵の方向を向く
+        for (float i = 0; i < lookingTime; i += Time.deltaTime)
+        {
+            //回転ベクトルを計算
+            Vector3 myPos = this.transform.position;
+            Vector3 pPos = player.transform.position;
+            pPos.y = myPos.y;
+
+            //回転量を計算
+            Vector3 lookVec = pPos - myPos;
+            Quaternion quaternion = Quaternion.LookRotation(lookVec);
+
+            //回転速度を計算してから回転
+            float lookingNowCount = Time.deltaTime * lookingSpeed;
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, quaternion, lookingNowCount);
+            yield return null;
+        }
+
+        //攻撃開始
+        attack = true;
     }
 
     IEnumerator Attack_Smash()
