@@ -1016,9 +1016,15 @@ MonoBehaviour:
     endWait: 2
   breathTargetPos: {fileID: 1070519237}
   breathPrefab: {fileID: 6928607092891623979, guid: 0d51056a0e2b6e1439a885903b585cac, type: 3}
-  createPosObject: {fileID: 1574293969}
+  breathCreatePos: {fileID: 1070519237}
   breathCreateWait: 3
   breathEndWait: 10
+  breathProbability: 5
+  headAttackPos: {fileID: 1143238271}
+  headAttackPrefab: {fileID: 6894657351440415374, guid: a810b0822a2110f48800b4354fc9c962, type: 3}
+  headCreateWait: 3.5
+  headEndWait: 3
+  headProbability: 15
 --- !u!4 &1282758894 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1011876096989930660, guid: dff5810d684c16345a15ee262c142a95, type: 3}

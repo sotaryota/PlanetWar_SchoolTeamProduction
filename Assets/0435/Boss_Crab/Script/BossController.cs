@@ -39,9 +39,19 @@ public class BossController : MonoBehaviour
     [Header("ブレス攻撃情報")]
     [SerializeField] private Transform breathTargetPos;
     [SerializeField] private GameObject breathPrefab;
-    [SerializeField] private Transform createPosObject;
+    [SerializeField] private Transform breathCreatePos;
     [SerializeField] private float breathCreateWait;
     [SerializeField] private float breathEndWait;
+    [Tooltip("攻撃確率"), Range(0.0f, 100.0f)]
+    [SerializeField] private float breathProbability;
+
+    [Header("頭突き攻撃情報")]
+    [SerializeField] private Transform headAttackPos;
+    [SerializeField] private GameObject headAttackPrefab;
+    [SerializeField] private float headCreateWait;
+    [SerializeField] private float headEndWait;
+    [Tooltip("攻撃確率"), Range(0.0f, 100.0f)]
+    [SerializeField] private float headProbability;
 
     private string nowCoroutine; //現在のコルーチン名
     private bool attack;//攻撃
@@ -85,9 +95,22 @@ public class BossController : MonoBehaviour
         int attackSelect = Random.Range(0, 6);
         attackSelect /= 5;
 
+        //確率で動作(ブレス)
+        if(Random.Range(0.0f, 100.0f) <= breathProbability)
+        {
+            nowCoroutine = "Attack_Breath";
+            yield break;
+        }
+
+        //確率で動作(頭突き)
+        if(Random.Range(0.0f, 100.0f) <= headProbability)
+        {
+            nowCoroutine = "Attack_Head";
+            yield break;
+        }
+
         //サーチエリアをその都度変更する
         CrabAttackSearch searchScript;//可変式
-
         for (int i = 0; i < smashData.Length; ++i)
         {
             if (searchScript = smashData[i].createPos.GetComponent<CrabAttackSearch>())
@@ -100,16 +123,7 @@ public class BossController : MonoBehaviour
             }
         }
         
-        if(searchScript = breathTargetPos.GetComponent<CrabAttackSearch>())
-        {
-            if (searchScript.HitCheck())
-            {
-                if(JudgeHitAndStart(searchScript, "Attack_Breath"))
-                {
-                    yield break;
-                }
-            }
-        }
+        
 
         //ここまで来たら処理なし
         nowCoroutine = null;
@@ -181,7 +195,7 @@ public class BossController : MonoBehaviour
 
         //攻撃を生成して待機
         GameObject go = Instantiate(breathPrefab);
-        go.transform.position = createPosObject.position;
+        go.transform.position = breathCreatePos.position;
         go.GetComponent<CrabBreathController>().SetTarget(breathTargetPos.position);
         yield return new WaitForSeconds(breathEndWait);
 
@@ -192,6 +206,23 @@ public class BossController : MonoBehaviour
         nowCoroutine = null;
     }
 
+    IEnumerator Attack_Head()
+    {
+        //アニメーションを頭突き攻撃にして待機
+        bossAnimator.SetTrigger("Attack_Head");
+        yield return new WaitForSeconds(headCreateWait);
+
+        //攻撃を生成して待機
+        GameObject go = Instantiate(headAttackPrefab);
+        go.transform.position = headAttackPos.position;
+        yield return new WaitForSeconds(headEndWait);
+
+        //軸合わせ有効化
+        looking = true;
+
+        //攻撃終了
+        nowCoroutine = null;
+    }
     public bool BossDie()
     {
         if (HPData.JudgeDie() && !dieAnimPlayed)
