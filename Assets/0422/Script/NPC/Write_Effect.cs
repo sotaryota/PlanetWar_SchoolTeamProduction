@@ -30,7 +30,7 @@ public class Write_Effect : MonoBehaviour
     [Header("文字送り時間")]
     [SerializeField] float feedTime;
     [Header("改行時間")]
-    [SerializeField] float nTime;
+    [SerializeField] float newLineTime;
     int visibleLength;      //表示する文字数
     [Header("フラグ")]
     public bool isTalking;  //会話中かのフラグ
@@ -180,7 +180,7 @@ public class Write_Effect : MonoBehaviour
                 // 1文字ずつ増やす
                 visibleLength++;
                 talkTextObj.text = talkText.Substring(0, visibleLength);
-                if (gamepad.buttonWest.isPressed)
+                if (gamepad.buttonEast.isPressed)
                 {
                     visibleLength = talkText.Length - 1;
                 }
@@ -195,7 +195,11 @@ public class Write_Effect : MonoBehaviour
                         //セレクトの項目があるとき
                         if(npc.GetComponent<NPCClass>().GetSelectFlag())
                         {
-                            yield return new WaitForSeconds(nTime);
+                            while(!gamepad.buttonEast.isPressed)
+                            {
+                                yield return 0;
+                            }
+                            yield return new WaitForSeconds(newLineTime);
                             //セレクト状態に変更
                             npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.Select);
                             //会話用キャンバスを非表示
@@ -208,39 +212,23 @@ public class Write_Effect : MonoBehaviour
                         //会話の分岐が存在しない
                         else
                         {
+                            while (!gamepad.buttonEast.isPressed)
+                            {
+                                yield return 0;
+                            }
+                            yield return new WaitForSeconds(newLineTime);
                             print("会話終了");
-                            yield return new WaitForSeconds(nTime);
                             npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.FriendEventEnd);
                             //会話を区切る
                             isTalking = false;
                             yield break;
                         }
-                        //戦闘用の会話イベントが存在しない
-                        if(npc.GetComponent<NPCClass>().GetTalk(NPCClass.NPCState.Battle).Length <= 0)
-                        {
-                            yield return new WaitForSeconds(nTime);
-                            //戦闘状態に変更
-                            npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.Friend);
-                            //会話を区切る
-                            isTalking = false;
-                            print("通常会話終了2");
-                            yield break;
-                        }
-                        //友好用の会話イベントが存在しない
-                        else if (npc.GetComponent<NPCClass>().GetTalk(NPCClass.NPCState.Friend).Length <= 0)
-                        {
-                            yield return new WaitForSeconds(nTime);
-                            //友好状態に変更
-                            npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.Battle);
-                            //会話を区切る
-                            isTalking = false;
-                            print("通常会話終了3");
-                            yield break;
-                        }
-                        break;
                     case NPCClass.NPCState.Battle:
-                        yield return new WaitForSeconds(nTime);
-
+                        while (!gamepad.buttonEast.isPressed)
+                        {
+                            yield return 0;
+                        }
+                        yield return new WaitForSeconds(newLineTime);
                         //必要なデータを保存
                         playerData.StoryEndPlayerData(playerStatus.GetHp(), playerStatus.GetPower(), player.transform.position);
                         npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(),npc.GetComponent<NPCClass>().GetEventID());
@@ -249,14 +237,22 @@ public class Write_Effect : MonoBehaviour
                         isTalking = false;
                         yield break;
                     case NPCClass.NPCState.Friend:
-                        yield return new WaitForSeconds(nTime);
+                        while (!gamepad.buttonEast.isPressed)
+                        {
+                            yield return 0;
+                        }
+                        yield return new WaitForSeconds(newLineTime);
                         //会話終了状態に変更
                         npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.FriendEventEnd);
                         //会話を区切る
                         isTalking = false;
                         yield break;
                     case NPCClass.NPCState.BattleEventEnd:
-                        yield return new WaitForSeconds(nTime);
+                        while (!gamepad.buttonEast.isPressed)
+                        {
+                            yield return 0;
+                        }
+                        yield return new WaitForSeconds(newLineTime);
                         //テキストボックス非表示
                         canvas.SetActive(false);
                         talkCanvas.SetActive(false);
@@ -272,7 +268,11 @@ public class Write_Effect : MonoBehaviour
                         Debug.Log("会話終了");
                         yield break;
                     case NPCClass.NPCState.FriendEventEnd:
-                        yield return new WaitForSeconds(nTime);
+                        while (!gamepad.buttonEast.isPressed)
+                        {
+                            yield return 0;
+                        }
+                        yield return new WaitForSeconds(newLineTime);
                         //テキストボックス非表示
                         canvas.SetActive(false);
                         talkCanvas.SetActive(false);
@@ -291,7 +291,11 @@ public class Write_Effect : MonoBehaviour
             }
             else
             {
-                yield return new WaitForSeconds(nTime);
+                while (!gamepad.buttonEast.isPressed)
+                {
+                    yield return 0;
+                }
+                yield return new WaitForSeconds(newLineTime);
             }
         }
     }

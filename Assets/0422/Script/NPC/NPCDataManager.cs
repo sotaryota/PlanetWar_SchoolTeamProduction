@@ -41,7 +41,7 @@ public class NPCDataManager : MonoBehaviour
     #endregion
 
     [Header("NPCデータ")]
-    [SerializeField] EnemyCreater_Data.EnemyName enemyName; // 生成したい敵の名前
+    public EnemyCreater_Data.EnemyName enemyName; // 生成したい敵の名前
     [SerializeField] int eventId; // 話しかけたNPCのイベントID
     [Header("全NPCの状態")]
     public List<NPCClass.NPCState> npcStateList;

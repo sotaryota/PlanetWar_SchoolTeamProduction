@@ -16,6 +16,7 @@ public class EnemyCreater_Start : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enemyName = GameObject.Find("DataManager").GetComponent<NPCDataManager>().enemyName;
         //敵を生成し、位置を指定位置に更新
         createPrefab = Instantiate(ecd.enemyData[(int)enemyName].prefab);
         createPrefab.transform.position = ecd.enemyData[(int)enemyName].pos;
