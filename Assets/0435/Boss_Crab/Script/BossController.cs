@@ -34,6 +34,7 @@ public class BossController : MonoBehaviour
     [Header("殴り攻撃情報")]
     [SerializeField] private GameObject smashAttack;
     [SerializeField] private SmashData[] smashData = new SmashData[1];
+    private int smashDataSelect = 0;
 
     [Header("ブレス攻撃情報")]
     [SerializeField] private Transform breathTargetPos;
@@ -58,31 +59,19 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!BossDie())
-        {
-            //アタックフラグがtrueなら攻撃、falseなら軸合わせ
+        if (!BossDie()) {
+
             if (attack)
             {
-                int attackSelect = Random.Range(0, 6);
-                attackSelect /= 5;
-                switch (attackSelect)
+                StartCoroutine("Sarch");
+                if (nowCoroutine != null)
                 {
-                    case 0:
-                        nowCoroutine = "Attack_Smash";
-                        break;
-
-                    case 1:
-                        nowCoroutine = "Attack_Breath";
-                        break;
-
-                    default:
-                        print("攻撃なし");
-                        break;
+                    StartCoroutine(nowCoroutine);
+                    attack = false;
                 }
-                StartCoroutine(nowCoroutine);
-                attack = false;
+                
             }
-            else if(looking)
+            else if (looking)
             {
                 nowCoroutine = "Looking";
                 StartCoroutine(nowCoroutine);
@@ -90,13 +79,59 @@ public class BossController : MonoBehaviour
         }
     }
 
+    IEnumerator Sarch()
+    {
+        //コルーチン名を指定する。指定した後に
+        int attackSelect = Random.Range(0, 6);
+        attackSelect /= 5;
+
+        //サーチエリアをその都度変更する
+        CrabAttackSearch searchScript;//可変式
+
+        for (int i = 0; i < smashData.Length; ++i)
+        {
+            if (searchScript = smashData[i].createPos.GetComponent<CrabAttackSearch>())
+            {
+                if(JudgeHitAndStart(searchScript, "Attack_Smash"))
+                {
+                    smashDataSelect = i;
+                    yield break;
+                }
+            }
+        }
+        
+        if(searchScript = breathTargetPos.GetComponent<CrabAttackSearch>())
+        {
+            if (searchScript.HitCheck())
+            {
+                if(JudgeHitAndStart(searchScript, "Attack_Breath"))
+                {
+                    yield break;
+                }
+            }
+        }
+
+        //ここまで来たら処理なし
+        nowCoroutine = null;
+        print("攻撃なし");
+        yield break;
+    }
+
+    public bool JudgeHitAndStart(CrabAttackSearch searchScript, string coroutineName)
+    {
+        if (searchScript.HitCheck())
+        {
+            nowCoroutine = coroutineName;
+            return true;
+        }
+        return false;
+    }
+
     //軸合わせ
     IEnumerator Looking()
     {
         //軸合わせ無効
         looking = false;
-
-
 
         //指定フレームかけて敵の方向を向く
         for (float i = 0; i < lookingTime; i += Time.deltaTime)
@@ -122,17 +157,14 @@ public class BossController : MonoBehaviour
 
     IEnumerator Attack_Smash()
     {
-        //殴りをランダム取得
-        int smashNum = Random.Range(0, smashData.Length);
-
         //アニメーションを殴りにして待機
-        bossAnimator.SetTrigger(smashData[smashNum].animTriggerName);
-        yield return new WaitForSeconds(smashData[smashNum].startWait);
+        bossAnimator.SetTrigger(smashData[smashDataSelect].animTriggerName);
+        yield return new WaitForSeconds(smashData[smashDataSelect].startWait);
 
         //攻撃を生成して待機
         GameObject go = Instantiate(smashAttack);
-        go.transform.position = smashData[smashNum].createPos.position;
-        yield return new WaitForSeconds(smashData[smashNum].endWait);
+        go.transform.position = smashData[smashDataSelect].createPos.position;
+        yield return new WaitForSeconds(smashData[smashDataSelect].endWait);
 
         //軸合わせ有効化
         looking = true;
@@ -178,5 +210,6 @@ public class BossController : MonoBehaviour
         //死亡しているかを返す
         return HPData.JudgeDie();
     }
-
 }
+
+
