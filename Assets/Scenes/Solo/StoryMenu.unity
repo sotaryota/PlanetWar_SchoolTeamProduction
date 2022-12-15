@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.29259837, g: 0.13866812, b: 0.24325374, a: 1}
+  m_IndirectSpecularColor: {r: 0.292083, g: 0.13803294, b: 0.24283561, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -638,10 +638,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScript: {fileID: 1824457822}
-  button_Images:
-  - {fileID: 2103005606}
-  - {fileID: 1146498370}
-  - {fileID: 1118046629}
+  buttonClass:
+  - buttonImage: {fileID: 2103005606}
+    menuCell: 0
+  - buttonImage: {fileID: 1146498370}
+    menuCell: 1
+  - buttonImage: {fileID: 1118046629}
+    menuCell: 2
   audioSource: {fileID: 316225824}
   selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
 --- !u!1 &535778327

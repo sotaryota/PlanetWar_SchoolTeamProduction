@@ -17,13 +17,11 @@ using UnityEngine.InputSystem;
 
 public class PauseMenuSystem : MonoBehaviour
 {
-    enum menu
+    public enum menu
     {
         resume = 0,
         retry,
-        backmenu,
-
-        ENUMEND
+        backmenu
     }
 
     Gamepad gamepad;
@@ -35,9 +33,18 @@ public class PauseMenuSystem : MonoBehaviour
     //フェード
     [SerializeField]
     Fade fadeScript;
+    //移行するシーンを保存する場所
+    string nextscene;
     //ボタン画像の読み込み
+    [System.Serializable]
+    public class Button
+    {
+        public GameObject buttonImage;
+        public menu menuCell; 
+    }
     [SerializeField]
-    GameObject[] button_Images = new GameObject[(int)menu.ENUMEND];
+    private Button[] buttonClass = new Button[1];
+
     //ボタン画像を置いてあるパネルや画像
     [SerializeField]
     GameObject PausePanel;
@@ -64,11 +71,13 @@ public class PauseMenuSystem : MonoBehaviour
         onButton = false;
         ispauseNow = false;
         canPause = true;
+        nextscene = "";
 
         //初期位置
         nowSelecting = 0;
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
+        buttonClass[0].buttonImage.GetComponent<Animator>().SetBool("selected", true);
         PausePanel.SetActive(false);
     }
 
@@ -102,9 +111,9 @@ public class PauseMenuSystem : MonoBehaviour
         if (nowSelecting != prevSelecting)
         {
             //直前のボタンを小さく
-            button_Images[prevSelecting].GetComponent<Animator>().SetBool("selected", false);
+            buttonClass[prevSelecting].buttonImage.GetComponent<Animator>().SetBool("selected", false);
             //選択中を大きく
-            button_Images[nowSelecting].GetComponent<Animator>().SetBool("selected", true);
+            buttonClass[nowSelecting].buttonImage.GetComponent<Animator>().SetBool("selected", true);
             //効果音再生
             audioSource.PlayOneShot(selectSound);
             //直前の選択を更新
@@ -113,7 +122,7 @@ public class PauseMenuSystem : MonoBehaviour
         //フェードが終わったらメニューに戻す
         if (fadeScript.FadeOut())
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(nextscene);
         }
     }
 
@@ -127,7 +136,7 @@ public class PauseMenuSystem : MonoBehaviour
             {
                 nowSelecting++;
                 //最大値を超えたら0にする
-                if (nowSelecting >= (int)menu.ENUMEND)
+                if (nowSelecting >= buttonClass.Length)
                     nowSelecting = 0;
                 //ロックをかける
                 selectLock = true;
@@ -137,7 +146,7 @@ public class PauseMenuSystem : MonoBehaviour
             {
                 nowSelecting--;
                 if (nowSelecting < 0)
-                    nowSelecting = (int)menu.ENUMEND - 1;
+                    nowSelecting = buttonClass.Length - 1;
                 //ロックをかける
                 selectLock = true;
             }
@@ -155,15 +164,23 @@ public class PauseMenuSystem : MonoBehaviour
                 switch (nowSelecting)
                 {
                     case (int)menu.resume:
-                        ispauseNow = false;
                         PausePanel.SetActive(false);
                         Time.timeScale = 1.0f;
+                        ispauseNow = false;
+                        break;
+                    case (int)menu.retry:
+                        selectLock = true;
+                        onButton = true;
+                        fadeScript.fademode = true;
+                        Time.timeScale = 1.0f;
+                        nextscene = "StoryBattle";
                         break;
                     case (int)menu.backmenu:
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
                         Time.timeScale = 1.0f;
+                        nextscene = "StoryMenu";
                         break;
                     default:
                         break;
@@ -186,7 +203,7 @@ public class PauseMenuSystem : MonoBehaviour
                 //audioSource.PlayOneShot(se);
                 PausePanel.SetActive(true);
                 nowSelecting = 0;
-                button_Images[nowSelecting].GetComponent<Animator>().SetBool("selected", true);
+                buttonClass[nowSelecting].buttonImage.GetComponent<Animator>().SetBool("selected", true);
                 Time.timeScale = 0.0f;
 
             }
@@ -194,9 +211,9 @@ public class PauseMenuSystem : MonoBehaviour
             else
             {
                 //audioSource.PlayOneShot(se_);
-                for (int i = 0; i < button_Images.Length; ++i)
+                for (int i = 0; i < buttonClass.Length; ++i)
                 {
-                    button_Images[i].GetComponent<Animator>().SetBool("selected", false);
+                    buttonClass[i].buttonImage.GetComponent<Animator>().SetBool("selected", false);
                 }
                 PausePanel.SetActive(false);
                 Time.timeScale = 1.0f;

@@ -4,13 +4,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-public class Solo_Menu_System : MonoBehaviour
+//ポーズさせたいシーンにこれを置く。
+//フェードくん、ボタンにしたい画像、そのボタンをまとめるオブジェクト等をアタッチすればおｋ
+//ボタンにはアニメーションを持たせること。なお、「UpdateMode」を「UnscaledTime」にすること！
+//そのシーンのマネージャーのUpdateに下記を置いとかないと動いたりするので注意
+
+//PauseMenuSystem pauseMenuSystem;
+//if (pauseMenuSystem.pausejudge()) { }
+
+//SetCanPause(_bool_); でポーズ不可にできる。
+//会話が始まるときにFalseを送り、終わったらTrueを送る等
+
+public class GameoverMenu : MonoBehaviour
 {
     public enum menu
     {
-        NewGame = 0,
-        Continue,
-        BackMenu
+        retry = 0,
+        backmenu
     }
 
     Gamepad gamepad;
@@ -34,6 +44,9 @@ public class Solo_Menu_System : MonoBehaviour
     [SerializeField]
     private Button[] buttonClass = new Button[1];
 
+    //ボタン画像を置いてあるパネルや画像
+    [SerializeField]
+    GameObject PausePanel;
     //オーディオ
     [SerializeField]
     AudioSource audioSource;
@@ -42,25 +55,41 @@ public class Solo_Menu_System : MonoBehaviour
     int nowSelecting;
     //直前に選択したボタン
     int prevSelecting;
+    //ポーズ中か
+    bool ispauseNow;
+    //ポーズメニューを展開できる状態かどうか
+    /*public void SetCanPause(bool value)
+    {
+        canPause = value;
+    }*/
 
     void Start()
     {
         selectLock = false;
         onButton = false;
+        ispauseNow = false;
         nextscene = "";
 
         //初期位置
         nowSelecting = 0;
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
-        buttonClass[0].buttonImage.GetComponent<Animator>().SetBool("selected", true);
+        PausePanel.SetActive(false);
     }
 
     void Update()
     {
         gamepad = Gamepad.current;
-        SelectSystem();
-        onClickAction();
+
+
+
+        //メニューを表示している場合のみ
+        if (ispauseNow)
+        {
+            SelectSystem();
+            onClickAction();
+        }
+
         //決定押されていない　＆　上入力なし　＆　下入力なし
         if (!gamepad.buttonSouth.wasPressedThisFrame &&
             gamepad.leftStick.ReadValue().y <= 0.1f &&
@@ -74,17 +103,16 @@ public class Solo_Menu_System : MonoBehaviour
         //選択中のボタンが切り替わったら
         if (nowSelecting != prevSelecting)
         {
-            //直前のボタンのアニメーション終了処理
+            //直前のボタンを小さく
             buttonClass[prevSelecting].buttonImage.GetComponent<Animator>().SetBool("selected", false);
-            //選択中のボタンのアニメーション開始
+            //選択中を大きく
             buttonClass[nowSelecting].buttonImage.GetComponent<Animator>().SetBool("selected", true);
             //効果音再生
             audioSource.PlayOneShot(selectSound);
             //直前の選択を更新
             prevSelecting = nowSelecting;
         }
-
-        //フェードが終わったらシーン遷移
+        //フェードが終わったらメニューに戻す
         if (fadeScript.FadeOut())
         {
             SceneManager.LoadScene(nextscene);
@@ -97,7 +125,7 @@ public class Solo_Menu_System : MonoBehaviour
         if (selectLock == false && onButton == false)
         {
             //下入力
-            if (gamepad.leftStick.ReadValue().y < -0.1f)
+            if (gamepad.leftStick.ReadValue().x < -0.1f)
             {
                 nowSelecting++;
                 //最大値を超えたら0にする
@@ -117,36 +145,47 @@ public class Solo_Menu_System : MonoBehaviour
             }
         }
     }
+
+    //クリックしたときの挙動
     void onClickAction()
     {
-        //連打禁止用
+        //連打防止用
         if (!onButton)
         {
-            //押したら
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
-                //操作を止めて
-                selectLock = true;
-                onButton = true;
-                //選んでいる項目別に挙動を変える
                 switch (nowSelecting)
                 {
-                    case (int)menu.NewGame:
+                    case (int)menu.retry:
+                        selectLock = true;
+                        onButton = true;
+                        fadeScript.fademode = true;
+                        nextscene = "StoryBattle";
+                        break;
+                    case (int)menu.backmenu:
+                        selectLock = true;
+                        onButton = true;
                         fadeScript.fademode = true;
                         nextscene = "Story";
-                        break;
-                    case (int)menu.Continue:
-                        fadeScript.fademode = true;
-                        nextscene = "Story";
-                        break;
-                    case (int)menu.BackMenu:
-                        fadeScript.fademode = true;
-                        nextscene = "Menu";
                         break;
                     default:
                         break;
                 }
             }
         }
+    }
+
+    public void PauseSystem()
+    {
+        ispauseNow = true;
+        PausePanel.SetActive(true);
+        nowSelecting = 0;
+        buttonClass[nowSelecting].buttonImage.GetComponent<Animator>().SetBool("selected", true);
+    }
+
+    //ポーズ中かを返す
+    public bool pausejudge()
+    {
+        return ispauseNow;
     }
 }
