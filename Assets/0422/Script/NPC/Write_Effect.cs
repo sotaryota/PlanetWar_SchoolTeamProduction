@@ -218,24 +218,11 @@ public class Write_Effect : MonoBehaviour
                             }
                             yield return new WaitForSeconds(newLineTime);
                             print("会話終了");
-                            npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.FriendEventEnd);
+                            npc.GetComponent<NPCClass>().SetState(npc.GetComponent<NPCClass>().GetNonSelectState());
                             //会話を区切る
                             isTalking = false;
                             yield break;
                         }
-                    case NPCClass.NPCState.Battle:
-                        while (!gamepad.buttonEast.isPressed)
-                        {
-                            yield return 0;
-                        }
-                        yield return new WaitForSeconds(newLineTime);
-                        //必要なデータを保存
-                        playerData.StoryEndPlayerData(playerStatus.GetHp(), playerStatus.GetPower(), player.transform.position);
-                        npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(),npc.GetComponent<NPCClass>().GetEventID());
-                       
-                        //会話を区切る
-                        isTalking = false;
-                        yield break;
                     case NPCClass.NPCState.Friend:
                         while (!gamepad.buttonEast.isPressed)
                         {
@@ -247,7 +234,7 @@ public class Write_Effect : MonoBehaviour
                         //会話を区切る
                         isTalking = false;
                         yield break;
-                    case NPCClass.NPCState.BattleEventEnd:
+                    case NPCClass.NPCState.FriendEventEnd:
                         while (!gamepad.buttonEast.isPressed)
                         {
                             yield return 0;
@@ -256,18 +243,30 @@ public class Write_Effect : MonoBehaviour
                         //テキストボックス非表示
                         canvas.SetActive(false);
                         talkCanvas.SetActive(false);
-                        //会話対象をnullにする
-                        npc = null;
                         //ボタンを押せるようにする
                         buttonFlag = true;
                         //プレイヤーを待機状態に変更
                         playerStatus.SetState(PlayerStatus_Solo.State.Stay);
+                        npc.GetComponent<NPCClass>().SetState(npc.GetComponent<NPCClass>().GetEndState());
                         //会話終了
                         isTalking = false;
 
                         Debug.Log("会話終了");
                         yield break;
-                    case NPCClass.NPCState.FriendEventEnd:
+                    case NPCClass.NPCState.Battle:
+                        while (!gamepad.buttonEast.isPressed)
+                        {
+                            yield return 0;
+                        }
+                        yield return new WaitForSeconds(newLineTime);
+                        //必要なデータを保存
+                        playerData.StoryEndPlayerData(playerStatus.GetHp(), playerStatus.GetPower(), player.transform.position);
+                        npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(), npc.GetComponent<NPCClass>().GetEventID());
+
+                        //会話を区切る
+                        isTalking = false;
+                        yield break;
+                    case NPCClass.NPCState.BattleEventEnd:
                         while (!gamepad.buttonEast.isPressed)
                         {
                             yield return 0;

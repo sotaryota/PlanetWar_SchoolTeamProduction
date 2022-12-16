@@ -43,6 +43,11 @@ public class NPCClass_Editor : Editor
             npc.selectTalkData[(int)NPCClass.SelectNom.Second] = EditorGUILayout.TextField("2つ目の選択肢", npc.selectTalkData[(int)NPCClass.SelectNom.Second]);
             npc.secondSelectState = (NPCClass.NPCState)EditorGUILayout.EnumPopup("選択後の状態", npc.secondSelectState);
         }
+        else
+        {
+            GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
+            npc.nonSelectState = (NPCClass.NPCState)EditorGUILayout.EnumPopup("会話の分岐先", npc.nonSelectState);
+        }
         GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
         //会話可能か否かの判定
         serializedObject.FindProperty(nameof(NPCClass.talkFlag)).boolValue = EditorGUILayout.Toggle("会話可能？", serializedObject.FindProperty(nameof(NPCClass.talkFlag)).boolValue);
@@ -168,6 +173,8 @@ public class NPCClass_Editor : Editor
             {
                 npc.FriendEndTalkData[i] = EditorGUILayout.TextField((i + 1).ToString() + "行目", npc.FriendEndTalkData[i]);
             }
+            GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
+            npc.endState = (NPCClass.NPCState)EditorGUILayout.EnumPopup("会話終了後の状態", npc.endState);
         }
         //-----------------------------------------------------------------------------------------------
         GUILayout.Box("", GUILayout.Height(2), GUILayout.ExpandWidth(true));
