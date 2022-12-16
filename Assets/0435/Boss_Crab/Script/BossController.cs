@@ -271,24 +271,28 @@ public class BossController : MonoBehaviour
     }
     public bool BossDie()
     {
-        if (HPData.JudgeDie() && !dieAnimPlayed)
+        if (HPData.JudgeDie())
         {
-            //現在のコルーチンを停止
-            if (nowCoroutine != null)
+            if (!dieAnimPlayed)
             {
-                StopCoroutine(nowCoroutine);
+                //現在のコルーチンを停止
+                if (nowCoroutine != null)
+                {
+                    StopCoroutine(nowCoroutine);
+                }
+
+                //いろいろ無効化
+                breathWarningArea.SetActive(false);
+
+                //死亡アニメーション
+                bossAnimator.SetTrigger("Die");
+                dieAnimPlayed = true;
             }
 
-            //いろいろ無効化
-            breathWarningArea.SetActive(false);
-
-            //死亡アニメーション
-            bossAnimator.SetTrigger("Die");
-            dieAnimPlayed = true;
+            //下に沈む
+            this.transform.Translate(new Vector3(0, -dieFallSpeed * Time.deltaTime, 0));
         }
 
-        //下に沈む
-        this.transform.Translate(new Vector3(0, -dieFallSpeed * Time.deltaTime, 0));
 
 
         //死亡しているかを返す
