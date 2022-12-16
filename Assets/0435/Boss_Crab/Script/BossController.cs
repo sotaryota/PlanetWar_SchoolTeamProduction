@@ -18,6 +18,10 @@ public class BossController : MonoBehaviour
     [SerializeField] private float lookingTime;
     [SerializeField] private float lookingSpeed;
 
+    [Header("登場時の叫ぶ行動の情報")]
+    [SerializeField] private float shoutStartWait;
+    [SerializeField] private float shoutEndWait;
+
     [System.Serializable]
     public class SmashData
     {
@@ -40,6 +44,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private Transform breathTargetPos;
     [SerializeField] private GameObject breathPrefab;
     [SerializeField] private Transform breathCreatePos;
+    [SerializeField] private GameObject breathWarningArea;
     [SerializeField] private float breathCreateWait;
     [SerializeField] private float breathEndWait;
     [Tooltip("攻撃確率"), Range(0.0f, 100.0f)]
@@ -53,6 +58,9 @@ public class BossController : MonoBehaviour
     [Tooltip("攻撃確率"), Range(0.0f, 100.0f)]
     [SerializeField] private float headProbability;
 
+    [Header("死亡時の行動")]
+    [SerializeField] private float dieFallSpeed;
+
     private string nowCoroutine; //現在のコルーチン名
     private bool attack;//攻撃
     private bool looking;//軸合わせ
@@ -61,9 +69,16 @@ public class BossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        looking = true;
+        //フラグの初期設定
+        looking = false;
         attack = false;
         dieAnimPlayed = false;
+
+        //警告範囲無効化
+        breathWarningArea.SetActive(false);
+
+        //叫ぶ
+        StartCoroutine("Shout");
     }
 
     // Update is called once per frame
@@ -89,9 +104,24 @@ public class BossController : MonoBehaviour
         }
     }
 
+    IEnumerator Shout()
+    {
+        //叫び始めまで待機
+        yield return new WaitForSeconds(shoutStartWait);
+
+        //アニメーション変更
+        bossAnimator.SetTrigger("Shout");
+
+        //叫び終わりまで待機
+        yield return new WaitForSeconds(shoutEndWait);
+
+        //軸合わせ開始
+        looking = true;
+    }
+
     IEnumerator Sarch()
     {
-        //コルーチン名を指定する。指定した後に
+        //コルーチン名を指定する。
         int attackSelect = Random.Range(0, 6);
         attackSelect /= 5;
 
@@ -189,15 +219,31 @@ public class BossController : MonoBehaviour
 
     IEnumerator Attack_Breath()
     {
-        //アニメーションをブレス攻撃にして待機
+        //アニメーションをブレス攻撃
         bossAnimator.SetTrigger("Breath");
+
+        //警告範囲有効化
+        breathWarningArea.SetActive(true);
+
+        //生成まで待機
         yield return new WaitForSeconds(breathCreateWait);
 
         //攻撃を生成して待機
         GameObject go = Instantiate(breathPrefab);
         go.transform.position = breathCreatePos.position;
         go.GetComponent<CrabBreathController>().SetTarget(breathTargetPos.position);
-        yield return new WaitForSeconds(breathEndWait);
+
+        //終了まで待機
+        for(float time = 0; time < breathEndWait; time += Time.deltaTime)
+        {
+            //警告範囲無効化
+            if (go == null)
+            {
+                breathWarningArea.SetActive(false);
+            }
+
+            yield return null;
+        }
 
         //軸合わせ有効化
         looking = true;
@@ -233,10 +279,17 @@ public class BossController : MonoBehaviour
                 StopCoroutine(nowCoroutine);
             }
 
+            //いろいろ無効化
+            breathWarningArea.SetActive(false);
+
             //死亡アニメーション
             bossAnimator.SetTrigger("Die");
             dieAnimPlayed = true;
         }
+
+        //下に沈む
+        this.transform.Translate(new Vector3(0, -dieFallSpeed * Time.deltaTime, 0));
+
 
         //死亡しているかを返す
         return HPData.JudgeDie();
