@@ -236,7 +236,7 @@ RectTransform:
   m_Children:
   - {fileID: 430730141}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -304,6 +304,47 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &86964829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4988328781634561657, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+  m_PrefabInstance: {fileID: 956714937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &86964830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86964829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0243457be5de2b64c8fada0670b3e00b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: "\u5927\u9808\u8CC0"
+  eventId: 6
+  talkFlag: 1
+  selectFlag: 1
+  enemyName: 0
+  normalTalkData:
+  - "\u30AA\u30B9\u30AB\u30FC\u3067\u3059"
+  - "20\u6B73\u3067\u3059"
+  - "\u30A4\u30B1\u30E1\u30F3\u3067\u3059"
+  battlelTalkData:
+  - "\u305D\u3093\u306A\u3053\u3068\u8A00\u308F\u306A\u3044\u3067"
+  friendTalkData: []
+  BattleEndTalkData:
+  - "\u8ABF\u5B50\u306B\u4E57\u3063\u3066\u3059\u307F\u307E\u305B\u3093\u3067\u3057\u305F"
+  FriendEndTalkData:
+  - "\u304A\u4E16\u8F9E\u306F\u3044\u3044\u3088"
+  selectTalkData:
+  - "\u30D6\u30B9\u3084\u306A\u3044\u304B"
+  - "\u305D\u3046\u3060\u306D"
+  nowState: 0
+  firstSelectState: 3
+  nonSelectState: 0
+  secondSelectState: 2
+  endState: 2
 --- !u!1001 &138091733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -611,11 +652,13 @@ MonoBehaviour:
   FriendEndTalkData:
   - "\u3084\u3081\u3068\u3051\u3070\u3088\u304B\u3063\u305F\u306A\u3041\u2026"
   selectTalkData:
-  - "\u304A\u304B\u306D\u304C\u306A\u3044\u3093\u3060\u3001\u3001\u3001"
-  - "\u3060\u3081"
+  - 
+  - 
   nowState: 0
-  firstSelectState: 1
-  secondSelectState: 1
+  firstSelectState: 0
+  nonSelectState: 1
+  secondSelectState: 0
+  endState: 0
 --- !u!1 &350984336
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,7 +851,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &402750139 stripped
 GameObject:
@@ -1104,7 +1147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.3
+      value: -36.1
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1112,7 +1155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.83
+      value: 137.1
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1365,7 +1408,7 @@ RectTransform:
   m_Children:
   - {fileID: 1797360964}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1490,7 +1533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4988328781634561657, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_Name
-      value: NPC_Rob1
+      value: "\u7956\u7530"
       objectReference: {fileID: 0}
     - target: {fileID: 4988328781634561657, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_TagString
@@ -1502,19 +1545,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.28
+      value: 1.017
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0000019073486
+      value: 13.218
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 109.21
+      value: 185.077
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.70382786
+      value: -0.03834811
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1522,7 +1565,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7103706
+      value: 0.9992644
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1534,7 +1577,76 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90.53
+      value: 184.395
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+--- !u!1001 &956714937
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1178687565961780579, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: talk.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178687565961780579, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: talk.Array.data[0]
+      value: "\u306A\u3093\u3060\u304A\u307E\u3048"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988328781634561657, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_Name
+      value: "\u5927\u9808\u8CC0\u30ED\u30DC"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988328781634561657, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_TagString
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -46.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 139.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.847223
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5312375
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 64.178
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1572,19 +1684,21 @@ MonoBehaviour:
   - "\u304A\u30FC\u3001\u3044\u3044\u306D\uFF01"
   - "\u3058\u3083\u3042\u50D5\u304C\u904B\u52D5\u306B\u4ED8\u304D\u5408\u3063\u3066\u3042\u3052\u308B\u3088\uFF01"
   friendTalkData:
-  - "\u305D\u3046\u306A\u3093\u3060\uFF01"
-  - "\u3053\u306E\u57FA\u5730\u306B\u306F\u50D5\u306E\u4EF2\u9593\u305F\u3061\u3082\u305F\u304F\u3055\u3093\u3044\u308B\u3093\u3060\uFF5E"
+  - "\u305D\u3046\u306A\u3093\u3060"
+  - "\u3053\u306E\u57FA\u5730\u306B\u306F\u50D5\u306E\u4EF2\u9593\u305F\u3061\u3082\u305F\u304F\u3055\u3093\u3044\u308B\u3093\u3060"
   BattleEndTalkData:
   - "\u75B2\u308C\u305F\uFF5E\uFF01"
   - "\u904B\u52D5\u9811\u5F35\u3063\u3066\u306D\uFF01"
   FriendEndTalkData:
-  - "\u8272\u3005\u898B\u3066\u56DE\u3063\u3066\u307F\u3066\u306D\uFF5E"
+  - "\u8272\u3005\u898B\u3066\u56DE\u3063\u3066\u307F\u3066\u306D\uFF01"
   selectTalkData:
   - "\u904A\u3073\u306B\u6765\u305F\u3088"
   - "\u3061\u3087\u3063\u3068\u4F53\u3092\u52D5\u304B\u3057\u306B"
   nowState: 0
   firstSelectState: 1
+  nonSelectState: 0
   secondSelectState: 3
+  endState: 2
 --- !u!1 &1136256999
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,27 +1874,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0243457be5de2b64c8fada0670b3e00b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Rob1
+  name: "\u7956\u7530"
   eventId: 2
   talkFlag: 1
   selectFlag: 1
   enemyName: 0
   normalTalkData:
-  - "\u3084\u3042"
+  - "\u306A\u3042"
   - "\u3044\u304D\u306A\u308A\u3060\u3051\u3069\u3054\u306F\u3093\u5962\u3063\u3066\u304F\u308C\u3084"
   battlelTalkData:
   - "\u306F\uFF5E\uFF1F"
   - "\u3044\u3044\u3058\u3083\u3093\u5225\u306B"
   - "\u304A\u524D\u30AD\u30E2\u3059\u304E"
   friendTalkData: []
-  BattleEndTalkData: []
+  BattleEndTalkData:
+  - "\u30AD\u30E2\u3059\u304E"
   FriendEndTalkData: []
   selectTalkData:
   - "\u304A\u304B\u306D\u304C\u306A\u3044\u3093\u3060\u3001\u3001\u3001"
   - "\u3060\u3081"
   nowState: 0
-  firstSelectState: 1
+  firstSelectState: 3
+  nonSelectState: 0
   secondSelectState: 3
+  endState: 0
 --- !u!1 &1388613229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,7 +1927,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1425498466
 GameObject:
@@ -1917,17 +2034,18 @@ MonoBehaviour:
   - "X\u30DC\u30BF\u30F3\u3067\u60D1\u661F\u3092\u63B4\u3093\u3060\u308A\u6295\u3052\u305F\u308A\u3067\u304D\u308B\u304B\u3089\u8272\u3005\u8A66\u3057\u3066\u307F\u3066\u306D"
   - "\u3082\u3046\u4E00\u56DE\u805E\u304F\uFF1F"
   battlelTalkData: []
-  friendTalkData:
-  - "\u30AA\u30C3\u30B1\u30FC\uFF01"
+  friendTalkData: []
   BattleEndTalkData: []
   FriendEndTalkData:
-  - "\u305F\u306E\u3057\u3093\u3067\u3044\u3063\u3066\u306D\uFF01"
+  - "\u307E\u305F\u64CD\u4F5C\u65B9\u6CD5\u3092\u805E\u304D\u305F\u304F\u306A\u3063\u305F\u3089\u3053\u3053\u306B\u304D\u3066\u306D"
   selectTalkData:
   - "\u5927\u4E08\u592B"
   - "\u3082\u3046\u4E00\u56DE"
   nowState: 0
-  firstSelectState: 1
+  firstSelectState: 2
+  nonSelectState: 0
   secondSelectState: 0
+  endState: 0
 --- !u!114 &1531954219 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4192629521673137836, guid: ab5b0f47b1474354f85c68f4227739d8, type: 3}
@@ -1977,11 +2095,13 @@ MonoBehaviour:
   FriendEndTalkData:
   - "\u3044\u3064\u304B\u898B\u3089\u308C\u308B\u304B\u3082\u3057\u308C\u306A\u3044\u304B\u3089\u697D\u3057\u307F\u306B\u3057\u3066\u304A\u3044\u3066\u3088"
   selectTalkData:
-  - "\u304A\u304B\u306D\u304C\u306A\u3044\u3093\u3060\u3001\u3001\u3001"
-  - "\u3060\u3081"
+  - 
+  - 
   nowState: 0
-  firstSelectState: 1
-  secondSelectState: 1
+  firstSelectState: 0
+  nonSelectState: 1
+  secondSelectState: 0
+  endState: 0
 --- !u!1 &1704452445
 GameObject:
   m_ObjectHideFlags: 0
@@ -2254,7 +2374,7 @@ PrefabInstance:
       objectReference: {fileID: 614372088}
     - target: {fileID: 6746115403484419092, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6746115403484419092, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2319,7 +2439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4192629521374008354, guid: ab5b0f47b1474354f85c68f4227739d8, type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 4192629521374008354, guid: ab5b0f47b1474354f85c68f4227739d8, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2438,7 +2558,7 @@ RectTransform:
   - {fileID: 68832317}
   - {fileID: 807083545}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2843,19 +2963,21 @@ MonoBehaviour:
   battlelTalkData:
   - "\u8A00\u3063\u3066\u3082\u308F\u304B\u3089\u306A\u3044\u304B"
   - "\u306A\u3089\u4F53\u306B\u76F4\u63A5\u53E9\u304D\u8FBC\u3093\u3067\u3084\u308B"
-  friendTalkData:
-  - "\u7269\u5206\u304B\u308A\u304C\u3044\u3044\u3058\u3083\u306A\u3044\u304B"
+  friendTalkData: []
   BattleEndTalkData:
   - "\u3080\u3045\u3001\u3084\u308B\u306A"
   - "\u3060\u304C\u901A\u3059\u308F\u3051\u306B\u306F\u3044\u304B\u3093\u3001\u65E9\u304F\u5E30\u308C"
   FriendEndTalkData:
+  - "\u7269\u5206\u304B\u308A\u304C\u3044\u3044\u3058\u3083\u306A\u3044\u304B"
   - "\u3055\u3042\u3001\u65E9\u304F\u5E30\u308C"
   selectTalkData:
   - "\u5165\u308A\u305F\u3044"
   - "\u308F\u304B\u308A\u307E\u3057\u305F"
   nowState: 0
   firstSelectState: 3
-  secondSelectState: 1
+  nonSelectState: 0
+  secondSelectState: 2
+  endState: 0
 --- !u!1001 &7294603600937722596
 PrefabInstance:
   m_ObjectHideFlags: 0

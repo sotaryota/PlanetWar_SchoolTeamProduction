@@ -43,8 +43,10 @@ public class NPCClass : MonoBehaviour
     public NPCState nowState;
 
     // ‘I‘ğˆ‚Ì•ªŠòæ
-    public NPCState firstSelectState;  
+    public NPCState firstSelectState;
+    public NPCState nonSelectState;
     public NPCState secondSelectState;
+    public NPCState endState;
 
     public NPCState GetState()
     {
@@ -55,15 +57,23 @@ public class NPCClass : MonoBehaviour
         this.nowState = state;
     }
 
-    // ‘I‘ğˆ‚²‚Æ‚Ìó‘Ô‚Ìæ“¾
+    // ó‘Ô‚Ìæ“¾
     //--------------------------------------
     public NPCState GetFirstSelectState()
     {
         return this.firstSelectState;
     }
+    public NPCState GetNonSelectState()
+    {
+        return this.nonSelectState;
+    }
     public NPCState GetSecondSelectState()
     {
         return this.secondSelectState;
+    }
+    public NPCState GetEndState()
+    {
+        return this.endState;
     }
 
     //--------------------------------------
