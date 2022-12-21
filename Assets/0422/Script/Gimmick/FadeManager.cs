@@ -44,15 +44,14 @@ public class FadeManager : MonoBehaviour
     /// ゲーム終了時に呼び出す
     /// RGBでカラー指定し移行したいシーン名を引数にしてフェードアウト
     /// </summary>
-    /// <param name="scene">シーン名</param>
     /// <param name="r">赤</param>
     /// <param name="g">緑</param>
     /// <param name="b">青</param>
     /// <param name="interval">フェードのスピード</param>
-    public void GameEndFadeOut(string scene, float r, float g, float b, float interval)
+    public void GameEndFadeOut(float r, float g, float b, float interval)
     {
         color = new Color(r, g, b);
-        StartCoroutine(GameEndFade(scene, interval));
+        StartCoroutine(GameEndFade(interval));
     }
 
     //-----------------------------------------------------
@@ -95,7 +94,7 @@ public class FadeManager : MonoBehaviour
         //フェードインが終了次第シーン切り替え
         SceneManager.LoadScene(scene);
     }
-    private IEnumerator GameEndFade(string scene, float speed)
+    private IEnumerator GameEndFade(float speed)
     {
         isFade = true;
 

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class NPCDataManager : MonoBehaviour
 {
@@ -54,7 +53,6 @@ public class NPCDataManager : MonoBehaviour
     {
         eventId = id;
         enemyName = enemy;
-        SceneManager.LoadScene("StoryBattle");
     }    
 
     public void BattleEndData()
