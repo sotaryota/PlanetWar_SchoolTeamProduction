@@ -39,7 +39,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("フェード")]
     [SerializeField] private float fadeInterval; // フェードまでの間隔
-    [SerializeField] private float fadeInSpeed; // フェードのスピード
+    [SerializeField] private float fadeInSpeed;  // フェードのスピード
     [SerializeField] private float fadeOutSpeed; // フェードのスピード
     [SerializeField] private Color fadeColor;    // フェードのカラー
 
@@ -105,7 +105,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            fade.GameEndFadeOut(sceneName, fadeColor.r, fadeColor.g, fadeColor.b, fadeOutSpeed);
+            fade.GameEndFadeOut(fadeColor.r, fadeColor.g, fadeColor.b, fadeOutSpeed);
         }
     }
 }

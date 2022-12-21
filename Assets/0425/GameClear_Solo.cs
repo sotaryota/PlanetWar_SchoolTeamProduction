@@ -9,9 +9,19 @@ public class GameClear_Solo : MonoBehaviour
 
     [SerializeField]
     GameObject finishText;
+
+    //勝ち負け判定
+    bool win;
+    //オーディオ追加
+    [SerializeField]
+    AudioSource audioSource;
+    [SerializeField]
+    AudioClip winJingle;
+
     // Start is called before the first frame update
     void Start()
     {
+        win = false;
         finishText.SetActive(false);
     }
 
@@ -20,6 +30,10 @@ public class GameClear_Solo : MonoBehaviour
     {
         if(enemyCreater_Start.createPrefab) { return; }
 
-        finishText.SetActive(true);
+        if (!win) {
+            finishText.SetActive(true);
+            audioSource.PlayOneShot(winJingle);
+            win = true;
+        }
     }
 }

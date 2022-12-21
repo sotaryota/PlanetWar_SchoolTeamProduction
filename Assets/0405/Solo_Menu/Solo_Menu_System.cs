@@ -38,6 +38,7 @@ public class Solo_Menu_System : MonoBehaviour
     [SerializeField]
     AudioSource audioSource;
     public AudioClip selectSound;
+    public AudioClip pushSound;
     //選択中のボタン
     int nowSelecting;
     //直前に選択したボタン
@@ -128,6 +129,8 @@ public class Solo_Menu_System : MonoBehaviour
                 //操作を止めて
                 selectLock = true;
                 onButton = true;
+                //決定音
+                audioSource.PlayOneShot(pushSound);
                 //選んでいる項目別に挙動を変える
                 switch (nowSelecting)
                 {

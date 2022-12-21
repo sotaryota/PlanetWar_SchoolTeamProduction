@@ -10,6 +10,7 @@ public class CrabBreathController : MonoBehaviour
     [Header("目標座標と弾丸速度"), SerializeField]
     private Vector3 targetPos;//終了座標
     private Vector3 startPos;//開始座標
+
     public void SetTarget(Vector3 pos)
     {
         targetPos = pos;
@@ -20,10 +21,17 @@ public class CrabBreathController : MonoBehaviour
     [Header("着弾時に生成するPrefab"), SerializeField]
     private GameObject prefab;
 
+    [Header("効果音関係")]
+    [SerializeField] AudioSource source;
+    [SerializeField] AudioClip createClip;
+    private bool soundPlay;
+
     private void Start()
     {
         startPos = this.transform.position;
         nowCountPos = 0;
+        source.PlayOneShot(createClip);
+        soundPlay = true;
     }
 
     private void Update()
@@ -31,6 +39,13 @@ public class CrabBreathController : MonoBehaviour
         stayTime -= Time.deltaTime;
         if(stayTime <= 0)
         {
+            if (soundPlay)
+            {
+                soundPlay = false;
+                source.loop = true;
+                source.Play();
+            }
+
             nowCountPos += speed * Time.deltaTime;
             this.transform.position = Vector3.Lerp(startPos, targetPos, nowCountPos);
             if(nowCountPos >= 1)
