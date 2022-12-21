@@ -22,6 +22,13 @@ public class Gameover_Solo: MonoBehaviour
 
     [SerializeField]
     ParticleSystem deadEffecrt;
+
+    //オーディオ追加
+    [SerializeField]
+    AudioSource audioSource;
+    [SerializeField]
+    AudioClip deadJingle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +50,7 @@ public class Gameover_Solo: MonoBehaviour
                 playerAnimManeger.PlayAnimDie();
                 gameoverStaging.SetActive(true);
                 gameStart_solo.ScriptStop();
+                audioSource.PlayOneShot(deadJingle);
             }
             dead = true;
         }

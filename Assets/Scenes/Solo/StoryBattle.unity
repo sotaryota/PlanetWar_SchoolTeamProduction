@@ -2992,6 +2992,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCreater_Start: {fileID: 1297518766}
   finishText: {fileID: 1419597573}
+  audioSource: {fileID: 1450203585}
+  winJingle: {fileID: 8300000, guid: 7b42728bf11d5454c909c2a4b1b7f91d, type: 3}
 --- !u!4 &985826864
 Transform:
   m_ObjectHideFlags: 0
@@ -3041,6 +3043,9 @@ MonoBehaviour:
   gameoverStaging: {fileID: 192050062}
   gameStart_solo: {fileID: 2011174299}
   deadTime: 0
+  deadEffecrt: {fileID: 0}
+  audioSource: {fileID: 1450203585}
+  deadJingle: {fileID: 0}
 --- !u!4 &986179257
 Transform:
   m_ObjectHideFlags: 0
@@ -3921,7 +3926,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1297518766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3935,7 +3940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ecd: {fileID: 1297518767}
-  enemyName: 4
+  enemyName: 3
   createPrefab: {fileID: 0}
 --- !u!114 &1297518767
 MonoBehaviour:
@@ -4254,6 +4259,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6314f9054519b340ad14e7b03caa530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1450203585 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2656818075813291853, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
+  m_PrefabInstance: {fileID: 709274233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1454529681 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4583461934220635931, guid: 36b12141196d1f44eb277b8f08823761, type: 3}
