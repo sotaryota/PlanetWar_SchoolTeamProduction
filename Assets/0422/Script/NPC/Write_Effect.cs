@@ -12,7 +12,11 @@ public class Write_Effect : MonoBehaviour
     [SerializeField] GameObject player;
 
     [Header("NPC")]
-    public GameObject npc;                       //接触中のNPC
+    public GameObject npc;                       // 接触中のNPC
+    
+    [Header("オーディオ")]
+    [SerializeField] AudioSource audio;          // NPCのSE用オーディオ
+    [SerializeField] AudioClip voisSE;           // 文字送りの効果音
 
     [Header("スクリプト")]
     [SerializeField] PlayerStatus_Solo playerStatus;
@@ -183,6 +187,7 @@ public class Write_Effect : MonoBehaviour
                 // 1文字ずつ増やす
                 visibleLength++;
                 talkTextObj.text = talkText.Substring(0, visibleLength);
+                audio.PlayOneShot(voisSE);
 
                 // ボタンを押したらすべて表示
                 if (gamepad.buttonEast.isPressed)
