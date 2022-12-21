@@ -1,14 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-
-//using TMPro;
-
-// 簡易説明
-//・SetActiveで会話を読み込ませますので"SetText(npc.tale[0])"とかしてください。
-//・その後、npc.flagをtrueにすると喋りだします。
 
 public class Write_Effect : MonoBehaviour
 {
@@ -18,6 +13,7 @@ public class Write_Effect : MonoBehaviour
     [SerializeField] PlayerDataManager playerData;
     [SerializeField] NPCDataManager    npcData;
     [SerializeField] SceneDataManager  sceneData;
+
     [Header("キャンバス")]
     [SerializeField] GameObject canvas = default;
     [SerializeField] GameObject talkCanvas = default;
@@ -25,21 +21,36 @@ public class Write_Effect : MonoBehaviour
     [SerializeField] Text talkTextObj = default;//テキストボックス
     [SerializeField] Text[] selectTextObj;
     [SerializeField] GameObject[] selectImage;
-    string[] selectText = new string[2]; //選択肢の文字列
-    string talkText;   //テキストボックスに入れる文字列
+    private string[] selectText = new string[2]; //選択肢の文字列
+    private string talkText;   //テキストボックスに入れる文字列
+
     [Header("文字送り時間")]
     [SerializeField] float feedTime;
+
     [Header("改行時間")]
     [SerializeField] float newLineTime;
-    int visibleLength;      //表示する文字数
+    private int visibleLength;      //表示する文字数
+
     [Header("フラグ")]
     public bool isTalking;  //会話中かのフラグ
     public bool isSelect;   //セレクト中のフラグ
     public bool buttonFlag; //会話中にボタンを押せなくするフラグ
+
+    [Header("バトル遷移時のフェードとカメラ")]
+    [SerializeField] Camera camera;
+    [SerializeField] float maxFOV;             // 視野角最大値
+    [SerializeField] float minFOV;             // 視野角最小値
+    [SerializeField] float cameraMoveSpeed;    // カメラの移動速度
+    [SerializeField] private FadeManager fade; // スクリプト
+    [SerializeField] private float fadeSpeed;  // フェードの速さ
+    [SerializeField] private Color fadeColor;  // フェードのカラー
+
     [Header("NPC")]
     public GameObject npc;  //接触中のNPC
+
     [Header("プレイヤー")]
     [SerializeField] GameObject player;
+
     void Update()
     {
         if (buttonFlag) { return; }
@@ -262,9 +273,22 @@ public class Write_Effect : MonoBehaviour
                         //必要なデータを保存
                         playerData.StoryEndPlayerData(playerStatus.GetHp(), playerStatus.GetPower(), player.transform.position);
                         npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(), npc.GetComponent<NPCClass>().GetEventID());
+                        // フェード開始
+                        fade.FadeSceneChange("StoryBattle", fadeColor.r, fadeColor.g, fadeColor.b, fadeSpeed);
 
-                        //会話を区切る
-                        isTalking = false;
+                        // フェード中にカメラを動かす
+                        while(camera.fieldOfView <= maxFOV)
+                        {
+                            camera.fieldOfView++;
+                            yield return new WaitForSeconds(cameraMoveSpeed);
+                        }
+                        while(camera.fieldOfView >= minFOV)
+                        {
+                            camera.fieldOfView--;
+                            yield return new WaitForSeconds(cameraMoveSpeed);
+                        }
+
+
                         yield break;
                     case NPCClass.NPCState.BattleEventEnd:
                         while (!gamepad.buttonEast.isPressed)
