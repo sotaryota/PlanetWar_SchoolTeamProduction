@@ -11,11 +11,11 @@ public class NPCClass : MonoBehaviour
     public bool      selectFlag;   // 選択肢の有無
     public EnemyCreater_Data.EnemyName enemyName; // バトル発展先の敵の種類
 
-    public string[] normalTalkData;    // 通常会話内容
-    public string[] battlelTalkData;   // 戦闘会話内容
-    public string[] friendTalkData;    // 友好会話内容
-    public string[] BattleEndTalkData; // バトル終了
-    public string[] FriendEndTalkData; // 友好状態で会話終了
+    public string[] normalTalkData = new string[0];    // 通常会話内容
+    public string[] battlelTalkData = new string[0];   // 戦闘会話内容
+    public string[] friendTalkData = new string[0];    // 友好会話内容
+    public string[] BattleEndTalkData = new string[0]; // バトル終了
+    public string[] FriendEndTalkData = new string[0]; // 友好状態で会話終了
     public string[] selectTalkData = new string[2];
     
     // 分岐数
