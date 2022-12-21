@@ -11,7 +11,9 @@ public class CrabAttackHit : MonoBehaviour
     private float attackTime;
     private float nowCount;
 
-    [SerializeField] private bool hitFlag;
+    [SerializeField] private bool useTriggerCollision;
+    [SerializeField] private bool useParticleCollision;
+    private bool hitFlag;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +34,20 @@ public class CrabAttackHit : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (hitFlag == false) return;
+        if (useTriggerCollision == false) return;
+
+        PlayerStatus_Solo player;
+        if (player = other.GetComponent<PlayerStatus_Solo>())
+        {
+            player.Damage(damage);
+            hitFlag = false;
+        }
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (hitFlag == false) return;
+        if (useParticleCollision == false) return;
 
         PlayerStatus_Solo player;
         if (player = other.GetComponent<PlayerStatus_Solo>())

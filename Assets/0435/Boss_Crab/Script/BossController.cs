@@ -25,8 +25,9 @@ public class BossController : MonoBehaviour
     [System.Serializable]
     public class SmashData
     {
-        [Tooltip("生成箇所")]
+        [Header("生成箇所と警告位置")]
         public Transform createPos;
+        public GameObject warningObject;
 
         [Tooltip("モーション名")]
         public string animTriggerName;
@@ -53,6 +54,7 @@ public class BossController : MonoBehaviour
     [Header("頭突き攻撃情報")]
     [SerializeField] private Transform headAttackPos;
     [SerializeField] private GameObject headAttackPrefab;
+    [SerializeField] private GameObject HeadWarningArea;
     [SerializeField] private float headCreateWait;
     [SerializeField] private float headEndWait;
     [Tooltip("攻撃確率"), Range(0.0f, 100.0f)]
@@ -60,6 +62,7 @@ public class BossController : MonoBehaviour
 
     [Header("死亡時の行動")]
     [SerializeField] private float dieFallSpeed;
+    [SerializeField] private GameObject dieEffect;
 
     private string nowCoroutine; //現在のコルーチン名
     private bool attack;//攻撃
@@ -203,11 +206,13 @@ public class BossController : MonoBehaviour
     {
         //アニメーションを殴りにして待機
         bossAnimator.SetTrigger(smashData[smashDataSelect].animTriggerName);
+        smashData[smashDataSelect].warningObject.SetActive(true);
         yield return new WaitForSeconds(smashData[smashDataSelect].startWait);
 
         //攻撃を生成して待機
         GameObject go = Instantiate(smashAttack);
         go.transform.position = smashData[smashDataSelect].createPos.position;
+        smashData[smashDataSelect].warningObject.SetActive(false);
         yield return new WaitForSeconds(smashData[smashDataSelect].endWait);
 
         //軸合わせ有効化
@@ -256,11 +261,14 @@ public class BossController : MonoBehaviour
     {
         //アニメーションを頭突き攻撃にして待機
         bossAnimator.SetTrigger("Attack_Head");
+        HeadWarningArea.SetActive(true);
         yield return new WaitForSeconds(headCreateWait);
 
         //攻撃を生成して待機
         GameObject go = Instantiate(headAttackPrefab);
         go.transform.position = headAttackPos.position;
+        go.transform.rotation = headAttackPos.rotation;
+        HeadWarningArea.SetActive(false);
         yield return new WaitForSeconds(headEndWait);
 
         //軸合わせ有効化
@@ -287,6 +295,12 @@ public class BossController : MonoBehaviour
                 //死亡アニメーション
                 bossAnimator.SetTrigger("Die");
                 dieAnimPlayed = true;
+
+                //エフェクト表示
+                if (dieEffect)
+                {
+                    dieEffect.SetActive(true);
+                }
             }
 
             //下に沈む
