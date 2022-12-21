@@ -64,6 +64,14 @@ public class BossController : MonoBehaviour
     [SerializeField] private float dieFallSpeed;
     [SerializeField] private GameObject dieEffect;
 
+    [Header("効果音関係")]
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip choutClip;
+    [SerializeField] private AudioClip breathStertClip;
+    [SerializeField] private AudioClip attackReady;
+    [SerializeField] private AudioClip dieClip;
+
+
     private string nowCoroutine; //現在のコルーチン名
     private bool attack;//攻撃
     private bool looking;//軸合わせ
@@ -109,11 +117,14 @@ public class BossController : MonoBehaviour
 
     IEnumerator Shout()
     {
+        //アニメーション変更
+        bossAnimator.SetTrigger("Shout");
+
         //叫び始めまで待機
         yield return new WaitForSeconds(shoutStartWait);
 
-        //アニメーション変更
-        bossAnimator.SetTrigger("Shout");
+        //効果音
+        source.PlayOneShot(choutClip);
 
         //叫び終わりまで待機
         yield return new WaitForSeconds(shoutEndWait);
@@ -207,6 +218,10 @@ public class BossController : MonoBehaviour
         //アニメーションを殴りにして待機
         bossAnimator.SetTrigger(smashData[smashDataSelect].animTriggerName);
         smashData[smashDataSelect].warningObject.SetActive(true);
+
+        //効果音
+        source.PlayOneShot(attackReady);
+
         yield return new WaitForSeconds(smashData[smashDataSelect].startWait);
 
         //攻撃を生成して待機
@@ -229,6 +244,9 @@ public class BossController : MonoBehaviour
 
         //警告範囲有効化
         breathWarningArea.SetActive(true);
+
+        //効果音
+        source.PlayOneShot(breathStertClip);
 
         //生成まで待機
         yield return new WaitForSeconds(breathCreateWait);
@@ -262,6 +280,10 @@ public class BossController : MonoBehaviour
         //アニメーションを頭突き攻撃にして待機
         bossAnimator.SetTrigger("Attack_Head");
         HeadWarningArea.SetActive(true);
+
+        //効果音
+        source.PlayOneShot(attackReady);
+
         yield return new WaitForSeconds(headCreateWait);
 
         //攻撃を生成して待機
@@ -283,6 +305,8 @@ public class BossController : MonoBehaviour
         {
             if (!dieAnimPlayed)
             {
+                source.Stop();
+
                 //現在のコルーチンを停止
                 if (nowCoroutine != null)
                 {
@@ -295,6 +319,9 @@ public class BossController : MonoBehaviour
                 //死亡アニメーション
                 bossAnimator.SetTrigger("Die");
                 dieAnimPlayed = true;
+
+                //効果音
+                source.PlayOneShot(dieClip);
 
                 //エフェクト表示
                 if (dieEffect)
