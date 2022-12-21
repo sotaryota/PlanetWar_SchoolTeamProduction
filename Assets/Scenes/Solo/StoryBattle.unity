@@ -4558,6 +4558,18 @@ PrefabInstance:
       propertyPath: pushSound
       value: 
       objectReference: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
+    - target: {fileID: 5483318884945531361, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
+      propertyPath: PausePanel
+      value: 
+      objectReference: {fileID: 1500946463}
+    - target: {fileID: 5483318884945531361, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
+      propertyPath: buttonClass.Array.data[0].buttonImage
+      value: 
+      objectReference: {fileID: 1037431758}
+    - target: {fileID: 5483318884945531361, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
+      propertyPath: buttonClass.Array.data[1].buttonImage
+      value: 
+      objectReference: {fileID: 151836344}
     - target: {fileID: 5483318884945531363, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
       propertyPath: m_Name
       value: GameoverMenu

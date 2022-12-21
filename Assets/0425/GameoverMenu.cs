@@ -93,8 +93,8 @@ public class GameoverMenu : MonoBehaviour
 
         //決定押されていない　＆　上入力なし　＆　下入力なし
         if (!gamepad.buttonSouth.wasPressedThisFrame &&
-            gamepad.leftStick.ReadValue().y <= 0.1f &&
-            gamepad.leftStick.ReadValue().y >= -0.1f
+            gamepad.leftStick.ReadValue().x <= 0.1f &&
+            gamepad.leftStick.ReadValue().x >= -0.1f
             )
         {
             //ロック解除
@@ -136,7 +136,7 @@ public class GameoverMenu : MonoBehaviour
                 selectLock = true;
             }
             //上入力
-            else if (gamepad.leftStick.ReadValue().y > 0.1f)
+            else if (gamepad.leftStick.ReadValue().x > 0.1f)
             {
                 nowSelecting--;
                 if (nowSelecting < 0)
@@ -156,15 +156,15 @@ public class GameoverMenu : MonoBehaviour
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
                 audioSource.PlayOneShot(pushSound);
-                switch (nowSelecting)
+                switch (buttonClass[nowSelecting].menuCell)
                 {
-                    case (int)menu.retry:
+                    case menu.retry:
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
                         nextscene = "StoryBattle";
                         break;
-                    case (int)menu.backmenu:
+                    case menu.backmenu:
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
