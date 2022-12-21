@@ -6,9 +6,10 @@ using UnityEngine.UIElements;
 
 public class PlayerMove_Solo : MonoBehaviour
 {
-    [Header("カメラ")]
-    [SerializeField]
-    Camera myCamera;
+    [Header("カメラとオーディオ")]
+    [SerializeField] Camera myCamera;
+    [SerializeField] AudioSource audio;
+    public AudioClip moveSE;
     [Header("スクリプト")]
     public PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerAnimManeger playerAnimator;
@@ -133,7 +134,10 @@ public class PlayerMove_Solo : MonoBehaviour
 
         }
     }
-
+    void RunSE()
+    {
+        audio.PlayOneShot(moveSE);
+    }
     void SlopeSlide()
     {
         if (ground.isGround) { return; }
@@ -161,5 +165,4 @@ public class PlayerMove_Solo : MonoBehaviour
             }
         }
     }
-
 }

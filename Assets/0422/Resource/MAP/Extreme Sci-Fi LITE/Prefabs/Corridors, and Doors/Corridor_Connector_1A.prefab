@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3314096}
   - component: {fileID: 2384518}
   - component: {fileID: 6460370}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Corridor_Connector_1A
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

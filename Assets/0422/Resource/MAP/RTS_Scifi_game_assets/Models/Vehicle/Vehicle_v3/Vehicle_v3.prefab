@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4000011794763446}
   - component: {fileID: 33000012136851842}
   - component: {fileID: 23000012692498518}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vehicle_v3_ATN_stand
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,9 +94,9 @@ GameObject:
   - component: {fileID: 4000011107623760}
   - component: {fileID: 33000012918696926}
   - component: {fileID: 23000013543017090}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vehicle_v3_ATN_LT
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,9 +177,9 @@ GameObject:
   - component: {fileID: 4000014017294046}
   - component: {fileID: 33000011950877640}
   - component: {fileID: 23000011371925024}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vehicle_v3_ATN_RT
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,9 +260,9 @@ GameObject:
   - component: {fileID: 4000011021156386}
   - component: {fileID: 33000011854842150}
   - component: {fileID: 23000012050754732}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vehicle_v3_body
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,9 +343,9 @@ GameObject:
   - component: {fileID: 4000012429833672}
   - component: {fileID: 33000013873204040}
   - component: {fileID: 23000010257714130}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vehicle_v3_ATN_LB
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -425,9 +425,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011305641392}
   - component: {fileID: 111000010965124170}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vehicle_v3
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -483,9 +483,9 @@ GameObject:
   - component: {fileID: 4000013474686802}
   - component: {fileID: 33000012609306048}
   - component: {fileID: 23000014187773556}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vehicle_v3_track
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -566,9 +566,9 @@ GameObject:
   - component: {fileID: 4000014204613368}
   - component: {fileID: 33000013052475464}
   - component: {fileID: 23000010022799276}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vehicle_v3_ATN_RB
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -649,9 +649,9 @@ GameObject:
   - component: {fileID: 4000011869433806}
   - component: {fileID: 33000013581304056}
   - component: {fileID: 23000012551886340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Vehicle_v3_ATN_body
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

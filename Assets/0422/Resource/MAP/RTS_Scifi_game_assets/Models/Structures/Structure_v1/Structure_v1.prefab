@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 33000010962773192}
   - component: {fileID: 23000011032719706}
   - component: {fileID: 111000010521468030}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,9 +112,9 @@ GameObject:
   - component: {fileID: 4000010008125994}
   - component: {fileID: 33000013059480636}
   - component: {fileID: 23000012252398322}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v1_satellite_dish
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,9 +195,9 @@ GameObject:
   - component: {fileID: 4000013780872080}
   - component: {fileID: 33000011250451834}
   - component: {fileID: 23000012480821044}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v1_satellite_dish_stand
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

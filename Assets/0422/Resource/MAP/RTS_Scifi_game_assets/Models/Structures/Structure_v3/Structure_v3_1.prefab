@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013219698240}
   - component: {fileID: 111000012908765088}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010815833116}
   - component: {fileID: 111000010793538770}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000011934161418}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 4000011316651584}
   - component: {fileID: 33000010054444134}
   - component: {fileID: 23000013709603260}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_door_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 4000010257525684}
   - component: {fileID: 33000011315511252}
   - component: {fileID: 23000010914073944}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_vent_b1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 4000012881220714}
   - component: {fileID: 33000010855641610}
   - component: {fileID: 23000013512649904}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_door_stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 4000013581037348}
   - component: {fileID: 33000013333600210}
   - component: {fileID: 23000010734356588}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 4000010630130076}
   - component: {fileID: 33000013938506244}
   - component: {fileID: 23000010881705916}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_vent_b2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 4000012063816444}
   - component: {fileID: 33000013606677868}
   - component: {fileID: 23000011159647288}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_vent_s1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 4000011838982474}
   - component: {fileID: 33000012582959960}
   - component: {fileID: 23000011224377158}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_sec_door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 4000010878830436}
   - component: {fileID: 33000010556527652}
   - component: {fileID: 23000011004293592}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_vent_s2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 4000011364741946}
   - component: {fileID: 33000012612854570}
   - component: {fileID: 23000011231023222}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_door_T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
