@@ -163,21 +163,21 @@ public class PauseMenuSystem : MonoBehaviour
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
                 audioSource.PlayOneShot(pushSound);
-                switch (nowSelecting)
+                switch (buttonClass[nowSelecting].menuCell)
                 {
-                    case (int)menu.resume:
+                    case menu.resume:
                         PausePanel.SetActive(false);
                         Time.timeScale = 1.0f;
                         ispauseNow = false;
                         break;
-                    case (int)menu.retry:
+                    case menu.retry:
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
                         Time.timeScale = 1.0f;
                         nextscene = "StoryBattle";
                         break;
-                    case (int)menu.backmenu:
+                    case menu.backmenu:
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
