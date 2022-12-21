@@ -62,6 +62,7 @@ public class BossController : MonoBehaviour
 
     [Header("死亡時の行動")]
     [SerializeField] private float dieFallSpeed;
+    [SerializeField] private GameObject dieEffect;
 
     private string nowCoroutine; //現在のコルーチン名
     private bool attack;//攻撃
@@ -294,6 +295,12 @@ public class BossController : MonoBehaviour
                 //死亡アニメーション
                 bossAnimator.SetTrigger("Die");
                 dieAnimPlayed = true;
+
+                //エフェクト表示
+                if (dieEffect)
+                {
+                    dieEffect.SetActive(true);
+                }
             }
 
             //下に沈む

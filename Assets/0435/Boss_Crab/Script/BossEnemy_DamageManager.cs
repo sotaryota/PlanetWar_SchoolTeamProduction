@@ -16,9 +16,13 @@ public class BossEnemy_DamageManager : Enemy_HpData
     [Header("部位破壊時の追加ダメージ"), SerializeField]
     private float BreakDamage;
     private bool dieFlag;
+    [SerializeField] private GameObject breakEffect;
 
     [Header("部位破壊後の本体へのダメージ倍率"), SerializeField]
     private float damageValue_breaked;
+
+    [Header("参照があれば、ヒット時複製"), SerializeField]
+    private GameObject criticalEffect;
 
     private void Start()
     {
@@ -36,11 +40,26 @@ public class BossEnemy_DamageManager : Enemy_HpData
             //死亡した場合は追加ダメージ、倍率更新、onceをfalseに
             if (CellBreakJudge())
             {
+                //エフェクト生成
+                if (breakEffect)
+                {
+                    GameObject go = Instantiate(breakEffect);
+                    go.transform.position = this.transform.position;
+                }
+
                 BossHP_main.BaseDamage(BreakDamage);
                 damageValue_Main = damageValue_breaked;
                 dieFlag = false;
             }
         }
+
+        //クリティカルエフェクト生成（参照があれば）
+        if (criticalEffect)
+        {
+            GameObject go = Instantiate(criticalEffect);
+            go.transform.position = this.transform.position;
+        }
+
         BossHP_main.BaseDamage(damage * damageValue_Main);
     }
 
