@@ -9,10 +9,18 @@ public class GameClear_Solo : MonoBehaviour
 
     [SerializeField]
     GameObject finishText;
+    
+    //オーディオ追加
+    [SerializeField]
+    AudioSource audioSource;
+    [SerializeField]
+    AudioClip winJingle;
+
     // Start is called before the first frame update
     void Start()
     {
         finishText.SetActive(false);
+        audioSource.PlayOneShot(winJingle);
     }
 
     // Update is called once per frame
