@@ -4881,7 +4881,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 50
   attackTime: 0.1
-  hitFlag: 0
+  useTriggerCollision: 1
+  useParticleCollision: 1
 --- !u!54 &3023813238793870932
 Rigidbody:
   m_ObjectHideFlags: 0
