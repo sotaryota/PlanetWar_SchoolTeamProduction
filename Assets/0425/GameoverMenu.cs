@@ -51,6 +51,7 @@ public class GameoverMenu : MonoBehaviour
     [SerializeField]
     AudioSource audioSource;
     public AudioClip selectSound;
+    public AudioClip pushSound;
     //選択中のボタン
     int nowSelecting;
     //直前に選択したボタン
@@ -154,6 +155,7 @@ public class GameoverMenu : MonoBehaviour
         {
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
+                audioSource.PlayOneShot(pushSound);
                 switch (nowSelecting)
                 {
                     case (int)menu.retry:
