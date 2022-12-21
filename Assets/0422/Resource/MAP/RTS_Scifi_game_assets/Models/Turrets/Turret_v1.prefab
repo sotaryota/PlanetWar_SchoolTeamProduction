@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4000010760952980}
   - component: {fileID: 33000013946822854}
   - component: {fileID: 23000013347545328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret_v1_hole
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,9 +94,9 @@ GameObject:
   - component: {fileID: 4000014101230668}
   - component: {fileID: 33000013083430512}
   - component: {fileID: 23000010960244856}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret_v1_tower
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,9 +178,9 @@ GameObject:
   - component: {fileID: 4000010463020072}
   - component: {fileID: 33000013495742836}
   - component: {fileID: 23000011283924712}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret_v1_doorL
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,9 +261,9 @@ GameObject:
   - component: {fileID: 4000011667807520}
   - component: {fileID: 33000012439215004}
   - component: {fileID: 23000010216022962}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret_v1_doorR
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,9 +344,9 @@ GameObject:
   - component: {fileID: 4000011012987938}
   - component: {fileID: 33000012642522928}
   - component: {fileID: 23000010150253708}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret_v1_guns
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -426,9 +426,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011287270036}
   - component: {fileID: 111000012711266590}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret_v1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -478,9 +478,9 @@ GameObject:
   - component: {fileID: 4000013431533888}
   - component: {fileID: 33000013907262646}
   - component: {fileID: 23000010759055796}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret_v1_stand
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

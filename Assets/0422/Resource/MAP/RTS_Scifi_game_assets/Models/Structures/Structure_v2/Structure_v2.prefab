@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4000013344066178}
   - component: {fileID: 33000012235026424}
   - component: {fileID: 23000011318131212}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v2_door_s1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 4000010864193150}
   - component: {fileID: 33000013754887718}
   - component: {fileID: 23000011291432406}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v2_door_s2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,9 +178,9 @@ GameObject:
   - component: {fileID: 4000013096515402}
   - component: {fileID: 33000010629901734}
   - component: {fileID: 23000012528392242}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v2_rotor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,9 +262,9 @@ GameObject:
   - component: {fileID: 33000010662531980}
   - component: {fileID: 23000011344662854}
   - component: {fileID: 111000013880791114}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,9 +364,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010165123014}
   - component: {fileID: 111000012988779874}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v2_doors
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

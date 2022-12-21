@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4000013491464578}
   - component: {fileID: 33000010541151698}
   - component: {fileID: 23000014109418548}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_vent_b2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4000011830856972}
   - component: {fileID: 33000010049917192}
   - component: {fileID: 23000011263585220}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_door_T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 4000013906647290}
   - component: {fileID: 33000010942264364}
   - component: {fileID: 23000013815809616}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_door_stand (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 4000012644923616}
   - component: {fileID: 33000010558321822}
   - component: {fileID: 23000011035237920}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_door_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 4000011827105152}
   - component: {fileID: 33000013164869452}
   - component: {fileID: 23000012044330704}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_vent_s1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 4000011210722024}
   - component: {fileID: 33000012895723118}
   - component: {fileID: 23000012154920542}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_vent_s2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 4000011496958808}
   - component: {fileID: 33000012564620582}
   - component: {fileID: 23000012523188410}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_door_D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,7 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010706541452}
   - component: {fileID: 111000012682616986}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -642,7 +642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000012053231736}
   - component: {fileID: 111000011742314562}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 4000012643539616}
   - component: {fileID: 33000013053049972}
   - component: {fileID: 23000013847394130}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_vent_b1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -776,7 +776,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000012900916036}
   - component: {fileID: 111000013944220604}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -835,7 +835,7 @@ GameObject:
   - component: {fileID: 4000010969703666}
   - component: {fileID: 33000013684868646}
   - component: {fileID: 23000010484071610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -916,7 +916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4000012050981084}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -952,7 +952,7 @@ GameObject:
   - component: {fileID: 4000012566437816}
   - component: {fileID: 33000014277968662}
   - component: {fileID: 23000011322910650}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_door_T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1035,7 @@ GameObject:
   - component: {fileID: 4000013412391886}
   - component: {fileID: 33000012887701784}
   - component: {fileID: 23000013287917164}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_door_stand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 4000010714991376}
   - component: {fileID: 33000011134441352}
   - component: {fileID: 23000010210704292}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Structure_v3_sec_door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
