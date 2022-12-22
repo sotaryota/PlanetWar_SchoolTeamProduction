@@ -47,7 +47,7 @@ public class NPCDataManager : MonoBehaviour
 
     /// <summary>
     /// バトル移行時に呼ぶ関数
-    /// </summary>
+    /// <param name="id">イベントID</param>
     /// <param name="enemyName">敵の種類</param>
     public void StoryEndNPCData(EnemyCreater_Data.EnemyName enemy,int id)
     {
