@@ -28,6 +28,12 @@ public class Gameover_Solo: MonoBehaviour
     AudioSource audioSource;
     [SerializeField]
     AudioClip deadJingle;
+    //ゲームオーバー時のメニュー
+    [SerializeField]
+    GameoverMenu gameoverMenu;
+    //ポーズできないようにする
+    [SerializeField]
+    PauseMenuSystem pauseMenuSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +57,8 @@ public class Gameover_Solo: MonoBehaviour
                 gameoverStaging.SetActive(true);
                 gameStart_solo.ScriptStop();
                 audioSource.PlayOneShot(deadJingle);
+                pauseMenuSystem.SetCanPause(false);
+                StartCoroutine("ShowMenu");
             }
             dead = true;
         }
@@ -81,5 +89,12 @@ public class Gameover_Solo: MonoBehaviour
         true,        //子のパーティクルシステムもすべて早送りするかどうか
         false             //再起動し最初から再生するかどうか
         );
+    }
+
+    //アニメーション終了後にメニューを表示する
+    IEnumerator ShowMenu()
+    {
+        yield return new WaitForSeconds(4.8f);
+        gameoverMenu.PauseSystem();
     }
 }
