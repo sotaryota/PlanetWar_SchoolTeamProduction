@@ -12,7 +12,6 @@ public class BossController : MonoBehaviour
 
     [Header("プレイヤー参照"), SerializeField]
     private GameObject player;
-    private Vector3 lockPos;
 
     [Header("軸合わせ速度と合わせる時間")]
     [SerializeField] private float lookingTime;
@@ -69,6 +68,14 @@ public class BossController : MonoBehaviour
     [SerializeField] private int fireSwitchNum;
     private int fireSwitchCount = 0;
 
+    [Header("応援要請")]
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private Transform[] helpPos = new Transform[0];
+    [SerializeField] private float helpStartWait;
+    [SerializeField] private float helpEndWait;
+    [Tooltip("生成確率"), Range(0.0f, 100.0f)]
+    [SerializeField] private float helpProbability;
+
     [Header("死亡時の行動")]
     [SerializeField] private float dieFallSpeed;
     [SerializeField] private GameObject dieEffect;
@@ -78,8 +85,9 @@ public class BossController : MonoBehaviour
     [SerializeField] private AudioClip choutClip;
     [SerializeField] private AudioClip breathStertClip;
     [SerializeField] private AudioClip attackReady;
-    [SerializeField] private AudioClip dieClip;
     [SerializeField] private AudioClip fireClip;
+    [SerializeField] private AudioClip helpClip;
+    [SerializeField] private AudioClip dieClip;
 
     private string nowCoroutine; //現在のコルーチン名
     private bool attack;//攻撃
@@ -132,9 +140,10 @@ public class BossController : MonoBehaviour
         int attackSelect = Random.Range(0, 6);
         attackSelect /= 5;
 
+        //火炎放射（確定行動）
         if(fireSwitchNum <= fireSwitchCount)
         {
-            nowCoroutine = "Attack_fire";
+            nowCoroutine = "Attack_Fire";
             fireSwitchCount = 0;
             yield break;
         }
@@ -151,6 +160,14 @@ public class BossController : MonoBehaviour
         if(Random.Range(0.0f, 100.0f) <= headProbability)
         {
             nowCoroutine = "Attack_Head";
+            fireSwitchCount++;//不意打ち増加
+            yield break;
+        }
+
+        //確率で動作（応援）
+        if (Random.Range(0.0f, 100.0f) <= helpProbability)
+        {
+            nowCoroutine = "Attack_Help";
             fireSwitchCount++;//不意打ち増加
             yield break;
         }
@@ -326,7 +343,7 @@ public class BossController : MonoBehaviour
     }
     
     //火炎放射
-    IEnumerator Attack_fire()
+    IEnumerator Attack_Fire()
     {
         //アニメーション変更（叫ばせる）
         bossAnimator.SetTrigger("Shout");
@@ -349,6 +366,33 @@ public class BossController : MonoBehaviour
         //軸合わせ開始
         looking = true;
     }
+
+    //敵生成
+    IEnumerator Attack_Help()
+    {
+        //アニメーション変更
+        bossAnimator.SetTrigger("SOS");
+
+        //生成開始まで待機
+        yield return new WaitForSeconds(helpStartWait);
+
+        //効果音
+        source.PlayOneShot(helpClip);
+
+        //生成
+        for(int i = 0; i < helpPos.Length; ++i)
+        {
+            GameObject go = Instantiate(enemyPrefab);
+            go.transform.position = helpPos[i].position;
+        }
+
+        //叫び終わりまで待機
+        yield return new WaitForSeconds(helpEndWait);
+
+        //軸合わせ開始
+        looking = true;
+    }
+
 
     //死亡
     public bool BossDie()
