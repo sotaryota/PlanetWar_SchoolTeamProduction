@@ -25,6 +25,7 @@ public class Write_Effect : MonoBehaviour
     [SerializeField] GameObject selectCanvas;
     [SerializeField] Text talkTextObj;　　　　　　// 通常会話用のテキストボックス
     [SerializeField] Text[] selectTextObj;       // 選択肢のテキストボックス
+    [SerializeField] Text nameTextObj;           // 名前表示用テキスト
     [SerializeField] GameObject[] selectImage;   // 選択表示のアイコン
     private string talkText;                     // 通常会話の文字列
     private string[] selectText = new string[2]; // 選択肢の文字列
@@ -60,6 +61,7 @@ public class Write_Effect : MonoBehaviour
         if (!isTalking && npc.GetComponent<NPCClass>().GetTalkFlag())
         {
             //テキストボックス表示
+            nameTextObj.text = npc.GetComponent<NPCClass>().GetName();
             canvas.SetActive(true);
             talkCanvas.SetActive(true);
             
