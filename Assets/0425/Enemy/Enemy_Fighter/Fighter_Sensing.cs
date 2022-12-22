@@ -9,6 +9,10 @@ public class Fighter_Sensing : MonoBehaviour
 
     [SerializeField] GameObject attackArea;
 
+    [SerializeField] ParticleSystem attack_Hadou;
+    [SerializeField] GameObject attack_Syoryu;
+    [SerializeField] GameObject attack_Tatumaki;
+
     public bool sensing;
 
     //UŒ‚’†‚©”»’è‚·‚éƒtƒ‰ƒO
@@ -16,18 +20,18 @@ public class Fighter_Sensing : MonoBehaviour
 
     //UŒ‚‚Ì”­¶
     [SerializeField]
-    float attackStartup = 1.5f;
+    float[] attackStartup;
 
     //UŒ‚‚Ì‘±I—¹
     [SerializeField]
-    float attackActive = 1.5f;
+    float[] attackActive;
 
     //UŒ‚‚ª“–‚½‚Á‚½‚©‚Ìƒtƒ‰ƒO
     public bool attackHit = false;
 
     //UŒ‚I—¹‚Ìd’¼
     [SerializeField]
-    float attackRecovery = 2.0f;
+    float[] attackRecovery;
 
     private void Start()
     {
@@ -46,26 +50,18 @@ public class Fighter_Sensing : MonoBehaviour
         //d’¼ŠÔ’†‚Íˆ—‚ğ‚µ‚È‚¢
         if (!attackFlag) return;
 
-        StartCoroutine(AttackWait());
+        AttackWait();
     }
 
-    IEnumerator AttackWait()
+    void AttackWait()
     {
         attackFlag = false;
-
         fighter_Status.SetState(Fighter_Status.State.Attack);
 
-        //fighter_Animtor.PlayFighterAnimAttack();
 
-        yield return new WaitForSeconds(attackStartup);
+        //if()
+        StartCoroutine(AttackHadou());
 
-        attackArea.SetActive(true);
-
-        yield return new WaitForSeconds(attackActive);
-
-        attackArea.SetActive(false);
-
-        yield return new WaitForSeconds(attackRecovery);
 
         //ƒGƒlƒ~[‚ğStayó‘Ô‚É‚·‚é
         fighter_Status.SetState(Fighter_Status.State.Stay);
@@ -74,11 +70,47 @@ public class Fighter_Sensing : MonoBehaviour
         attackHit = false;
     }
 
-    void AttackHadou()
+    IEnumerator AttackHadou()
     {
         fighter_Animtor.PlayFighterAnimHadou();
 
+        yield return new WaitForSeconds(attackStartup[0]);
+
+        attack_Hadou.Play();
+
+        yield return new WaitForSeconds(attackRecovery[0]);
+    } 
+
+    IEnumerator AttackSyoryu()
+    {
+        fighter_Animtor.PlayFighterAnimSyoryu();
+
+        yield return new WaitForSeconds(attackStartup[1]);
+
+        attack_Syoryu.SetActive(true);
+
+        yield return new WaitForSeconds(attackActive[1]);
+
+        attack_Syoryu.SetActive(false);
+
+        yield return new WaitForSeconds(attackRecovery[1]);
     }
+
+    IEnumerator AttackTatumaki()
+    {
+        fighter_Animtor.PlayFighterAnimTatumaki();
+
+        yield return new WaitForSeconds(attackStartup[2]);
+
+        attack_Tatumaki.SetActive(true);
+
+        yield return new WaitForSeconds(attackActive[2]);
+
+        attack_Tatumaki.SetActive(false);
+
+        yield return new WaitForSeconds(attackRecovery[2]);
+    }
+
 
     public void OnTriggerExit(Collider other)
     {

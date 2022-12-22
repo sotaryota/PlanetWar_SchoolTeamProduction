@@ -78,7 +78,6 @@ public class AilianTurret_Status : Enemy_HpData
 
     IEnumerator DieProcces()
     {
-        
         yield return new WaitForSeconds(3);
         Destroy(this.gameObject);
     }
