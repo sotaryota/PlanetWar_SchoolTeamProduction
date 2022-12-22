@@ -17,8 +17,7 @@ public class Write_Effect : MonoBehaviour
     [Header("スクリプト")]
     [SerializeField] PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerDataManager playerData;
-    [SerializeField] NPCDataManager npcData;
-    [SerializeField] SceneDataManager sceneData;
+    private NPCDataManager npcData;
 
     [Header("キャンバス")]
     [SerializeField] GameObject canvas;
@@ -48,7 +47,10 @@ public class Write_Effect : MonoBehaviour
     public bool isTalking;                       // 会話中かのフラグ
     public bool isSelect;                        // セレクト中のフラグ
     public bool buttonFlag;                      // 会話中にボタンを押せなくするフラグ
-
+    private void Start()
+    {
+        npcData = GameObject.Find("DataManager").GetComponent<NPCDataManager>();
+    }
     void Update()
     {
         if (buttonFlag) { return; }

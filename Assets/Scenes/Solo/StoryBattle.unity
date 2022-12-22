@@ -2925,6 +2925,50 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5335712919986414366, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
+--- !u!1 &728010272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 728010274}
+  - component: {fileID: 728010273}
+  m_Layer: 0
+  m_Name: FadeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &728010273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728010272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb62d7b12caa3814b8089f70d32ad2a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &728010274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728010272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &751180808
 GameObject:
   m_ObjectHideFlags: 0
@@ -3561,10 +3605,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199e804021d7ed94f9029fb4bdd09203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcData: {fileID: 0}
+  playerData: {fileID: 0}
   enemyCreater_Start: {fileID: 1297518766}
   finishText: {fileID: 1419597573}
   audioSource: {fileID: 1450203585}
   winJingle: {fileID: 8300000, guid: 7b42728bf11d5454c909c2a4b1b7f91d, type: 3}
+  fade: {fileID: 728010273}
+  fadeColor: {r: 0, g: 0, b: 0, a: 0}
+  fadeSpeed: 1
+  fadeWait: 2.5
 --- !u!4 &985826864
 Transform:
   m_ObjectHideFlags: 0
@@ -3776,7 +3826,7 @@ PrefabInstance:
       objectReference: {fileID: 1404483973}
     - target: {fileID: 6746115403484419092, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6746115403484419092, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4716,7 +4766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5483318884945531366, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5483318884945531366, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6268,7 +6318,7 @@ RectTransform:
   - {fileID: 192050063}
   - {fileID: 1871716447}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
