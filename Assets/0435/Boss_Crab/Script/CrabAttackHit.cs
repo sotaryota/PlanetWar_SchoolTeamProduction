@@ -11,6 +11,9 @@ public class CrabAttackHit : MonoBehaviour
     private float attackTime;
     private float nowCount;
 
+    [Header("Ú×Ý’è")]
+    [SerializeField] private bool hitOnce = true;
+    [SerializeField] private bool timeNotUse = false;
     [SerializeField] private bool useTriggerCollision;
     [SerializeField] private bool useParticleCollision;
     private bool hitFlag;
@@ -25,10 +28,13 @@ public class CrabAttackHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        nowCount += Time.deltaTime;
-        if(nowCount >= attackTime)
+        if (!timeNotUse)
         {
-            hitFlag = false;
+            nowCount += Time.deltaTime;
+            if (nowCount >= attackTime)
+            {
+                hitFlag = false;
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -40,7 +46,10 @@ public class CrabAttackHit : MonoBehaviour
         if (player = other.GetComponent<PlayerStatus_Solo>())
         {
             player.Damage(damage);
-            hitFlag = false;
+            if (hitOnce)
+            {
+                hitFlag = false;
+            }   
         }
     }
 
@@ -53,7 +62,10 @@ public class CrabAttackHit : MonoBehaviour
         if (player = other.GetComponent<PlayerStatus_Solo>())
         {
             player.Damage(damage);
-            hitFlag = false;
+            if (hitOnce)
+            {
+                hitFlag = false;
+            }
         }
     }
 }
