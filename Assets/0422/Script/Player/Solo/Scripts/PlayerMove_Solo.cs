@@ -14,6 +14,7 @@ public class PlayerMove_Solo : MonoBehaviour
     [SerializeField] PlayerDataManager playerData;
     [SerializeField] PlayerAnimManeger playerAnimator;
     [SerializeField] PlayerGroundCheck ground;
+    [SerializeField] PauseMenuSystem pause;
 
     public Vector3 moveDirection;
     private float horizontal;
@@ -29,10 +30,14 @@ public class PlayerMove_Solo : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        pause = pause.GetComponent<PauseMenuSystem>();
     }
 
     private void Update()
     {
+        //ポーズ中は処理をしない
+        if (pause.pausejudge()) { return; }
+
         //プレイヤが存在しないor死んでいるor会話中なら処理をしない
         if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead ||
             playerStatus.GetState() == PlayerStatus_Solo.State.Talking)
