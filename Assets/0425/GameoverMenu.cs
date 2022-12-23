@@ -40,6 +40,7 @@ public class GameoverMenu : MonoBehaviour
     {
         public GameObject buttonImage;
         public menu menuCell;
+        public string nextScene;
     }
     [SerializeField]
     private Button[] buttonClass = new Button[1];
@@ -162,13 +163,13 @@ public class GameoverMenu : MonoBehaviour
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
-                        nextscene = "StoryBattle";
+                        nextscene = buttonClass[nowSelecting].nextScene;
                         break;
                     case menu.backmenu:
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
-                        nextscene = "Story";
+                        nextscene = buttonClass[nowSelecting].nextScene;
                         break;
                     default:
                         break;
