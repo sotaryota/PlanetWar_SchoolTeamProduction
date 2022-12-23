@@ -1848,8 +1848,8 @@ MonoBehaviour:
   max_firstCreatePos: {x: 0, y: 75, z: 0}
   addMyPos: 1
   gizumos_CreateArea: 0
-  min_TargetPos: {x: -75, y: 15, z: -75}
-  max_TargetPos: {x: 75, y: 15, z: 75}
+  min_TargetPos: {x: -60, y: 15, z: -60}
+  max_TargetPos: {x: 60, y: 15, z: 60}
   targetDistance: 75
   notTargetDistance: 45
   meteors:
@@ -1963,7 +1963,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1090912971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 96.8, y: 0, z: 98.9}
+  m_LocalPosition: {x: 96.8, y: 0, z: 100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2488,6 +2488,8 @@ MonoBehaviour:
   deadEffecrt: {fileID: 1161926810}
   audioSource: {fileID: 1660651347}
   deadJingle: {fileID: 8300000, guid: 6246881746e8934409cc852053acff34, type: 3}
+  gameoverMenu: {fileID: 0}
+  pauseMenuSystem: {fileID: 0}
 --- !u!4 &1524206039
 Transform:
   m_ObjectHideFlags: 0
@@ -3643,7 +3645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1011876096989930660, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 96.8
+      value: 94.6
       objectReference: {fileID: 0}
     - target: {fileID: 1011876096989930660, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3651,7 +3653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1011876096989930660, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 98.4
+      value: 98.8
       objectReference: {fileID: 0}
     - target: {fileID: 1011876096989930660, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: m_LocalRotation.w
