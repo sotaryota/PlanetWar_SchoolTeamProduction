@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 
 public class PlayerMove_Solo : MonoBehaviour
 {
@@ -12,6 +11,7 @@ public class PlayerMove_Solo : MonoBehaviour
     public AudioClip moveSE;
     [Header("スクリプト")]
     public PlayerStatus_Solo playerStatus;
+    [SerializeField] PlayerDataManager playerData;
     [SerializeField] PlayerAnimManeger playerAnimator;
     [SerializeField] PlayerGroundCheck ground;
 
