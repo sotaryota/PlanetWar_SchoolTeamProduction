@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crashEffect: {fileID: 4166501065544445604, guid: aa8bd5faa6a4c9b48a97dbc6a87740e6, type: 3}
-  moveTime: 20
+  moveTime: 40
   targetPos: {x: 0, y: 0, z: 0}
 --- !u!114 &2003582655807787566
 MonoBehaviour:
