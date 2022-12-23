@@ -20,18 +20,18 @@ public class Fighter_Sensing : MonoBehaviour
 
     //UŒ‚‚Ì”­¶
     [SerializeField]
-    float[] attackStartup;
+    float[] attackStartup = new float[3];
 
     //UŒ‚‚ÌŽ‘±I—¹
     [SerializeField]
-    float[] attackActive;
+    float[] attackActive = new float[2];
 
     //UŒ‚‚ª“–‚½‚Á‚½‚©‚Ìƒtƒ‰ƒO
     public bool attackHit = false;
 
     //UŒ‚I—¹Žž‚Ìd’¼
     [SerializeField]
-    float[] attackRecovery;
+    float[] attackRecovery = new float[3];
 
     float attackCnt = 0;
 
@@ -80,11 +80,11 @@ public class Fighter_Sensing : MonoBehaviour
 
         float dis = Vector3.Distance(this.transform.position, player.transform.position);
 
-        if (dis > selectAttackDis[0])
+        if (dis >= selectAttackDis[0])
         {
             AttackWait("Hadou");
         }
-        else if(dis > selectAttackDis[1])
+        else if(dis >= selectAttackDis[1])
         {
             AttackWait("Tatumaki");
         }
@@ -110,7 +110,7 @@ public class Fighter_Sensing : MonoBehaviour
                 StartCoroutine(AttackSyoryu());
                 break;
             case "Tatumaki":
-                StartCoroutine(AttackSyoryu());
+                StartCoroutine(AttackTatumaki());
                 break;
             default:
                 break;
@@ -128,7 +128,8 @@ public class Fighter_Sensing : MonoBehaviour
 
         yield return new WaitForSeconds(attackStartup[0]);
 
-        attack_Hadou.Play();
+        GameObject hadou = Instantiate(attack_Hadou.gameObject);
+        hadou.transform.position = this.transform.position;
 
         yield return new WaitForSeconds(attackRecovery[0]);
     } 
