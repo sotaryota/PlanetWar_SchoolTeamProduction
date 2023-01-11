@@ -60,27 +60,29 @@ public class PlanetAimAssist : PlanetStateFanction
             //アシストエリア内かを算出する
             if (area.Contains(enemyScreenPos))
             {
-                //参照がある場合は判定し保存、ない場合はそのまま保存
-                if (targetEnemy)
-                {
-                    //敵が登録されている敵より近かった場合は入れ替え
-                    float nowTargetPos = (targetEnemy.transform.position - this.transform.position).magnitude;
-                    float newTargetPos = (en.transform.position - this.transform.position).magnitude;
-                    if (newTargetPos < nowTargetPos)
+                if (Vector3.Dot((this.transform.position - en.transform.position).normalized, transform.forward) <= 0) { 
+                    //参照がある場合は判定し保存、ない場合はそのまま保存
+                    if (targetEnemy)
                     {
+                        //敵が登録されている敵より近かった場合は入れ替え
+                        float nowTargetPos = (targetEnemy.transform.position - this.transform.position).magnitude;
+                        float newTargetPos = (en.transform.position - this.transform.position).magnitude;
+                        if (newTargetPos < nowTargetPos)
+                        {
+                            targetEnemy = en;
+                        }
+                    }
+                    else
+                    {
+                        //参照が無いので保存
                         targetEnemy = en;
                     }
-                }
-                else
-                {
-                    //参照が無いので保存
-                    targetEnemy = en;
-                }
+            }
             }          
         }
 
         //容量削減の為カメラ削除
-        Destroy(targetCamera);
+        //Destroy(targetCamera);
     }
 
     public void Assist()
