@@ -46,7 +46,7 @@ public class PlayerMove_Solo : MonoBehaviour
             return;
         }
         if (gamepad == null) { gamepad = Gamepad.current; }
-
+        print(controller.isGrounded);
         StickValue();
         PlayerLook();
         MoveOrStop();
