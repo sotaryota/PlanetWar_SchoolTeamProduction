@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 5baf78421cbf8f2469ad70624eb4d281, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1276,15 +1276,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.3
+      value: -12.34
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.57
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.37
+      value: 150.7
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1750,7 +1750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56200027128fbb2418e4ed906468c359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {x: 13.5, y: 0, z: 13.75}
+  playerPos: {x: -15, y: 0, z: 150}
   playerAngle: {x: 0, y: 0, z: 0, w: 0}
   cameraAngle: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &787326479
@@ -3473,8 +3473,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6604309, y: 0.7489789, z: 1.8160782}
-  m_Center: {x: -0.025180817, y: -0.18315741, z: 0.05212021}
+  m_Size: {x: 1.6604309, y: 0.6475314, z: 1.8160782}
+  m_Center: {x: -0.025180817, y: -0.07671696, z: 0.05212021}
 --- !u!114 &2096544479
 MonoBehaviour:
   m_ObjectHideFlags: 0

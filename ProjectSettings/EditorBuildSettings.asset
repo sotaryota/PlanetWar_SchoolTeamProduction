@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Solo/StoryBattle.unity
     guid: 89862fc1133393c4fbb8f3ebc393f4cf
   - enabled: 1
+    path: Assets/Scenes/Solo/StoryBoss.unity
+    guid: 4afa2f103f148be41865232cf9baba7d
+  - enabled: 1
     path: Assets/Scenes/Multi/Tutorial.unity
     guid: e77502835b3458544a8cc1aab45860a1
   - enabled: 1
