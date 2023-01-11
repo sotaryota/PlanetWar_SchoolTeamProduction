@@ -16,17 +16,6 @@ public class PlayerGroundCheck : MonoBehaviour
     public bool ironGround = false;
     public bool sandGround = false;
 
-    //’n–Ê‚Æ‚ÌÚG”»’è
-    private void OnTriggerEnter(Collider other)
-    {
-        print("Enter");
-        if (other.gameObject.tag == "Ground")
-        {
-            jump.jumping.y = 0;
-        }
-    }
-
-
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "Ground")

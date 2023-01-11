@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 65929d415d23d114583ce769c1987beb, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -3097,6 +3097,10 @@ PrefabInstance:
       propertyPath: throwPlanetSpeed
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 8998669171743165671, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 6746115404553590511}
     - target: {fileID: 8998669171743165671, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: ground
       value: 
