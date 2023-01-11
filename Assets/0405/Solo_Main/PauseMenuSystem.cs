@@ -21,20 +21,20 @@ public class PauseMenuSystem : MonoBehaviour
     {
         resume = 0,
         retry,
-        backmenu
+        back
     }
 
-    Gamepad gamepad;
+    protected Gamepad gamepad;
     //カーソル移動
-    bool selectLock;
+    protected bool selectLock;
     //多重クリック防止のbool
-    bool onButton;
+    protected bool onButton;
 
     //フェード
     [SerializeField]
-    Fade fadeScript;
+    protected Fade fadeScript;
     //移行するシーンを保存する場所
-    string nextscene;
+    protected string nextscene;
     //ボタン画像の読み込み
     [System.Serializable]
     public class Button
@@ -43,24 +43,24 @@ public class PauseMenuSystem : MonoBehaviour
         public menu menuCell; 
     }
     [SerializeField]
-    private Button[] buttonClass = new Button[1];
+    protected Button[] buttonClass = new Button[1];
 
     //ボタン画像を置いてあるパネルや画像
     [SerializeField]
-    GameObject PausePanel;
+    protected GameObject PausePanel;
     //オーディオ
     [SerializeField]
-    AudioSource audioSource;
+    protected AudioSource audioSource;
     public AudioClip selectSound;
     public AudioClip pushSound;
     //選択中のボタン
-    int nowSelecting;
+    protected int nowSelecting;
     //直前に選択したボタン
-    int prevSelecting;
+    protected int prevSelecting;
     //ポーズ中か
-    bool ispauseNow;
+    protected bool ispauseNow;
     //ポーズメニューを展開できる状態かどうか
-    bool canPause;
+    protected bool canPause;
     public void SetCanPause(bool value)
     {
         canPause = value;
@@ -155,7 +155,7 @@ public class PauseMenuSystem : MonoBehaviour
     }
 
     //クリックしたときの挙動
-    void onClickAction()
+    protected virtual void onClickAction()
     {
         //連打防止用
         if (!onButton)
@@ -163,21 +163,21 @@ public class PauseMenuSystem : MonoBehaviour
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
                 audioSource.PlayOneShot(pushSound);
-                switch (nowSelecting)
+                switch (buttonClass[nowSelecting].menuCell)
                 {
-                    case (int)menu.resume:
+                    case menu.resume:
                         PausePanel.SetActive(false);
                         Time.timeScale = 1.0f;
                         ispauseNow = false;
                         break;
-                    case (int)menu.retry:
+                    case menu.retry:
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
                         Time.timeScale = 1.0f;
                         nextscene = "StoryBattle";
                         break;
-                    case (int)menu.backmenu:
+                    case menu.back:
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;

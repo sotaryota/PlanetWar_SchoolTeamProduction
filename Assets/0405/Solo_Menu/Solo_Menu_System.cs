@@ -132,17 +132,17 @@ public class Solo_Menu_System : MonoBehaviour
                 //Œˆ’è‰¹
                 audioSource.PlayOneShot(pushSound);
                 //‘I‚ñ‚Å‚¢‚é€–Ú•Ê‚É‹““®‚ğ•Ï‚¦‚é
-                switch (nowSelecting)
+                switch (buttonClass[nowSelecting].menuCell)
                 {
-                    case (int)menu.NewGame:
+                    case menu.NewGame:
                         fadeScript.fademode = true;
                         nextscene = "Story";
                         break;
-                    case (int)menu.Continue:
+                    case menu.Continue:
                         fadeScript.fademode = true;
                         nextscene = "Story";
                         break;
-                    case (int)menu.BackMenu:
+                    case menu.BackMenu:
                         fadeScript.fademode = true;
                         nextscene = "Menu";
                         break;

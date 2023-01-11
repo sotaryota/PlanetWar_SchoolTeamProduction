@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crashEffect: {fileID: 4166501065544445604, guid: aa8bd5faa6a4c9b48a97dbc6a87740e6, type: 3}
-  moveTime: 20
+  moveTime: 40
   targetPos: {x: 0, y: 0, z: 0}
 --- !u!114 &6233094336856099404
 MonoBehaviour:
@@ -244,6 +244,7 @@ MonoBehaviour:
   assistScreenArea: 0.35
   assistDistance: 20
   rotateValue: 90
+  waitTime: 0.1
 --- !u!20 &1597746870402245889
 Camera:
   m_ObjectHideFlags: 0

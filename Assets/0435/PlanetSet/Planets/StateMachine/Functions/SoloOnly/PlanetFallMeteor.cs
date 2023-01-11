@@ -19,6 +19,7 @@ public class PlanetFallMeteor : PlanetStateFanction
     public Vector3 targetPos;//ターゲット座標
 
     private bool moveFlag;//移動するかを判定（「 Y軸 <= ターゲット座標Y 」で無効化）
+    public bool GetMoveFlag() { return moveFlag; }
 
     private void Start()
     {

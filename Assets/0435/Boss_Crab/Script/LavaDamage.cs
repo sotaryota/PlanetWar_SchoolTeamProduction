@@ -9,17 +9,26 @@ public class LavaDamage : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        print(other.transform.tag);
-        if (other.transform.tag != "Player") return;
-        print("ダメージ");
-        other.GetComponent<PlayerStatus_Solo>().Damage(damage * Time.deltaTime);
+        if (other.transform.tag == "Player")
+        {
+            other.transform.GetComponent<PlayerStatus_Solo>().Damage(damage);
+        }
+        else if (other.transform.tag == "Enemy")
+        {
+            other.transform.GetComponent<Spider_Status>().Damage(damage);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        print(collision.transform.tag);
-        if (collision.transform.tag != "Player") return;
-        print("ダメージ");
-        collision.transform.GetComponent<PlayerStatus_Solo>().Damage(damage * Time.deltaTime);
+        if (collision.transform.tag == "Player")
+        {
+            collision.transform.GetComponent<PlayerStatus_Solo>().Damage(damage);
+        }
+        else if(collision.transform.tag == "Enemy")
+        {
+            collision.transform.GetComponent<Spider_Status>().Damage(damage);
+        }
+        
     }
 }

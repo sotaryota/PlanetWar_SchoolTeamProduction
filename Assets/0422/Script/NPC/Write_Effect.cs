@@ -11,14 +11,16 @@ public class Write_Effect : MonoBehaviour
     [Header("プレイヤー")]
     [SerializeField] GameObject player;
 
+    [Header("カメラ")]
+    [SerializeField] GameObject playerCamera;
+
     [Header("NPC")]
     public GameObject npc;                       //接触中のNPC
 
     [Header("スクリプト")]
     [SerializeField] PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerDataManager playerData;
-    [SerializeField] NPCDataManager npcData;
-    [SerializeField] SceneDataManager sceneData;
+    private NPCDataManager npcData;
 
     [Header("キャンバス")]
     [SerializeField] GameObject canvas;
@@ -26,6 +28,7 @@ public class Write_Effect : MonoBehaviour
     [SerializeField] GameObject selectCanvas;
     [SerializeField] Text talkTextObj;　　　　　　// 通常会話用のテキストボックス
     [SerializeField] Text[] selectTextObj;       // 選択肢のテキストボックス
+    [SerializeField] Text nameTextObj;           // 名前表示用テキスト
     [SerializeField] GameObject[] selectImage;   // 選択表示のアイコン
     private string talkText;                     // 通常会話の文字列
     private string[] selectText = new string[2]; // 選択肢の文字列
@@ -33,6 +36,7 @@ public class Write_Effect : MonoBehaviour
     [Header("文字送りと改行の時間")]
     [SerializeField] float feedTime;             // 文字表示のスピード
     [SerializeField] float newLineTime;          // 改行のウェイト
+    [SerializeField] float selectWait;           // 選択肢を表示するまでのウェイト
     private int visibleLength;                   // 表示する文字数
 
     [Header("バトル遷移時のフェードとカメラ")]
@@ -48,7 +52,11 @@ public class Write_Effect : MonoBehaviour
     public bool isTalking;                       // 会話中かのフラグ
     public bool isSelect;                        // セレクト中のフラグ
     public bool buttonFlag;                      // 会話中にボタンを押せなくするフラグ
-
+    private void Start()
+    {
+        npcData    = GameObject.Find("DataManager").GetComponent<NPCDataManager>();
+        playerData = GameObject.Find("DataManager").GetComponent<PlayerDataManager>();
+    }
     void Update()
     {
         if (buttonFlag) { return; }
@@ -58,6 +66,7 @@ public class Write_Effect : MonoBehaviour
         if (!isTalking && npc.GetComponent<NPCClass>().GetTalkFlag())
         {
             //テキストボックス表示
+            nameTextObj.text = npc.GetComponent<NPCClass>().GetName();
             canvas.SetActive(true);
             talkCanvas.SetActive(true);
             
@@ -106,7 +115,7 @@ public class Write_Effect : MonoBehaviour
             selectText[i] = npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState())[i];
             selectTextObj[i].text = selectText[i];
         }
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(selectWait);
 
         //ボタンを押すまでループ
         while (!gamepad.buttonEast.isPressed)
@@ -204,7 +213,7 @@ public class Write_Effect : MonoBehaviour
                             {
                                 yield return 0;
                             }
-                            yield return new WaitForSeconds(newLineTime);
+                            yield return new WaitForSeconds(selectWait);
 
                             //セレクト状態に変更
                             npc.GetComponent<NPCClass>().SetState(NPCClass.NPCState.Select);
@@ -277,7 +286,7 @@ public class Write_Effect : MonoBehaviour
                         yield return new WaitForSeconds(newLineTime);
 
                         //必要なデータを保存
-                        playerData.StoryEndPlayerData(playerStatus.GetHp(), playerStatus.GetPower(), player.transform.position);
+                        playerData.StoryEndPlayerPos(player.transform.position,player.transform.rotation,playerCamera.transform.rotation);
                         npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(), npc.GetComponent<NPCClass>().GetEventID());
                         // フェード開始
                         fade.FadeSceneChange("StoryBattle", fadeColor.r, fadeColor.g, fadeColor.b, fadeSpeed);

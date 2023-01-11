@@ -41,45 +41,33 @@ public class PlayerDataManager : MonoBehaviour
     #endregion
 
     [Header("プレイヤーデータ")]
-    [SerializeField] private float playerHp;    //プレイヤーのHP
-    [SerializeField] private float playerPower; //プレイヤーのパワー
-    [SerializeField] private Vector3 playerPos; //プレイヤーの復帰位置
+    [SerializeField] private Vector3 playerPos;      //プレイヤーの復帰位置
+    [SerializeField] private Quaternion playerAngle; //プレイヤーの向き
+    [SerializeField] private Quaternion cameraAngle; //カメラの位置と向き
 
     /// <summary>
     /// ストーリー復帰時に呼ぶ関数
     /// </summary>
-    /// <param name="hp">プレイヤーのHP</param>
-    /// <param name="power">プレイヤーのパワー</param>
-    /// <param name="pos">プレイヤーの復帰位置</param>
-    public void StoryStartPlayerData(ref float hp,ref float power,ref Vector3 pos)
+    /// <param name="pPos">プレイヤーの復帰位置</param>
+    /// <param name="cAngle">プレイヤーの向き</param>
+    /// <param name="pAngle">カメラの位置と向き</param>
+    public void StoryStartPlayerPos(ref Vector3 pPos, ref Quaternion pAngle, ref Quaternion cAngle)
     {
-        hp    = playerHp;
-        power = playerPower;
-        pos   = playerPos;
+        pPos   = playerPos;
+        pAngle = playerAngle;
+        cAngle = cameraAngle;
     }
 
     /// <summary>
     /// バトル移行時呼ぶ関数
     /// </summary>
-    /// <param name="hp">プレイヤーのHP</param>
-    /// <param name="power">プレイヤーのパワー</param>
-    /// <param name="pos">プレイヤーの復帰位置</param>
-    public void StoryEndPlayerData(float hp, float power, Vector3 pos)
+    /// <param name="pPos">プレイヤーの復帰位置</param>
+    /// <param name="pAngle">プレイヤーの向き</param>
+    /// <param name="cAngle">カメラの位置と向き</param>
+    public void StoryEndPlayerPos(Vector3 pPos, Quaternion pAngle,Quaternion cAngle)
     {
-        playerHp    = hp;
-        playerPower = power;
-        playerPos   = pos;
+        playerPos   = pPos;
+        playerAngle = pAngle;
+        cameraAngle = cAngle;
     }
-
-    /// <summary>
-    /// バトル終了時にプレイヤーで呼ぶ関数
-    /// </summary>
-    /// <param name="hp">プレイヤーのHP</param>
-    /// <param name="power">プレイヤーのパワー</param>
-    public void BattleEndPlayerData(float hp, float power)
-    {
-        playerHp    = hp;
-        playerPower = power;
-    }
-
 }

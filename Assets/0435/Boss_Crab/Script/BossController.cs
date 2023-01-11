@@ -12,7 +12,6 @@ public class BossController : MonoBehaviour
 
     [Header("プレイヤー参照"), SerializeField]
     private GameObject player;
-    private Vector3 lockPos;
 
     [Header("軸合わせ速度と合わせる時間")]
     [SerializeField] private float lookingTime;
@@ -60,6 +59,23 @@ public class BossController : MonoBehaviour
     [Tooltip("攻撃確率"), Range(0.0f, 100.0f)]
     [SerializeField] private float headProbability;
 
+    [Header("不意打ち火炎放射情報")]
+    [SerializeField] private ParticleSystem fireBreath;
+    [SerializeField] private float fireStartWait;
+    [SerializeField] private float fireStayWait;
+    [SerializeField] private float fireEndWait;
+    [Header("指定回数殴り以外の攻撃をしたら火炎放射")]
+    [SerializeField] private int fireSwitchNum;
+    private int fireSwitchCount = 0;
+
+    [Header("応援要請")]
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private Transform[] helpPos = new Transform[0];
+    [SerializeField] private float helpStartWait;
+    [SerializeField] private float helpEndWait;
+    [Tooltip("生成確率"), Range(0.0f, 100.0f)]
+    [SerializeField] private float helpProbability;
+
     [Header("死亡時の行動")]
     [SerializeField] private float dieFallSpeed;
     [SerializeField] private GameObject dieEffect;
@@ -69,8 +85,9 @@ public class BossController : MonoBehaviour
     [SerializeField] private AudioClip choutClip;
     [SerializeField] private AudioClip breathStertClip;
     [SerializeField] private AudioClip attackReady;
+    [SerializeField] private AudioClip fireClip;
+    [SerializeField] private AudioClip helpClip;
     [SerializeField] private AudioClip dieClip;
-
 
     private string nowCoroutine; //現在のコルーチン名
     private bool attack;//攻撃
@@ -115,23 +132,7 @@ public class BossController : MonoBehaviour
         }
     }
 
-    IEnumerator Shout()
-    {
-        //アニメーション変更
-        bossAnimator.SetTrigger("Shout");
-
-        //叫び始めまで待機
-        yield return new WaitForSeconds(shoutStartWait);
-
-        //効果音
-        source.PlayOneShot(choutClip);
-
-        //叫び終わりまで待機
-        yield return new WaitForSeconds(shoutEndWait);
-
-        //軸合わせ開始
-        looking = true;
-    }
+    
 
     IEnumerator Sarch()
     {
@@ -139,10 +140,19 @@ public class BossController : MonoBehaviour
         int attackSelect = Random.Range(0, 6);
         attackSelect /= 5;
 
+        //火炎放射（確定行動）
+        if(fireSwitchNum <= fireSwitchCount)
+        {
+            nowCoroutine = "Attack_Fire";
+            fireSwitchCount = 0;
+            yield break;
+        }
+
         //確率で動作(ブレス)
         if(Random.Range(0.0f, 100.0f) <= breathProbability)
         {
             nowCoroutine = "Attack_Breath";
+            fireSwitchCount++;//不意打ち増加
             yield break;
         }
 
@@ -150,6 +160,15 @@ public class BossController : MonoBehaviour
         if(Random.Range(0.0f, 100.0f) <= headProbability)
         {
             nowCoroutine = "Attack_Head";
+            fireSwitchCount++;//不意打ち増加
+            yield break;
+        }
+
+        //確率で動作（応援）
+        if (Random.Range(0.0f, 100.0f) <= helpProbability)
+        {
+            nowCoroutine = "Attack_Help";
+            fireSwitchCount++;//不意打ち増加
             yield break;
         }
 
@@ -162,6 +181,7 @@ public class BossController : MonoBehaviour
                 if(JudgeHitAndStart(searchScript, "Attack_Smash"))
                 {
                     smashDataSelect = i;
+                    fireSwitchCount = 0;//不意打ち初期化
                     yield break;
                 }
             }
@@ -183,6 +203,25 @@ public class BossController : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    //叫ぶ
+    IEnumerator Shout()
+    {
+        //アニメーション変更
+        bossAnimator.SetTrigger("Shout");
+
+        //叫び始めまで待機
+        yield return new WaitForSeconds(shoutStartWait);
+
+        //効果音
+        source.PlayOneShot(choutClip);
+
+        //叫び終わりまで待機
+        yield return new WaitForSeconds(shoutEndWait);
+
+        //軸合わせ開始
+        looking = true;
     }
 
     //軸合わせ
@@ -213,6 +252,7 @@ public class BossController : MonoBehaviour
         attack = true;
     }
 
+    //殴り
     IEnumerator Attack_Smash()
     {
         //アニメーションを殴りにして待機
@@ -237,6 +277,7 @@ public class BossController : MonoBehaviour
         nowCoroutine = null;
     }
 
+    //ブレス
     IEnumerator Attack_Breath()
     {
         //アニメーションをブレス攻撃
@@ -275,6 +316,7 @@ public class BossController : MonoBehaviour
         nowCoroutine = null;
     }
 
+    //頭突き
     IEnumerator Attack_Head()
     {
         //アニメーションを頭突き攻撃にして待機
@@ -299,6 +341,60 @@ public class BossController : MonoBehaviour
         //攻撃終了
         nowCoroutine = null;
     }
+    
+    //火炎放射
+    IEnumerator Attack_Fire()
+    {
+        //アニメーション変更（叫ばせる）
+        bossAnimator.SetTrigger("Shout");
+
+        //放射開始まで待機
+        yield return new WaitForSeconds(fireStartWait);
+        source.PlayOneShot(fireClip);
+
+        fireBreath.Play();
+
+        //放射中
+        yield return new WaitForSeconds(fireStayWait);
+
+        //放射終了
+        fireBreath.Stop();
+
+        //叫び終わりまで待機
+        yield return new WaitForSeconds(fireEndWait);
+
+        //軸合わせ開始
+        looking = true;
+    }
+
+    //敵生成
+    IEnumerator Attack_Help()
+    {
+        //アニメーション変更
+        bossAnimator.SetTrigger("SOS");
+
+        //生成開始まで待機
+        yield return new WaitForSeconds(helpStartWait);
+
+        //効果音
+        source.PlayOneShot(helpClip);
+
+        //生成
+        for(int i = 0; i < helpPos.Length; ++i)
+        {
+            GameObject go = Instantiate(enemyPrefab);
+            go.transform.position = helpPos[i].position;
+        }
+
+        //叫び終わりまで待機
+        yield return new WaitForSeconds(helpEndWait);
+
+        //軸合わせ開始
+        looking = true;
+    }
+
+
+    //死亡
     public bool BossDie()
     {
         if (HPData.JudgeDie())
@@ -315,6 +411,7 @@ public class BossController : MonoBehaviour
 
                 //いろいろ無効化
                 breathWarningArea.SetActive(false);
+                fireBreath.Stop();
 
                 //死亡アニメーション
                 bossAnimator.SetTrigger("Die");
@@ -333,8 +430,6 @@ public class BossController : MonoBehaviour
             //下に沈む
             this.transform.Translate(new Vector3(0, -dieFallSpeed * Time.deltaTime, 0));
         }
-
-
 
         //死亡しているかを返す
         return HPData.JudgeDie();

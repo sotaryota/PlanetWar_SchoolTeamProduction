@@ -195,6 +195,14 @@ PrefabInstance:
       propertyPath: m_TerrainData
       value: 
       objectReference: {fileID: 15600000, guid: f657ce4873ebb5f40a6555cacf7685c6, type: 2}
+    - target: {fileID: 4074960891899505949, guid: c0e8260bd9ea3fa43ab596c0f30e4002, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7253019144687397961, guid: c0e8260bd9ea3fa43ab596c0f30e4002, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7619887031975425454, guid: c0e8260bd9ea3fa43ab596c0f30e4002, type: 3}
       propertyPath: m_RootOrder
       value: 4
