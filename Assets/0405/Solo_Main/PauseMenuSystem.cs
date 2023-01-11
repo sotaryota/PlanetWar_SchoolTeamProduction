@@ -51,6 +51,7 @@ public class PauseMenuSystem : MonoBehaviour
     //オーディオ
     [SerializeField]
     protected AudioSource audioSource;
+    public AudioClip openSound;
     public AudioClip selectSound;
     public AudioClip pushSound;
     //選択中のボタン
@@ -199,20 +200,20 @@ public class PauseMenuSystem : MonoBehaviour
             ispauseNow = !ispauseNow;
 
 
-            //ポーズ中であれば
+            //ポーズ中になったら
             if (ispauseNow)
             {
-                //audioSource.PlayOneShot(se);
+                audioSource.PlayOneShot(openSound);
                 PausePanel.SetActive(true);
                 nowSelecting = 0;
                 buttonClass[nowSelecting].buttonImage.GetComponent<Animator>().SetBool("selected", true);
                 Time.timeScale = 0.0f;
 
             }
-            //非ポーズ中であれば
+            //非ポーズ中になったら
             else
             {
-                //audioSource.PlayOneShot(se_);
+                //audioSource.PlayOneShot(Sound_);
                 for (int i = 0; i < buttonClass.Length; ++i)
                 {
                     buttonClass[i].buttonImage.GetComponent<Animator>().SetBool("selected", false);
