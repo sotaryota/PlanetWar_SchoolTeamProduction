@@ -4178,7 +4178,7 @@ PrefabInstance:
       objectReference: {fileID: 1450203579}
     - target: {fileID: 8634750318598737000, guid: 6d076335dcab2b04697dd097bc7151fd, type: 3}
       propertyPath: cameraReverse
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d076335dcab2b04697dd097bc7151fd, type: 3}
@@ -5148,7 +5148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ecd: {fileID: 1297518767}
-  enemyName: 3
+  enemyName: 5
   createPrefab: {fileID: 0}
 --- !u!114 &1297518767
 MonoBehaviour:
@@ -5172,6 +5172,8 @@ MonoBehaviour:
   - prefab: {fileID: 3887958406796894342, guid: 731835f58a51abf49826adb4ef557ef1, type: 3}
     pos: {x: 0, y: 0, z: 0}
   - prefab: {fileID: 3794961948396049526, guid: 5bc186a4d8dc3c24d8df22830df584e1, type: 3}
+    pos: {x: 0, y: 0, z: 0}
+  - prefab: {fileID: 6326575851824070280, guid: 022573b05d81aa8408623767e5a6a9dd, type: 3}
     pos: {x: 0, y: 0, z: 0}
 --- !u!4 &1297518768
 Transform:

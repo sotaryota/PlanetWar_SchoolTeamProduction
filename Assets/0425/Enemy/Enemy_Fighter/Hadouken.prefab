@@ -4789,7 +4789,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flySpeed: 10
   fighter_Status: {fileID: 0}
-  fighter_Sensing: {fileID: 0}
 --- !u!1 &3373382371939376546
 GameObject:
   m_ObjectHideFlags: 0
