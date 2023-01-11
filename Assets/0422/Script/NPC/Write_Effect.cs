@@ -115,7 +115,7 @@ public class Write_Effect : MonoBehaviour
             selectText[i] = npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState())[i];
             selectTextObj[i].text = selectText[i];
         }
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(selectWait);
 
         //ボタンを押すまでループ
         while (!gamepad.buttonEast.isPressed)
