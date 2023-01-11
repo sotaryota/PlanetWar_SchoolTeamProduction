@@ -6073,5 +6073,6 @@ MonoBehaviour:
     menuCell: 2
   PausePanel: {fileID: 875037641}
   audioSource: {fileID: 6793984289211805702}
+  openSound: {fileID: 8300000, guid: 53f5cc905c5230b4dac1390b60fa38d9, type: 3}
   selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
   pushSound: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
