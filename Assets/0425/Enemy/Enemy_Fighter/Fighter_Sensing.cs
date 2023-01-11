@@ -12,6 +12,7 @@ public class Fighter_Sensing : MonoBehaviour
     [SerializeField] ParticleSystem attack_Hadou;
     [SerializeField] GameObject attack_Syoryu_Alia;
     [SerializeField] GameObject attack_Tatumaki_Alia;
+    [SerializeField] GameObject attack_Hadou_ArmPos;
 
     public bool sensing;
 
@@ -117,7 +118,11 @@ public class Fighter_Sensing : MonoBehaviour
         yield return new WaitForSeconds(attackStartup[0]);
 
         GameObject hadou = Instantiate(attack_Hadou.gameObject);
-        hadou.transform.position = this.transform.position;
+        hadou.transform.position = attack_Hadou_ArmPos.transform.position;
+
+        Fighter_HadouMove hadoMove = hadou.GetComponent<Fighter_HadouMove>();
+        hadoMove.fighter_Status = this.GetComponent<Fighter_Status>();
+
 
         yield return new WaitForSeconds(attackRecovery[0]);
 
