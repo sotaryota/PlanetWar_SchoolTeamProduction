@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: {fileID: 1389656589}
-  move: {fileID: 0}
+  move: {fileID: 1389656590}
   playerAnimation: {fileID: 1389656587}
   isGround: 0
   iron:
@@ -644,7 +644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.24
+      value: 17.54
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.z
@@ -774,6 +774,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[4]
       value: 
       objectReference: {fileID: -2415592933094781236, guid: 89f520625376d4e408b3c3d9b4b463f9, type: 3}
+    - target: {fileID: 8998669171743165671, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
+      propertyPath: pause
+      value: 
+      objectReference: {fileID: 6793984289211805708}
     - target: {fileID: 8998669171743165671, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: ground
       value: 
@@ -2253,6 +2257,7 @@ MonoBehaviour:
   - {fileID: 6286554408984997816, guid: 50f9c4c27d1fb5f46b51a0962db4433d, type: 3}
   - {fileID: 293068558951436974, guid: f15480ee96405cb4187730782233990a, type: 3}
   - {fileID: 3505243491454964172, guid: 1bc2348a03a56ef429ce0089c443ca0c, type: 3}
+  - {fileID: 5751234496974518121, guid: 1cbae53479f432c41a583bc4a55c2ebe, type: 3}
   min_firstCreatePos: {x: 48.4, y: 75, z: 48.4}
   max_firstCreatePos: {x: 0, y: 75, z: 0}
   addMyPos: 1
@@ -3255,7 +3260,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d1d3cbf613c33fc4ca957575d0808748, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4625,7 +4630,7 @@ PrefabInstance:
       objectReference: {fileID: 6001714655992318778, guid: a039461466a1e8d448c38a5a372102a3, type: 3}
     - target: {fileID: 62669319, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: BreakDamage
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 62669319, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: breakEffect
@@ -4645,7 +4650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 62669319, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: damageValue_breaked
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 65202202, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: breakEffect
@@ -4765,7 +4770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1210975604, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: damageValue_Main
-      value: 0.5
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1210975604, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: damageValue_breaked
@@ -4917,7 +4922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1509085094, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: damageValue_Main
-      value: 0.5
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 1509085094, guid: dff5810d684c16345a15ee262c142a95, type: 3}
       propertyPath: damageValue_breaked
