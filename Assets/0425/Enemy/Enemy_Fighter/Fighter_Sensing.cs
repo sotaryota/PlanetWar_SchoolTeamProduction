@@ -36,30 +36,15 @@ public class Fighter_Sensing : MonoBehaviour
     float attackCnt = 0;
 
     [SerializeField]
-    float attackIntarval = 8.0f;
+    float attackIntarval = 0;
 
     [SerializeField]
-    int[] selectAttackDis;
+    float[] selectAttackDis;
     private void Start()
     {
         attack_Syoryu_Alia.SetActive(false);
         attack_Tatumaki_Alia.SetActive(false);
     }
-
-    //private void OnTriggerStay(Collider other)
-    //{
-    //    if (fighter_Status.GetState() == Fighter_Status.State.Non || fighter_Status.GetState() == Fighter_Status.State.Dead)
-    //    { return; }
-    //    if (other.tag != "Player")
-    //    { return; }
-
-    //    sensing = true;
-
-    //    //硬直時間中は処理をしない
-    //    if (!attackFlag) return;
-
-    //    AttackWait();
-    //}
 
     private void Update()
     {
@@ -73,7 +58,7 @@ public class Fighter_Sensing : MonoBehaviour
 
         attackCnt += Time.deltaTime;
 
-        if (!(attackCnt < attackIntarval)) 
+        if (attackCnt < attackIntarval) 
         { return; }
 
         sensing = true;
@@ -93,13 +78,16 @@ public class Fighter_Sensing : MonoBehaviour
             AttackWait("Syoryu");
         }
 
-        attackCnt = 0;
+        
     }
 
 
     void AttackWait(string attackType)
     {
+        //カウント初期化＆硬直
         attackFlag = false;
+        attackCnt = 0;
+
         fighter_Status.SetState(Fighter_Status.State.Attack);
 
         switch (attackType) {
@@ -115,10 +103,10 @@ public class Fighter_Sensing : MonoBehaviour
             default:
                 break;
         }
+
         //エネミーをStay状態にする
         fighter_Status.SetState(Fighter_Status.State.Stay);
 
-        attackFlag = true;
         attackHit = false;
     }
 
@@ -132,6 +120,9 @@ public class Fighter_Sensing : MonoBehaviour
         hadou.transform.position = this.transform.position;
 
         yield return new WaitForSeconds(attackRecovery[0]);
+
+        attackFlag = true;
+        sensing = false;
     } 
 
     IEnumerator AttackSyoryu()
@@ -147,6 +138,9 @@ public class Fighter_Sensing : MonoBehaviour
         attack_Syoryu_Alia.SetActive(false);
 
         yield return new WaitForSeconds(attackRecovery[1]);
+
+        attackFlag = true;
+        sensing = false;
     }
 
     IEnumerator AttackTatumaki()
@@ -162,6 +156,9 @@ public class Fighter_Sensing : MonoBehaviour
         attack_Tatumaki_Alia.SetActive(false);
 
         yield return new WaitForSeconds(attackRecovery[2]);
+
+        attackFlag = true;
+        sensing = false;
     }
 
 
