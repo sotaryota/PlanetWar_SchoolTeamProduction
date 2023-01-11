@@ -244,6 +244,7 @@ MonoBehaviour:
   assistScreenArea: 0.35
   assistDistance: 20
   rotateValue: 90
+  waitTime: 0.1
 --- !u!20 &1597746870402245889
 Camera:
   m_ObjectHideFlags: 0
