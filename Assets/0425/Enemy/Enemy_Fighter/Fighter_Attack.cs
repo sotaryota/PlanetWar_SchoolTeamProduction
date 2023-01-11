@@ -9,6 +9,9 @@ public class Fighter_Attack : MonoBehaviour
     [SerializeField] PlayerStatus_Solo playerStatus;
     [SerializeField] Fighter_Sensing fighter_Sensing;
 
+    [SerializeField]
+    float damageValue;
+
     private void Start()
     {
         playerStatus = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStatus_Solo>();
@@ -20,9 +23,11 @@ public class Fighter_Attack : MonoBehaviour
         {
             if (fighter_Sensing.attackHit == false)
             {
-                playerStatus.Damage(fighter_Status.GetPower());
+                playerStatus.Damage(fighter_Status.GetPower() * damageValue);
                 fighter_Sensing.attackHit = true;
             }
         }
     }
+
+   
 }
