@@ -37,6 +37,7 @@ public class Write_Effect : MonoBehaviour
     [SerializeField] float feedTime;             // 文字表示のスピード
     [SerializeField] float newLineTime;          // 改行のウェイト
     [SerializeField] float selectWait;           // 選択肢を表示するまでのウェイト
+    [SerializeField] float talkInterval;         // 再度話しかける際の間隔
     private int visibleLength;                   // 表示する文字数
 
     [Header("バトル遷移時のフェードとカメラ")]
@@ -274,6 +275,7 @@ public class Write_Effect : MonoBehaviour
                         playerStatus.SetState(PlayerStatus_Solo.State.Stay);
                         npc.GetComponent<NPCClass>().SetState(npc.GetComponent<NPCClass>().GetEndState());
 
+                        yield return new WaitForSeconds(talkInterval);
                         //会話終了
                         isTalking = false;
 
@@ -323,6 +325,7 @@ public class Write_Effect : MonoBehaviour
                         //プレイヤーを待機状態に変更
                         playerStatus.SetState(PlayerStatus_Solo.State.Stay);
 
+                        yield return new WaitForSeconds(talkInterval);
                         //会話終了
                         isTalking = false;
 

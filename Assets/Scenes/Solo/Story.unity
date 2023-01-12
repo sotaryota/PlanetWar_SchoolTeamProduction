@@ -2389,6 +2389,7 @@ MonoBehaviour:
   feedTime: 0.1
   newLineTime: 0.3
   selectWait: 0.8
+  talkInterval: 1
   camera: {fileID: 1593749267}
   maxFOV: 160
   minFOV: 30
