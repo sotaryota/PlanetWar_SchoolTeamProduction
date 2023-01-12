@@ -45,6 +45,7 @@ public class Fighter_Sensing : MonoBehaviour
     {
         attack_Syoryu_Alia.SetActive(false);
         attack_Tatumaki_Alia.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -119,6 +120,7 @@ public class Fighter_Sensing : MonoBehaviour
 
         GameObject hadou = Instantiate(attack_Hadou.gameObject);
         hadou.transform.position = attack_Hadou_ArmPos.transform.position;
+        hadou.transform.LookAt(player.transform.position - this.transform.position);
 
         Fighter_HadouMove hadoMove = hadou.GetComponent<Fighter_HadouMove>();
         hadoMove.fighter_Status = this.GetComponent<Fighter_Status>();

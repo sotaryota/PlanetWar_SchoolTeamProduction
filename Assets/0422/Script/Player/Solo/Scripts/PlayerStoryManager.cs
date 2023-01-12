@@ -24,6 +24,8 @@ public class PlayerStoryManager : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        if (effect.isTalking) { return;}
+
         if(other.tag == "NPC")
         {
             if (!other.GetComponent<NPCClass>().GetTalkFlag()) { return; }

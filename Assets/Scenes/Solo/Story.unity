@@ -400,7 +400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -611,7 +611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8314000329590543466, guid: 32ebbf566b55537499d427c9028c4b3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -672,29 +672,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0243457be5de2b64c8fada0670b3e00b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  eventId: 10
+  name: ???
+  eventId: 9
   talkFlag: 1
   selectFlag: 1
-  enemyName: 0
+  enemyName: 5
   normalTalkData:
-  - "\u3088\u304F\u6765\u305F\u306A"
-  - "\u3053\u3053\u307E\u3067\u6765\u305F\u3068\u3044\u3046\u3053\u3068\u306F\u52FF\u8AD6\u79C1\u3068\u6226\u3044\u305F\u3044\u3068\u3044\u3046\u3053\u3068\u3060\u306A\uFF1F"
+  - "\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB"
+  - "(\u798D\u3005\u3057\u3044\u95D8\u6C17\u3092\u653E\u3063\u3066\u3044\u308B)"
+  - "\u6226\u3044\u3092\u6311\u307F\u307E\u3059\u304B?"
   battlelTalkData:
-  - "\u3088\u304F\u8A00\u3063\u305F"
-  - "\u305D\u308C\u306A\u3089\u3070\u5168\u529B\u3067\u6226\u304A\u3046\uFF01"
-  friendTalkData: []
+  - "\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\uFF01"
+  friendTalkData:
+  - "(\u8208\u5473\u3092\u5931\u3063\u305F\u3088\u3046\u3060)"
   BattleEndTalkData:
-  - "\u4FEE\u884C\u304C\u8DB3\u308A\u306A\u304B\u3063\u305F\u304B"
-  FriendEndTalkData:
-  - "\u30D5\u30F3\u30C3\u3000\u8170\u629C\u3051\u3081"
+  - "(\u6E80\u3061\u8DB3\u308A\u305F\u8868\u60C5\u3092\u3057\u3066\u3044\u308B)"
+  FriendEndTalkData: []
   selectTalkData:
-  - "\u6226\u3044\u305F\u3044"
-  - "\u3084\u3081\u3066\u304A\u304D\u307E\u3059"
+  - "\u6226\u3044\u3092\u6311\u3080"
+  - "\u5F15\u304D\u4E0B\u304C\u308B"
   nowState: 0
   firstSelectState: 3
   nonSelectState: 0
-  secondSelectState: 2
+  secondSelectState: 1
   endState: 0
 --- !u!1 &265014918 stripped
 GameObject:
@@ -919,6 +919,7 @@ MonoBehaviour:
   - {fileID: 1190706689}
   - {fileID: 86964830}
   - {fileID: 2146205839}
+  - {fileID: 263012149}
 --- !u!4 &364196524
 Transform:
   m_ObjectHideFlags: 0
@@ -1314,11 +1315,11 @@ PrefabInstance:
       objectReference: {fileID: 13400000, guid: aad99f6ced2d97f4fa4e91c0dcc7f508, type: 2}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.34
+      value: -60.6
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1326,7 +1327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 150.7
+      value: 177.9
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1792,7 +1793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56200027128fbb2418e4ed906468c359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {x: 15, y: 0, z: 13.5}
+  playerPos: {x: -15, y: 0, z: 150}
   playerAngle: {x: 0, y: 0, z: 0, w: 0}
   cameraAngle: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &787326479
@@ -1809,7 +1810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: 0
   eventId: 0
-  npcStateList: 000000000000000000000000000000000000000000000000000000000000000000000000
+  npcStateList: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &807083544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,7 +2266,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1176049697
 GameObject:
@@ -2388,6 +2389,7 @@ MonoBehaviour:
   feedTime: 0.1
   newLineTime: 0.3
   selectWait: 0.8
+  talkInterval: 1
   camera: {fileID: 1593749267}
   maxFOV: 160
   minFOV: 30
@@ -2457,7 +2459,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1341856872 stripped
 GameObject:
@@ -2483,7 +2485,7 @@ MonoBehaviour:
   enemyName: 3
   normalTalkData:
   - "\u306A\u3042"
-  - "\u3044\u304D\u306A\u308A\u3060\u3051\u3069\u3054\u306F\u3093\u5962\u3063\u3066\u304F\u308C\u3084"
+  - "\u3044\u304D\u306A\u308A\u3084\u3051\u3069\u3054\u306F\u3093\u5962\u3063\u3066\u304F\u308C\u3084"
   battlelTalkData:
   - "\u306F\uFF5E\uFF1F"
   - "\u3044\u3044\u3058\u3083\u3093\u5225\u306B"
@@ -2877,7 +2879,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!82 &1704452448
 AudioSource:
@@ -3245,6 +3247,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1531954219}
     - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 53f5cc905c5230b4dac1390b60fa38d9, type: 3}
+    - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
       propertyPath: pushSound
       value: 
       objectReference: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
@@ -3372,6 +3378,10 @@ PrefabInstance:
     - target: {fileID: 728664835543172583, guid: db6238a0fc72c7142bb92130239afdfd, type: 3}
       propertyPath: m_Name
       value: NPC_Figjhter
+      objectReference: {fileID: 0}
+    - target: {fileID: 728664835543172583, guid: db6238a0fc72c7142bb92130239afdfd, type: 3}
+      propertyPath: m_TagString
+      value: NPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db6238a0fc72c7142bb92130239afdfd, type: 3}
@@ -3722,19 +3732,23 @@ MonoBehaviour:
   selectFlag: 0
   enemyName: 2
   normalTalkData:
-  - "\u3042\u3063\u3001\u3069\u3046\u3082\u3067\u3059\u3002"
+  - "\u3084\u3041\u3001\u305D\u3053\u306E\u3072\u3068"
   - "\u4FFA\u306F\u3053\u3053\u306E\u30B8\u30E0\u30EA\u30FC\u30C0\u30FC"
-  - 
+  - "\u4F50\u4E45\u9593\u3000\u5927\u6CB3\u3000"
+  - "\u3055\u3041\u3001\u4FFA\u3068\u71B1\u3044\u30D0\u30C8\u30EB\u3092\u3057\u3088\u3046\u305C"
   battlelTalkData: []
-  friendTalkData: []
+  friendTalkData:
+  - "\u30FB\u3000\u3000\u3000\u30FB\u3000\u3000\u3000\u30FB"
+  - "\u3044\u3064\u307E\u3067\u3053\u3053\u306B\u3044\u308B\u3064\u3082\u308A\u3060\uFF1F"
   BattleEndTalkData: []
-  FriendEndTalkData: []
+  FriendEndTalkData:
+  - "\u4FFA\u306E\u524D\u304B\u3089\u5931\u305B\u308D\uFF01"
   selectTalkData:
   - 
   - 
   nowState: 0
   firstSelectState: 0
-  nonSelectState: 2
+  nonSelectState: 1
   secondSelectState: 0
   endState: 2
 --- !u!1001 &2209788071739600153
@@ -3823,7 +3837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7819392153381705611, guid: 6d076335dcab2b04697dd097bc7151fd, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7819392153381705611, guid: 6d076335dcab2b04697dd097bc7151fd, type: 3}
       propertyPath: m_LocalScale.x
