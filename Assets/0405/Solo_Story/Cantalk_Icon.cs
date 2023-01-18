@@ -15,7 +15,7 @@ public class Cantalk_Icon : MonoBehaviour
     [SerializeField]
     private Image cantalk_Icon;
     [SerializeField]
-    private float distance_x = 1.6f;
+    private float distance_x = 0f;
     [SerializeField]
     private float distance_y = 2.5f;
 
