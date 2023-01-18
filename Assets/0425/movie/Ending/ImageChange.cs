@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextChange : MonoBehaviour
+public class ImageChange : MonoBehaviour
 {
-    [SerializeField, TextArea(1,2)] string[] textArray;
-    [SerializeField] int textNum;
+    [SerializeField] Sprite[] imageArray;
+    [SerializeField] int imageNum;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +16,6 @@ public class TextChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       this.GetComponent<Text>().text = textArray[textNum]; 
+        this.GetComponent<Image>().sprite = imageArray[imageNum];
     }
 }
