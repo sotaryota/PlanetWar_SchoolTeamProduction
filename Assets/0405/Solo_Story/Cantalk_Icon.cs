@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class Cantalk_Icon : MonoBehaviour
 {
+    [Header("PlayerStatus_Solo‚ÌQÆ")]
+    [SerializeField]
+    private PlayerStatus_Solo playerStatus;
+
     [Header("Write_Effect‚ÌQÆ")]
     [SerializeField]
     Write_Effect effect;
@@ -40,6 +44,13 @@ public class Cantalk_Icon : MonoBehaviour
 
         if (uiActive)
         {
+            if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead ||
+                playerStatus.GetState() == PlayerStatus_Solo.State.Talking)
+            {
+                cantalk_Icon.gameObject.SetActive(false);
+                return;
+            }
+
             cantalk_Icon.gameObject.SetActive(true);
             //NPC‚ÌˆÊ’u‚ğæ“¾
             Vector3 UI_Pos = effect.npc.gameObject.transform.position;
