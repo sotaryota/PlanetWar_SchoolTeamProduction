@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpData: {fileID: 0}
   HPBlackGauge: {fileID: 7070104226947046738}
+  distance: 2.5
   audioSource: {fileID: 0}
   damageSound: {fileID: 8300000, guid: 0ee1720192d3c3b49bca5bbf4973ccc1, type: 3}
 --- !u!1 &7070104226947046740

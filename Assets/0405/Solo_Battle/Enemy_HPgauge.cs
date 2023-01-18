@@ -15,6 +15,8 @@ public class Enemy_HPgauge : MonoBehaviour
     [Header("黒ゲージの参照")]
     [SerializeField]
     private Image HPBlackGauge;
+    [SerializeField]
+    private float distance = 2.5f;
 
 
    [Header("ダメージ効果音")]
@@ -40,7 +42,12 @@ public class Enemy_HPgauge : MonoBehaviour
         }
         else
         {
-            Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, hpData.gameObject.transform.position);
+            //敵の位置を取得
+            Vector3 UI_Pos = hpData.gameObject.transform.position;
+            //HPゲージの位置を調整
+            UI_Pos.y += distance;
+            //配置
+            Vector3 screenPos = RectTransformUtility.WorldToScreenPoint(Camera.main, UI_Pos);
             this.transform.position = screenPos;
         }
         
