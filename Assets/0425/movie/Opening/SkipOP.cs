@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-public class SkipMovie : MonoBehaviour
+public class SkipOP : MonoBehaviour
 {
     Gamepad gamepad;
 
