@@ -63,7 +63,7 @@ public class Solo_Menu_System : MonoBehaviour
         SelectSystem();
         onClickAction();
         //決定押されていない　＆　上入力なし　＆　下入力なし
-        if (!gamepad.buttonSouth.wasPressedThisFrame &&
+        if (!gamepad.buttonEast.wasPressedThisFrame &&
             gamepad.leftStick.ReadValue().y <= 0.1f &&
             gamepad.leftStick.ReadValue().y >= -0.1f
             )
@@ -124,7 +124,7 @@ public class Solo_Menu_System : MonoBehaviour
         if (!onButton)
         {
             //押したら
-            if (gamepad.buttonSouth.wasPressedThisFrame)
+            if (gamepad.buttonEast.wasPressedThisFrame)
             {
                 //操作を止めて
                 selectLock = true;
@@ -136,7 +136,7 @@ public class Solo_Menu_System : MonoBehaviour
                 {
                     case menu.NewGame:
                         fadeScript.fademode = true;
-                        nextscene = "Story";
+                        nextscene = "Opening";
                         break;
                     case menu.Continue:
                         fadeScript.fademode = true;
