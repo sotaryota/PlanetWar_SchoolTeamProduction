@@ -154,7 +154,7 @@ public class GameoverMenu : MonoBehaviour
         //˜A‘Å–hŽ~—p
         if (!onButton)
         {
-            if (gamepad.buttonSouth.wasPressedThisFrame)
+            if (gamepad.buttonEast.wasPressedThisFrame)
             {
                 audioSource.PlayOneShot(pushSound);
                 switch (buttonClass[nowSelecting].menuCell)

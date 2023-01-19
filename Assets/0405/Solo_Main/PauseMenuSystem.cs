@@ -79,7 +79,7 @@ public class PauseMenuSystem : MonoBehaviour
         nowSelecting = 0;
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
-        buttonClass[0].buttonImage.GetComponent<Animator>().SetBool("selected", true);
+        //buttonClass[0].buttonImage.GetComponent<Animator>().SetBool("selected", true);
         PausePanel.SetActive(false);
     }
 
@@ -161,7 +161,7 @@ public class PauseMenuSystem : MonoBehaviour
         //˜A‘Å–hŽ~—p
         if (!onButton)
         {
-            if (gamepad.buttonSouth.wasPressedThisFrame)
+            if (gamepad.buttonEast.wasPressedThisFrame)
             {
                 audioSource.PlayOneShot(pushSound);
                 switch (buttonClass[nowSelecting].menuCell)
