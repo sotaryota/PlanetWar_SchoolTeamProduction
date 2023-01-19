@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TextChange : MonoBehaviour
 {
-    [SerializeField, TextArea(1,5)] string[] textArray;
+    [SerializeField, TextArea(1,6)] string[] textArray;
     [SerializeField] int textNum;
     // Start is called before the first frame update
     void Start()
