@@ -19,29 +19,19 @@ public class BossBattleClear : MonoBehaviour
     [SerializeField]
     MonoBehaviour[] stopScripts = new MonoBehaviour[0];
 
-    [SerializeField]
-    GameObject finishText;
-
     //勝ち判定
     bool win;
-    //オーディオ追加
-    [SerializeField]
-    AudioSource audioSource;
-    [SerializeField]
-    AudioClip winJingle;
 
     //クリア後の処理
     [Header("フェードアウト後に指定したシーンへ以降")]
     [SerializeField] FadeManager fadeMgr;
-    [SerializeField] float fadeStartWait;
-    private float fadeWaitCount = 0;
+    [SerializeField] float fadeSpeed;
 
 
     // Start is called before the first frame update
     void Start()
     {
         win = false;
-        finishText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -53,9 +43,6 @@ public class BossBattleClear : MonoBehaviour
             {
                 if (!win)
                 {
-                    finishText.SetActive(true);
-                    //audioSource.PlayOneShot(winJingle);
-
                     moveStopCollider.gameObject.SetActive(true);
 
                     for (int i = 0; i < stopScripts.Length; ++i)
@@ -70,11 +57,7 @@ public class BossBattleClear : MonoBehaviour
                 }
                 else
                 {
-                    fadeWaitCount += Time.deltaTime;
-                    if(fadeWaitCount >= fadeStartWait)
-                    {
-                        fadeMgr.FadeSceneChange("StoryMenu", 0, 0, 0, 4);
-                    }
+                    fadeMgr.FadeSceneChange("Ending", 0, 0, 0, fadeSpeed);
                 }
             }
         }
