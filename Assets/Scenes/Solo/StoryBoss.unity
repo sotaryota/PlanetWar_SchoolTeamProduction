@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 714c0fd54c092864b945422b4cce9221, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -518,12 +518,12 @@ MonoBehaviour:
   isGround: 0
   iron:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   sand:
     serializedVersion: 2
     m_Bits: 0
   ironMoveSE: {fileID: 0}
-  sandMoveSE: {fileID: 0}
+  sandMoveSE: {fileID: 8300000, guid: ca0a154f05cbd7d4ca499ed4154944f4, type: 3}
   ironGround: 0
   sandGround: 0
 --- !u!54 &183624384
@@ -775,6 +775,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -2415592933094781236, guid: 89f520625376d4e408b3c3d9b4b463f9, type: 3}
     - target: {fileID: 8998669171743165671, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 1389656597}
+    - target: {fileID: 8998669171743165671, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: pause
       value: 
       objectReference: {fileID: 6793984289211805708}
@@ -801,6 +805,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5335712919986414366, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
+--- !u!4 &422651441 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5483318884945531366, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
+  m_PrefabInstance: {fileID: 2074557812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &457699131
 GameObject:
   m_ObjectHideFlags: 0
@@ -2764,7 +2773,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cdb97eb0a2dbc8e4ca65854806ce02be, type: 3}
+    m_Font: {fileID: 12800000, guid: 4181bb04c82827648a097d0c141f5a3b, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -2903,13 +2912,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383151104}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 1524206039}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1389656586 stripped
 GameObject:
@@ -3096,7 +3105,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cdb97eb0a2dbc8e4ca65854806ce02be, type: 3}
+    m_Font: {fileID: 12800000, guid: 4181bb04c82827648a097d0c141f5a3b, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -3380,7 +3389,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1383151106}
+  - {fileID: 422651441}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3403,11 +3414,8 @@ MonoBehaviour:
   - {fileID: 1090912972}
   - {fileID: 6793984289211805708}
   - {fileID: 1389656591}
-  finishText: {fileID: 885925166}
-  audioSource: {fileID: 1524206042}
-  winJingle: {fileID: 8300000, guid: 7b42728bf11d5454c909c2a4b1b7f91d, type: 3}
   fadeMgr: {fileID: 1383151105}
-  fadeStartWait: 5
+  fadeSpeed: 0.1
 --- !u!114 &1524206041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3755,7 +3763,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cdb97eb0a2dbc8e4ca65854806ce02be, type: 3}
+    m_Font: {fileID: 12800000, guid: 4181bb04c82827648a097d0c141f5a3b, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -3954,7 +3962,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cdb97eb0a2dbc8e4ca65854806ce02be, type: 3}
+    m_Font: {fileID: 12800000, guid: 4181bb04c82827648a097d0c141f5a3b, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
@@ -5653,12 +5661,16 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1524206039}
     m_Modifications:
     - target: {fileID: 5483318884945531360, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
       propertyPath: image
       value: 
       objectReference: {fileID: 457853297}
+    - target: {fileID: 5483318884945531360, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5483318884945531361, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
       propertyPath: pushSound
       value: 
@@ -5689,7 +5701,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5483318884945531366, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5483318884945531366, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6006,7 +6018,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cdb97eb0a2dbc8e4ca65854806ce02be, type: 3}
+    m_Font: {fileID: 12800000, guid: 4181bb04c82827648a097d0c141f5a3b, type: 3}
     m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
