@@ -100,7 +100,7 @@ public class PauseMenuSystem : MonoBehaviour
         }
 
         //決定押されていない　＆　上入力なし　＆　下入力なし
-        if (!gamepad.buttonSouth.wasPressedThisFrame &&
+        if (!gamepad.buttonEast.wasPressedThisFrame &&
             gamepad.leftStick.ReadValue().y <= 0.1f &&
             gamepad.leftStick.ReadValue().y >= -0.1f
             )
@@ -195,7 +195,7 @@ public class PauseMenuSystem : MonoBehaviour
     void PauseSystem()
     {
         //押したらポーズ切り替え
-        if (gamepad.buttonNorth.wasPressedThisFrame)
+        if (gamepad.startButton.wasPressedThisFrame)
         {
             ispauseNow = !ispauseNow;
 
