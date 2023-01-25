@@ -3487,7 +3487,7 @@ MonoBehaviour:
   hp_: 100
   power_: 15
   defense_: 0
-  speed_: 2
+  speed_: 5
   nowState: 0
 --- !u!136 &7528715379329557284
 CapsuleCollider:

@@ -16,21 +16,21 @@ public class Fighter_Sensing : MonoBehaviour
 
     public bool sensing;
 
-    //UŒ‚’†‚©”»’è‚·‚éƒtƒ‰ƒO
+    //æ”»æ’ƒä¸­ã‹åˆ¤å®šã™ã‚‹ãƒ•ãƒ©ã‚°
     bool attackFlag = true;
 
-    //UŒ‚‚Ì”­¶
+    //æ”»æ’ƒã®ç™ºç”Ÿ
     [SerializeField]
     float[] attackStartup = new float[3];
 
-    //UŒ‚‚Ì‘±I—¹
+    //æ”»æ’ƒã®æŒç¶šçµ‚äº†
     [SerializeField]
     float[] attackActive = new float[2];
 
-    //UŒ‚‚ª“–‚½‚Á‚½‚©‚Ìƒtƒ‰ƒO
+    //æ”»æ’ƒãŒå½“ãŸã£ãŸã‹ã®ãƒ•ãƒ©ã‚°
     public bool attackHit = false;
 
-    //UŒ‚I—¹‚Ìd’¼
+    //æ”»æ’ƒçµ‚äº†æ™‚ã®ç¡¬ç›´
     [SerializeField]
     float[] attackRecovery = new float[3];
 
@@ -53,7 +53,7 @@ public class Fighter_Sensing : MonoBehaviour
         if (fighter_Status.GetState() == Fighter_Status.State.Non || fighter_Status.GetState() == Fighter_Status.State.Dead)
         { return; }
 
-        //d’¼ŠÔ’†‚Íˆ—‚ğ‚µ‚È‚¢
+        //ç¡¬ç›´æ™‚é–“ä¸­ã¯å‡¦ç†ã‚’ã—ãªã„
         if (!attackFlag) 
         { return; };
 
@@ -86,7 +86,7 @@ public class Fighter_Sensing : MonoBehaviour
 
     void AttackWait(string attackType)
     {
-        //ƒJƒEƒ“ƒg‰Šú‰»•d’¼
+        //ã‚«ã‚¦ãƒ³ãƒˆåˆæœŸåŒ–ï¼†ç¡¬ç›´
         attackFlag = false;
         attackCnt = 0;
 
@@ -106,7 +106,7 @@ public class Fighter_Sensing : MonoBehaviour
                 break;
         }
 
-        //ƒGƒlƒ~[‚ğStayó‘Ô‚É‚·‚é
+        //ã‚¨ãƒãƒŸãƒ¼ã‚’StayçŠ¶æ…‹ã«ã™ã‚‹
         fighter_Status.SetState(Fighter_Status.State.Stay);
 
         attackHit = false;
