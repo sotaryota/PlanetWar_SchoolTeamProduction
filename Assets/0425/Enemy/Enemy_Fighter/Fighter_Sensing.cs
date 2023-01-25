@@ -120,7 +120,11 @@ public class Fighter_Sensing : MonoBehaviour
 
         GameObject hadou = Instantiate(attack_Hadou.gameObject);
         hadou.transform.position = attack_Hadou_ArmPos.transform.position;
-        hadou.transform.LookAt(player.transform.position - this.transform.position);
+
+        Vector3 targetPos = player.transform.position;
+        targetPos.y = hadou.transform.position.y;
+
+        hadou.transform.LookAt(targetPos);
 
         Fighter_HadouMove hadoMove = hadou.GetComponent<Fighter_HadouMove>();
         hadoMove.fighter_Status = this.GetComponent<Fighter_Status>();
