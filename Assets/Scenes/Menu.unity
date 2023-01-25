@@ -1595,7 +1595,7 @@ MonoBehaviour:
     effectSize: 0.5
   - menuImage: {fileID: 1138626449}
     selectPlanet: {fileID: 704145406}
-    sceneName: Main
+    sceneName: Login
     effectSize: 1.2
   nowSelect: 0
   beforeSelect: 0

@@ -8,12 +8,10 @@ public class GameClear_Solo : MonoBehaviour
     [SerializeField] PlayerDataManager playerData;
     [SerializeField] EnemyCreater_Start enemyCreater_Start;
     [SerializeField] GameObject finishText;
-    [SerializeField] PauseMenuSystem pms;
-
+    
     [Header("オーディオ")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip winJingle;
-    [SerializeField] PlayerSEManager playerSE;
     [Header("フェード")]
     [SerializeField] private FadeManager fade;   // フェード
     [SerializeField] private Color fadeColor;    // フェードのカラー
@@ -38,8 +36,6 @@ public class GameClear_Solo : MonoBehaviour
         if (!win) {
             finishText.SetActive(true);
             audioSource.PlayOneShot(winJingle);
-            playerSE.WinVoice();
-            pms.SetCanPause(false);
             npcData.BattleEndData();
             StartCoroutine("winFade");
             win = true;

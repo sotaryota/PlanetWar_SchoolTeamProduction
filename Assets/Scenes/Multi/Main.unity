@@ -385,6 +385,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a99c0b680d7088f4aa2abb45de7a151d, type: 3}
+--- !u!4 &117050248 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7427756316700552877, guid: a99c0b680d7088f4aa2abb45de7a151d, type: 3}
+  m_PrefabInstance: {fileID: 117050247}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &136330727
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +849,8 @@ MonoBehaviour:
   playerStatus: {fileID: 176521504}
   planetCatchRelease: {fileID: 176521499}
   playerAnimator: {fileID: 176521511}
+  myPV: {fileID: 176521514}
+  myPTV: {fileID: 176521513}
 --- !u!114 &176521501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1139,6 +1146,112 @@ MonoBehaviour:
   playerCamera: {fileID: 357414224}
   isCatchColor: {r: 0, g: 1, b: 0, a: 1}
   notCatchColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &176521513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176521497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 3
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    InterpolateMoveTowardsAcceleration: 2
+    InterpolateMoveTowardsDeceleration: 2
+    InterpolateSpeedCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -1
+        value: 0
+        inSlope: 0
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 4
+        value: 4
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+    DrawErrorGizmo: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 2
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
+--- !u!114 &176521514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176521497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 2131034313}
+  - {fileID: 176521498}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 2
+  instantiationId: 2
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1 &188736672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1822,6 +1935,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8bb44dad1a45c2409a065ae6c4907b8, type: 3}
+--- !u!4 &384710189 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1591842196524441422, guid: d8bb44dad1a45c2409a065ae6c4907b8, type: 3}
+  m_PrefabInstance: {fileID: 384710188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &423096237
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,6 +3308,11 @@ PrefabInstance:
       objectReference: {fileID: 2131034315}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2c6b36bd49925740b9d08d7289ca9cc, type: 3}
+--- !u!4 &704152093 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6191628309851457382, guid: b2c6b36bd49925740b9d08d7289ca9cc, type: 3}
+  m_PrefabInstance: {fileID: 704152092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &718128311
 GameObject:
   m_ObjectHideFlags: 0
@@ -4791,6 +4914,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1591842196521367421, guid: d8bb44dad1a45c2409a065ae6c4907b8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d8bb44dad1a45c2409a065ae6c4907b8, type: 3}
+--- !u!4 &1487623824 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1591842196524441422, guid: d8bb44dad1a45c2409a065ae6c4907b8, type: 3}
+  m_PrefabInstance: {fileID: 1487623823}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1490206755
 GameObject:
   m_ObjectHideFlags: 0
@@ -6364,6 +6492,8 @@ MonoBehaviour:
   playerStatus: {fileID: 2131034315}
   planetCatchRelease: {fileID: 2131034321}
   playerAnimator: {fileID: 2131034326}
+  myPV: {fileID: 2131034329}
+  myPTV: {fileID: 2131034328}
 --- !u!114 &2131034321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6476,6 +6606,116 @@ MonoBehaviour:
   playerCamera: {fileID: 1757743387}
   isCatchColor: {r: 0, g: 1, b: 0, a: 1}
   notCatchColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &2131034328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131034312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 3
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    InterpolateMoveTowardsAcceleration: 2
+    InterpolateMoveTowardsDeceleration: 2
+    InterpolateSpeedCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: -1
+        value: 0
+        inSlope: 0
+        outSlope: Infinity
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 4
+        value: 4
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+    DrawErrorGizmo: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 2
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
+--- !u!114 &2131034329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131034312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 2131034313}
+  - {fileID: 176521498}
+  - {fileID: 384710189}
+  - {fileID: 1487623824}
+  - {fileID: 704152093}
+  - {fileID: 117050248}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 1
+  instantiationId: 1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1001 &2137602111
 PrefabInstance:
   m_ObjectHideFlags: 0

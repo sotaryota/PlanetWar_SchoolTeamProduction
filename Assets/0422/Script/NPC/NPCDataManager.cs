@@ -44,7 +44,6 @@ public class NPCDataManager : MonoBehaviour
     [SerializeField] int eventId; // 話しかけたNPCのイベントID
     [Header("全NPCの状態")]
     public List<NPCClass.NPCState> npcStateList;
-    NPCList list;
 
     /// <summary>
     /// バトル移行時に呼ぶ関数
@@ -54,11 +53,6 @@ public class NPCDataManager : MonoBehaviour
     {
         eventId = id;
         enemyName = enemy;
-        list = GameObject.Find("NPCStateList").GetComponent<NPCList>();
-        for (int i = 0; i < npcStateList.Count; ++i)
-        {
-            npcStateList[i] = list.npcList[i].GetState();
-        }                
     }    
 
     public void BattleEndData()
