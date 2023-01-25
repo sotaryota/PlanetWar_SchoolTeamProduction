@@ -17,7 +17,7 @@ public class Fighter_HadouMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.position += new Vector3(0, 0, flySpeed * Time.deltaTime);
+        this.transform.Translate(0, 0, flySpeed * Time.deltaTime);
     }
 
     private void OnParticleCollision(GameObject other)
