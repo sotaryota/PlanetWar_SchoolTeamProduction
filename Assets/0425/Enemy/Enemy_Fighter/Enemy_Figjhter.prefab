@@ -5307,6 +5307,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3373382371925378240, guid: 0d60c7a9a9a8d834f89282707ad40e91, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373382371925378240, guid: 0d60c7a9a9a8d834f89282707ad40e91, type: 3}
       propertyPath: CollisionModule.type
       value: 1
       objectReference: {fileID: 0}
