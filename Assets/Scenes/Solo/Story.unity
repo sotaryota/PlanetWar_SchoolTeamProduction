@@ -7016,6 +7016,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 402750139}
     - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
+      propertyPath: playerStatus_Solo
+      value: 
+      objectReference: {fileID: 454796601}
+    - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
       propertyPath: buttonClass.Array.size
       value: 2
       objectReference: {fileID: 0}

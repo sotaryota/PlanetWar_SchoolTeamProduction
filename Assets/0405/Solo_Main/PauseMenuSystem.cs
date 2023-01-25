@@ -79,7 +79,10 @@ public class PauseMenuSystem : MonoBehaviour
         ispauseNow = false;
         canPause = true;
         nextscene = "";
-
+        if (!playerStatus_Solo)
+        {
+            playerStatus_Solo = null;
+        }
         //‰ŠúˆÊ’u
         nowSelecting = 0;
         prevSelecting = nowSelecting;
