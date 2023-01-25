@@ -6217,6 +6217,44 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 2656818075813291853, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
   m_PrefabInstance: {fileID: 709274233}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1450203586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450203574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4704b2c279a82884794115c89b9cebd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pitch: 1
+  volume: 1
+  audioSource: {fileID: 1450203585}
+  throwVoice:
+  - {fileID: 8300000, guid: 004d2137c3223464592905034d564295, type: 3}
+  - {fileID: 8300000, guid: 1360ea449350d294e9633797c7a74a0a, type: 3}
+  - {fileID: 8300000, guid: aa9ef97462d240a4bb68933e8db83ff3, type: 3}
+  - {fileID: 8300000, guid: 0bda25ad5f1a9394b8513274a7ff3f05, type: 3}
+  damageVoice:
+  - {fileID: 8300000, guid: 0a34736cbb4b4d948a3d145c70a4c75d, type: 3}
+  - {fileID: 8300000, guid: 53d7c21094b5180499f04f4a4d4c2fe5, type: 3}
+  - {fileID: 8300000, guid: 1338e3886df6acb4183e103b928081f4, type: 3}
+  - {fileID: 8300000, guid: 8cb2312fa89ed0d42adcbe13ca09f256, type: 3}
+  waitVoice:
+  - {fileID: 8300000, guid: ec4455a6835b66747b405ef3c51e6607, type: 3}
+  - {fileID: 8300000, guid: ab333294c492a524ea43f4564e33a485, type: 3}
+  - {fileID: 8300000, guid: 4ff2a2a38a0d173428514c3615843727, type: 3}
+  winVoice:
+  - {fileID: 8300000, guid: 08df7c3b576e2ad4b897860bff445b31, type: 3}
+  - {fileID: 8300000, guid: 571bf0c583b08cd4c9d80a68a0f7ec26, type: 3}
+  - {fileID: 8300000, guid: af7d08b1e4946154d8409f06e5accf79, type: 3}
+  deathVoice:
+  - {fileID: 8300000, guid: dea1f2555bd29024fb999b2ae9423c88, type: 3}
+  - {fileID: 8300000, guid: 6903674e5152a964ead82df654d5c10c, type: 3}
+  - {fileID: 8300000, guid: d7da64a5b00c155419dc47da371b6a6f, type: 3}
+  - {fileID: 8300000, guid: 1055988bfc7ff834c8f768ed359ff300, type: 3}
 --- !u!1 &1450568765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000012446315042, guid: ee13eb3995e3b5e48ac9419c5f55ed4a, type: 3}
