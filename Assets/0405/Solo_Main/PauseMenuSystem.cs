@@ -29,7 +29,8 @@ public class PauseMenuSystem : MonoBehaviour
     protected bool selectLock;
     //多重クリック防止のbool
     protected bool onButton;
-
+    //会話中にポーズ不可にする
+    [SerializeField] PlayerStatus_Solo playerStatus_Solo;
     //フェード
     [SerializeField]
     protected Fade fadeScript;
@@ -40,7 +41,7 @@ public class PauseMenuSystem : MonoBehaviour
     public class Button
     {
         public GameObject buttonImage;
-        public menu menuCell; 
+        public menu menuCell;
     }
     [SerializeField]
     protected Button[] buttonClass = new Button[1];
@@ -86,7 +87,14 @@ public class PauseMenuSystem : MonoBehaviour
     void Update()
     {
         gamepad = Gamepad.current;
-
+        if (playerStatus_Solo != null)
+        {
+            if (playerStatus_Solo.GetState() == PlayerStatus_Solo.State.Talking)
+            {
+                canPause = false;
+            }
+            else { canPause = true; }
+        }
         if (canPause)
         {
             PauseSystem();
