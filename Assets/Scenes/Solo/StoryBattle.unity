@@ -6428,6 +6428,7 @@ MonoBehaviour:
   playerstatus: {fileID: 1450203579}
   HPBlackGauge: {fileID: 1119310068}
   damageMotion: {fileID: 1454529684}
+  playerSE: {fileID: 1450203586}
 --- !u!1 &1500946463
 GameObject:
   m_ObjectHideFlags: 0
@@ -10123,6 +10124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb0de24b494f7b428ad04fa2d862908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStatus_Solo: {fileID: 0}
   fadeScript: {fileID: 6746115404553590500}
   buttonClass:
   - buttonImage: {fileID: 106709864}

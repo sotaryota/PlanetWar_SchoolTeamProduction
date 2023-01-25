@@ -15,6 +15,8 @@ public class HPGauge_Solo : MonoBehaviour
 
     [SerializeField]
     Animator damageMotion;
+    [SerializeField]
+    PlayerSEManager playerSE;
 
     float maxHP = 100f;
     float nowHP;
@@ -47,6 +49,7 @@ public class HPGauge_Solo : MonoBehaviour
     {
         if (beforeHp > nowHP)
         {
+            playerSE.DamageVoice();
             damageMotion.SetTrigger("damage");
             beforeHp = nowHP;
         }
