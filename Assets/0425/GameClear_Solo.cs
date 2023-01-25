@@ -8,7 +8,8 @@ public class GameClear_Solo : MonoBehaviour
     [SerializeField] PlayerDataManager playerData;
     [SerializeField] EnemyCreater_Start enemyCreater_Start;
     [SerializeField] GameObject finishText;
-    
+    [SerializeField] PauseMenuSystem pms;
+
     [Header("オーディオ")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip winJingle;
@@ -36,6 +37,7 @@ public class GameClear_Solo : MonoBehaviour
         if (!win) {
             finishText.SetActive(true);
             audioSource.PlayOneShot(winJingle);
+            pms.SetCanPause(false);
             npcData.BattleEndData();
             StartCoroutine("winFade");
             win = true;
