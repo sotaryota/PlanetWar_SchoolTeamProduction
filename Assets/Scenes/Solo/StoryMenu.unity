@@ -648,6 +648,7 @@ MonoBehaviour:
   audioSource: {fileID: 316225824}
   selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
   pushSound: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
+  loadPrefab: {fileID: 876193552021031369, guid: 5671cc0c4eb3c904da67b6c22995e76e, type: 3}
 --- !u!1 &535778327
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,6 +63,10 @@ public class PauseMenuSystem : MonoBehaviour
     protected bool ispauseNow;
     //ポーズメニューを展開できる状態かどうか
     protected bool canPause;
+
+    [SerializeField]
+    private SaveLoad saveLoad;
+
     public void SetCanPause(bool value)
     {
         canPause = value;
@@ -192,6 +196,7 @@ public class PauseMenuSystem : MonoBehaviour
                         fadeScript.fademode = true;
                         Time.timeScale = 1.0f;
                         nextscene = "StoryMenu";
+                        saveLoad.GetComponent<SaveLoad>().Save();
                         break;
                     default:
                         break;
