@@ -3487,7 +3487,7 @@ MonoBehaviour:
   hp_: 100
   power_: 15
   defense_: 0
-  speed_: 2
+  speed_: 5
   nowState: 0
 --- !u!136 &7528715379329557284
 CapsuleCollider:
@@ -5305,6 +5305,10 @@ PrefabInstance:
     - target: {fileID: 3373382371925378240, guid: 0d60c7a9a9a8d834f89282707ad40e91, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373382371925378240, guid: 0d60c7a9a9a8d834f89282707ad40e91, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3373382371925378240, guid: 0d60c7a9a9a8d834f89282707ad40e91, type: 3}
       propertyPath: CollisionModule.type
