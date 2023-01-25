@@ -64,7 +64,7 @@ public class PlanetCatchRelease_Solo: MonoBehaviour
             throwMove.ThrowMoveSetting(throwSpeed, throwAngle);
 
             //“Š‚°‚éƒ{ƒCƒXÄ¶
-            //this.GetComponent<PlayerSEManager>().ThrowVoice();
+            this.GetComponent<PlayerSEManager>().ThrowVoice();
 
             //•Ï”‚ğ‹ó‚É‚µ‚Ä”ò‚Î‚·
             planet = null;
