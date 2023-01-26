@@ -23,34 +23,15 @@ public class PlayerMove : MonoBehaviour
 
     Vector3 moveForward;
 
-    public PhotonView myPV;
-    public PhotonTransformView myPTV;
-
     private void Start()
     {
-
-        if (myPV.isMine)    //自キャラであれば実行
-        {
-            if (gamepad == null)
-            {
-                gamepad = Gamepad.all[playerStatus.GetID()];
-            }
-        }
-
         rb  = GetComponent<Rigidbody>();
-
     }
 
     private void Update()
     {
-
-        if (!myPV.isMine)
-        {
-            return;
-        }
-
         //プレイヤが存在しないor死んでいるなら処理をしない
-        if (playerStatus.GetState() == PlayerStatus.State.Non || playerStatus.GetState() == PlayerStatus.State.Dead)
+        if(playerStatus.GetState() == PlayerStatus.State.Non || playerStatus.GetState() == PlayerStatus.State.Dead)
         { return; }
 
         if (gamepad == null)
@@ -67,7 +48,6 @@ public class PlayerMove : MonoBehaviour
         PlayerLook();
         MoveOrStop();
 
-        
     }
 
     //--------------------------------------

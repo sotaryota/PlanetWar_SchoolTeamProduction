@@ -5,11 +5,10 @@ using UnityEngine;
 public class NPCList : MonoBehaviour
 {
     [SerializeField] NPCDataManager npcData;
-    [SerializeField] List<NPCClass> npcList;
+    public List<NPCClass> npcList;
    
     private void Awake()
     {
-        //”ß‚µ‚Ý‚ÌFind
         npcData = GameObject.Find("DataManager").GetComponent<NPCDataManager>();
         for (int i = 0;i < npcList.Count;++i)
         {

@@ -43,6 +43,8 @@ public class Solo_Menu_System : MonoBehaviour
     int nowSelecting;
     //直前に選択したボタン
     int prevSelecting;
+    [SerializeField] GameObject loadPrefab;
+    ContinueLoad continueLoad;
 
     void Start()
     {
@@ -55,6 +57,8 @@ public class Solo_Menu_System : MonoBehaviour
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
         buttonClass[0].buttonImage.GetComponent<Animator>().SetBool("selected", true);
+        GameObject go = Instantiate(loadPrefab);
+        continueLoad = go.GetComponent<ContinueLoad>();
     }
 
     void Update()
@@ -136,10 +140,12 @@ public class Solo_Menu_System : MonoBehaviour
                 {
                     case menu.NewGame:
                         fadeScript.fademode = true;
+                        continueLoad.nextSceneName = "Opening";
                         nextscene = "Opening";
                         break;
                     case menu.Continue:
                         fadeScript.fademode = true;
+                        continueLoad.nextSceneName = "Story";
                         nextscene = "Story";
                         break;
                     case menu.BackMenu:
