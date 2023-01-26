@@ -4076,6 +4076,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1450203574}
     - target: {fileID: 7098140168121519948, guid: 0dc61541cf6b9f14b9356e1305cc9351, type: 3}
+      propertyPath: source
+      value: 
+      objectReference: {fileID: 1450203585}
+    - target: {fileID: 7098140168121519948, guid: 0dc61541cf6b9f14b9356e1305cc9351, type: 3}
       propertyPath: max_TargetPos.x
       value: 17
       objectReference: {fileID: 0}
@@ -10140,6 +10144,7 @@ MonoBehaviour:
   openSound: {fileID: 8300000, guid: 53f5cc905c5230b4dac1390b60fa38d9, type: 3}
   selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
   pushSound: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
+  saveLoad: {fileID: 0}
 --- !u!64 &6751363179348710391
 MeshCollider:
   m_ObjectHideFlags: 0
