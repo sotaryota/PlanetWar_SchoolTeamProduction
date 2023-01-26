@@ -67,6 +67,7 @@ public class PauseMenuSystem : MonoBehaviour
     [SerializeField]
     private SaveLoad saveLoad;
 
+    [SerializeField] GameObject dataManager;
     public void SetCanPause(bool value)
     {
         canPause = value;
@@ -87,6 +88,7 @@ public class PauseMenuSystem : MonoBehaviour
         nowSelecting = 0;
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
+        dataManager = GameObject.Find("DataManager");
         //buttonClass[0].buttonImage.GetComponent<Animator>().SetBool("selected", true);
         PausePanel.SetActive(false);
     }
@@ -197,6 +199,7 @@ public class PauseMenuSystem : MonoBehaviour
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
+                        Destroy(dataManager);
                         Time.timeScale = 1.0f;
                         nextscene = "StoryMenu";
                         saveLoad.GetComponent<SaveLoad>().Save();
