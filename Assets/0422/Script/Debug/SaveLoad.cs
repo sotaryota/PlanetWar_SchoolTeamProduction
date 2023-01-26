@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
 public class SaveLoad : MonoBehaviour
 {
-    [SerializeField] NPCList npcList;
+    [SerializeField] NPCList  npcList;
     [SerializeField] SaveData saveData;
 
     private void Awake()
@@ -15,23 +13,23 @@ public class SaveLoad : MonoBehaviour
     }
     public void Save()
     {
-        print("‚¹[‚Ô"); 
+        // NPC‚Ìó‘Ô‚ğ•Û‘¶
         for (int i = 0;i < npcList.npcList.Count;++i)
         {
             saveData.npcStateList[i] = npcList.npcList[i].GetState();
         }
         string json = JsonUtility.ToJson(saveData);
-
         File.WriteAllText(Application.persistentDataPath + "/" + ".savedata.json", json);
     }
     public void Load()
     {
-        print("ƒ[ƒh");
         string filePath = Application.persistentDataPath + "/" + ".savedata.json";
         if (File.Exists(filePath))
         {
             string json = File.ReadAllText(filePath);
             saveData = JsonUtility.FromJson<SaveData>(json);
+            
+            // NPC‚Ìó‘Ô‚ğ•œŒ³
             for (int i = 0; i < npcList.npcList.Count; ++i)
             {
                 npcList.npcList[i].SetState(saveData.npcStateList[i]);

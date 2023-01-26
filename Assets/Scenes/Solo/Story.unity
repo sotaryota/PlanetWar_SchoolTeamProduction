@@ -2834,15 +2834,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -60.6
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 177.9
+      value: 13.5
       objectReference: {fileID: 0}
     - target: {fileID: 4696272616346664907, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3538,7 +3538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56200027128fbb2418e4ed906468c359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {x: -15, y: 0, z: 150}
+  playerPos: {x: 15, y: 0, z: 13.5}
   playerAngle: {x: 0, y: 0, z: 0, w: 0}
   cameraAngle: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &787326479
@@ -6647,6 +6647,7 @@ MonoBehaviour:
   npcList: {fileID: 0}
   saveData:
     npcStateList: 
+    PlayerPos: {x: 0, y: 0, z: 0}
 --- !u!4 &1724003095
 Transform:
   m_ObjectHideFlags: 0

@@ -92,6 +92,7 @@ public class Solo_Menu_System : MonoBehaviour
         //フェードが終わったらシーン遷移
         if (fadeScript.FadeOut())
         {
+            SceneManager.sceneLoaded += continueLoad.Continue;
             SceneManager.LoadScene(nextscene);
         }
     }
@@ -140,12 +141,10 @@ public class Solo_Menu_System : MonoBehaviour
                 {
                     case menu.NewGame:
                         fadeScript.fademode = true;
-                        continueLoad.nextSceneName = "Opening";
                         nextscene = "Opening";
                         break;
                     case menu.Continue:
                         fadeScript.fademode = true;
-                        continueLoad.nextSceneName = "Story";
                         nextscene = "Story";
                         break;
                     case menu.BackMenu:
