@@ -5,7 +5,7 @@ using UnityEngine;
 public class NPCList : MonoBehaviour
 {
     [SerializeField] NPCDataManager npcData;
-    [SerializeField] List<NPCClass> npcList;
+    public List<NPCClass> npcList;
    
     private void Awake()
     {

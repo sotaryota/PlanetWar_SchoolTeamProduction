@@ -35,6 +35,8 @@ public class CameraController : MonoBehaviour
     //ズーム処理用(仮)
     bool SettlementSceneFlag = false;
 
+    public PhotonView myPV;
+
     void Start()
     {
         testInputActions = new TestInputActions();
@@ -51,9 +53,12 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (gamepad == null)
+        if (myPV.isMine)    //自キャラであれば実行
         {
-            gamepad = Gamepad.all[playerID];
+            if (gamepad == null)
+            {
+                gamepad = Gamepad.all[playerStatus.GetID()];
+            }
         }
 
         //ロックオン画像の位置を変更

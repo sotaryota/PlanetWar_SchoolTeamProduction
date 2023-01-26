@@ -49,6 +49,14 @@ public class PlayerMove : MonoBehaviour
             return;
         }
 
+        if (myPV.isMine)    //自キャラであれば実行
+        {
+            if (gamepad == null)
+            {
+                gamepad = Gamepad.all[playerStatus.GetID()];
+            }
+        }
+
         //プレイヤが存在しないor死んでいるなら処理をしない
         if (playerStatus.GetState() == PlayerStatus.State.Non || playerStatus.GetState() == PlayerStatus.State.Dead)
         { return; }
