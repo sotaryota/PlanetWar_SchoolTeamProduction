@@ -3,16 +3,21 @@ using System.IO;
 
 public class SaveLoad : MonoBehaviour
 {
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject playerCamera;
     [SerializeField] NPCList  npcList;
     [SerializeField] SaveData saveData;
 
     private void Awake()
     {
         saveData = new SaveData();
-        npcList = GameObject.Find("NPCStateList").GetComponent<NPCList>();
     }
     public void Save()
     {
+        saveData.playerPos   = player.transform.position;
+        saveData.playerAngle = player.transform.rotation;
+        saveData.cameraAngle = playerCamera.transform.rotation;
+
         // NPCの状態を保存
         for (int i = 0;i < npcList.npcList.Count;++i)
         {
@@ -28,8 +33,12 @@ public class SaveLoad : MonoBehaviour
         {
             string json = File.ReadAllText(filePath);
             saveData = JsonUtility.FromJson<SaveData>(json);
-            
-            // NPCの状態を復元
+
+            // プレイヤーをセーブ位置に復帰
+            player.transform.position = saveData.playerPos;
+            player.transform.rotation = saveData.playerAngle;
+            playerCamera.transform.rotation = saveData.cameraAngle;
+            // NPCの状態を復元                                   
             for (int i = 0; i < npcList.npcList.Count; ++i)
             {
                 npcList.npcList[i].SetState(saveData.npcStateList[i]);
