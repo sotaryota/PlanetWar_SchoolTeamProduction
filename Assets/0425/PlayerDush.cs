@@ -14,6 +14,8 @@ public class PlayerDush : MonoBehaviour
 
     Gamepad gamepad;
 
+    [SerializeField] GameObject playerFoot; //足元の判定
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,16 +26,20 @@ public class PlayerDush : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gamepad.rightShoulder.isPressed)
+        if (playerFoot.GetComponent<PlayerGroundCheck>().isGround)
         {
-            print("ダッシュ");
-            playerStatus_Solo.SetSpeed(dushSpeed);
-            playerAnimManeger.PlayAnimSetSprint(true);
+            if (gamepad.rightShoulder.isPressed)
+            {
+                print("ダッシュ");
+                playerStatus_Solo.SetSpeed(dushSpeed);
+                playerAnimManeger.PlayAnimSetSprint(true);
+            }  
+            else
+            {
+                playerStatus_Solo.SetSpeed(speed);
+                playerAnimManeger.PlayAnimSetSprint(false);
+            }
         }
-        else
-        {
-            playerStatus_Solo.SetSpeed(speed);
-            playerAnimManeger.PlayAnimSetSprint(false);
-        }
+       
     }
 }
