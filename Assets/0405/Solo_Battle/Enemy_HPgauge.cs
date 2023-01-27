@@ -18,10 +18,6 @@ public class Enemy_HPgauge : MonoBehaviour
     [SerializeField]
     private float distance = 2.5f;
 
-    [Header("HPを正面に表示する処理")]
-    [SerializeField]
-    private Image HPGauge;
-
     [Header("ダメージ効果音")]
     [SerializeField]
     private AudioSource audioSource;
@@ -86,15 +82,19 @@ public class Enemy_HPgauge : MonoBehaviour
 
         //自分より前
         Vector3 judgeVec = myEnemy.transform.position - camera.transform.position;
-        judgeVec.y = 0;
+        bool frontJudge = false;
+        if (Vector3.Dot(judgeVec.normalized, camera.transform.forward) >= 0)
+        {
+            frontJudge = true;
+        }
 
         Image greenImg = this.GetComponent<Image>();
         GameObject child = this.transform.GetChild(0).gameObject;
         Image blackImg = child.GetComponentInChildren<Image>();
 
-        //bool ans = inCameraJudge && frontJudge;
-        //greenImg.enabled = ans;
-        //blackImg.enabled = ans;
+        bool ans = inCameraJudge && frontJudge;
+        greenImg.enabled = ans;
+        blackImg.enabled = ans;
 
     }
 }
