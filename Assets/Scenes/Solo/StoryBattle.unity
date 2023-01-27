@@ -1317,7 +1317,7 @@ Transform:
   - {fileID: 519513725}
   - {fileID: 1943271972}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &263566734
 GameObject:
@@ -4093,7 +4093,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7098140168121519948, guid: 0dc61541cf6b9f14b9356e1305cc9351, type: 3}
       propertyPath: gizumos_CreateArea
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7098140168121519951, guid: 0dc61541cf6b9f14b9356e1305cc9351, type: 3}
       propertyPath: m_Name
@@ -4902,7 +4902,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1119310068 stripped
 MonoBehaviour:
@@ -5662,7 +5662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5483318884945531366, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5483318884945531366, guid: 82ba3f1ae09668a42b6d590a5aacd798, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7819,7 +7819,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2011893232
 GameObject:

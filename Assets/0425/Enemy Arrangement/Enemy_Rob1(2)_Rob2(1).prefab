@@ -275,6 +275,14 @@ PrefabInstance:
       propertyPath: hp_
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 7008775697719977352, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+      propertyPath: power_
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7008775697719977352, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+      propertyPath: speed_
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7008775697719977359, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
       propertyPath: m_Name
       value: Enemy_Rob2

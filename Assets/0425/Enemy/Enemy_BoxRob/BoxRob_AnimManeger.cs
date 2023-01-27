@@ -22,11 +22,7 @@ public class BoxRob_AnimManeger : MonoBehaviour
     {
         animator.SetTrigger("die");
     }
-    ////惑星の生成モーション
-    //public void PlayRob1AnimGeneration()
-    //{
-    //    animator.SetTrigger("generation");
-    //}
+   
 
 
     //走行モーション

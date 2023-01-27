@@ -7,8 +7,11 @@ public class AilianTurret_Move : MonoBehaviour
     [SerializeField] AilianTurret_Status ailianTurret_Status;
 
     [SerializeField] float rotateSpeed;
+    [SerializeField] ParticleSystem dieEffect;
 
     GameObject player;
+
+    bool die = false;
     private void Start()
     {
         rotateSpeed = ailianTurret_Status.GetSpeed();
@@ -19,7 +22,14 @@ public class AilianTurret_Move : MonoBehaviour
     void Update()
     {
         if (ailianTurret_Status.GetState() == AilianTurret_Status.State.Non || ailianTurret_Status.GetState() == AilianTurret_Status.State.Dead)
-        { return; }
+        {
+            if (die == false)
+            {
+                dieEffect.Play();
+                die = true;
+            }
+            return;
+        }
 
         // ターゲット方向のベクトルを取得
         Vector3 relativePos = player.transform.position - this.transform.position;

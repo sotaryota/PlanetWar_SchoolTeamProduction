@@ -273,7 +273,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 333007702, guid: 1f6d176f1c2ab854388dce1a7913530e, type: 3}
       propertyPath: hp_
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 333007703, guid: 1f6d176f1c2ab854388dce1a7913530e, type: 3}
       propertyPath: rotateSpeed
@@ -365,7 +365,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 333007702, guid: 1f6d176f1c2ab854388dce1a7913530e, type: 3}
       propertyPath: hp_
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 333007703, guid: 1f6d176f1c2ab854388dce1a7913530e, type: 3}
       propertyPath: rotateSpeed
