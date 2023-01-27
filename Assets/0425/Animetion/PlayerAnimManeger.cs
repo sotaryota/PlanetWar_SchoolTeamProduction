@@ -48,7 +48,12 @@ public class PlayerAnimManeger : MonoBehaviour
     {
         animator.SetBool("run", AnimFlag);
     }
-    //走行モーション
+    //ダッシュモーション
+    public void PlayAnimSetSprint(bool AnimFlag)
+    {
+        animator.SetBool("sprint", AnimFlag);
+    }
+    //ジャンプモーション
     public void PlayAnimSetJump(bool AnimFlag)
     {
         animator.SetBool("jump", AnimFlag);
