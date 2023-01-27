@@ -29,7 +29,8 @@ public class PauseMenuSystem : MonoBehaviour
     protected bool selectLock;
     //多重クリック防止のbool
     protected bool onButton;
-
+    //会話中にポーズ不可にする
+    [SerializeField] PlayerStatus_Solo playerStatus_Solo;
     //フェード
     [SerializeField]
     protected Fade fadeScript;
@@ -40,7 +41,7 @@ public class PauseMenuSystem : MonoBehaviour
     public class Button
     {
         public GameObject buttonImage;
-        public menu menuCell; 
+        public menu menuCell;
     }
     [SerializeField]
     protected Button[] buttonClass = new Button[1];
@@ -62,6 +63,11 @@ public class PauseMenuSystem : MonoBehaviour
     protected bool ispauseNow;
     //ポーズメニューを展開できる状態かどうか
     protected bool canPause;
+
+    [SerializeField]
+    private SaveLoad saveLoad;
+
+    [SerializeField] GameObject dataManager;
     public void SetCanPause(bool value)
     {
         canPause = value;
@@ -74,11 +80,15 @@ public class PauseMenuSystem : MonoBehaviour
         ispauseNow = false;
         canPause = true;
         nextscene = "";
-
+        if (!playerStatus_Solo)
+        {
+            playerStatus_Solo = null;
+        }
         //初期位置
         nowSelecting = 0;
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
+        dataManager = GameObject.Find("DataManager");
         //buttonClass[0].buttonImage.GetComponent<Animator>().SetBool("selected", true);
         PausePanel.SetActive(false);
     }
@@ -86,7 +96,14 @@ public class PauseMenuSystem : MonoBehaviour
     void Update()
     {
         gamepad = Gamepad.current;
-
+        if (playerStatus_Solo != null)
+        {
+            if (playerStatus_Solo.GetState() == PlayerStatus_Solo.State.Talking)
+            {
+                canPause = false;
+            }
+            else { canPause = true; }
+        }
         if (canPause)
         {
             PauseSystem();
@@ -182,8 +199,10 @@ public class PauseMenuSystem : MonoBehaviour
                         selectLock = true;
                         onButton = true;
                         fadeScript.fademode = true;
+                        Destroy(dataManager);
                         Time.timeScale = 1.0f;
                         nextscene = "StoryMenu";
+                        saveLoad.GetComponent<SaveLoad>().Save();
                         break;
                     default:
                         break;
