@@ -156,6 +156,7 @@ public class Write_Effect : MonoBehaviour
             yield return 0;
         }
 
+        audioSource.PlayOneShot(select);
         // Œˆ’èŽž
         switch (nowSelect)
         {
@@ -203,6 +204,7 @@ public class Write_Effect : MonoBehaviour
                 // ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚½‚ç‚·‚×‚Ä•\Ž¦
                 if (gamepad.buttonEast.isPressed)
                 {
+                    audioSource.PlayOneShot(select);
                     visibleLength = talkText.Length - 1;
                 }
             }
