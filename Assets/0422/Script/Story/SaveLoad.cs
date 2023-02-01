@@ -19,7 +19,7 @@ public class SaveLoad : MonoBehaviour
         saveData.cameraAngle = playerCamera.transform.rotation;
 
         // NPC‚Ìó‘Ô‚ğ•Û‘¶
-        for (int i = 0;i < npcList.npcList.Count;++i)
+        for (int i = 0;i < npcList.npcList.Length;++i)
         {
             saveData.npcStateList[i] = npcList.npcList[i].GetState();
         }
@@ -39,7 +39,7 @@ public class SaveLoad : MonoBehaviour
             player.transform.rotation = saveData.playerAngle;
             playerCamera.transform.rotation = saveData.cameraAngle;
             // NPC‚Ìó‘Ô‚ğ•œŒ³                                   
-            for (int i = 0; i < npcList.npcList.Count; ++i)
+            for (int i = 0; i < npcList.npcList.Length; ++i)
             {
                 npcList.npcList[i].SetState(saveData.npcStateList[i]);
             }
