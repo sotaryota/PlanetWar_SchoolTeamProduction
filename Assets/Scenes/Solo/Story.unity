@@ -1038,7 +1038,7 @@ PrefabInstance:
       objectReference: {fileID: 1698950231}
     - target: {fileID: 324134993115607254, guid: 2029d97fff75831418ade37f23942273, type: 3}
       propertyPath: m_Name
-      value: "\u3053\u3084\u306A\u304E\u30ED\u30DC"
+      value: "\u5C0F\u67F3\u30ED\u30DC"
       objectReference: {fileID: 0}
     - target: {fileID: 6284272685876914036, guid: 2029d97fff75831418ade37f23942273, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1412,7 +1412,7 @@ MonoBehaviour:
   - 
   nowState: 0
   firstSelectState: 0
-  nonSelectState: 4
+  nonSelectState: 3
   secondSelectState: 0
   endState: 0
 --- !u!95 &225277156
@@ -4159,7 +4159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56200027128fbb2418e4ed906468c359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {x: 15, y: 0, z: 180}
+  playerPos: {x: 15, y: 0, z: 13.5}
   playerAngle: {x: 0, y: 0, z: 0, w: 0}
   cameraAngle: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &787326479
@@ -6253,6 +6253,7 @@ MonoBehaviour:
   selectImage:
   - {fileID: 350984336}
   - {fileID: 159117760}
+  nextTextIcon: {fileID: 0}
   feedTime: 0.1
   newLineTime: 0.1
   selectWait: 0.5
@@ -7416,7 +7417,7 @@ MonoBehaviour:
   - 
   nowState: 0
   firstSelectState: 0
-  nonSelectState: 4
+  nonSelectState: 3
   secondSelectState: 0
   endState: 0
 --- !u!95 &1698950231
