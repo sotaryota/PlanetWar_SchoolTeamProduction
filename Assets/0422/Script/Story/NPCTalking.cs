@@ -236,7 +236,6 @@ public class NPCTalking : MonoBehaviour
                 // ボタンを押したらすべて表示
                 if (skipFlag && gamepad.buttonEast.isPressed)
                 {
-                    audioSource.PlayOneShot(selectSE);
                     visibleLength = talkText.Length;
                     talkTextObj.text = talkText.Substring(0, visibleLength);
                     yield return new WaitForSeconds(0.3f);
@@ -261,6 +260,7 @@ public class NPCTalking : MonoBehaviour
                             {
                                 yield return 0;
                             }
+                            audioSource.PlayOneShot(selectSE);
                             yield return new WaitForSeconds(selectWait);
 
                             //セレクト状態に変更
@@ -281,6 +281,7 @@ public class NPCTalking : MonoBehaviour
                             {
                                 yield return 0;
                             }
+                            audioSource.PlayOneShot(selectSE);
                             yield return new WaitForSeconds(newLineTime);
 
                             npc.GetComponent<NPCClass>().SetState(npc.GetComponent<NPCClass>().GetNonSelectState());
@@ -295,6 +296,7 @@ public class NPCTalking : MonoBehaviour
                         {
                             yield return 0;
                         }
+                        audioSource.PlayOneShot(selectSE);
                         yield return new WaitForSeconds(newLineTime);
 
                         //会話終了状態に変更
@@ -309,6 +311,7 @@ public class NPCTalking : MonoBehaviour
                         {
                             yield return 0;
                         }
+                        audioSource.PlayOneShot(selectSE);
                         yield return new WaitForSeconds(newLineTime);
 
                         //テキストボックス非表示
@@ -332,6 +335,7 @@ public class NPCTalking : MonoBehaviour
                         {
                             yield return 0;
                         }
+                        audioSource.PlayOneShot(selectSE);
                         yield return new WaitForSeconds(newLineTime);
 
                         StartCoroutine("BattleSceneChange");
@@ -342,6 +346,7 @@ public class NPCTalking : MonoBehaviour
                         {
                             yield return 0;
                         }
+                        audioSource.PlayOneShot(selectSE);
                         yield return new WaitForSeconds(newLineTime);
 
                         //テキストボックス非表示
@@ -370,6 +375,7 @@ public class NPCTalking : MonoBehaviour
                 {
                     yield return 0;
                 }
+                audioSource.PlayOneShot(selectSE);
                 yield return new WaitForSeconds(newLineTime);
             }
         }

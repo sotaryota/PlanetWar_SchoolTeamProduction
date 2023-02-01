@@ -457,7 +457,6 @@ GameObject:
   - component: {fileID: 183624385}
   - component: {fileID: 183624384}
   - component: {fileID: 183624383}
-  - component: {fileID: 183624382}
   m_Layer: 0
   m_Name: PlayerFoot
   m_TagString: Untagged
@@ -465,21 +464,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &183624382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 183624381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d135a3e818ed0324ba071349fac61752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effect: {fileID: 0}
-  playerStatus: {fileID: 1389656591}
-  ground: {fileID: 0}
 --- !u!114 &183624383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9297,5 +9281,7 @@ MonoBehaviour:
   openSound: {fileID: 8300000, guid: 53f5cc905c5230b4dac1390b60fa38d9, type: 3}
   selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
   pushSound: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
+  playerJump: {fileID: 0}
+  talk: {fileID: 0}
   saveLoad: {fileID: 0}
   dataManager: {fileID: 0}
