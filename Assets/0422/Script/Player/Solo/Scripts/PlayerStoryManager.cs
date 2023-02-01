@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerStoryManager : MonoBehaviour
 {
     Gamepad gamepad;
-    [SerializeField] Write_Effect effect;
+    [SerializeField] NPCTalking talk;
     [SerializeField] PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerGroundCheck ground;
     [SerializeField] PauseMenuSystem pause;
@@ -27,17 +27,17 @@ public class PlayerStoryManager : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (pause.GetComponent<PauseMenuSystem>().PauseJudge()) { return; }
-        if (effect.isTalking) { return;}
+        if (talk.isTalking) { return;}
         if (!ground.GetComponent<PlayerGroundCheck>().isGround) { return; }
         if (other.tag == "NPC")
         {
             if (!other.GetComponent<NPCClass>().GetTalkFlag()) { return; }
 
-            effect.npc = other.gameObject;
-            if (!effect.buttonFlag) { return; }
+            talk.npc = other.gameObject;
+            if (!talk.buttonFlag) { return; }
             if (gamepad.buttonEast.isPressed)
             {
-                effect.buttonFlag = false;
+                talk.buttonFlag = false;
                 //プレイヤーを会話状態に
                 playerStatus.SetState(PlayerStatus_Solo.State.Talking);
             }
@@ -47,7 +47,7 @@ public class PlayerStoryManager : MonoBehaviour
     {
         if (other.tag == "NPC")
         {
-            effect.npc = null;
+            talk.npc = null;
         }
     }
 }

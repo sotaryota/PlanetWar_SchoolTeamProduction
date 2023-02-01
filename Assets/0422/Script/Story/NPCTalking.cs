@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Write_Effect : MonoBehaviour
+public class NPCTalking : MonoBehaviour
 {
     Gamepad gamepad;
-    
+
     [Header("プレイヤー")]
     [SerializeField] GameObject player;
 
@@ -50,17 +50,30 @@ public class Write_Effect : MonoBehaviour
     [SerializeField] private Color fadeColor;    // フェードのカラー
 
     [Header("フラグ")]
-    public bool isTalking;                       // 会話中かのフラグ
-    public bool isSelect;                        // セレクト中のフラグ
-    public bool buttonFlag;                      // 会話中にボタンを押せなくするフラグ
+    public  bool isTalking;                       // 会話中かのフラグ
+    public  bool isSelect;                        // セレクト中のフラグ
+    public  bool buttonFlag;                      // 会話中にボタンを押せなくするフラグ
+    private bool skipFlag;                        // 文字送りスキップのフラグ
 
     [Header("SE")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip mojiokuri;
-    [SerializeField] private AudioClip select;
+    [SerializeField] private AudioClip textSe;        // 文字送りのSE
+    [SerializeField] private AudioClip selectSE;      // 決定SE
+    [SerializeField] private AudioClip battleFadeSE;  // battle移行時のSE
+
+    // 選択肢
+    enum TalkSelect
+    {
+        First,
+        Second
+    };
+
+    private int nowSelect;　// 選んでいる選択肢
+    private bool stickFlag; // スティック操作のフラグ
+
     private void Start()
     {
-        npcData    = GameObject.Find("DataManager").GetComponent<NPCDataManager>();
+        npcData = GameObject.Find("DataManager").GetComponent<NPCDataManager>();
         playerData = GameObject.Find("DataManager").GetComponent<PlayerDataManager>();
     }
     void Update()
@@ -75,7 +88,7 @@ public class Write_Effect : MonoBehaviour
             nameTextObj.text = npc.GetComponent<NPCClass>().GetName();
             canvas.SetActive(true);
             talkCanvas.SetActive(true);
-            
+
             // テキスト表示開始
             StartCoroutine("TextDisplay");
 
@@ -95,16 +108,31 @@ public class Write_Effect : MonoBehaviour
         talkTextObj.text = "";
     }
 
+    IEnumerator BattleSceneChange()
+    {
+
+        //必要なデータを保存
+        playerData.StoryEndPlayerPos(player.transform.position, player.transform.rotation, playerCamera.transform.rotation);
+        npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(), npc.GetComponent<NPCClass>().GetEventID());
+        // フェード開始
+        fade.FadeSceneChange("StoryBattle", fadeColor.r, fadeColor.g, fadeColor.b, fadeSpeed);
+        audioSource.PlayOneShot(battleFadeSE);
+
+        // フェード中にカメラを動かす
+        while (camera.fieldOfView <= maxFOV)
+        {
+            camera.fieldOfView++;
+            yield return new WaitForSeconds(cameraMoveSpeed);
+        }
+        while (camera.fieldOfView >= minFOV)
+        {
+            camera.fieldOfView--;
+            yield return new WaitForSeconds(cameraMoveSpeed);
+        }
+    }
+
     // 選択肢関連
     //-------------------------------------------------------------------------------------------------------
-    enum TalkSelect
-    {
-        First,
-        Second
-    };
-    int nowSelect;
-    bool stickFlag;
-
     IEnumerator SelectDisplay()
     {
         isSelect = false;
@@ -122,9 +150,8 @@ public class Write_Effect : MonoBehaviour
             selectTextObj[i].text = selectText[i];
         }
         yield return new WaitForSeconds(selectWait);
-
         //ボタンを押すまでループ
-        while (!gamepad.buttonEast.isPressed)
+        while (!gamepad.buttonEast.wasPressedThisFrame)
         {
             if (gamepad.leftStick.ReadValue().y > 0 || gamepad.leftStick.ReadValue().y < 0)
             {
@@ -156,7 +183,7 @@ public class Write_Effect : MonoBehaviour
             yield return 0;
         }
 
-        audioSource.PlayOneShot(select);
+        audioSource.PlayOneShot(selectSE);
         // 決定時
         switch (nowSelect)
         {
@@ -180,7 +207,11 @@ public class Write_Effect : MonoBehaviour
         }
     }
     //-------------------------------------------------------------------------------------------------------
-
+    IEnumerator Skip()
+    {
+        yield return new WaitForSeconds(0.5f);
+        skipFlag = true;
+    }
     IEnumerator TextDisplay()
     {
         //一度だけ呼び出す処理
@@ -191,6 +222,7 @@ public class Write_Effect : MonoBehaviour
 
         for (int i = 0; i < npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState()).Length; ++i)
         {
+            skipFlag = false;
             SetText(npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState())[i]);
             //出てない文字があれば
             while (visibleLength < talkText.Length)
@@ -199,14 +231,21 @@ public class Write_Effect : MonoBehaviour
                 // 1文字ずつ増やす
                 visibleLength++;
                 talkTextObj.text = talkText.Substring(0, visibleLength);
-                audioSource.PlayOneShot(mojiokuri);
-
+                audioSource.PlayOneShot(textSe);
+                StartCoroutine("Skip");
                 // ボタンを押したらすべて表示
-                if (gamepad.buttonEast.isPressed)
+                if (skipFlag && gamepad.buttonEast.isPressed)
                 {
-                    audioSource.PlayOneShot(select);
-                    visibleLength = talkText.Length - 1;
+                    audioSource.PlayOneShot(selectSE);
+                    visibleLength = talkText.Length;
+                    talkTextObj.text = talkText.Substring(0, visibleLength);
+                    yield return new WaitForSeconds(0.3f);
+                    break;
                 }
+            }
+            while (gamepad.buttonEast.isPressed)
+            {
+                yield return 0;
             }
             //会話終了
             if (i == npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState()).Length - 1)
@@ -295,23 +334,8 @@ public class Write_Effect : MonoBehaviour
                         }
                         yield return new WaitForSeconds(newLineTime);
 
-                        //必要なデータを保存
-                        playerData.StoryEndPlayerPos(player.transform.position,player.transform.rotation,playerCamera.transform.rotation);
-                        npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(), npc.GetComponent<NPCClass>().GetEventID());
-                        // フェード開始
-                        fade.FadeSceneChange("StoryBattle", fadeColor.r, fadeColor.g, fadeColor.b, fadeSpeed);
+                        StartCoroutine("BattleSceneChange");
 
-                        // フェード中にカメラを動かす
-                        while (camera.fieldOfView <= maxFOV)
-                        {
-                            camera.fieldOfView++;
-                            yield return new WaitForSeconds(cameraMoveSpeed);
-                        }
-                        while (camera.fieldOfView >= minFOV)
-                        {
-                            camera.fieldOfView--;
-                            yield return new WaitForSeconds(cameraMoveSpeed);
-                        }
                         yield break;
                     case NPCClass.NPCState.BattleEventEnd:
                         while (!gamepad.buttonEast.isPressed)

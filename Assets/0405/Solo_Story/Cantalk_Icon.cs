@@ -9,9 +9,9 @@ public class Cantalk_Icon : MonoBehaviour
     [SerializeField]
     private PlayerStatus_Solo playerStatus;
 
-    [Header("Write_Effectの参照")]
+    [Header("NPCTalkingの参照")]
     [SerializeField]
-    Write_Effect effect;
+    NPCTalking talk;
     bool cantalk_flag;
 
 
@@ -31,15 +31,15 @@ public class Cantalk_Icon : MonoBehaviour
 
     void Start()
     {
-        cantalk_flag = effect.buttonFlag;
+        cantalk_flag = talk.buttonFlag;
         audioSource = GameObject.Find("Player_Solo").GetComponent<AudioSource>();
     }
 
     void Update()
     {
         bool uiActive = false;
-        if (effect.npc) {
-            uiActive = !effect.isTalking;
+        if (talk.npc) {
+            uiActive = !talk.isTalking;
         }
 
         if (uiActive)
@@ -53,11 +53,11 @@ public class Cantalk_Icon : MonoBehaviour
 
             cantalk_Icon.gameObject.SetActive(true);
             //NPCの位置を取得
-            Vector3 UI_Pos = effect.npc.gameObject.transform.position;
+            Vector3 UI_Pos = talk.npc.gameObject.transform.position;
             //HPゲージの位置を調整
             UI_Pos.x += distance_x;
             //yをサイズによって調整します。
-            if (effect.npc.GetComponent<CapsuleCollider>().height > 2.2f)
+            if (talk.npc.GetComponent<CapsuleCollider>().height > 2.2f)
             {
                 UI_Pos.y += distance_y * 2;
             }

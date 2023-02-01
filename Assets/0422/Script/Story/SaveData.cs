@@ -10,5 +10,5 @@ public class SaveData
     /// <summary>
     /// npcのデータ数に応じて配列のサイズを変更
     /// </summary>
-    public NPCClass.NPCState[] npcStateList = new NPCClass.NPCState[22];
+    public NPCClass.NPCState[] npcStateList = new NPCClass.NPCState[27];
 }
