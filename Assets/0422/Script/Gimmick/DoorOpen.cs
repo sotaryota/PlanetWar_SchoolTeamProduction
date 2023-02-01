@@ -4,20 +4,13 @@ using UnityEngine;
 
 public class DoorOpen : MonoBehaviour
 {
-    [SerializeField] Animation animation;
-
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] Animator animator;
+    [SerializeField] GameObject guardianObj;
+    private void Start()
     {
-        if (other.tag == "Player")
+        if(guardianObj.GetComponent<NPCClass>().GetState() == NPCClass.NPCState.BattleEventEnd)
         {
-            animation.playAutomatically = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            animation.playAutomatically = true;
+            animator.SetTrigger("Open");
         }
     }
 }
