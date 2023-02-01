@@ -63,6 +63,7 @@ public class PauseMenuSystem : MonoBehaviour
     protected bool ispauseNow;
     //ポーズメニューを展開できる状態かどうか
     protected bool canPause;
+    private bool lockCanPause;
 
 
     //ポーズ中に止めるプレイヤーのスクリプト
@@ -76,6 +77,7 @@ public class PauseMenuSystem : MonoBehaviour
     public void SetCanPause(bool value)
     {
         canPause = value;
+        lockCanPause = value;
     }
 
     void Start()
@@ -84,6 +86,7 @@ public class PauseMenuSystem : MonoBehaviour
         onButton = false;
         ispauseNow = false;
         canPause = true;
+        lockCanPause = true;
         nextscene = "";
         if (!playerStatus_Solo)
         {
@@ -101,13 +104,17 @@ public class PauseMenuSystem : MonoBehaviour
     void Update()
     {
         gamepad = Gamepad.current;
+
         if (playerStatus_Solo != null)
         {
             if (playerStatus_Solo.GetState() == PlayerStatus_Solo.State.Talking)
             {
                 canPause = false;
             }
-            else { canPause = true; }
+            else if(lockCanPause)
+            { 
+                canPause = true;
+            }
         }
         if (canPause)
         {
