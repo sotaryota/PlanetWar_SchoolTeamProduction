@@ -269,7 +269,7 @@ public class PauseMenuSystem : MonoBehaviour
     {
         PausePanel.SetActive(false);
         Time.timeScale = 1.0f;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
         ispauseNow = false;
         PlayerMoveOn();
     }
@@ -281,8 +281,9 @@ public class PauseMenuSystem : MonoBehaviour
         {
             talk.enabled = false;
         } 
-        if(SceneManager.GetActiveScene().name == "Battle")
+        if(SceneManager.GetActiveScene().name == "StoryBattle")
         {
+            print("1");
             planetCatchRelease_Solo.enabled = false;
         }
     }
@@ -293,7 +294,7 @@ public class PauseMenuSystem : MonoBehaviour
         {
             talk.enabled = true;
         }
-        if (SceneManager.GetActiveScene().name == "Battle")
+        if (SceneManager.GetActiveScene().name == "StoryBattle")
         {
             planetCatchRelease_Solo.enabled = true;
         }
