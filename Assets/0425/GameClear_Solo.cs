@@ -10,6 +10,11 @@ public class GameClear_Solo : MonoBehaviour
     [SerializeField] GameObject finishText;
     [SerializeField] PauseMenuSystem pms;
 
+    [SerializeField] GameObject clearCamPos;
+    [SerializeField] GameObject playerCamera;
+    [SerializeField] GameObject playerPos;
+    [SerializeField] Animator playerAnim;
+
     [Header("オーディオ")]
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip winJingle;
@@ -35,8 +40,13 @@ public class GameClear_Solo : MonoBehaviour
     {
         if(enemyCreater_Start.createPrefab) { return; }
 
+        playerCamera.transform.position = clearCamPos.transform.position;
+        
+
         if (!win) {
+            playerCamera.transform.LookAt(playerPos.transform.position);
             finishText.SetActive(true);
+            playerAnim.SetTrigger("win_solo");
             audioSource.PlayOneShot(winJingle);
             playerSE.WinVoice();
             pms.SetCanPause(false);
