@@ -132,7 +132,7 @@ public class Button_Manager : MonoBehaviour
             TutorialImage.color = new Color(1, 1, 1, 0);
             if (buttonFlag)
             {
-                if (gamepad.buttonSouth.wasPressedThisFrame)
+                if (gamepad.buttonEast.wasPressedThisFrame)
                 {
                     selectLock = true;
                     buttonFlag = false;

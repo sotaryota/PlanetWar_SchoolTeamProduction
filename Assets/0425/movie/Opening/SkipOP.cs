@@ -24,14 +24,14 @@ public class SkipOP : MonoBehaviour
     {
         if (gamepad == null) { gamepad = Gamepad.current; }
 
-
-        if (gamepad.buttonSouth.wasPressedThisFrame && readySkip == true)
+        //スキップ準備状態ならムービースキップ(次のシーンをロード)
+        if (gamepad.buttonEast.wasPressedThisFrame && readySkip == true)
         {
             SceneManager.LoadScene("Story");
         }
 
-
-        if (gamepad.buttonSouth.wasPressedThisFrame && readySkip == false)
+        //スキップ準備状態に
+        if (gamepad.buttonEast.wasPressedThisFrame && readySkip == false)
         {
             readySkip = true;
         }

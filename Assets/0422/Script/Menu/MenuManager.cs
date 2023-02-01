@@ -72,7 +72,7 @@ public class MenuManager : MonoBehaviour
     {
         if(planetRotate.buttonLock)
         {
-            if (gamepad.buttonSouth.wasPressedThisFrame)
+            if (gamepad.buttonEast.wasPressedThisFrame)
             {
                 menuDatas[(int)nowSelect].selectPlanet.SetActive(false);
 

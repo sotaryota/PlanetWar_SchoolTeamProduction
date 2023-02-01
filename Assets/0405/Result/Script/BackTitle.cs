@@ -14,7 +14,7 @@ public class BackTitle : MonoBehaviour
     void Update()
     {
         gamepad = Gamepad.current; 
-        if (gamepad.buttonSouth.isPressed)
+        if (gamepad.buttonEast.isPressed)
         {
             fadeScript.fademode = true;
         }

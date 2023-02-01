@@ -743,5 +743,13 @@ PrefabInstance:
         \u30B1\u30A4\u30B8\n\u30AA\u30AA\u30AF\u30DC \u30B7\u30B2\u30EB\n\u30CE\u30BA\u30A8
         \u30C8\u30E2\u30D2\u30ED\n\u30A6\u30A8\u30E4\u30DE \u30B5\u30AA\u30A6"
       objectReference: {fileID: 0}
+    - target: {fileID: 3776014342962505748, guid: 96fbce1f43a523d4e817116a1bb6823a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aed1671daa8f7bf45bbc67a074336903, type: 3}
+    - target: {fileID: 5484125501112581153, guid: 96fbce1f43a523d4e817116a1bb6823a, type: 3}
+      propertyPath: m_Name
+      value: Bbutton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96fbce1f43a523d4e817116a1bb6823a, type: 3}

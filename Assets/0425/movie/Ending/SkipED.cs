@@ -31,7 +31,7 @@ public class SkipED : MonoBehaviour
         if (gamepad == null) { gamepad = Gamepad.current; }
 
 
-        if (gamepad.buttonSouth.wasPressedThisFrame && readySkip == true)
+        if (gamepad.buttonEast.wasPressedThisFrame && readySkip == true)
         {
             if(!staffrollSkip)
             {
@@ -45,7 +45,7 @@ public class SkipED : MonoBehaviour
         }
 
 
-        if (gamepad.buttonSouth.wasPressedThisFrame && readySkip == false)
+        if (gamepad.buttonEast.wasPressedThisFrame && readySkip == false)
         {
             readySkip = true;
         }
