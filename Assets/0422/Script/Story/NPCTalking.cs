@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Write_Effect : MonoBehaviour
+public class NPCTalking : MonoBehaviour
 {
     Gamepad gamepad;
-    
+
     [Header("プレイヤー")]
     [SerializeField] GameObject player;
 
@@ -60,7 +60,7 @@ public class Write_Effect : MonoBehaviour
     [SerializeField] private AudioClip select;
     private void Start()
     {
-        npcData    = GameObject.Find("DataManager").GetComponent<NPCDataManager>();
+        npcData = GameObject.Find("DataManager").GetComponent<NPCDataManager>();
         playerData = GameObject.Find("DataManager").GetComponent<PlayerDataManager>();
     }
     void Update()
@@ -75,7 +75,7 @@ public class Write_Effect : MonoBehaviour
             nameTextObj.text = npc.GetComponent<NPCClass>().GetName();
             canvas.SetActive(true);
             talkCanvas.SetActive(true);
-            
+
             // テキスト表示開始
             StartCoroutine("TextDisplay");
 
@@ -104,7 +104,7 @@ public class Write_Effect : MonoBehaviour
     };
     int nowSelect;
     bool stickFlag;
-
+    bool buttonPush = false;
     IEnumerator SelectDisplay()
     {
         isSelect = false;
@@ -122,9 +122,8 @@ public class Write_Effect : MonoBehaviour
             selectTextObj[i].text = selectText[i];
         }
         yield return new WaitForSeconds(selectWait);
-
         //ボタンを押すまでループ
-        while (!gamepad.buttonEast.isPressed)
+        while (!gamepad.buttonEast.wasPressedThisFrame)
         {
             if (gamepad.leftStick.ReadValue().y > 0 || gamepad.leftStick.ReadValue().y < 0)
             {
@@ -180,7 +179,12 @@ public class Write_Effect : MonoBehaviour
         }
     }
     //-------------------------------------------------------------------------------------------------------
-
+    [SerializeField] bool skipFlag;
+    IEnumerator Skip()
+    {
+        yield return new WaitForSeconds(0.5f);
+        skipFlag = true;
+    }
     IEnumerator TextDisplay()
     {
         //一度だけ呼び出す処理
@@ -191,6 +195,7 @@ public class Write_Effect : MonoBehaviour
 
         for (int i = 0; i < npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState()).Length; ++i)
         {
+            skipFlag = false;
             SetText(npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState())[i]);
             //出てない文字があれば
             while (visibleLength < talkText.Length)
@@ -200,13 +205,20 @@ public class Write_Effect : MonoBehaviour
                 visibleLength++;
                 talkTextObj.text = talkText.Substring(0, visibleLength);
                 audioSource.PlayOneShot(mojiokuri);
-
+                StartCoroutine("Skip");
                 // ボタンを押したらすべて表示
-                if (gamepad.buttonEast.isPressed)
+                if (skipFlag && gamepad.buttonEast.isPressed)
                 {
                     audioSource.PlayOneShot(select);
-                    visibleLength = talkText.Length - 1;
+                    visibleLength = talkText.Length;
+                    talkTextObj.text = talkText.Substring(0, visibleLength);
+                    yield return new WaitForSeconds(0.3f);
+                    break;
                 }
+            }
+            while (gamepad.buttonEast.isPressed)
+            {
+                yield return 0;
             }
             //会話終了
             if (i == npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState()).Length - 1)
@@ -296,7 +308,7 @@ public class Write_Effect : MonoBehaviour
                         yield return new WaitForSeconds(newLineTime);
 
                         //必要なデータを保存
-                        playerData.StoryEndPlayerPos(player.transform.position,player.transform.rotation,playerCamera.transform.rotation);
+                        playerData.StoryEndPlayerPos(player.transform.position, player.transform.rotation, playerCamera.transform.rotation);
                         npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(), npc.GetComponent<NPCClass>().GetEventID());
                         // フェード開始
                         fade.FadeSceneChange("StoryBattle", fadeColor.r, fadeColor.g, fadeColor.b, fadeSpeed);

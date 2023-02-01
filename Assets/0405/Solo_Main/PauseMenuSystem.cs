@@ -68,7 +68,7 @@ public class PauseMenuSystem : MonoBehaviour
 
     //ポーズ中に止めるプレイヤーのスクリプト
     [SerializeField] PlayerJump playerJump;
-    [SerializeField] Write_Effect write_Effect;
+    [SerializeField] NPCTalking talk;
 
     [SerializeField]
     private SaveLoad saveLoad;
@@ -276,11 +276,11 @@ public class PauseMenuSystem : MonoBehaviour
     void PlayerMoveOff()
     {
         playerJump.enabled = false;
-        write_Effect.enabled = false;
+        talk.enabled = false;
     }
     void PlayerMoveOn()
     {
         playerJump.enabled = true;
-        write_Effect.enabled = true;
+        talk.enabled = true;
     }
 }

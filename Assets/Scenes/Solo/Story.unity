@@ -1649,7 +1649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStatus: {fileID: 454796601}
-  effect: {fileID: 1272047280}
+  talk: {fileID: 1272047283}
   cantalk_Icon: {fileID: 483821223}
   distance_x: 0
   distance_y: 2.5
@@ -3871,6 +3871,7 @@ MonoBehaviour:
   fade: {fileID: 1755136917}
   fadeSpeed: 1
   fadeColor: {r: 0, g: 0, b: 0, a: 0}
+  pms: {fileID: 0}
 --- !u!1 &787326474
 GameObject:
   m_ObjectHideFlags: 0
@@ -5637,7 +5638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1272047281}
   - component: {fileID: 1272047282}
-  - component: {fileID: 1272047280}
+  - component: {fileID: 1272047283}
   m_Layer: 0
   m_Name: StoryManager
   m_TagString: Untagged
@@ -5645,48 +5646,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1272047280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1272047279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd58b3227b3e3de4881d02004ce6630b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 454796600}
-  playerCamera: {fileID: 163747579}
-  npc: {fileID: 0}
-  playerStatus: {fileID: 454796601}
-  playerData: {fileID: 787326477}
-  canvas: {fileID: 739730296}
-  talkCanvas: {fileID: 80958955}
-  selectCanvas: {fileID: 2068606048}
-  talkTextObj: {fileID: 430730142}
-  selectTextObj:
-  - {fileID: 409306987}
-  - {fileID: 68832318}
-  nameTextObj: {fileID: 1403433884}
-  selectImage:
-  - {fileID: 350984336}
-  - {fileID: 159117760}
-  feedTime: 0.1
-  newLineTime: 0.3
-  selectWait: 0.8
-  talkInterval: 2
-  camera: {fileID: 1593749267}
-  maxFOV: 160
-  minFOV: 30
-  cameraMoveSpeed: 0.001
-  fade: {fileID: 1755136917}
-  fadeSpeed: 1.5
-  fadeColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 0}
-  isTalking: 0
-  isSelect: 0
-  buttonFlag: 1
 --- !u!4 &1272047281
 Transform:
   m_ObjectHideFlags: 0
@@ -5718,6 +5677,52 @@ MonoBehaviour:
   playerCamera: {fileID: 163747579}
   playerData: {fileID: 787326477}
   continueFlag: 0
+--- !u!114 &1272047283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1272047279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e55f7ca2f4bab043919a3b51121f61a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 454796600}
+  playerCamera: {fileID: 163747579}
+  npc: {fileID: 0}
+  playerStatus: {fileID: 454796601}
+  playerData: {fileID: 787326477}
+  canvas: {fileID: 739730296}
+  talkCanvas: {fileID: 80958955}
+  selectCanvas: {fileID: 2068606048}
+  talkTextObj: {fileID: 430730142}
+  selectTextObj:
+  - {fileID: 409306987}
+  - {fileID: 68832318}
+  nameTextObj: {fileID: 1403433884}
+  selectImage:
+  - {fileID: 350984336}
+  - {fileID: 159117760}
+  feedTime: 0.1
+  newLineTime: 0.1
+  selectWait: 0.5
+  talkInterval: 2
+  camera: {fileID: 1593749267}
+  maxFOV: 160
+  minFOV: 30
+  cameraMoveSpeed: 0.0001
+  fade: {fileID: 1755136917}
+  fadeSpeed: 1.5
+  fadeColor: {r: 0.48235294, g: 0.48235294, b: 0.48235294, a: 0}
+  isTalking: 0
+  isSelect: 0
+  buttonFlag: 1
+  audioSource: {fileID: 454796610}
+  mojiokuri: {fileID: 8300000, guid: e57697887519a314295943cee229106f, type: 3}
+  select: {fileID: 8300000, guid: 9878e137921660f46bbb37945e01fbb7, type: 3}
+  skipFlag: 0
 --- !u!1 &1305315346
 GameObject:
   m_ObjectHideFlags: 0
@@ -7563,8 +7568,7 @@ MonoBehaviour:
   - "\u4E0A\u306F\u3053\u3093\u306A\u3053\u3068\u306B\u306A\u3063\u3066\u308B\u3057..."
   battlelTalkData: []
   friendTalkData: []
-  BattleEndTalkData:
-  - "\u3053\u3053\u306F\u901A\u884C\u6B62\u3081\u3060\u3088\u3002"
+  BattleEndTalkData: []
   FriendEndTalkData:
   - "...\u3042\u3042\u3001\u3053\u3053\u306F\u901A\u884C\u6B62\u3081\u3060\u3088"
   selectTalkData:
@@ -7574,7 +7578,7 @@ MonoBehaviour:
   firstSelectState: 0
   nonSelectState: 2
   secondSelectState: 0
-  endState: 4
+  endState: 2
 --- !u!1001 &1879993326
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7602,6 +7606,14 @@ PrefabInstance:
       propertyPath: PausePanel
       value: 
       objectReference: {fileID: 402750139}
+    - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
+      propertyPath: playerJump
+      value: 
+      objectReference: {fileID: 454796607}
+    - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
+      propertyPath: write_Effect
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6746115403484419091, guid: 214b997692ec63a4bba91fb14f1238f7, type: 3}
       propertyPath: playerStatus_Solo
       value: 
@@ -8865,9 +8877,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d135a3e818ed0324ba071349fac61752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 1272047280}
+  talk: {fileID: 1272047283}
   playerStatus: {fileID: 454796601}
   ground: {fileID: 2096544479}
+  pause: {fileID: 1043666640}
 --- !u!1 &2117002115 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000010488758362, guid: 5ae37b5c6421a9348b5bb44a7d422962, type: 3}
