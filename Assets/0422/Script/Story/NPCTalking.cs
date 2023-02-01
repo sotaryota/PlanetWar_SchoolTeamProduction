@@ -50,14 +50,27 @@ public class NPCTalking : MonoBehaviour
     [SerializeField] private Color fadeColor;    // フェードのカラー
 
     [Header("フラグ")]
-    public bool isTalking;                       // 会話中かのフラグ
-    public bool isSelect;                        // セレクト中のフラグ
-    public bool buttonFlag;                      // 会話中にボタンを押せなくするフラグ
+    public  bool isTalking;                       // 会話中かのフラグ
+    public  bool isSelect;                        // セレクト中のフラグ
+    public  bool buttonFlag;                      // 会話中にボタンを押せなくするフラグ
+    private bool skipFlag;                        // 文字送りスキップのフラグ
 
     [Header("SE")]
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip mojiokuri;
-    [SerializeField] private AudioClip select;
+    [SerializeField] private AudioClip textSe;        // 文字送りのSE
+    [SerializeField] private AudioClip selectSE;      // 決定SE
+    [SerializeField] private AudioClip battleFadeSE;  // battle移行時のSE
+
+    // 選択肢
+    enum TalkSelect
+    {
+        First,
+        Second
+    };
+
+    private int nowSelect;　// 選んでいる選択肢
+    private bool stickFlag; // スティック操作のフラグ
+
     private void Start()
     {
         npcData = GameObject.Find("DataManager").GetComponent<NPCDataManager>();
@@ -95,16 +108,31 @@ public class NPCTalking : MonoBehaviour
         talkTextObj.text = "";
     }
 
+    IEnumerator BattleSceneChange()
+    {
+
+        //必要なデータを保存
+        playerData.StoryEndPlayerPos(player.transform.position, player.transform.rotation, playerCamera.transform.rotation);
+        npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(), npc.GetComponent<NPCClass>().GetEventID());
+        // フェード開始
+        fade.FadeSceneChange("StoryBattle", fadeColor.r, fadeColor.g, fadeColor.b, fadeSpeed);
+        audioSource.PlayOneShot(battleFadeSE);
+
+        // フェード中にカメラを動かす
+        while (camera.fieldOfView <= maxFOV)
+        {
+            camera.fieldOfView++;
+            yield return new WaitForSeconds(cameraMoveSpeed);
+        }
+        while (camera.fieldOfView >= minFOV)
+        {
+            camera.fieldOfView--;
+            yield return new WaitForSeconds(cameraMoveSpeed);
+        }
+    }
+
     // 選択肢関連
     //-------------------------------------------------------------------------------------------------------
-    enum TalkSelect
-    {
-        First,
-        Second
-    };
-    int nowSelect;
-    bool stickFlag;
-    bool buttonPush = false;
     IEnumerator SelectDisplay()
     {
         isSelect = false;
@@ -155,7 +183,7 @@ public class NPCTalking : MonoBehaviour
             yield return 0;
         }
 
-        audioSource.PlayOneShot(select);
+        audioSource.PlayOneShot(selectSE);
         // 決定時
         switch (nowSelect)
         {
@@ -179,7 +207,6 @@ public class NPCTalking : MonoBehaviour
         }
     }
     //-------------------------------------------------------------------------------------------------------
-    [SerializeField] bool skipFlag;
     IEnumerator Skip()
     {
         yield return new WaitForSeconds(0.5f);
@@ -204,12 +231,12 @@ public class NPCTalking : MonoBehaviour
                 // 1文字ずつ増やす
                 visibleLength++;
                 talkTextObj.text = talkText.Substring(0, visibleLength);
-                audioSource.PlayOneShot(mojiokuri);
+                audioSource.PlayOneShot(textSe);
                 StartCoroutine("Skip");
                 // ボタンを押したらすべて表示
                 if (skipFlag && gamepad.buttonEast.isPressed)
                 {
-                    audioSource.PlayOneShot(select);
+                    audioSource.PlayOneShot(selectSE);
                     visibleLength = talkText.Length;
                     talkTextObj.text = talkText.Substring(0, visibleLength);
                     yield return new WaitForSeconds(0.3f);
@@ -307,23 +334,8 @@ public class NPCTalking : MonoBehaviour
                         }
                         yield return new WaitForSeconds(newLineTime);
 
-                        //必要なデータを保存
-                        playerData.StoryEndPlayerPos(player.transform.position, player.transform.rotation, playerCamera.transform.rotation);
-                        npcData.StoryEndNPCData(npc.GetComponent<NPCClass>().GetEnemyName(), npc.GetComponent<NPCClass>().GetEventID());
-                        // フェード開始
-                        fade.FadeSceneChange("StoryBattle", fadeColor.r, fadeColor.g, fadeColor.b, fadeSpeed);
+                        StartCoroutine("BattleSceneChange");
 
-                        // フェード中にカメラを動かす
-                        while (camera.fieldOfView <= maxFOV)
-                        {
-                            camera.fieldOfView++;
-                            yield return new WaitForSeconds(cameraMoveSpeed);
-                        }
-                        while (camera.fieldOfView >= minFOV)
-                        {
-                            camera.fieldOfView--;
-                            yield return new WaitForSeconds(cameraMoveSpeed);
-                        }
                         yield break;
                     case NPCClass.NPCState.BattleEventEnd:
                         while (!gamepad.buttonEast.isPressed)
