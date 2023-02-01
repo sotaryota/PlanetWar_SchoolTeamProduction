@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.99999964, z: 0.99999964}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2683514994943983870}
+  m_Father: {fileID: -1879035779228148476}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &2683514994929829304
@@ -4850,7 +4850,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.99999964, z: 0.99999964}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2683514994943983870}
+  m_Father: {fileID: -1879035779228148476}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &2683514994929829308
@@ -9617,7 +9617,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &2683514994944220382
+--- !u!1 &2945480524027496216
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9625,7 +9625,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2683514994943983870}
+  - component: {fileID: -1879035779228148476}
   - component: {fileID: 2683514994929829310}
   - component: {fileID: 2683514994929941534}
   m_Layer: 2
@@ -9635,13 +9635,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2683514994943983870
+--- !u!4 &-1879035779228148476
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2683514994944220382}
+  m_GameObject: {fileID: 2945480524027496216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.0006666669, y: 0.00066666683, z: 0.00066666654}
@@ -9658,7 +9658,7 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2683514994944220382}
+  m_GameObject: {fileID: 2945480524027496216}
   serializedVersion: 8
   lengthInSec: 0.1
   simulationSpeed: 1
@@ -14342,7 +14342,7 @@ ParticleSystemRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2683514994944220382}
+  m_GameObject: {fileID: 2945480524027496216}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
