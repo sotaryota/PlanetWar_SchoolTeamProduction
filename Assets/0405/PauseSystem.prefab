@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6746115403484419096}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1963.129, y: 464.62238, z: 953.36365}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -142,14 +142,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0116e70b9363bc74a81d36cfab9b064d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStatus_Solo: {fileID: 0}
   fadeScript: {fileID: 6746115403484419090}
-  button_Images:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  buttonClass:
+  - buttonImage: {fileID: 0}
+    menuCell: 0
+  - buttonImage: {fileID: 0}
+    menuCell: 2
   PausePanel: {fileID: 0}
   audioSource: {fileID: 6746115403484419093}
+  openSound: {fileID: 8300000, guid: 53f5cc905c5230b4dac1390b60fa38d9, type: 3}
   selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
+  pushSound: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
+  playerJump: {fileID: 0}
+  talk: {fileID: 0}
+  saveLoad: {fileID: 0}
+  dataManager: {fileID: 0}
 --- !u!114 &6746115403484419090
 MonoBehaviour:
   m_ObjectHideFlags: 0
