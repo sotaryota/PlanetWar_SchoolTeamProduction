@@ -43,9 +43,9 @@ public class NPCDataManager : MonoBehaviour
     public EnemyCreater_Data.EnemyName enemyName; // 生成したい敵の名前
     [SerializeField] int eventId; // 話しかけたNPCのイベントID
     [Header("全NPCの状態")]
-    public List<NPCClass.NPCState> npcStateList;
+    public NPCClass.NPCState[] npcStateList;
     NPCList list;
-
+    
     /// <summary>
     /// バトル移行時に呼ぶ関数
     /// <param name="id">イベントID</param>
@@ -55,7 +55,7 @@ public class NPCDataManager : MonoBehaviour
         eventId = id;
         enemyName = enemy;
         list = GameObject.Find("NPCStateList").GetComponent<NPCList>();
-        for (int i = 0; i < npcStateList.Count; ++i)
+        for (int i = 0; i < npcStateList.Length; ++i)
         {
             npcStateList[i] = list.npcList[i].GetState();
         }                
