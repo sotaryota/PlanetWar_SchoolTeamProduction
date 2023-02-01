@@ -1038,7 +1038,7 @@ PrefabInstance:
       objectReference: {fileID: 1698950231}
     - target: {fileID: 324134993115607254, guid: 2029d97fff75831418ade37f23942273, type: 3}
       propertyPath: m_Name
-      value: "\u3053\u3084\u306A\u304E\u30ED\u30DC"
+      value: "\u5C0F\u67F3\u30ED\u30DC"
       objectReference: {fileID: 0}
     - target: {fileID: 6284272685876914036, guid: 2029d97fff75831418ade37f23942273, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1412,7 +1412,7 @@ MonoBehaviour:
   - 
   nowState: 0
   firstSelectState: 0
-  nonSelectState: 4
+  nonSelectState: 3
   secondSelectState: 0
   endState: 0
 --- !u!95 &225277156
@@ -7416,7 +7416,7 @@ MonoBehaviour:
   - 
   nowState: 0
   firstSelectState: 0
-  nonSelectState: 4
+  nonSelectState: 3
   secondSelectState: 0
   endState: 0
 --- !u!95 &1698950231
