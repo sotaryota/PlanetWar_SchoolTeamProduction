@@ -23,15 +23,16 @@ public class PauseSystem_Battle : PauseMenuSystem
         //˜A‘Å–hŽ~—p
         if (!onButton)
         {
-            if (gamepad.buttonSouth.wasPressedThisFrame)
+            if (gamepad.buttonEast.wasPressedThisFrame)
             {
                 audioSource.PlayOneShot(pushSound);
                 switch (buttonClass[nowSelecting].menuCell)
                 {
                     case menu.resume:
-                        PausePanel.SetActive(false);
-                        Time.timeScale = 1.0f;
-                        ispauseNow = false;
+                        //PausePanel.SetActive(false);
+                        //Time.timeScale = 1.0f;
+                        //ispauseNow = false;
+                        StartCoroutine("resumeWait");
                         break;
                     case menu.retry:
                         selectLock = true;

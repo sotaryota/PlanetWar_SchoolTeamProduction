@@ -10189,7 +10189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb0de24b494f7b428ad04fa2d862908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStatus_Solo: {fileID: 0}
+  playerStatus_Solo: {fileID: 1450203579}
   fadeScript: {fileID: 6746115404553590500}
   buttonClass:
   - buttonImage: {fileID: 106709864}
@@ -10203,6 +10203,9 @@ MonoBehaviour:
   openSound: {fileID: 8300000, guid: 53f5cc905c5230b4dac1390b60fa38d9, type: 3}
   selectSound: {fileID: 8300000, guid: bdf7bfbe95aab5346bfd893afd90b833, type: 3}
   pushSound: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
+  playerJump: {fileID: 1450203577}
+  talk: {fileID: 0}
+  planetCatchRelease_Solo: {fileID: 1450203584}
   saveLoad: {fileID: 0}
   dataManager: {fileID: 0}
 --- !u!64 &6751363179348710391

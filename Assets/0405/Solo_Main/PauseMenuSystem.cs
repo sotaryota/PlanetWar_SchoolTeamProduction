@@ -69,6 +69,7 @@ public class PauseMenuSystem : MonoBehaviour
     //ポーズ中に止めるプレイヤーのスクリプト
     [SerializeField] PlayerJump playerJump;
     [SerializeField] NPCTalking talk;
+    [SerializeField] PlanetCatchRelease_Solo planetCatchRelease_Solo;
 
     [SerializeField]
     private SaveLoad saveLoad;
@@ -264,7 +265,7 @@ public class PauseMenuSystem : MonoBehaviour
         return ispauseNow;
     }
 
-    IEnumerator resumeWait()
+    protected IEnumerator resumeWait()
     {
         PausePanel.SetActive(false);
         Time.timeScale = 1.0f;
@@ -273,14 +274,28 @@ public class PauseMenuSystem : MonoBehaviour
         PlayerMoveOn();
     }
 
-    void PlayerMoveOff()
+    protected void PlayerMoveOff()
     {
         playerJump.enabled = false;
-        talk.enabled = false;
+        if(SceneManager.GetActiveScene().name == "Story")
+        {
+            talk.enabled = false;
+        } 
+        if(SceneManager.GetActiveScene().name == "Battle")
+        {
+            planetCatchRelease_Solo.enabled = false;
+        }
     }
-    void PlayerMoveOn()
+    protected void PlayerMoveOn()
     {
         playerJump.enabled = true;
-        talk.enabled = true;
+        if (SceneManager.GetActiveScene().name == "Story")
+        {
+            talk.enabled = true;
+        }
+        if (SceneManager.GetActiveScene().name == "Battle")
+        {
+            planetCatchRelease_Solo.enabled = true;
+        }
     }
 }
