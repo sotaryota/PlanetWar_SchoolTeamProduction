@@ -14,6 +14,9 @@ public class GameClear_Solo : MonoBehaviour
     [SerializeField] GameObject playerCamera;
     [SerializeField] GameObject playerPos;
     [SerializeField] Animator playerAnim;
+    [SerializeField] PlayerCamera_Solo playerCamera_Solo;
+    [SerializeField] PlayerMove_Solo playerMove_Solo;
+    [SerializeField] PlayerJump playerJump;
 
     [Header("オーディオ")]
     [SerializeField] AudioSource audioSource;
@@ -44,6 +47,10 @@ public class GameClear_Solo : MonoBehaviour
         
 
         if (!win) {
+            playerMove_Solo.enabled = false;
+            playerCamera_Solo.enabled = false;
+            playerJump.enabled = false;
+
             playerCamera.transform.LookAt(playerPos.transform.position);
             finishText.SetActive(true);
             playerAnim.SetTrigger("win_solo");
