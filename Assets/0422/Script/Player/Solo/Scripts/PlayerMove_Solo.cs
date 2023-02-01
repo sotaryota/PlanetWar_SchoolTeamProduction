@@ -36,7 +36,7 @@ public class PlayerMove_Solo : MonoBehaviour
     private void Update()
     {
         //ポーズ中は処理をしない
-        if (pause.pausejudge()) { return; }
+        if (pause.PauseJudge()) { return; }
 
         //プレイヤが存在しないor死んでいるor会話中なら処理をしない
         if (playerStatus.GetState() == PlayerStatus_Solo.State.Non || playerStatus.GetState() == PlayerStatus_Solo.State.Dead ||

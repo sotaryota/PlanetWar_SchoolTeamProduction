@@ -9,6 +9,7 @@ public class PlayerStoryManager : MonoBehaviour
     [SerializeField] Write_Effect effect;
     [SerializeField] PlayerStatus_Solo playerStatus;
     [SerializeField] PlayerGroundCheck ground;
+    [SerializeField] PauseMenuSystem pause;
     private void Awake()
     {
         if (gamepad == null)
@@ -25,6 +26,7 @@ public class PlayerStoryManager : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        if (pause.GetComponent<PauseMenuSystem>().PauseJudge()) { return; }
         if (effect.isTalking) { return;}
         if (!ground.GetComponent<PlayerGroundCheck>().isGround) { return; }
         if (other.tag == "NPC")

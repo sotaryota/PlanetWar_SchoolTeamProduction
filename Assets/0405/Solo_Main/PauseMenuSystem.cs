@@ -64,6 +64,11 @@ public class PauseMenuSystem : MonoBehaviour
     //ポーズメニューを展開できる状態かどうか
     protected bool canPause;
 
+
+    //ポーズ中に止めるプレイヤーのスクリプト
+    [SerializeField] PlayerJump playerJump;
+    [SerializeField] Write_Effect write_Effect;
+
     [SerializeField]
     private SaveLoad saveLoad;
 
@@ -184,9 +189,9 @@ public class PauseMenuSystem : MonoBehaviour
                 switch (buttonClass[nowSelecting].menuCell)
                 {
                     case menu.resume:
-                        PausePanel.SetActive(false);
-                        Time.timeScale = 1.0f;
-                        ispauseNow = false;
+                      
+                      
+                        StartCoroutine("resumeWait");
                         break;
                     case menu.retry:
                         selectLock = true;
@@ -226,12 +231,14 @@ public class PauseMenuSystem : MonoBehaviour
                 PausePanel.SetActive(true);
                 nowSelecting = 0;
                 buttonClass[nowSelecting].buttonImage.GetComponent<Animator>().SetBool("selected", true);
+                PlayerMoveOff();
                 Time.timeScale = 0.0f;
 
             }
             //非ポーズ中になったら
             else
             {
+                print("ポーズ解除");
                 //audioSource.PlayOneShot(Sound_);
                 for (int i = 0; i < buttonClass.Length; ++i)
                 {
@@ -239,13 +246,34 @@ public class PauseMenuSystem : MonoBehaviour
                 }
                 PausePanel.SetActive(false);
                 Time.timeScale = 1.0f;
+                PlayerMoveOn();
             }
         }
     }
 
     //ポーズ中かを返す
-    public bool pausejudge()
+    public bool PauseJudge()
     {
         return ispauseNow;
+    }
+
+    IEnumerator resumeWait()
+    {
+        PausePanel.SetActive(false);
+        Time.timeScale = 1.0f;
+        yield return new WaitForSeconds(0.3f);
+        ispauseNow = false;
+        PlayerMoveOn();
+    }
+
+    void PlayerMoveOff()
+    {
+        playerJump.enabled = false;
+        write_Effect.enabled = false;
+    }
+    void PlayerMoveOn()
+    {
+        playerJump.enabled = true;
+        write_Effect.enabled = true;
     }
 }
