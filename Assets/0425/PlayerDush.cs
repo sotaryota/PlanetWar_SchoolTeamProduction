@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 public class PlayerDush : MonoBehaviour
@@ -20,26 +21,31 @@ public class PlayerDush : MonoBehaviour
     void Start()
     {
         if (gamepad == null) { gamepad = Gamepad.current; }
-        speed = playerStatus_Solo.GetSpeed();
-    }
 
+        if (SceneManager.GetActiveScene().name == "Story" || SceneManager.GetActiveScene().name == "StoryBoss")
+        {
+            speed = playerStatus_Solo.GetSpeed();
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        if (playerFoot.GetComponent<PlayerGroundCheck>().isGround)
+        if (SceneManager.GetActiveScene().name == "Story" || SceneManager.GetActiveScene().name == "StoryBoss")
         {
-            if (gamepad.rightShoulder.isPressed)
+            if (playerFoot.GetComponent<PlayerGroundCheck>().isGround)
             {
-                print("ダッシュ");
-                playerStatus_Solo.SetSpeed(dushSpeed);
-                playerAnimManeger.PlayAnimSetSprint(true);
-            }  
-            else
-            {
-                playerStatus_Solo.SetSpeed(speed);
-                playerAnimManeger.PlayAnimSetSprint(false);
+                if (gamepad.rightShoulder.isPressed)
+                {
+                    print("ダッシュ");
+                    playerStatus_Solo.SetSpeed(dushSpeed);
+                    playerAnimManeger.PlayAnimSetSprint(true);
+                }
+                else
+                {
+                    playerStatus_Solo.SetSpeed(speed);
+                    playerAnimManeger.PlayAnimSetSprint(false);
+                }
             }
         }
-       
     }
 }
