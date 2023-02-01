@@ -30,6 +30,7 @@ public class NPCTalking : MonoBehaviour
     [SerializeField] Text[] selectTextObj;       // 選択肢のテキストボックス
     [SerializeField] Text nameTextObj;           // 名前表示用テキスト
     [SerializeField] GameObject[] selectImage;   // 選択表示のアイコン
+    [SerializeField] GameObject nextTextIcon;    // 文字をすべて表示した後に出るアイコン
     private string talkText;                     // 通常会話の文字列
     private string[] selectText = new string[2]; // 選択肢の文字列
 
@@ -242,10 +243,12 @@ public class NPCTalking : MonoBehaviour
                     break;
                 }
             }
+            nextTextIcon.SetActive(true);
             while (gamepad.buttonEast.isPressed)
             {
                 yield return 0;
             }
+
             //会話終了
             if (i == npc.GetComponent<NPCClass>().GetTalk(npc.GetComponent<NPCClass>().GetState()).Length - 1)
             {
@@ -376,6 +379,7 @@ public class NPCTalking : MonoBehaviour
                     yield return 0;
                 }
                 audioSource.PlayOneShot(selectSE);
+                nextTextIcon.SetActive(false);
                 yield return new WaitForSeconds(newLineTime);
             }
         }
