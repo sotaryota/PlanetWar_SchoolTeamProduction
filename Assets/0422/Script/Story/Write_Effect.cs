@@ -53,6 +53,11 @@ public class Write_Effect : MonoBehaviour
     public bool isTalking;                       // 会話中かのフラグ
     public bool isSelect;                        // セレクト中のフラグ
     public bool buttonFlag;                      // 会話中にボタンを押せなくするフラグ
+
+    [Header("SE")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip mojiokuri;
+    [SerializeField] private AudioClip select;
     private void Start()
     {
         npcData    = GameObject.Find("DataManager").GetComponent<NPCDataManager>();
@@ -151,6 +156,7 @@ public class Write_Effect : MonoBehaviour
             yield return 0;
         }
 
+        audioSource.PlayOneShot(select);
         // 決定時
         switch (nowSelect)
         {
@@ -193,10 +199,12 @@ public class Write_Effect : MonoBehaviour
                 // 1文字ずつ増やす
                 visibleLength++;
                 talkTextObj.text = talkText.Substring(0, visibleLength);
+                audioSource.PlayOneShot(mojiokuri);
 
                 // ボタンを押したらすべて表示
                 if (gamepad.buttonEast.isPressed)
                 {
+                    audioSource.PlayOneShot(select);
                     visibleLength = talkText.Length - 1;
                 }
             }
