@@ -8,24 +8,19 @@ public class ContinueLoad : MonoBehaviour
     BattleToStory battleToStory;
     [Header("シーン名")]
     public string nowScene;
-    [SerializeField] string menuSceneName;     
     [SerializeField] string openingSceneName;   
     [SerializeField] string storySceneName;
+    [SerializeField] string menuSceneName;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
         nowScene = SceneManager.GetActiveScene().name;
     }
-    private void Update()
-    {
-        // メニュー画面では処理をしない
-        if (nowScene == menuSceneName) { return; }
-    }
     public void Continue(Scene nextScene, LoadSceneMode mode)
     {
         // オープニングならロードせずに消去
-        if (nextScene.name == openingSceneName)
+        if (nextScene.name == openingSceneName || nextScene.name == menuSceneName)
         {
             Destroy(gameObject);
             SceneManager.sceneLoaded -= Continue;
