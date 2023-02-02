@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy_HpData : MonoBehaviour
 {
     [SerializeField]
-    [Range(0, 100)]
+    [Range(0, 300)]
     protected float hp_;         //HP
 
     public float GetHp()

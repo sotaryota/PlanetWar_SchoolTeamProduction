@@ -17,8 +17,8 @@ public class EnemyCreater_Data : MonoBehaviour
         set9_BoxRob_2,
         set10_Rob1_2_Rob2_1_Tuuret_1,
         set11_BoxRob_2_Rob_1_Rob2_1_Turret_2,
-
-        set12_Fighter_1,
+        set12_Rob2_1,
+        set13_Fighter_1,
 
         //Ç±ÇÍÇÊÇËè„Ç…ìGÇí«â¡Ç∑ÇÈÇ±Ç∆
         ENUM_END,
