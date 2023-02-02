@@ -402,10 +402,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1770680198805062825, guid: 96fbce1f43a523d4e817116a1bb6823a, type: 3}
+      propertyPath: textArray.Array.data[1]
+      value: "\u3060\u304C\u3053\u308C\u306F\u307E\u3060\u7269\u8A9E\u306E\u5E8F\u7AE0\u306B\n\u904E\u304E\u306A\u3044\u306E\u3067\u3042\u3063\u305F...."
+      objectReference: {fileID: 0}
     - target: {fileID: 1770680198934472920, guid: 96fbce1f43a523d4e817116a1bb6823a, type: 3}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 6d31bdf749a82eb4688e69cf818fa8f0, type: 3}
+      objectReference: {fileID: 12800000, guid: c98280b319df70440941f6d7781f628c, type: 3}
     - target: {fileID: 1770680198934472921, guid: 96fbce1f43a523d4e817116a1bb6823a, type: 3}
       propertyPath: textNum
       value: 0
