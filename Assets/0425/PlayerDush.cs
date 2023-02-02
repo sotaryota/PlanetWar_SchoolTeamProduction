@@ -21,7 +21,6 @@ public class PlayerDush : MonoBehaviour
     void Start()
     {
         if (gamepad == null) { gamepad = Gamepad.current; }
-
         if (SceneManager.GetActiveScene().name == "Story" || SceneManager.GetActiveScene().name == "StoryBoss")
         {
             speed = playerStatus_Solo.GetSpeed();
@@ -30,22 +29,37 @@ public class PlayerDush : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Story" || SceneManager.GetActiveScene().name == "StoryBoss")
+        if (playerStatus_Solo.GetState() == PlayerStatus_Solo.State.Talking) 
         {
-            if (playerFoot.GetComponent<PlayerGroundCheck>().isGround)
+            playerStatus_Solo.SetSpeed(speed);
+            playerAnimManeger.PlayAnimSetSprint(false);
+            return; 
+        }
+        if((gamepad.leftStick.ReadValue().x < -0.2f || 0.2f < gamepad.leftStick.ReadValue().x) ||
+           (gamepad.leftStick.ReadValue().y < -0.2f || 0.2f < gamepad.leftStick.ReadValue().y))
+        {
+            if (SceneManager.GetActiveScene().name == "Story" || SceneManager.GetActiveScene().name == "StoryBoss")
             {
-                if (gamepad.rightShoulder.isPressed)
+                if (playerFoot.GetComponent<PlayerGroundCheck>().isGround)
                 {
-                    print("ダッシュ");
-                    playerStatus_Solo.SetSpeed(dushSpeed);
-                    playerAnimManeger.PlayAnimSetSprint(true);
-                }
-                else
-                {
-                    playerStatus_Solo.SetSpeed(speed);
-                    playerAnimManeger.PlayAnimSetSprint(false);
+                    if (gamepad.rightShoulder.isPressed)
+                    {
+                        print("ダッシュ");
+                        playerStatus_Solo.SetSpeed(dushSpeed);
+                        playerAnimManeger.PlayAnimSetSprint(true);
+                    }
+                    else
+                    {
+                        playerStatus_Solo.SetSpeed(speed);
+                        playerAnimManeger.PlayAnimSetSprint(false);
+                    }
                 }
             }
+        }
+        else
+        {
+            playerStatus_Solo.SetSpeed(speed);
+            playerAnimManeger.PlayAnimSetSprint(false);
         }
     }
 }

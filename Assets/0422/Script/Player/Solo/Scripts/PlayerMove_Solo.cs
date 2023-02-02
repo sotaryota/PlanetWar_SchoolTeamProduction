@@ -46,7 +46,6 @@ public class PlayerMove_Solo : MonoBehaviour
             return;
         }
         if (gamepad == null) { gamepad = Gamepad.current; }
-        print(controller.isGrounded);
         StickValue();
         PlayerLook();
         MoveOrStop();
@@ -150,18 +149,12 @@ public class PlayerMove_Solo : MonoBehaviour
         var rayDirection = this.transform.forward;
 
         Ray ray = new Ray(rayPos, rayDirection);
-        Debug.DrawRay(rayPos, rayDirection, Color.red,50f); ;
         if(Physics.Raycast(ray,out hit,1.0f))
         {
-            Debug.Log("1");
             if(hit.transform.CompareTag("Ground"))
             {
-                Debug.Log("2");
                 if (Vector3.Angle(hit.normal,Vector3.up) > controller.slopeLimit)
                 {
-                    Debug.Log("3");
-                    //ŠŠ‚éƒtƒ‰ƒO‚ª—§‚Á‚Ä‚½‚ç
-                    Debug.Log("ŠŠ‚éˆ—‚Å‚·");
                     Vector3 hitNormal = hit.normal;
                     moveDirection.x = hitNormal.x;
                     moveDirection.y = 20 * Time.deltaTime;//d—Í—‰º
