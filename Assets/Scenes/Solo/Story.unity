@@ -3517,6 +3517,10 @@ PrefabInstance:
       propertyPath: GroundCheck
       value: 
       objectReference: {fileID: 2096544479}
+    - target: {fileID: 8998669171743165671, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
+      propertyPath: battleToStory
+      value: 
+      objectReference: {fileID: 1272047282}
     m_RemovedComponents:
     - {fileID: 5335712919986414366, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
     - {fileID: 7845068351687439395, guid: 4f135a1b8c5edad42a20dd65e5fb9589, type: 3}
@@ -6302,6 +6306,7 @@ MonoBehaviour:
   playerCamera: {fileID: 163747579}
   playerData: {fileID: 787326477}
   continueFlag: 0
+  toStoryFlag: 0
 --- !u!114 &1272047283
 MonoBehaviour:
   m_ObjectHideFlags: 0
