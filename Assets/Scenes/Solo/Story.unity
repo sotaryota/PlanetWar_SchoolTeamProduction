@@ -1526,7 +1526,7 @@ MonoBehaviour:
   eventId: 9
   talkFlag: 1
   selectFlag: 1
-  enemyName: 5
+  enemyName: 12
   normalTalkData:
   - "\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB\u30FB"
   - "(\u798D\u3005\u3057\u3044\u95D8\u6C17\u3092\u653E\u3063\u3066\u3044\u308B)"

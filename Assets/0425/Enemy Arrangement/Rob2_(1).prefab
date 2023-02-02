@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3637766571337525520}
   - component: {fileID: -6534800940586608957}
   - component: {fileID: -4208056349864995067}
+  - component: {fileID: -7584179445531860447}
   m_Layer: 0
   m_Name: Rob2_(1)
   m_TagString: Untagged
@@ -145,6 +146,18 @@ MonoBehaviour:
   stopScript:
   - {fileID: 5998756430820415011}
   - {fileID: 5998756429380561053}
+--- !u!114 &-7584179445531860447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3637766571337525521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7568dd44ead4804d8a99746a7d89735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3637766570288706474
 PrefabInstance:
   m_ObjectHideFlags: 0
