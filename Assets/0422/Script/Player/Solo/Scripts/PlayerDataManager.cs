@@ -41,7 +41,7 @@ public class PlayerDataManager : MonoBehaviour
     #endregion
 
     [Header("プレイヤーデータ")]
-    [SerializeField] private Vector3 playerPos;      //プレイヤーの復帰位置
+    public Vector3 playerPos;      //プレイヤーの復帰位置
     [SerializeField] private Quaternion playerAngle; //プレイヤーの向き
     [SerializeField] private Quaternion cameraAngle; //カメラの位置と向き
 

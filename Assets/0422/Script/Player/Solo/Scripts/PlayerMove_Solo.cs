@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove_Solo : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerMove_Solo : MonoBehaviour
     [SerializeField] PlayerAnimManeger playerAnimator;
     [SerializeField] PlayerGroundCheck ground;
     [SerializeField] PauseMenuSystem pause;
+    [SerializeField] BattleToStory battleToStory;
+    PlayerDataManager data;
 
     public Vector3 moveDirection;
     private float horizontal;
@@ -31,6 +34,15 @@ public class PlayerMove_Solo : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         pause = pause.GetComponent<PauseMenuSystem>();
+        data = GameObject.Find("DataManager").GetComponent<PlayerDataManager>();
+        if(SceneManager.GetActiveScene().name == "Story")
+        {
+            if (battleToStory.toStoryFlag)
+            {
+                transform.position = data.playerPos;
+                battleToStory.toStoryFlag = false;
+            }
+        }
     }
 
     private void Update()

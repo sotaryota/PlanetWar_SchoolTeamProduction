@@ -9,6 +9,7 @@ public class BattleToStory : MonoBehaviour
     [SerializeField] GameObject playerCamera;
     [SerializeField] PlayerDataManager playerData;
     public bool continueFlag = false;
+    public bool toStoryFlag = false;
 
     private void OnEnable()
     {
@@ -19,9 +20,9 @@ public class BattleToStory : MonoBehaviour
             Quaternion playerAngle = Quaternion.Euler(0, 0, 0);
             Quaternion cameraAngle = Quaternion.Euler(0, 0, 0);
             playerData.StoryStartPlayerPos(ref playerPos, ref playerAngle, ref cameraAngle);
-            player.transform.position = playerPos;
             player.transform.rotation = playerAngle;
             playerCamera.transform.rotation = cameraAngle;
+            toStoryFlag = true;
         }
     }
 }
