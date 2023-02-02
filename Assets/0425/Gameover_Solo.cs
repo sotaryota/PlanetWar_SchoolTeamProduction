@@ -26,8 +26,8 @@ public class Gameover_Solo: MonoBehaviour
     //オーディオ追加
     [SerializeField]
     AudioSource audioSource;
-    [SerializeField]
-    AudioClip deadJingle;
+    //[SerializeField]
+    //AudioClip deadJingle;
     [SerializeField]
     PlayerSEManager playerSE;
     //ゲームオーバー時のメニュー
@@ -58,7 +58,7 @@ public class Gameover_Solo: MonoBehaviour
                 playerAnimManeger.PlayAnimDie();
                 gameoverStaging.SetActive(true);
                 gameStart_solo.ScriptStop();
-                audioSource.PlayOneShot(deadJingle);
+                //audioSource.PlayOneShot(deadJingle);
                 playerSE.DeathVoice();
                 pauseMenuSystem.SetCanPause(false);
                 StartCoroutine("ShowMenu");
