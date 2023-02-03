@@ -20,7 +20,6 @@ public class BattleToStory : MonoBehaviour
             Quaternion playerAngle = Quaternion.Euler(0, 0, 0);
             Quaternion cameraAngle = Quaternion.Euler(0, 0, 0);
             playerData.StoryStartPlayerPos(ref playerPos, ref playerAngle, ref cameraAngle);
-            player.transform.rotation = playerAngle;
             playerCamera.transform.rotation = cameraAngle;
             toStoryFlag = true;
         }
