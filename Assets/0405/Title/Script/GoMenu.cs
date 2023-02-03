@@ -24,7 +24,7 @@ public class GoMenu : MonoBehaviour
             {
                 gamepad = Gamepad.all[i];
                 //押したらフェード開始
-                if (gamepad.buttonEast.wasPressedThisFrame)
+                if (gamepad.buttonEast.wasPressedThisFrame || gamepad.startButton.wasPressedThisFrame)
                 {
                     buttonFlag = false;
                     fadeScript.fademode = true;
