@@ -169,6 +169,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 723
       objectReference: {fileID: 0}
+    - target: {fileID: 3382549728288403519, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+      propertyPath: distance
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7008775697719977352, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
       propertyPath: hp_
       value: 200
@@ -244,6 +248,18 @@ PrefabInstance:
     - target: {fileID: 7008775697719977461, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655304341803108577, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655304341803108577, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655304341803108577, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9abd9929b0c87e0419bf0d7797d54467, type: 3}

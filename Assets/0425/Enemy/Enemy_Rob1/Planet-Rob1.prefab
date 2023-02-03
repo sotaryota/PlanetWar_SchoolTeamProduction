@@ -184,6 +184,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a2f26f3b72ef0499e1fa664516ff60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  middleObject: {fileID: 0}
+  deleteDistance: 50.5
   firstState: 0
   nowState: 0
   data:
@@ -206,8 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 751c5e47d88fa4544a19198647c45f54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy_HpData: {fileID: 0}
-  playerStatus_Solo: {fileID: 0}
   planetData: {fileID: 2410368761765197407}
 --- !u!82 &-5985340002376628008
 AudioSource:
@@ -220,7 +220,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
