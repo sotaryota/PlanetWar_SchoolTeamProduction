@@ -5931,7 +5931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0243457be5de2b64c8fada0670b3e00b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: "\u5927\u9808\u8CC0"
+  name: "\u30AA\u30B9\u30AB\u30FC"
   eventId: 6
   talkFlag: 1
   selectFlag: 1

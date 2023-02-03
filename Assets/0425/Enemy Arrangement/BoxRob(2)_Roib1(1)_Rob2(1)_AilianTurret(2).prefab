@@ -456,9 +456,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8769726063607363212}
     m_Modifications:
+    - target: {fileID: 1666167785, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666167785, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666167785, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.71
+      objectReference: {fileID: 0}
     - target: {fileID: 1666167786, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
       propertyPath: attackEndWait
-      value: 2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1666167786, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
       propertyPath: planetThrowTime
@@ -480,6 +492,34 @@ PrefabInstance:
       propertyPath: source
       value: 
       objectReference: {fileID: -117596978463055427}
+    - target: {fileID: 4239587885195828743, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
+      propertyPath: effectSize.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239587885195828743, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
+      propertyPath: effectSize.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239587885195828743, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
+      propertyPath: effectSize.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239587885195828761, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
+      propertyPath: beThrowSpeed.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239587885195828762, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
+      propertyPath: damage
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239587885195828762, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
+      propertyPath: scaleRange.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239587885195828762, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
+      propertyPath: scaleRange.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4988328781634561657, guid: 7c8d4462baa0ac54ebc7e9cf0ada6aed, type: 3}
       propertyPath: m_Name
       value: Enemy_Rob1
