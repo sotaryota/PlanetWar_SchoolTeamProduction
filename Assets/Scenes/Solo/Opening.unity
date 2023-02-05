@@ -531,6 +531,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2421909868789135209, guid: d5d9c92becb4c454da540ac4b1ec4125, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421909868789135209, guid: d5d9c92becb4c454da540ac4b1ec4125, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421909868789135209, guid: d5d9c92becb4c454da540ac4b1ec4125, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 2666575935659261783, guid: d5d9c92becb4c454da540ac4b1ec4125, type: 3}
       propertyPath: m_Name
       value: movieObj
