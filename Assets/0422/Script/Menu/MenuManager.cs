@@ -46,7 +46,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        fade.SceneFadeIn(fadeInSpeed);
+        fade.SceneFadeIn(0.0f,0.0f,0.0f,fadeInSpeed);
     }
     private void Start()
     {

@@ -1192,7 +1192,6 @@ GameObject:
   - component: {fileID: 4966481264712600106}
   - component: {fileID: 8998669171743165671}
   - component: {fileID: 3225931615792004985}
-  - component: {fileID: 7845068351687439395}
   - component: {fileID: 5802731200430829288}
   - component: {fileID: 4287488315982162273}
   m_Layer: 0
@@ -1395,6 +1394,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 4287488315982162273}
   ground: {fileID: 0}
   pause: {fileID: 0}
+  battleToStory: {fileID: 0}
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &3225931615792004985
 MonoBehaviour:
@@ -1414,21 +1414,6 @@ MonoBehaviour:
   jumping: {x: 0, y: 0, z: 0}
   gravity: 0
   playerFoot: {fileID: 0}
---- !u!114 &7845068351687439395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5361345950793917809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4835fc88123eb884f989a9ed11e020c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  playerStatus_Solo: {fileID: 0}
-  dushSpeed: 0
 --- !u!114 &5802731200430829288
 MonoBehaviour:
   m_ObjectHideFlags: 0

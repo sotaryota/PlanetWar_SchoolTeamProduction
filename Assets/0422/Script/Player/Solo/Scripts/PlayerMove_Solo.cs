@@ -111,8 +111,6 @@ public class PlayerMove_Solo : MonoBehaviour
                 playerStatus.SetState(PlayerStatus_Solo.State.Stay);
             }
 
-            SlopeSlide();
-
             //待機時間のカウント
             waitcnt += Time.deltaTime;
 
@@ -138,7 +136,6 @@ public class PlayerMove_Solo : MonoBehaviour
                 playerStatus.SetState(PlayerStatus_Solo.State.Move);
             }
 
-            SlopeSlide();
             //移動処理
             controller.Move(moveDirection * Time.deltaTime);
 
@@ -153,26 +150,5 @@ public class PlayerMove_Solo : MonoBehaviour
     void RunSE()
     {
         audio.PlayOneShot(moveSE);
-    }
-    void SlopeSlide()
-    {
-        if (ground.isGround) { return; }
-        var rayPos       = this.transform.position + new Vector3(0,1,0);
-        var rayDirection = this.transform.forward;
-
-        Ray ray = new Ray(rayPos, rayDirection);
-        if(Physics.Raycast(ray,out hit,1.0f))
-        {
-            if(hit.transform.CompareTag("Ground"))
-            {
-                if (Vector3.Angle(hit.normal,Vector3.up) > controller.slopeLimit)
-                {
-                    Vector3 hitNormal = hit.normal;
-                    moveDirection.x = hitNormal.x;
-                    moveDirection.y = 20 * Time.deltaTime;//重力落下
-                    moveDirection.z = hitNormal.z;
-                }
-            }
-        }
     }
 }

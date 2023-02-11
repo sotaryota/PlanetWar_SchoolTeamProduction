@@ -40,7 +40,6 @@ public class PlayerJump : MonoBehaviour
         else
         {
             //Ú’n‚µ‚Ä‚¢‚È‚¢‚È‚çd—Í‰ÁZ
-            Debug.Log("d—Í‰ÁZ’†");
             PlayerGravity();
         }
         //ˆÚ“®ˆ—

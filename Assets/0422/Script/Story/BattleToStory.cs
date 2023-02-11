@@ -5,9 +5,11 @@ using UnityEngine;
 /// </summary>
 public class BattleToStory : MonoBehaviour
 {
+    [SerializeField] PlayerDataManager playerData;
+    [SerializeField] FadeManager fadeManager;
     [SerializeField] GameObject player;
     [SerializeField] GameObject playerCamera;
-    [SerializeField] PlayerDataManager playerData;
+    [SerializeField] private float fadeInSpeed;  // フェードのスピード
     public bool continueFlag = false;
     public bool toStoryFlag = false;
 
@@ -21,6 +23,7 @@ public class BattleToStory : MonoBehaviour
             Quaternion cameraAngle = Quaternion.Euler(0, 0, 0);
             playerData.StoryStartPlayerPos(ref playerPos, ref playerAngle, ref cameraAngle);
             playerCamera.transform.rotation = cameraAngle;
+            fadeManager.SceneFadeIn(0.0f, 0.0f, 0.0f, fadeInSpeed);
             toStoryFlag = true;
         }
     }

@@ -21,8 +21,17 @@ public class FadeManager : MonoBehaviour
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture2D.whiteTexture);
         }
     }
-    public void SceneFadeIn(float speed)
+
+    /// <summary>
+    /// シーン開始時のフェードイン時に呼び出す
+    /// </summary>
+    /// <param name="r">赤</param>
+    /// <param name="g">緑</param>
+    /// <param name="b">青</param>
+    /// <param name="speed">フェードのスピード</param>
+    public void SceneFadeIn(float r, float g, float b, float speed)
     {
+        color = new Color(r, g, b);
         StartCoroutine(FadeIn(speed));
     }
 
@@ -34,12 +43,13 @@ public class FadeManager : MonoBehaviour
     /// <param name="r">赤</param>
     /// <param name="g">緑</param>
     /// <param name="b">青</param>
-    /// <param name="interval">フェードのスピード</param>
-    public void FadeSceneChange(string scene, float r, float g, float b, float interval)
+    /// <param name="speed">フェードのスピード</param>
+    public void FadeSceneChange(string scene, float r, float g, float b, float speed)
     {
         color = new Color(r, g, b);
-        StartCoroutine(FadeOut(scene, interval));
+        StartCoroutine(FadeOut(scene, speed));
     }
+
     /// <summary>
     /// ゲーム終了時に呼び出す
     /// RGBでカラー指定し移行したいシーン名を引数にしてフェードアウト
@@ -47,11 +57,11 @@ public class FadeManager : MonoBehaviour
     /// <param name="r">赤</param>
     /// <param name="g">緑</param>
     /// <param name="b">青</param>
-    /// <param name="interval">フェードのスピード</param>
-    public void GameEndFadeOut(float r, float g, float b, float interval)
+    /// <param name="speed">フェードのスピード</param>
+    public void GameEndFadeOut(float r, float g, float b, float speed)
     {
         color = new Color(r, g, b);
-        StartCoroutine(GameEndFade(interval));
+        StartCoroutine(GameEndFade(speed));
     }
 
     //-----------------------------------------------------

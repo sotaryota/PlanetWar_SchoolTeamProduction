@@ -3214,6 +3214,23 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6903674e5152a964ead82df654d5c10c, type: 3}
   - {fileID: 8300000, guid: d7da64a5b00c155419dc47da371b6a6f, type: 3}
   - {fileID: 8300000, guid: 1055988bfc7ff834c8f768ed359ff300, type: 3}
+--- !u!114 &1389656601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389656586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4835fc88123eb884f989a9ed11e020c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1389656586}
+  playerStatus_Solo: {fileID: 1389656591}
+  playerAnimManeger: {fileID: 1389656587}
+  dushSpeed: 15
+  playerFoot: {fileID: 183624381}
 --- !u!1 &1391219353 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
@@ -3594,7 +3611,6 @@ MonoBehaviour:
   deadTime: 0
   deadEffecrt: {fileID: 1161926810}
   audioSource: {fileID: 1524206042}
-  deadJingle: {fileID: 8300000, guid: 6246881746e8934409cc852053acff34, type: 3}
   playerSE: {fileID: 1389656599}
   gameoverMenu: {fileID: 142067790}
   pauseMenuSystem: {fileID: 6793984289211805708}
@@ -9283,5 +9299,6 @@ MonoBehaviour:
   pushSound: {fileID: 8300000, guid: a8e4bc41640786140a21c04f940b0b37, type: 3}
   playerJump: {fileID: 0}
   talk: {fileID: 0}
+  planetCatchRelease_Solo: {fileID: 0}
   saveLoad: {fileID: 0}
   dataManager: {fileID: 0}

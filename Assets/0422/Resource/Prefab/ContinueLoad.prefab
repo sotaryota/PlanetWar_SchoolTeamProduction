@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ee79d9752ca5e4f99ee5826ded16e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeManager: {fileID: 0}
+  fadeInSpeed: 1.5
   nowScene: 
   openingSceneName: Opening
   storySceneName: Story
