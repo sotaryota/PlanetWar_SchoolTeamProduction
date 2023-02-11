@@ -6071,6 +6071,7 @@ MonoBehaviour:
   player: {fileID: 454796600}
   playerCamera: {fileID: 163747579}
   fadeInSpeed: 1.5
+  fadeInInterval: 1
   continueFlag: 0
   toStoryFlag: 0
 --- !u!114 &1272047283

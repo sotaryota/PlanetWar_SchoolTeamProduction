@@ -7,7 +7,8 @@ public class ContinueLoad : MonoBehaviour
     SaveLoad saveLoad;
     BattleToStory battleToStory;
     [SerializeField] FadeManager fadeManager;
-    [SerializeField] float fadeInSpeed;
+    [SerializeField] float fadeInSpeed;             // フェードのスピード
+    [SerializeField] private float fadeInInterval;  // フェード開始までのインターバル
     [Header("シーン名")]
     public string nowScene;
     [SerializeField] string openingSceneName;   
@@ -39,7 +40,7 @@ public class ContinueLoad : MonoBehaviour
 
 
         fadeManager = GameObject.Find("FadeManager").GetComponent<FadeManager>();
-        fadeManager.SceneFadeIn(0.0f, 0.0f, 0.0f, fadeInSpeed);
+        fadeManager.SceneFadeIn(0.0f, 0.0f, 0.0f, fadeInSpeed, fadeInInterval);
         SceneManager.sceneLoaded -= Continue;
         // ロードが終了したら消去する
         Destroy(gameObject);

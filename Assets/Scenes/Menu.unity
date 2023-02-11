@@ -1602,6 +1602,7 @@ MonoBehaviour:
   fadeInterval: 0.8
   fadeInSpeed: 1.5
   fadeOutSpeed: 1
+  fadeInInterval: 0
   fadeColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1836263061
 MonoBehaviour:

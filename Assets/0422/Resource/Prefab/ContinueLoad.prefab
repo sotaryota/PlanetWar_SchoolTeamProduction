@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeManager: {fileID: 0}
   fadeInSpeed: 1.5
+  fadeInInterval: 1
   nowScene: 
   openingSceneName: Opening
   storySceneName: Story

@@ -29,10 +29,10 @@ public class FadeManager : MonoBehaviour
     /// <param name="g">緑</param>
     /// <param name="b">青</param>
     /// <param name="speed">フェードのスピード</param>
-    public void SceneFadeIn(float r, float g, float b, float speed)
+    public void SceneFadeIn(float r, float g, float b, float speed, float interval)
     {
         color = new Color(r, g, b);
-        StartCoroutine(FadeIn(speed));
+        StartCoroutine(FadeIn(speed,interval));
     }
 
     /// <summary>
@@ -68,14 +68,17 @@ public class FadeManager : MonoBehaviour
     //関数内で呼び出される処理
     //-----------------------------------------------------
 
-    private IEnumerator FadeIn(float speed)
+    private IEnumerator FadeIn(float speed,float interval)
     {
         isFade = true;
+        alpha = 1f;
+
+        yield return new WaitForSeconds(interval);
 
         //フェードのカウント
         float fadetime = 0;
 
-        //フェードアウト
+        //フェードイン
         while (fadetime <= speed)
         {
             //透明度を少しずつ上げる

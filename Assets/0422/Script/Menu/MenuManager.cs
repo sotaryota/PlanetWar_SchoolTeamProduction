@@ -38,15 +38,16 @@ public class MenuManager : MonoBehaviour
     public SelectMenu beforeSelect; //選択中のメニューを一時保存
 
     [Header("フェード")]
-    [SerializeField] private float fadeInterval; // フェードまでの間隔
-    [SerializeField] private float fadeInSpeed;  // フェードのスピード
-    [SerializeField] private float fadeOutSpeed; // フェードのスピード
-    [SerializeField] private Color fadeColor;    // フェードのカラー
+    [SerializeField] private float fadeInterval;   // フェードまでの間隔
+    [SerializeField] private float fadeInSpeed;    // フェードのスピード
+    [SerializeField] private float fadeOutSpeed;   // フェードのスピード
+    [SerializeField] private float fadeInInterval; // フェード開始までのインターバル
+    [SerializeField] private Color fadeColor;      // フェードのカラー
 
 
     private void Awake()
     {
-        fade.SceneFadeIn(0.0f,0.0f,0.0f,fadeInSpeed);
+        fade.SceneFadeIn(0.0f,0.0f,0.0f,fadeInSpeed, fadeInInterval);
     }
     private void Start()
     {
