@@ -12,7 +12,6 @@ public class BattleToStory : MonoBehaviour
     [SerializeField] private float fadeInSpeed;     // フェードのスピード
     [SerializeField] private float fadeInInterval;  // フェード開始までのインターバル
     public bool continueFlag = false;
-    public bool toStoryFlag = false;
 
     private void OnEnable()
     {
@@ -24,8 +23,7 @@ public class BattleToStory : MonoBehaviour
             Quaternion cameraAngle = Quaternion.Euler(0, 0, 0);
             playerData.StoryStartPlayerPos(ref playerPos, ref playerAngle, ref cameraAngle);
             playerCamera.transform.rotation = cameraAngle;
-            fadeManager.SceneFadeIn(0.0f, 0.0f, 0.0f, fadeInSpeed, fadeInInterval);
-            toStoryFlag = true;
+            fadeManager.ToStorySceneFadeIn(ref player,playerData,0.0f, 0.0f, 0.0f, fadeInSpeed, fadeInInterval);
         }
     }
 }

@@ -21,7 +21,21 @@ public class FadeManager : MonoBehaviour
             GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture2D.whiteTexture);
         }
     }
-
+    /// <summary>
+    /// バトルからストーリーに移行した際に呼ぶ関数
+    /// </summary>
+    /// <param name="player">プレイヤーのゲームオブジェクト</param>
+    /// <param name="data">保存されたデータ</param>
+    /// <param name="r">赤</param>
+    /// <param name="g">緑</param>
+    /// <param name="b">青</param>
+    /// <param name="speed">フェードのスピード</param>
+    /// <param name="interval">フェード開始までのインターバル</param>
+    public void ToStorySceneFadeIn(ref GameObject player,PlayerDataManager data,float r, float g, float b, float speed, float interval)
+    {
+        color = new Color(r, g, b);
+        StartCoroutine(ToStoryFadeIn(player,data,speed, interval));
+    }
     /// <summary>
     /// シーン開始時のフェードイン時に呼び出す
     /// </summary>
@@ -29,6 +43,7 @@ public class FadeManager : MonoBehaviour
     /// <param name="g">緑</param>
     /// <param name="b">青</param>
     /// <param name="speed">フェードのスピード</param>
+    /// <param name="interval">フェード開始までのインターバル</param>
     public void SceneFadeIn(float r, float g, float b, float speed, float interval)
     {
         color = new Color(r, g, b);
@@ -68,6 +83,31 @@ public class FadeManager : MonoBehaviour
     //関数内で呼び出される処理
     //-----------------------------------------------------
 
+    private IEnumerator ToStoryFadeIn(GameObject player, PlayerDataManager data,float speed, float interval)
+    {
+        isFade = true;
+        alpha = 1f;
+        float time = 0;
+        //フェードイン
+        while (time <= interval)
+        {
+            player.transform.position = data.playerPos;
+            time += Time.deltaTime;
+            yield return 0;
+        }
+
+        //フェードのカウント
+        float fadetime = 0;
+
+        //フェードイン
+        while (fadetime <= speed)
+        {
+            //透明度を少しずつ上げる
+            alpha = Mathf.Lerp(1f, 0f, fadetime / speed);
+            fadetime += Time.deltaTime;
+            yield return 0;
+        }
+    }
     private IEnumerator FadeIn(float speed,float interval)
     {
         isFade = true;
@@ -98,7 +138,7 @@ public class FadeManager : MonoBehaviour
         //フェードアウト
         while (fadetime <= speed)
         {
-            //透明度を少しずつ上げる
+            //透明度を少しずつ下げる
             alpha = Mathf.Lerp(0f, 1f, fadetime / speed);
             fadetime += Time.deltaTime;
             yield return 0;
@@ -117,7 +157,7 @@ public class FadeManager : MonoBehaviour
         //フェードアウト
         while (fadetime <= speed)
         {
-            //透明度を少しずつ上げる
+            //透明度を少しずつ下げる
             alpha = Mathf.Lerp(0f, 1f, fadetime / speed);
             fadetime += Time.deltaTime;
             yield return 0;
