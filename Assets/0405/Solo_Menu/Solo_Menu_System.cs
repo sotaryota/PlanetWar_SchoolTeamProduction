@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using System.IO;
 
 public class Solo_Menu_System : MonoBehaviour
 {
@@ -53,7 +54,11 @@ public class Solo_Menu_System : MonoBehaviour
         nextscene = "";
 
         //初期位置
-        nowSelecting = 0;
+        //セーブデータがあればコンティニューへ
+        string filePath = Application.persistentDataPath + "/" + ".savedata.json";
+        if (IsFileLocked(filePath)) { nowSelecting = (int)menu.Continue; }
+        else { nowSelecting = (int)menu.NewGame; }
+
         prevSelecting = nowSelecting;
         audioSource = GetComponent<AudioSource>();
         buttonClass[0].buttonImage.GetComponent<Animator>().SetBool("selected", true);
@@ -156,5 +161,28 @@ public class Solo_Menu_System : MonoBehaviour
                 }
             }
         }
+    }
+    //セーブデータの有無
+    private bool IsFileLocked(string path)
+    {
+        FileStream stream = null;
+
+        try
+        {
+            stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+        }
+        catch
+        {
+            return true;
+        }
+        finally
+        {
+            if (stream != null)
+            {
+                stream.Close();
+            }
+        }
+
+        return false;
     }
 }
