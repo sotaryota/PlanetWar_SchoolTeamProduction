@@ -83,7 +83,7 @@ public class PauseMenuSystem : MonoBehaviour
 
     void Start()
     {
-        selectLock = false;
+        selectLock = true;
         onButton = false;
         ispauseNow = false;
         canPause = true;
